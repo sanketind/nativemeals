@@ -14,11 +14,11 @@ The site speaks to offices in and near Hinjewadi, including people who work from
 
 The full list lives in `data/site-config.ts`.
 
-Neighbourhoods: Hinjewadi Phase 1, Hinjewadi Phase 2, Hinjewadi Phase 3, Maan, Marunji, Wakad, Tathwade, Punewale, Baner and Aundh.
+Neighbourhoods: Hinjewadi, Wakad and Baner.
 
 Tech parks named on the site: Rajiv Gandhi Infotech Park, Embassy Tech Zone, Quadron Business Park and Blue Ridge.
 
-Headlines use the short form: Hinjewadi, Wakad, Baner and nearby. A visitor still has to share a locality. The site does not check an address by itself. Someone confirms it before the first meal.
+Headlines use the same three: Hinjewadi, Wakad and Baner. A visitor still has to share a locality. The site does not check an address by itself. Someone confirms it before the first meal.
 
 ## What is sold
 
@@ -28,9 +28,9 @@ Three plans, all enquiry, none paid for on the website:
 - Dinner Plan. Dinner at the PG or the flat.
 - All-day Plan. Breakfast, lunch and dinner, or any mix of the three.
 
-Veg and non-veg are the same price. The visitor chooses one.
+Veg and non-veg lunch and dinner are different prices. Breakfast is one rate. The visitor chooses veg, non-veg, or either.
 
-Durations run from a single meal up to a month. Monday to Friday uses five days a week, or 22 weekdays in a month. The six-day options stay for Saturday. The numbers in `data/plans.ts` are introductory. They are marked draft until they are replaced and `pricing.status` is set to `"confirmed"`. How to do that is in the [README](../README.md#plans-and-prices).
+Durations run from a single meal up to a month. Monday to Friday uses five days a week, or 22 weekdays in a month. The six-day options stay for Saturday. The rate per meal does not change with the length. The numbers in `data/plans.ts` are confirmed. How to change them is in the [README](../README.md#plans-and-prices).
 
 ## How a meal is cooked
 

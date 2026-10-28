@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/data/site-config";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 
 export const metadata: Metadata = {
   title: "Terms",
-  description: "How a Native Meals meal plan starts, including skipping a day and sample menus.",
+  description: "How a Native Meals meal plan starts, and what a sample menu means.",
   robots: { index: false, follow: false },
 };
 
@@ -13,7 +14,7 @@ export default function TermsPage() {
   return (
     <>
       <PageHeader eyebrow="Terms" title="Terms of use.">
-        How a plan starts, how skipping a day works, and what a sample menu means.
+        How a plan starts, and what a sample menu means.
       </PageHeader>
       <Section>
         <Container className="max-w-3xl space-y-6 text-[1.06rem] font-normal leading-[1.7] text-muted">
@@ -22,15 +23,14 @@ export default function TermsPage() {
             meals, the price and where the tiffin is handed over.
           </p>
           <p>
-            Prices shown as introductory are confirmed with you before a plan
+            The price on the page is confirmed with you before a plan
             starts. Sample dishes are labelled as samples and describe the
             style of food, rather than a promise of that exact dish.
           </p>
           <p>
-            You can skip a meal by messaging us before the cutoff for that day, pause
-            while you travel, and carry a skipped meal forward. You can keep an
-            office-gate address and a home address. Payment, refunds and missed
-            deliveries are confirmed with you before the first tiffin.
+            {siteConfig.delivery.skipNote} You can keep an office-gate address
+            and a home address. Payment and missed deliveries are confirmed
+            with you before the first tiffin.
           </p>
         </Container>
       </Section>

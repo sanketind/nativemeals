@@ -10,18 +10,7 @@ export type SocialLink = {
   href: string;
 };
 
-const serviceAreas = [
-  "Hinjewadi Phase 1",
-  "Hinjewadi Phase 2",
-  "Hinjewadi Phase 3",
-  "Maan",
-  "Marunji",
-  "Wakad",
-  "Tathwade",
-  "Punewale",
-  "Baner",
-  "Aundh",
-] as const;
+const serviceAreas = ["Hinjewadi", "Wakad", "Baner"] as const;
 
 const techParks = [
   "Rajiv Gandhi Infotech Park",
@@ -58,6 +47,14 @@ const handover =
     ? `Handed over at your office gate, security desk, or your door, with ${windowBits.join(" and ")}.`
     : "Handed over at your office gate, security desk, or your door. We confirm the lunch and dinner window before you start.";
 
+/**
+ * Carry-forward and refunds stay unpublished until those policies are real.
+ * A clock time is named only when NEXT_PUBLIC_SKIP_CUTOFF is set.
+ */
+const skipNote = skipCutoff
+  ? `Message us on WhatsApp before ${skipCutoff} to skip a meal. Pause and cancellation are confirmed with you before the first meal.`
+  : "Skip, pause and cancellation are confirmed with you before the first meal.";
+
 export const siteConfig = {
   name: "Native Meals",
   tagline: "Healthy meals in Hinjewadi.",
@@ -73,7 +70,7 @@ export const siteConfig = {
   /** Full list, for the service-area section and FAQs. */
   serviceAreaLine,
   /** Short form for headlines, the footer and search descriptions. */
-  serviceAreaShort: "Hinjewadi, Wakad, Baner and nearby",
+  serviceAreaShort: "Hinjewadi, Wakad and Baner",
   techParks: [...techParks],
   techParkLine,
   /** Full line including the city, for sentences that need both. */
@@ -105,6 +102,7 @@ export const siteConfig = {
     lunchBy,
     dinnerBy,
     skipCutoff,
+    skipNote,
     handover,
   },
   /** TODO: Add real profiles when they exist. Leave empty until then. */
@@ -152,7 +150,7 @@ export const siteConfig = {
     {
       icon: "diet" as const,
       title: "Veg and non-veg",
-      body: "Choose either. Both are the same price.",
+      body: "Choose veg or non-veg. Lunch and dinner cost more for non-veg.",
     },
   ] satisfies { icon: PromiseIcon; title: string; body: string }[],
   /** Confirmed by the kitchen. Add a rule only once it holds for every meal. */

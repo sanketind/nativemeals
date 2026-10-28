@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { foodAppLunchRange, pricing, type DurationId } from "@/data/plans";
+import { foodAppLunchRange, nonVegPerMeal, pricing, type DurationId } from "@/data/plans";
 import { formatInr } from "@/lib/format";
 import {
   defaultMealsForPlan,
   formatDuration,
+  mealRate,
   quote,
   type MealSlot,
 } from "@/lib/pricing";
@@ -44,7 +45,7 @@ export function PlanExperience() {
     setMeals(defaultMealsForPlan(requested));
   }
 
-  const estimate = quote({ meals, duration });
+  const estimate = quote({ meals, duration, diet });
   const lunchLine = estimate?.lines.find((line) => line.meal === "lunch");
 
   function toggleMeal(meal: MealSlot) {
@@ -65,8 +66,8 @@ export function PlanExperience() {
         <Container>
           <SectionHeading eyebrow="Your plan" title="Build a plan around your week.">
             Monday to Friday is set up for office weeks. A single meal is the
-            way to try the food before a longer plan. The longer you stay,
-            the less each meal costs.
+            way to try the food. The price per meal stays the same for a
+            longer plan.
           </SectionHeading>
           <div className="mt-10 grid items-start gap-8 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="space-y-8">
@@ -77,9 +78,11 @@ export function PlanExperience() {
                 <div className="mt-3 grid gap-3 sm:grid-cols-3">
                   {mealChoices.map((choice) => {
                     const selected = meals.includes(choice.id);
-                    const rate = estimate
-                      ? pricing.perMeal[choice.id][estimate.durationId]
-                      : pricing.perMeal[choice.id].monthly;
+                    const rate = mealRate(choice.id, diet);
+                    const split =
+                      choice.id !== "breakfast" && diet !== "non-veg"
+                        ? nonVegPerMeal[choice.id]
+                        : null;
                     return (
                       <button
                         key={choice.id}
@@ -98,7 +101,7 @@ export function PlanExperience() {
                           {formatInr(rate)}
                         </span>
                         <span className="mt-1 block font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">
-                          per meal
+                          {split ? `veg · non-veg ${formatInr(split)}` : "per meal"}
                         </span>
                       </button>
                     );
@@ -142,7 +145,9 @@ export function PlanExperience() {
                   Dietary preference
                 </legend>
                 <p className="mt-2 text-sm text-muted">
-                  Veg and non-veg are the same price. Tell us which you want.
+                  Lunch and dinner are {formatInr(pricing.perMeal.lunch.taste)} veg
+                  and {formatInr(nonVegPerMeal.lunch)} non-veg. Breakfast is{" "}
+                  {formatInr(pricing.perMeal.breakfast.taste)} either way.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2" role="radiogroup">
                   {dietChoices.map((option) => {
@@ -198,8 +203,8 @@ export function PlanExperience() {
                     {formatInr(estimate.total)}
                   </span>
                 </p>
-                {pricing.status === "draft" ? (
-                  <p className="mt-3 text-sm text-cream/75">{pricing.note}</p>
+                {estimate.dietNote ? (
+                  <p className="mt-3 text-sm text-cream/75">{estimate.dietNote}</p>
                 ) : null}
                 {lunchLine ? (
                   <p className="mt-3 text-sm text-cream/75">

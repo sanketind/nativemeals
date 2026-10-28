@@ -32,7 +32,7 @@ Say what the service does in plain words.
 - Healthy meals, cooked the same morning.
 - Handed over at the office gate, the security desk, or the door.
 - Breakfast, lunch and dinner, on a Monday to Friday plan.
-- Veg and non-veg, same price.
+- Veg or non-veg. Lunch and dinner cost more for non-veg. Breakfast is the same either way.
 
 The pill and the photo badge do not repeat "meal plans" or "subscription". The pill is Monday to Friday · Pune. The badge says the meals are cooked the same morning.
 

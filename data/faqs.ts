@@ -1,4 +1,6 @@
 import { siteConfig } from "@/data/site-config";
+import { nonVegPerMeal, pricing } from "@/data/plans";
+import { formatInr } from "@/lib/format";
 
 export type FaqPage = "faqs" | "plans";
 
@@ -9,14 +11,13 @@ export type Faq = {
   pages: FaqPage[];
 };
 
-const cutoff = siteConfig.delivery.skipCutoff
-  ? `before ${siteConfig.delivery.skipCutoff}`
-  : "before the day's cutoff";
-
 /**
- * Answers a customer can act on. Sample-menu and draft-price lines stay
- * until the live sheet and confirmed prices replace them.
+ * Answers a customer can act on. The weekly menu stays labelled as a sample
+ * until the live sheet replaces it.
  */
+const vegLunch = formatInr(pricing.perMeal.lunch.taste);
+const nonVegLunch = formatInr(nonVegPerMeal.lunch);
+const breakfast = formatInr(pricing.perMeal.breakfast.taste);
 export const faqs: Faq[] = [
   {
     id: "what-is-native-meals",
@@ -29,14 +30,14 @@ export const faqs: Faq[] = [
     id: "service-area",
     question: "Which areas do you currently serve?",
     answer:
-      `We serve ${siteConfig.serviceAreaLine} in Pune, including ${siteConfig.techParkLine}. Office tiffins are handed over at the gate or the security desk. Share your phase, tech park or locality and we will confirm the address.`,
+      `We serve ${siteConfig.serviceAreaLine} in Pune, including ${siteConfig.techParkLine}. Office tiffins are handed over at the gate or the security desk. Share your locality or tech park and we will confirm the address.`,
     pages: ["faqs", "plans"],
   },
   {
     id: "veg-non-veg",
     question: "Do you offer vegetarian and non-vegetarian meals?",
     answer:
-      "Yes, at the same price. Tell us which you want when you start, and the day's menu shows what is cooking.",
+      `Veg lunch and dinner are ${vegLunch}. Non-veg is ${nonVegLunch}. Breakfast is ${breakfast} either way. Tell us which you want when you start, and the day's menu shows what is cooking.`,
     pages: ["faqs", "plans"],
   },
   {
@@ -57,7 +58,7 @@ export const faqs: Faq[] = [
     id: "pause-or-change",
     question: "Can I pause or change my plan?",
     answer:
-      `Yes. Message us on WhatsApp ${cutoff} to skip a meal, or pause the plan when you travel or go on leave. A skipped meal carries forward. You can keep two addresses: the office gate on days you go in, and your home on work-from-home days.`,
+      `${siteConfig.delivery.skipNote} You can keep two addresses: the office gate on days you go in, and your home on work-from-home days.`,
     pages: ["faqs", "plans"],
   },
   {
@@ -70,7 +71,7 @@ export const faqs: Faq[] = [
     id: "pricing",
     question: "How does pricing work?",
     answer:
-      "Each meal has its own price, and a longer plan costs less per meal. One meal is the short trial. Monday to Friday is priced for office weeks, so Saturday is a separate choice. We confirm the total, and any delivery charge, before you start. The prices on the Meal Plans page are introductory.",
+      `Breakfast is ${breakfast}. Lunch and dinner are ${vegLunch} veg and ${nonVegLunch} non-veg. The price per meal is the same for one meal or a month. Monday to Friday is five days, and Saturday is a separate choice. We confirm the total, and any delivery charge, before you start.`,
     pages: ["faqs", "plans"],
   },
   {

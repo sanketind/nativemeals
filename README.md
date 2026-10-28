@@ -44,7 +44,7 @@ Do not scatter business details through the components. Change them here:
 
 Delivery times, pause rules and contact numbers stay blank until they are real. The pages say so, or hide the control. Do not type a guess into those fields.
 
-Meal prices are the exception. `data/plans.ts` holds introductory numbers so the plan builder can show a total. They are marked draft until you replace them. See [Plans and prices](#plans-and-prices).
+Meal prices live in `data/plans.ts`. The plan cards and the builder read from it. `pricing.status` is `"confirmed"`. See [Plans and prices](#plans-and-prices).
 
 ### Contact details
 
@@ -59,9 +59,18 @@ Set these in `.env.local`:
 
 Forms on Meal Plans, Contact and the service-area check post to `/api/enquiry`.
 
-1. If `ENQUIRY_WEBHOOK_URL` is set, the site sends a JSON body to that address. Point it at Zapier, Make, a Google Apps Script, or anything that accepts a POST.
+1. If `ENQUIRY_WEBHOOK_URL` is set, the site sends a JSON body to that address. Point it at a private Google Sheet (below), Zapier, Make, or anything that accepts a POST.
 2. If it is not set, or the request fails, the visitor gets a link that opens WhatsApp with the same details filled in. Nothing is sent until they tap it.
 3. If WhatsApp is not configured either, the form says so. It does not pretend the message was received.
+
+To store enquiries in a Google Sheet, use a **new** spreadsheet. Do not use the weekly menu file. That file is shared so the site can read it, and enquiry rows contain names and phone numbers.
+
+1. Create a spreadsheet, for example `Native Meals enquiries`.
+2. Extensions, then Apps Script. Replace the sample with `scripts/enquiry-to-sheet.gs`. Save.
+3. Deploy, then New deployment, then Web app. Execute as yourself. Who has access: Anyone. Deploy and copy the web app URL.
+4. Put that URL in `ENQUIRY_WEBHOOK_URL` and restart the site.
+
+The first successful enquiry creates an `Enquiries` tab. After that, Start Monday saves the row and tells the visitor the message was received.
 
 The body looks like this:
 
@@ -129,14 +138,14 @@ There is an optional line under the menu, `weeklyMenu.footnote` in `data/site-co
 All prices live in the `pricing` object in `data/plans.ts`. The plan cards and the builder read from it. Do not type prices anywhere else.
 
 - `status` — `"draft"` shows “Introductory pricing, subject to confirmation.” Set it to `"confirmed"` once the numbers are real, and the note disappears.
-- `perMeal` — rupees for breakfast, lunch and dinner at each duration: 3 days, weekly, 2 weeks, monthly. A longer plan should cost less per meal. Veg and non-veg use the same rate.
-- `durations[].days` — how many meals of each kind are in that plan. The current numbers assume six delivery days a week (3, 6, 12, 24). Change them if the kitchen delivers on a different pattern.
+- `perMeal` — the veg rate, in rupees, for breakfast, lunch and dinner. It is the same at every duration. Non-veg lunch and dinner use `nonVegPerMeal`. Breakfast is the same either way.
+- `durations[].days` — how many meals of each kind are in that plan. Monday to Friday is 1 meal, then 5 days, then 22 weekdays in a month. The six-day options stay for Saturday: 6 days, 12 days, and 24 days. A 3-day length sits between the single meal and the Monday to Friday week.
 
 The builder multiplies the selected meals by those days and shows an estimate. The enquiry API calculates the same total again, so the browser cannot submit a different price.
 
-Lunch is lunch only. Dinner is dinner only. Any other mix, including breakfast on its own, is the Everyday plan. Its card shows the per-day cost of all three meals.
+Lunch is lunch only. Dinner is dinner only. Any other mix, including breakfast on its own, is the All-day Plan. Its card shows the per-day cost of all three meals.
 
-`frequency`, `includes` and `deliveryTerms` on each plan stay `null` until those terms are decided. The site says they are confirmed with you.
+`frequency`, `includes` and `deliveryTerms` are set on each plan in `data/plans.ts`. The cards read those fields.
 
 ## Photographs
 
@@ -150,7 +159,7 @@ Confirm all of these before publishing:
 
 - Final menu and dish descriptions
 - Replace the draft prices in `data/plans.ts` and set `pricing.status` to `"confirmed"`
-- Serviceable locations, if the list grows beyond Wakad, Hinjewadi, Baner, Aundh, Tathwade and Punewale
+- Serviceable locations, if the list grows beyond Hinjewadi, Wakad and Baner
 - Delivery and collection arrangements
 - Business phone and WhatsApp number
 - Contact email and social links

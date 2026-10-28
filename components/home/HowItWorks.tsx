@@ -1,3 +1,4 @@
+import { siteConfig } from "@/data/site-config";
 import { Container } from "@/components/ui/Container";
 
 const steps = [
@@ -14,7 +15,7 @@ const steps = [
   {
     number: "03",
     title: "Start Monday",
-    body: "We confirm the price and the handover spot. Skip a day on WhatsApp when the week changes.",
+    body: `We confirm the price and the handover spot. ${siteConfig.delivery.skipNote}`,
   },
 ];
 

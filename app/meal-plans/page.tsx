@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { faqsFor } from "@/data/faqs";
-import { foodAppLunchRange, plans, pricing } from "@/data/plans";
+import { siteConfig } from "@/data/site-config";
+import { foodAppLunchRange, nonVegPerMeal, plans, pricing } from "@/data/plans";
 import { whatsappHref } from "@/lib/contact";
 import { formatInr } from "@/lib/format";
 import { PlanExperience } from "@/components/plans/PlanExperience";
@@ -12,13 +13,13 @@ import { Container } from "@/components/ui/Container";
 import { FAQSplit } from "@/components/ui/FAQSplit";
 import { Section } from "@/components/ui/Section";
 
-const weekdayMonth = pricing.durations.find((item) => item.id === "weekdays-month");
-const lunchMonth = pricing.perMeal.lunch["weekdays-month"];
-const lunchTrial = pricing.perMeal.lunch.taste;
+const vegLunch = pricing.perMeal.lunch.taste;
+const nonVegLunch = nonVegPerMeal.lunch;
+const breakfast = pricing.perMeal.breakfast.taste;
 
 export const metadata: Metadata = {
   title: "Healthy meal plans in Hinjewadi",
-  description: `Monday to Friday healthy meal plans for Hinjewadi, Wakad and nearby Pune. Try one lunch for ${formatInr(lunchTrial)}, or ${formatInr(lunchMonth)} a meal on a weekday month.`,
+  description: `Monday to Friday healthy meal plans for Hinjewadi, Wakad and nearby Pune. Lunch is ${formatInr(vegLunch)} veg or ${formatInr(nonVegLunch)} non-veg. Breakfast is ${formatInr(breakfast)}.`,
 };
 
 const flow = [
@@ -46,7 +47,7 @@ const steps = [
   {
     number: "04",
     title: "Meals arrive",
-    body: "The tiffin shows up at the office gate or your door. Skip a day on WhatsApp when the week changes.",
+    body: `The tiffin shows up at the office gate or your door. ${siteConfig.delivery.skipNote}`,
   },
 ];
 
@@ -66,8 +67,8 @@ export default function MealPlansPage() {
             Monday to Friday, at the office gate.
           </h1>
           <p className="mt-5 max-w-2xl text-[clamp(1.05rem,1.5vw,1.25rem)] font-normal leading-[1.7] text-muted">
-            Try one lunch for {formatInr(lunchTrial)}, or take a weekday month
-            at {formatInr(lunchMonth)} a meal. We confirm the price, the
+            Lunch is {formatInr(vegLunch)} veg or {formatInr(nonVegLunch)}{" "}
+            non-veg. Breakfast is {formatInr(breakfast)}. We confirm the
             handover spot and the start date before anything begins.
           </p>
           <div className="mt-8">
@@ -76,11 +77,10 @@ export default function MealPlansPage() {
           <ul className="mt-10 grid gap-4 border-t border-charcoal/10 pt-6 sm:grid-cols-3">
             <li>
               <p className="font-sans text-[1.28rem] font-bold leading-[1.3] tracking-[-0.02em] text-olive">
-                {formatInr(lunchMonth)} lunch
+                {formatInr(vegLunch)} veg lunch
               </p>
               <p className="mt-1 font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">
-                weekday month
-                {weekdayMonth ? ` · ${formatInr(lunchMonth * weekdayMonth.days)}` : ""}
+                non-veg {formatInr(nonVegLunch)}
               </p>
             </li>
             <li>
@@ -90,8 +90,10 @@ export default function MealPlansPage() {
               </p>
             </li>
             <li>
-              <p className="font-sans text-[1.28rem] font-bold leading-[1.3] tracking-[-0.02em] text-olive">Veg and non-veg</p>
-              <p className="mt-1 text-sm text-muted">Same price either way</p>
+              <p className="font-sans text-[1.28rem] font-bold leading-[1.3] tracking-[-0.02em] text-olive">
+                Breakfast {formatInr(breakfast)}
+              </p>
+              <p className="mt-1 text-sm text-muted">Same for veg and non-veg</p>
             </li>
           </ul>
           <ol className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -166,13 +168,13 @@ export default function MealPlansPage() {
           </div>
           <ul className="space-y-4 text-[1.06rem] leading-[1.7] text-muted">
             <li className="rounded-2xl bg-cream px-5 py-4">
-              We confirm your phase, tech park or locality before the first tiffin.
+              We confirm your locality or tech park before the first tiffin.
             </li>
             <li className="rounded-2xl bg-cream px-5 py-4">
               Office tiffins go to the gate or the security desk. Home tiffins go to your door.
             </li>
             <li className="rounded-2xl bg-cream px-5 py-4">
-              Skip a day on WhatsApp, pause when you travel, and keep a second address for work-from-home days. A skipped meal carries forward.
+              {siteConfig.delivery.skipNote} You can keep a second address for work-from-home days.
             </li>
             <li className="rounded-2xl bg-cream px-5 py-4">
               The price you see is an estimate. We confirm it, and any delivery charge, before you start.

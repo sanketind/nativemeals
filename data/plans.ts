@@ -1,5 +1,7 @@
-import type { Diet, MealType } from "@/data/menu";
 import type { ImageId } from "@/data/images";
+import type { Diet, MealType } from "@/data/menu";
+import { siteConfig } from "@/data/site-config";
+import { formatInr } from "@/lib/format";
 
 export type PlanId = "lunch" | "dinner" | "everyday";
 
@@ -24,17 +26,13 @@ export const durationIds = [
 export type DurationId = (typeof durationIds)[number];
 
 /**
- * Draft per-meal prices, in rupees. Longer plans cost less per meal.
- * TODO: Replace every number with the confirmed price before launch, then set
- * status to "confirmed" so the draft note disappears.
- * Monday to Friday uses the weekly rate for 5 days and the monthly rate for
- * 22 weekdays. The 6-day options stay for people who also want Saturday.
- * A single meal uses the 3-day rate, so the first try is one plate.
- * Veg and non-veg use the same rate.
+ * Confirmed per-meal prices, in rupees. The rate does not change with duration.
+ * `perMeal` is the veg rate. Lunch and dinner cost more for non-veg.
+ * Breakfast is the same either way.
  */
 export const pricing = {
-  status: "draft" as "draft" | "confirmed",
-  note: "Introductory prices. We confirm the total before you start.",
+  status: "confirmed" as "draft" | "confirmed",
+  note: "We confirm the total before you start.",
   durations: [
     { id: "taste", label: "1 meal", days: 1, onCard: true },
     { id: "trial", label: "3 days", days: 3, onCard: false },
@@ -50,35 +48,30 @@ export const pricing = {
     onCard: boolean;
   }[],
   perMeal: {
-    breakfast: {
-      taste: 129,
-      trial: 129,
-      weekdays: 119,
-      weekly: 119,
-      biweekly: 109,
-      "weekdays-month": 99,
-      monthly: 99,
-    },
-    lunch: {
-      taste: 189,
-      trial: 189,
-      weekdays: 179,
-      weekly: 179,
-      biweekly: 169,
-      "weekdays-month": 159,
-      monthly: 159,
-    },
-    dinner: {
-      taste: 189,
-      trial: 189,
-      weekdays: 179,
-      weekly: 179,
-      biweekly: 169,
-      "weekdays-month": 159,
-      monthly: 159,
-    },
+    breakfast: flatRate(149),
+    lunch: flatRate(229),
+    dinner: flatRate(229),
   } satisfies Record<MealType, Record<DurationId, number>>,
 };
+
+/** Lunch and dinner for non-veg. Breakfast matches the veg rate. */
+export const nonVegPerMeal = {
+  breakfast: 149,
+  lunch: 249,
+  dinner: 249,
+} satisfies Record<MealType, number>;
+
+function flatRate(amount: number): Record<DurationId, number> {
+  return {
+    taste: amount,
+    trial: amount,
+    weekdays: amount,
+    weekly: amount,
+    biweekly: amount,
+    "weekdays-month": amount,
+    monthly: amount,
+  };
+}
 
 /**
  * Illustrative range for a food-app lunch around Hinjewadi, used only as a
@@ -125,6 +118,10 @@ function rate(meals: MealType[], duration: DurationId) {
   return meals.reduce((sum, meal) => sum + pricing.perMeal[meal][duration], 0);
 }
 
+function nonVegRate(meals: MealType[]) {
+  return meals.reduce((sum, meal) => sum + nonVegPerMeal[meal], 0);
+}
+
 function tiersFor(meals: MealType[]): PricingTier[] {
   return pricing.durations.map((duration) => ({
     label: duration.label,
@@ -134,7 +131,7 @@ function tiersFor(meals: MealType[]): PricingTier[] {
   }));
 }
 
-const monthlyNote = "on a Monday to Friday month";
+const monthlyNote = "veg";
 
 const planSeeds: Omit<MealPlan, "price" | "priceNote" | "pricingTiers" | "priceUnit">[] = [
   {
@@ -188,7 +185,7 @@ const planSeeds: Omit<MealPlan, "price" | "priceNote" | "pricingTiers" | "priceU
     includes: [
       "Breakfast, lunch and dinner from the weekly menu",
       "Cooked that morning",
-      "Skip a day or pause when you travel",
+      siteConfig.delivery.skipNote,
     ],
     deliveryTerms: "Office gate on work days, your door on the others",
     dietOptions: ["veg", "non-veg"],
@@ -198,11 +195,15 @@ const planSeeds: Omit<MealPlan, "price" | "priceNote" | "pricingTiers" | "priceU
 
 export const plans: MealPlan[] = planSeeds.map((plan) => {
   const single = plan.meals.length === 1;
+  const veg = rate(plan.meals, "weekdays-month");
+  const nonVeg = nonVegRate(plan.meals);
   return {
     ...plan,
     priceUnit: single ? "meal" : "day",
-    price: rate(plan.meals, "weekdays-month"),
-    priceNote: single ? monthlyNote : `all three meals, ${monthlyNote}`,
+    price: veg,
+    priceNote: single
+      ? `${monthlyNote} · non-veg ${formatInr(nonVeg)}`
+      : `${monthlyNote} · non-veg ${formatInr(nonVeg)} a day`,
     pricingTiers: tiersFor(plan.meals),
   };
 });

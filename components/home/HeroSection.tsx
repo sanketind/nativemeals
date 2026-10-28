@@ -1,5 +1,5 @@
-import { CalendarCheck, IndianRupee, MapPin, ShieldCheck, UtensilsCrossed } from "lucide-react";
-import { pricing } from "@/data/plans";
+import { CalendarCheck, IndianRupee, MapPin, UtensilsCrossed } from "lucide-react";
+import { nonVegPerMeal, pricing } from "@/data/plans";
 import { siteConfig } from "@/data/site-config";
 import { formatInr } from "@/lib/format";
 import { StartCTA } from "@/components/ui/StartCTA";
@@ -7,8 +7,9 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { FoodImage } from "@/components/ui/FoodImage";
 
-const trialLunch = pricing.perMeal.lunch.taste;
-const monthLunch = pricing.perMeal.lunch["weekdays-month"];
+const vegLunch = pricing.perMeal.lunch.taste;
+const nonVegLunch = nonVegPerMeal.lunch;
+const breakfast = pricing.perMeal.breakfast.taste;
 
 const facts = [
   {
@@ -19,9 +20,7 @@ const facts = [
   },
   { icon: CalendarCheck, label: "Mon–Fri plans" },
   { icon: UtensilsCrossed, label: "Veg and non-veg" },
-  siteConfig.fssai
-    ? { icon: ShieldCheck, label: `FSSAI ${siteConfig.fssai}` }
-    : { icon: IndianRupee, label: `Lunch from ${formatInr(monthLunch)}` },
+  { icon: IndianRupee, label: `Lunch ${formatInr(vegLunch)} veg` },
 ];
 
 export function HeroSection() {
@@ -45,8 +44,8 @@ export function HeroSection() {
             over at your office gate or your door.
           </p>
           <p className="mt-4 max-w-md text-[1.06rem] font-semibold leading-[1.5] text-olive">
-            Try one lunch for {formatInr(trialLunch)}. A Monday to Friday month
-            is {formatInr(monthLunch)} a meal.
+            Lunch is {formatInr(vegLunch)} veg or {formatInr(nonVegLunch)}{" "}
+            non-veg. Breakfast is {formatInr(breakfast)}.
           </p>
           {siteConfig.kitchenLocality ? (
             <p className="mt-2 text-sm text-muted">

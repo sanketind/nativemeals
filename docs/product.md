@@ -36,9 +36,9 @@ Nothing is charged on the page. Price, address, and start date are confirmed bef
 
 ## Plans
 
-Three cards: Lunch Plan, Dinner Plan, and All-day Plan. The builder can mix meals. A single meal is priced as one plate. Longer plans cost less per meal. Veg and non-veg share a rate.
+Three cards: Lunch Plan, Dinner Plan, and All-day Plan. The builder can mix meals. A single meal is priced as one plate. The rate per meal is the same at every length. Lunch and dinner cost more for non-veg. Breakfast is one rate.
 
-The prices are introductory. Replace them and set `pricing.status` to `"confirmed"` using the steps in the [README](../README.md#plans-and-prices). Do not copy the price table into this document. The code is the source.
+The prices live in `data/plans.ts` with `pricing.status` set to `"confirmed"`. Do not copy the price table into this document. The code is the source. How to change a number is in the [README](../README.md#plans-and-prices).
 
 A comparison range for a typical food-app lunch sits next to the Native Meals price. It is an illustration, not a quote from any app.
 

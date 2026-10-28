@@ -7,6 +7,42 @@ import {
 } from "@/lib/validation";
 import { getPlan } from "@/data/plans";
 
+/**
+ * Google Apps Script runs doPost, then answers with a 302. That next address
+ * only accepts GET and returns the JSON result. Posting to it again is rejected.
+ */
+async function postWebhook(webhook: string, payload: unknown) {
+  const body = JSON.stringify(payload);
+  const headers = { "content-type": "application/json" };
+  let response = await fetch(webhook, {
+    method: "POST",
+    headers,
+    body,
+    redirect: "manual",
+    signal: AbortSignal.timeout(20000),
+  });
+
+  if (response.status >= 300 && response.status < 400) {
+    const location = response.headers.get("location");
+    if (!location) {
+      throw new Error(`Webhook redirected without a location (${response.status}).`);
+    }
+    const nextUrl = new URL(location, webhook);
+    const keepPost = response.status === 307 || response.status === 308;
+    response = await fetch(nextUrl, {
+      method: keepPost ? "POST" : "GET",
+      headers: keepPost ? headers : undefined,
+      body: keepPost ? body : undefined,
+      signal: AbortSignal.timeout(20000),
+    });
+  }
+
+  if (!response.ok) {
+    throw new Error(`Webhook responded ${response.status}`);
+  }
+  return response.text();
+}
+
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -71,13 +107,10 @@ export async function POST(request: Request) {
   }
 
   try {
-    const response = await fetch(webhook, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(8000),
-    });
-    if (!response.ok) throw new Error(`Webhook responded ${response.status}`);
+    const text = await postWebhook(webhook, payload);
+    if (text.includes('"ok":false') || text.trimStart().startsWith("<")) {
+      throw new Error("Webhook did not save the enquiry.");
+    }
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("Enquiry webhook failed.", error);

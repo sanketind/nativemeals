@@ -242,7 +242,7 @@ export function EnquiryForm({
         error={errors.locality}
         hint={
           type === "serviceability"
-            ? "For example, Hinjewadi Phase 2, Maan or Wakad."
+            ? "For example, Hinjewadi, Wakad or Baner."
             : undefined
         }
       >
@@ -295,7 +295,7 @@ export function EnquiryForm({
             <p>
               {state.reason === "failed"
                 ? "We could not send that just now. You can still message us with the same details."
-                : "This form is not connected to an inbox yet. Send the same details and we will reply."}
+                : "Your details are ready. Send them on WhatsApp or by email and we will reply. Nothing goes out until you tap."}
             </p>
             <p className="mt-3 flex flex-wrap gap-4 font-semibold">
               <a

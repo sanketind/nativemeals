@@ -1,10 +1,12 @@
 import type { MealType } from "@/data/menu";
 import {
   getPlan,
+  nonVegPerMeal,
   pricing,
   type DurationId,
   type PlanId,
 } from "@/data/plans";
+import { formatInr } from "@/lib/format";
 
 export const mealSlots = ["breakfast", "lunch", "dinner"] as const;
 export type MealSlot = (typeof mealSlots)[number];
@@ -60,7 +62,16 @@ export type Quote = {
   total: number;
   pricingStatus: "draft" | "confirmed";
   note: string;
+  /** Set when the quote uses veg rates and a meal has a higher non-veg price. */
+  dietNote: string;
 };
+
+export type PriceDiet = "" | "veg" | "non-veg" | "either";
+
+export function mealRate(meal: MealSlot, diet: PriceDiet | undefined) {
+  if (diet === "non-veg") return nonVegPerMeal[meal];
+  return pricing.perMeal[meal].taste;
+}
 
 function orderedMeals(meals: MealType[]): MealSlot[] | null {
   if (meals.length === 0) return null;
@@ -75,8 +86,11 @@ export function formatDuration(label: string, days: number) {
   return `${label} · ${days} days`;
 }
 
-/** Server and picker both use this, so the total is never taken from the browser. */
-export function quote(input: { meals: MealSlot[]; duration: string }): Quote | null {
+export function quote(input: {
+  meals: MealSlot[];
+  duration: string;
+  diet?: PriceDiet;
+}): Quote | null {
   const meals = orderedMeals(input.meals);
   if (!meals) return null;
   const duration = pricing.durations.find((item) => item.id === input.duration);
@@ -85,10 +99,15 @@ export function quote(input: { meals: MealSlot[]; duration: string }): Quote | n
   const lines = meals.map((meal) => ({
     meal,
     label: mealLabels[meal],
-    perMeal: pricing.perMeal[meal][duration.id],
+    perMeal: mealRate(meal, input.diet),
   }));
   const perDay = lines.reduce((sum, line) => sum + line.perMeal, 0);
   const planId = planIdForMeals(meals);
+  const hasMain = meals.some((meal) => meal === "lunch" || meal === "dinner");
+  const dietNote =
+    input.diet === "non-veg" || !hasMain
+      ? ""
+      : `Non-veg lunch and dinner are ${formatInr(nonVegPerMeal.lunch)} each.`;
 
   return {
     meals,
@@ -102,5 +121,6 @@ export function quote(input: { meals: MealSlot[]; duration: string }): Quote | n
     total: perDay * duration.days,
     pricingStatus: pricing.status,
     note: pricing.note,
+    dietNote,
   };
 }

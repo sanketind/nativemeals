@@ -42,7 +42,7 @@ export function ServiceAreaChecker() {
           <p className="mt-4 text-[1.06rem] font-normal leading-[1.7] text-muted">
             Native Meals serves {siteConfig.serviceAreaShort} in {siteConfig.city}.
             Office tiffins are handed over at the gate or the security desk.
-            Share your phase or locality and we will confirm it.
+            Share your locality and we will confirm it.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <WhatsAppCTA variant="secondary" message={siteConfig.messages.service}>

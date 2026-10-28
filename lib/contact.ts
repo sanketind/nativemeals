@@ -40,7 +40,9 @@ export function enquiryMessage(input: Pick<
   EnquiryInput,
   "type" | "name" | "phone" | "plan" | "diet" | "locality" | "message" | "selection"
 >) {
-  const estimate = input.selection ? quote(input.selection) : null;
+  const estimate = input.selection
+    ? quote({ ...input.selection, diet: input.diet })
+    : null;
   const planName = estimate
     ? estimate.planName
     : input.plan
@@ -68,6 +70,7 @@ export function enquiryMessage(input: Pick<
     const caveat =
       estimate.pricingStatus === "draft" ? " (introductory, subject to confirmation)" : "";
     lines.push(`Estimate: ${formatInr(estimate.total)}${caveat}`);
+    if (estimate.dietNote) lines.push(estimate.dietNote);
   }
   if (dietLabel) lines.push(`Preference: ${dietLabel}`);
   if (input.locality) lines.push(`Locality: ${input.locality}`);
@@ -75,9 +78,9 @@ export function enquiryMessage(input: Pick<
   return lines.join("\n");
 }
 
-export function enquiryEstimate(input: Pick<EnquiryInput, "selection">) {
+export function enquiryEstimate(input: Pick<EnquiryInput, "selection" | "diet">) {
   if (!input.selection) return null;
-  const estimate = quote(input.selection);
+  const estimate = quote({ ...input.selection, diet: input.diet });
   if (!estimate) return null;
   return {
     pricingStatus: estimate.pricingStatus,
