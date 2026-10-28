@@ -7,8 +7,10 @@ export function Container({
   className?: string;
   children: React.ReactNode;
 }) {
+  const setsWidth = className?.split(/\s+/).some((token) => token.startsWith("max-w-"));
+
   return (
-    <div className={cn("mx-auto w-full max-w-6xl px-5", className)}>
+    <div className={cn("mx-auto w-full px-5", !setsWidth && "max-w-[100rem]", className)}>
       {children}
     </div>
   );

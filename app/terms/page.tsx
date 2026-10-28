@@ -17,7 +17,7 @@ export default function TermsPage() {
         How a plan starts, and what a sample menu means.
       </PageHeader>
       <Section>
-        <Container className="max-w-3xl space-y-6 text-[1.06rem] font-normal leading-[1.7] text-muted">
+        <Container className="space-y-6 text-[1.06rem] font-normal leading-[1.7] text-muted">
           <p className="rounded-2xl bg-sage px-4 py-3 text-sm text-olive">
             Sending a message is a request. The plan starts once we confirm the
             meals, the price and where the tiffin is handed over.

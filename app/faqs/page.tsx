@@ -19,7 +19,7 @@ export default function FaqsPage() {
         Areas, the meals, Monday to Friday, and how to skip a day.
       </PageHeader>
       <Section>
-        <Container className="max-w-3xl">
+        <Container>
           <FAQAccordion items={faqs} />
         </Container>
       </Section>
