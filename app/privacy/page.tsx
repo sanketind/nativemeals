@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         What we ask for when you write to us, and what we use it for.
       </PageHeader>
       <Section>
-        <Container className="max-w-3xl space-y-6 leading-relaxed text-charcoal/80">
+        <Container className="max-w-3xl space-y-6 text-[1.06rem] font-normal leading-[1.7] text-muted">
           <p className="rounded-2xl bg-sage px-4 py-3 text-sm text-olive">
             We use your details to reply about a meal plan. We do not ask for
             payment details on this site.

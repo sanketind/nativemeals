@@ -71,7 +71,7 @@ export function PlanExperience() {
           <div className="mt-10 grid items-start gap-8 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="space-y-8">
               <fieldset>
-                <legend className="font-mono text-xs uppercase tracking-[0.16em] text-olive">
+                <legend className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
                   Meals
                 </legend>
                 <div className="mt-3 grid gap-3 sm:grid-cols-3">
@@ -93,11 +93,11 @@ export function PlanExperience() {
                             : "border-charcoal/10 bg-white/60 hover:border-olive/40",
                         )}
                       >
-                        <span className="block font-medium text-charcoal">{choice.label}</span>
-                        <span className="mt-3 block font-serif text-xl text-charcoal sm:text-2xl">
+                        <span className="block font-semibold text-olive">{choice.label}</span>
+                        <span className="mt-3 block font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-bold leading-none tracking-[-0.03em] text-olive">
                           {formatInr(rate)}
                         </span>
-                        <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.14em] text-charcoal/50">
+                        <span className="mt-1 block font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">
                           per meal
                         </span>
                       </button>
@@ -107,10 +107,10 @@ export function PlanExperience() {
               </fieldset>
 
               <fieldset>
-                <legend className="font-mono text-xs uppercase tracking-[0.16em] text-olive">
+                <legend className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
                   Duration
                 </legend>
-                <p className="mt-2 text-sm text-charcoal/60">
+                <p className="mt-2 text-sm text-muted">
                   Mon–Fri is five days. The 6-day and monthly options add Saturday.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2" role="radiogroup">
@@ -127,7 +127,7 @@ export function PlanExperience() {
                           "rounded-full px-3 py-2 text-sm font-medium transition-colors",
                           selected
                             ? "bg-olive text-white"
-                            : "bg-white text-charcoal ring-1 ring-charcoal/10 hover:ring-olive/30",
+                            : "bg-white text-olive ring-1 ring-charcoal/10 hover:ring-olive/30",
                         )}
                       >
                         {option.label}
@@ -138,10 +138,10 @@ export function PlanExperience() {
               </fieldset>
 
               <fieldset>
-                <legend className="font-mono text-xs uppercase tracking-[0.16em] text-olive">
+                <legend className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
                   Dietary preference
                 </legend>
-                <p className="mt-2 text-sm text-charcoal/60">
+                <p className="mt-2 text-sm text-muted">
                   Veg and non-veg are the same price. Tell us which you want.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2" role="radiogroup">
@@ -158,7 +158,7 @@ export function PlanExperience() {
                           "rounded-full px-4 py-2 text-sm font-medium transition-colors",
                           selected
                             ? "bg-olive text-white"
-                            : "bg-white text-charcoal ring-1 ring-charcoal/10 hover:ring-olive/30",
+                            : "bg-white text-olive ring-1 ring-charcoal/10 hover:ring-olive/30",
                         )}
                       >
                         {option.label}
@@ -171,10 +171,10 @@ export function PlanExperience() {
 
             {estimate ? (
               <aside className="rounded-3xl bg-olive p-6 text-cream lg:sticky lg:top-24">
-                <p className="font-mono text-xs uppercase tracking-[0.16em] text-terracotta">
+                <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta">
                   Estimate
                 </p>
-                <h3 className="mt-3 font-serif text-2xl md:text-3xl">{estimate.planName}</h3>
+                <h3 className="mt-3 font-sans text-[1.28rem] font-bold leading-[1.3] tracking-[-0.02em] text-cream">{estimate.planName}</h3>
                 <dl className="mt-6 space-y-3 text-sm">
                   <Row label="Meals a day" value={String(estimate.lines.length)} />
                   <Row
@@ -191,10 +191,10 @@ export function PlanExperience() {
                   <Row label="Per day" value={formatInr(estimate.perDay)} />
                 </dl>
                 <p className="mt-6 border-t border-cream/15 pt-5" aria-live="polite">
-                  <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-cream/60">
+                  <span className="block font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-cream/70">
                     Estimated total
                   </span>
-                  <span className="mt-1 block font-serif text-3xl sm:text-4xl">
+                  <span className="mt-1 block font-sans text-[clamp(1.75rem,3vw,2.55rem)] font-bold leading-none tracking-[-0.03em]">
                     {formatInr(estimate.total)}
                   </span>
                 </p>
@@ -229,8 +229,8 @@ export function PlanExperience() {
 
       <Section id="enquire" tone="white">
         <Container className="max-w-xl">
-          <h2 className="font-serif text-3xl text-charcoal md:text-4xl">Your details.</h2>
-          <p className="mt-3 leading-relaxed text-charcoal/75">
+          <h2 className="font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">Your details.</h2>
+          <p className="mt-3 text-[1.06rem] font-normal leading-[1.7] text-muted">
             Name, phone and locality are enough. We confirm the price, the
             handover spot and the Monday you start. Nothing is charged on this
             page.

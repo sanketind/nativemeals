@@ -22,14 +22,14 @@ export function PageHeader({
         )}
       >
         <div>
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta-ink">
+          <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
             {eyebrow}
           </p>
-          <h1 className="mt-3 max-w-3xl font-serif text-3xl leading-[1.08] tracking-tight text-charcoal md:text-6xl">
+          <h1 className="mt-3 max-w-3xl font-sans text-[clamp(2.05rem,5.15vw,5rem)] font-extrabold leading-[1.04] tracking-[-0.045em] text-olive">
             {title}
           </h1>
           {children ? (
-            <div className="mt-5 max-w-2xl text-base leading-relaxed text-charcoal/75 md:text-lg">
+            <div className="mt-5 max-w-2xl text-[clamp(1.05rem,1.5vw,1.25rem)] font-normal leading-[1.7] text-muted">
               {children}
             </div>
           ) : null}

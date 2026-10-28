@@ -24,8 +24,8 @@ export function BrandPromiseSection() {
                 <span className="inline-flex size-10 items-center justify-center rounded-2xl bg-sage text-olive md:size-12">
                   <Icon aria-hidden="true" className="size-5" />
                 </span>
-                <h3 className="mt-3 font-serif text-lg text-charcoal md:mt-5 md:text-2xl">{item.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-charcoal/75">{item.body}</p>
+                <h3 className="mt-3 font-sans text-[1.17rem] font-bold leading-[1.3] text-olive md:mt-5">{item.title}</h3>
+                <p className="mt-1.5 text-[0.94rem] font-normal leading-[1.65] text-muted">{item.body}</p>
               </li>
             );
           })}

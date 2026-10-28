@@ -27,10 +27,10 @@ export default function AboutPage() {
           </div>
           <div className="space-y-12">
             <article>
-              <h2 className="font-serif text-2xl text-charcoal md:text-3xl">
+              <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
                 Why Native Meals exists.
               </h2>
-              <p className="mt-4 leading-relaxed text-charcoal/75">
+              <p className="mt-4 text-[0.94rem] font-normal leading-[1.65] text-muted">
                 Planning, shopping, cooking and cleaning, every single day, is
                 a lot to carry on top of a job. Native Meals exists so that
                 work is handled: healthy breakfast, lunch and dinner, across{" "}
@@ -38,20 +38,20 @@ export default function AboutPage() {
               </p>
             </article>
             <article>
-              <h2 className="font-serif text-2xl text-charcoal md:text-3xl">
+              <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
                 What we cook.
               </h2>
-              <p className="mt-4 leading-relaxed text-charcoal/75">
+              <p className="mt-4 text-[0.94rem] font-normal leading-[1.65] text-muted">
                 Healthy meals, planned across the week so the days balance out.
                 Vegetarian and non-vegetarian are both on the menu, at the same
                 price. What is actually cooking is on this week&apos;s menu.
               </p>
             </article>
             <article>
-              <h2 className="font-serif text-2xl text-charcoal md:text-3xl">
+              <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
                 Freshness, cleanliness, and consistency.
               </h2>
-              <p className="mt-4 leading-relaxed text-charcoal/75">
+              <p className="mt-4 text-[0.94rem] font-normal leading-[1.65] text-muted">
                 Meals are cooked the same morning and handed over at your office
                 gate, the security desk, or your door, with attention to
                 cleanliness and to tasting the same from one day to the next.
@@ -62,20 +62,20 @@ export default function AboutPage() {
               </p>
             </article>
             <article>
-              <h2 className="font-serif text-2xl text-charcoal md:text-3xl">
+              <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
                 The name.
               </h2>
-              <p className="mt-4 leading-relaxed text-charcoal/75">
+              <p className="mt-4 text-[0.94rem] font-normal leading-[1.65] text-muted">
                 Native is food you can come back to. Meals is breakfast, lunch
                 and dinner, on a plan rather than a one-off order.
               </p>
             </article>
             {siteConfig.founderNote ? (
               <article className="rounded-3xl bg-sage/70 p-6">
-                <h2 className="font-serif text-2xl text-charcoal md:text-3xl">
+                <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
                   {siteConfig.founderNote.heading}
                 </h2>
-                <p className="mt-4 leading-relaxed text-charcoal/75">
+                <p className="mt-4 text-[0.94rem] font-normal leading-[1.65] text-muted">
                   {siteConfig.founderNote.body}
                 </p>
               </article>
@@ -85,7 +85,7 @@ export default function AboutPage() {
       </Section>
       <Section tone="white">
         <Container className="flex flex-col items-start gap-4">
-          <h2 className="font-serif text-3xl text-charcoal md:text-4xl">
+          <h2 className="font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">
             See if a plan fits your week.
           </h2>
           <div className="flex flex-wrap gap-3">

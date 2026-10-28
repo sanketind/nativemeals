@@ -26,7 +26,7 @@ export function PlansPreview() {
             See every duration
           </ButtonLink>
           {pricing.status === "draft" ? (
-            <p className="text-sm text-charcoal/60">{pricing.note}</p>
+            <p className="text-sm text-muted">{pricing.note}</p>
           ) : null}
         </div>
       </Container>

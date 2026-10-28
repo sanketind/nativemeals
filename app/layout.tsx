@@ -1,28 +1,15 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Mono, Manrope } from "next/font/google";
+import { Outfit } from "next/font/google";
 import { siteConfig } from "@/data/site-config";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { MobileCTABar } from "@/components/layout/MobileCTABar";
 import "./globals.css";
 
-const manrope = Manrope({
+const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  variable: "--font-manrope",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  axes: ["SOFT", "WONK"],
-  variable: "--font-fraunces",
-});
-
-const plex = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-plex",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
@@ -51,10 +38,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${fraunces.variable} ${plex.variable} h-full antialiased`}
+      className={`${outfit.variable} h-full antialiased`}
       data-scroll-behavior="smooth"
     >
-      <body className="flex min-h-full flex-col bg-cream font-sans text-charcoal">
+      <body className="flex min-h-full flex-col bg-cream font-sans font-normal text-muted">
         <a
           href="#main"
           className="absolute left-4 top-4 z-50 -translate-y-24 rounded-full bg-olive px-4 py-2 text-sm font-semibold text-white focus:translate-y-0"
@@ -62,12 +49,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <Header />
-        <main id="main" className="min-w-0 flex-1 pb-20 md:pb-0">
+        <main id="main" className="min-w-0 flex-1">
           {children}
         </main>
         <Footer />
         <FloatingWhatsApp />
-        <MobileCTABar />
       </body>
     </html>
   );

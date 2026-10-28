@@ -26,7 +26,7 @@ export function SectionHeading({
       {eyebrow ? (
         <p
           className={cn(
-            "font-mono text-xs uppercase tracking-[0.18em]",
+            "font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em]",
             tone === "inverse" ? "text-terracotta" : "text-terracotta-ink",
           )}
         >
@@ -35,9 +35,9 @@ export function SectionHeading({
       ) : null}
       <Heading
         className={cn(
-          "font-serif text-3xl leading-[1.08] tracking-tight md:text-5xl",
+          "font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em]",
           eyebrow && "mt-3",
-          tone === "inverse" ? "text-cream" : "text-charcoal",
+          tone === "inverse" ? "text-cream" : "text-olive",
         )}
       >
         {title}
@@ -45,8 +45,8 @@ export function SectionHeading({
       {children ? (
         <p
           className={cn(
-            "mt-4 text-base leading-relaxed md:text-lg",
-            tone === "inverse" ? "text-cream/80" : "text-charcoal/75",
+            "mt-4 text-[1.06rem] font-normal leading-[1.7]",
+            tone === "inverse" ? "text-cream/80" : "text-muted",
           )}
         >
           {children}

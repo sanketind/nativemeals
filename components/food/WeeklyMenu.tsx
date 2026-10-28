@@ -25,13 +25,13 @@ function DayCard({
     >
       <header className="bg-sage/80 px-5 py-4">
         <div className="flex items-baseline justify-between gap-3">
-          <h3 className="font-serif text-xl text-charcoal md:text-2xl">{day.weekday}</h3>
-          <p className="font-mono text-[11px] tracking-[0.14em] text-olive">
+          <h3 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">{day.weekday}</h3>
+          <p className="font-sans text-[0.72rem] font-bold tracking-[0.12em] text-olive">
             {day.dateLabel}
           </p>
         </div>
         {day.isToday ? (
-          <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-terracotta-ink">
+          <p className="mt-1 font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
             Today
           </p>
         ) : null}
@@ -39,15 +39,15 @@ function DayCard({
       <div className="divide-y divide-dashed divide-charcoal/15 px-5">
         {day.meals.map((meal, index) => (
           <div key={`${meal.meal}-${meal.diet}-${index}`} className="py-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-terracotta-ink">
+            <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
               {mealLabels[meal.meal]}
             </p>
             <div className="mt-1.5 flex items-start justify-between gap-3">
-              <p className="font-medium leading-snug text-charcoal">{meal.dishes}</p>
+              <p className="font-semibold leading-snug text-olive">{meal.dishes}</p>
               <DietBadge diet={meal.diet} />
             </div>
             {meal.note && meal.note.toLowerCase() !== "sample" ? (
-              <p className="mt-1 text-sm text-charcoal/65">{meal.note}</p>
+              <p className="mt-1 text-sm text-muted">{meal.note}</p>
             ) : null}
           </div>
         ))}
@@ -63,7 +63,7 @@ function EmptyWeek({ source }: { source: WeeklyMenuData["source"] }) {
       : "This week's menu will be posted soon.";
   return (
     <div className="mt-8 rounded-3xl border border-dashed border-charcoal/20 bg-white px-6 py-10">
-      <p className="max-w-xl text-base leading-relaxed text-charcoal/75 md:text-lg">{message}</p>
+      <p className="max-w-xl text-[1.06rem] font-normal leading-[1.7] text-muted">{message}</p>
       <div className="mt-6 flex flex-wrap gap-3">
         <WhatsAppCTA message="Hello Native Meals, could you share this week's menu?">
           Ask on WhatsApp
@@ -88,13 +88,13 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
   return (
     <div id="this-week" className="scroll-mt-24">
       <div className="max-w-2xl">
-        <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta-ink">
+        <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
           This week
         </p>
-        <h2 className="mt-3 font-serif text-3xl leading-tight text-charcoal md:text-5xl">
+        <h2 className="mt-3 font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">
           This week&apos;s menu.
         </h2>
-        <p className="mt-4 text-base leading-relaxed text-charcoal/75 md:text-lg">{support}</p>
+        <p className="mt-4 text-[1.06rem] font-normal leading-[1.7] text-muted">{support}</p>
         {menu.source === "sample" ? (
           <SampleContentNote>
             Sample week, so you can judge the food. The live menu replaces this.
@@ -111,14 +111,14 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
               <DayCard key={day.date} day={day} />
             ))}
           </div>
-          <p className="mt-3 font-mono text-xs tracking-wide text-charcoal/45 md:hidden">
+          <p className="mt-3 font-sans text-[0.78rem] font-semibold tracking-[0.04em] text-muted md:hidden">
             Swipe for the week
           </p>
         </>
       )}
 
       {menu.footnote ? (
-        <p className="mt-4 text-sm text-charcoal/60">{menu.footnote}</p>
+        <p className="mt-4 text-sm text-muted">{menu.footnote}</p>
       ) : null}
     </div>
   );

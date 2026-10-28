@@ -6,7 +6,7 @@ type Variant = "primary" | "secondary" | "inverse" | "ghost";
 const variants: Record<Variant, string> = {
   primary: "bg-olive text-white hover:bg-olive-deep",
   secondary:
-    "border border-charcoal/15 bg-white text-olive hover:border-olive/40",
+    "border border-olive/55 bg-white text-olive hover:bg-sage",
   inverse: "bg-cream text-olive hover:bg-white",
   ghost: "text-olive hover:bg-sage",
 };
@@ -14,12 +14,12 @@ const variants: Record<Variant, string> = {
 type Size = "md" | "sm";
 
 const sizes: Record<Size, string> = {
-  md: "px-5 py-3 text-sm",
+  md: "px-6 py-3.5 text-base",
   sm: "px-4 py-2 text-sm",
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-bold tracking-tight transition-colors disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-normal transition-colors disabled:cursor-not-allowed disabled:opacity-60";
 
 function isExternal(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");

@@ -26,30 +26,30 @@ const facts = [
 
 export function HeroSection() {
   return (
-    <section className="overflow-hidden">
+    <section className="overflow-hidden bg-[radial-gradient(circle_at_92%_15%,rgba(249,216,43,0.18),transparent_26%)]">
       <Container className="grid items-center gap-8 py-10 md:grid-cols-2 md:gap-16 md:py-24">
         <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-charcoal/10 bg-white px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-olive">
+          <p className="inline-flex items-center gap-2 rounded-full border border-olive/15 bg-white/70 px-3 py-1.5 font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
             <span aria-hidden="true" className="size-1.5 rounded-full bg-terracotta" />
             Healthy meal plans
-            <span aria-hidden="true" className="text-charcoal/30">
+            <span aria-hidden="true" className="text-olive/30">
               ·
             </span>
             Hinjewadi
           </p>
-          <h1 className="mt-6 max-w-xl font-serif text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-xl font-sans text-[clamp(2.05rem,5.15vw,5rem)] font-extrabold leading-[1.04] tracking-[-0.045em] text-olive">
             Healthy meals, at your office gate.
           </h1>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-charcoal/80 md:text-lg">
+          <p className="mt-5 max-w-md text-[clamp(1.05rem,1.5vw,1.25rem)] font-normal leading-[1.7] text-muted">
             Breakfast, lunch and dinner, cooked the same morning and handed
             over at your Hinjewadi office gate or your door.
           </p>
-          <p className="mt-4 max-w-md text-base font-medium text-olive">
+          <p className="mt-4 max-w-md text-[1.06rem] font-semibold leading-[1.5] text-olive">
             Try one lunch for {formatInr(trialLunch)}. A Monday to Friday month
             is {formatInr(monthLunch)} a meal.
           </p>
           {siteConfig.kitchenLocality ? (
-            <p className="mt-2 text-sm text-charcoal/60">
+            <p className="mt-2 text-sm text-muted">
               Kitchen in {siteConfig.kitchenLocality}.
             </p>
           ) : null}

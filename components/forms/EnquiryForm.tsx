@@ -140,20 +140,20 @@ export function EnquiryForm({
       </div>
 
       {picked ? (
-        <div className="rounded-2xl bg-sage/70 px-4 py-3 text-sm leading-relaxed text-charcoal">
-          <p className="font-medium">{picked.planName}</p>
-          <p className="mt-1 text-charcoal/75">
+        <div className="rounded-2xl bg-sage/70 px-4 py-3 text-sm leading-relaxed text-olive">
+          <p className="font-semibold">{picked.planName}</p>
+          <p className="mt-1 text-muted">
             {picked.lines.map((line) => line.label).join(", ")} ·{" "}
             {formatDuration(picked.durationLabel, picked.days)} · {dietLabel(selection?.diet ?? "")}
           </p>
           <p className="mt-2 font-semibold">Estimated total {formatInr(picked.total)}</p>
           {pricing.status === "draft" ? (
-            <p className="mt-1 text-charcoal/60">{pricing.note}</p>
+            <p className="mt-1 text-muted">{pricing.note}</p>
           ) : null}
         </div>
       ) : null}
       {errors.plan && !showPlan ? (
-        <p className="text-sm text-terracotta-ink">{errors.plan}</p>
+        <p className="text-sm text-error">{errors.plan}</p>
       ) : null}
 
       <Field
@@ -291,7 +291,7 @@ export function EnquiryForm({
           </p>
         ) : null}
         {state.status === "whatsapp" ? (
-          <div className="rounded-2xl bg-sage/70 p-4 text-charcoal">
+          <div className="rounded-2xl bg-sage/70 p-4 text-olive">
             <p>
               {state.reason === "failed"
                 ? "We could not send that just now. You can still message us with the same details."
@@ -315,7 +315,7 @@ export function EnquiryForm({
           </div>
         ) : null}
         {state.status === "error" ? (
-          <p className="text-terracotta-ink">
+          <p className="text-error">
             {state.reason === "unconfigured"
               ? "We could not send this yet, because contact details are not set up on the site."
               : "We could not send this. Please try again in a moment."}
@@ -334,7 +334,7 @@ function dietLabel(diet: DietChoice) {
 }
 
 function inputClass(invalid: boolean) {
-  return cn(fieldClass, invalid && "border-terracotta-ink");
+  return cn(fieldClass, invalid && "border-error");
 }
 
 function Field({
@@ -356,12 +356,12 @@ function Field({
     <div>
       <label htmlFor={id} className="text-sm font-medium text-charcoal">
         {label}
-        {required ? <span className="text-terracotta-ink"> *</span> : null}
+        {required ? <span className="text-error"> *</span> : null}
       </label>
-      {hint ? <p className="mt-1 text-sm text-charcoal/55">{hint}</p> : null}
+      {hint ? <p className="mt-1 text-sm text-muted">{hint}</p> : null}
       {children}
       {error ? (
-        <p id={`${id}-error`} className="mt-1 text-sm text-terracotta-ink">
+        <p id={`${id}-error`} className="mt-1 text-sm text-error">
           {error}
         </p>
       ) : null}

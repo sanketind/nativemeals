@@ -10,7 +10,7 @@ export function FloatingWhatsApp() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed right-4 bottom-24 z-30 inline-flex size-12 items-center justify-center rounded-full bg-[#128C7E] text-white shadow-lg md:bottom-6"
+      className="fixed right-4 bottom-6 z-30 inline-flex size-12 items-center justify-center rounded-full bg-[#128C7E] text-white shadow-lg"
       aria-label="Chat with Native Meals on WhatsApp"
     >
       <MessageCircle aria-hidden="true" className="size-5" />

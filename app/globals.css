@@ -1,54 +1,39 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cream: #fff8ef;
-  --color-olive: #414b35;
-  --color-olive-deep: #343c2b;
-  --color-terracotta: #c66a46;
-  /* Darker terracotta for small text. #C66A46 fails contrast on cream. */
-  --color-terracotta-ink: #8e4328;
-  --color-sage: #dce4d5;
+  --color-cream: #fffdf4;
+  --color-olive: #0c3f25;
+  --color-olive-deep: #082f1f;
+  --color-terracotta: #f9d82b;
+  /* Leaf green for small labels. Sunflower fails contrast on ivory. */
+  --color-terracotta-ink: #197241;
+  --color-sage: #e4f2e6;
+  --color-muted: #526158;
+  --color-error: #9b3a2f;
   --color-charcoal: #292a26;
   --color-white: #ffffff;
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-fraunces), ui-serif, georgia, serif;
-  --font-mono: var(--font-plex), ui-monospace, monospace;
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 6.5rem;
 }
 
 body {
   background: var(--color-cream);
-  color: var(--color-charcoal);
+  color: var(--color-muted);
   font-family: var(--font-sans);
-  font-weight: 500;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
 }
 
-/* Fraunces at its default weight reads thin next to the reference sites.
-   SOFT 0 keeps the serif crisp instead of fluffy. */
-.font-serif {
-  font-weight: 650;
-  font-variation-settings: "SOFT" 0, "WONK" 0;
-}
-
-h1.font-serif {
-  font-weight: 720;
-}
-
-.font-mono {
-  font-weight: 500;
-}
-
 ::selection {
-  background: #dce4d5;
+  background: #e4f2e6;
   color: #292a26;
 }
 
 :focus-visible {
-  outline: 2px solid #c66a46;
+  outline: 2px solid #f9d82b;
   outline-offset: 3px;
 }
 

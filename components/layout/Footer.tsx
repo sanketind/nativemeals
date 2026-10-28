@@ -17,13 +17,13 @@ export async function Footer() {
       <Container className="grid gap-10 py-14 md:grid-cols-12">
         <div className="md:col-span-5">
           <Wordmark />
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-charcoal/70">
+          <p className="mt-4 max-w-sm text-[0.94rem] leading-[1.65] text-muted">
             Cooked the same morning and handed over at your office gate or your door.
             Serving {siteConfig.serviceAreaShort}.
           </p>
         </div>
         <nav className="md:col-span-3" aria-label="Footer">
-          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-olive">
+          <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
             Explore
           </p>
           <ul className="mt-4 space-y-2">
@@ -31,7 +31,7 @@ export async function Footer() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-sm text-charcoal/80 hover:text-olive"
+                  className="text-sm text-muted hover:text-olive"
                 >
                   {item.label}
                 </Link>
@@ -40,14 +40,14 @@ export async function Footer() {
           </ul>
         </nav>
         <div className="md:col-span-4">
-          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-olive">
+          <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
             Contact
           </p>
-          <p className="mt-4 text-sm text-charcoal/80">
+          <p className="mt-4 text-sm text-muted">
             Serving {siteConfig.serviceAreaShort}, {siteConfig.city}
           </p>
           {siteConfig.fssai ? (
-            <p className="mt-2 text-sm text-charcoal/70">FSSAI {siteConfig.fssai}</p>
+            <p className="mt-2 text-sm text-muted">FSSAI {siteConfig.fssai}</p>
           ) : null}
           {hasContact ? (
             <ul className="mt-3 space-y-2 text-sm">
@@ -79,7 +79,7 @@ export async function Footer() {
               ) : null}
             </ul>
           ) : (
-            <p className="mt-3 text-sm leading-relaxed text-charcoal/70">
+            <p className="mt-3 text-sm leading-relaxed text-muted">
               <Link href="/contact" className="hover:text-olive">
                 Write to us
               </Link>{" "}
@@ -105,7 +105,7 @@ export async function Footer() {
         </div>
       </Container>
       <div className="border-t border-charcoal/10">
-        <Container className="flex flex-col gap-2 py-5 text-xs text-charcoal/55 sm:flex-row sm:justify-between">
+        <Container className="flex flex-col gap-2 py-5 text-xs text-muted sm:flex-row sm:justify-between">
           <p>
             © {year} Native Meals. {siteConfig.city}.
           </p>

@@ -50,23 +50,13 @@ export function Wordmark({
           tone === "cream" ? "text-cream" : "text-olive",
         )}
       />
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-sans text-[1rem] font-extrabold tracking-[0.14em] sm:text-[1.1rem]",
-            tone === "cream" ? "text-cream" : "text-olive",
-          )}
-        >
-          NATIVE
-        </span>
-        <span
-          className={cn(
-            "mt-1 font-mono text-[0.58rem] tracking-[0.32em]",
-            tone === "cream" ? "text-cream/70" : "text-charcoal/60",
-          )}
-        >
-          MEALS
-        </span>
+      <span
+        className={cn(
+          "font-sans text-[1.15rem] font-extrabold leading-none tracking-[-0.03em] sm:text-[1.25rem]",
+          tone === "cream" ? "text-cream" : "text-olive",
+        )}
+      >
+        Native Meals
       </span>
     </span>
   );

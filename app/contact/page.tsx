@@ -27,8 +27,8 @@ export default function ContactPage() {
       <Section>
         <Container className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div>
-            <h2 className="font-serif text-2xl text-charcoal md:text-3xl">Reach us directly.</h2>
-            <p className="mt-3 text-sm text-charcoal/70">
+            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">Reach us directly.</h2>
+            <p className="mt-3 text-[0.94rem] leading-[1.65] text-muted">
               Serving {siteConfig.serviceAreaShort}, {siteConfig.city}. Office
               tiffins go to the gate or the security desk.
             </p>
@@ -61,7 +61,7 @@ export default function ContactPage() {
               ) : null}
             </ul>
             {!call && !email && !whatsapp ? (
-              <p className="mt-4 leading-relaxed text-charcoal/70">
+              <p className="mt-4 text-[0.94rem] leading-[1.65] text-muted">
                 Use the form and we will reply on your phone.
               </p>
             ) : null}

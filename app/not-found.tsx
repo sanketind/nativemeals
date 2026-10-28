@@ -9,13 +9,13 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <Container className="py-24">
-      <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta-ink">
+      <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
         404
       </p>
-      <h1 className="mt-3 font-serif text-4xl text-charcoal sm:text-5xl">
+      <h1 className="mt-3 font-sans text-[clamp(2.05rem,5.15vw,5rem)] font-extrabold leading-[1.04] tracking-[-0.045em] text-olive">
         That page is not on the menu.
       </h1>
-      <p className="mt-4 max-w-md text-base text-charcoal/70 md:text-lg">
+      <p className="mt-4 max-w-md text-[1.06rem] font-normal leading-[1.7] text-muted">
         The link may be out of date. The menu, the plans and a way to start
         are all still here.
       </p>
