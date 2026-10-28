@@ -13,7 +13,7 @@ export async function Footer() {
   const hasContact = Boolean(phone || email || whatsapp);
 
   return (
-    <footer className="min-w-0 border-t border-charcoal/10 bg-white">
+    <footer className="border-t border-charcoal/10 bg-white">
       <Container className="grid gap-10 py-14 md:grid-cols-12">
         <div className="md:col-span-5">
           <Wordmark />

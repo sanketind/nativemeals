@@ -16,8 +16,6 @@
 }
 
 html {
-  max-width: 100%;
-  overflow-x: clip;
   scroll-padding-top: 6.5rem;
 }
 
