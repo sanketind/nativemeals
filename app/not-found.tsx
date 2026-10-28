@@ -16,13 +16,13 @@ export default function NotFound() {
         That page is not on the menu.
       </h1>
       <p className="mt-4 max-w-md text-lg text-charcoal/70">
-        The link may be out of date. The meals, the plans and a way to enquire
+        The link may be out of date. The menu, the plans and a way to start
         are all still here.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
         <ButtonLink href="/">Back home</ButtonLink>
         <ButtonLink href="/meal-plans" variant="secondary">
-          Explore Meal Plans
+          See meal plans
         </ButtonLink>
       </div>
     </Container>

@@ -55,7 +55,7 @@ export function enquiryMessage(input: Pick<
           ? "No preference"
           : "";
 
-  const lines = ["Hello Native Meals, I would like to enquire."];
+  const lines = ["Hi Native Meals, I would like to start a meal plan."];
   if (input.type === "serviceability") {
     lines.push("", "Please confirm if you can serve my area.");
   }

@@ -18,8 +18,8 @@ export async function Footer() {
         <div className="md:col-span-5">
           <Wordmark />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-charcoal/70">
-            Cooked fresh the same morning and delivered to your desk or your door. Serving{" "}
-            {siteConfig.serviceAreaLine}.
+            Cooked the same morning and handed over at your office gate or your door.
+            Serving {siteConfig.serviceAreaShort}.
           </p>
         </div>
         <nav className="md:col-span-3" aria-label="Footer">
@@ -44,8 +44,11 @@ export async function Footer() {
             Contact
           </p>
           <p className="mt-4 text-sm text-charcoal/80">
-            Serving {siteConfig.serviceAreaLine}, {siteConfig.city}
+            Serving {siteConfig.serviceAreaShort}, {siteConfig.city}
           </p>
+          {siteConfig.fssai ? (
+            <p className="mt-2 text-sm text-charcoal/70">FSSAI {siteConfig.fssai}</p>
+          ) : null}
           {hasContact ? (
             <ul className="mt-3 space-y-2 text-sm">
               {phone && phoneHref(phone) ? (
@@ -76,8 +79,11 @@ export async function Footer() {
               ) : null}
             </ul>
           ) : (
-            <p className="mt-3 text-sm leading-relaxed text-charcoal/60">
-              Phone, email and WhatsApp will be listed here before launch.
+            <p className="mt-3 text-sm leading-relaxed text-charcoal/70">
+              <Link href="/contact" className="hover:text-olive">
+                Write to us
+              </Link>{" "}
+              and we will reply on your phone.
             </p>
           )}
           {siteConfig.socials.length > 0 ? (

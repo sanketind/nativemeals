@@ -4,6 +4,7 @@ import type { WeeklyMenuRow } from "@/lib/weekly-menu";
 /**
  * Stand-in week used only when WEEKLY_MENU_CSV_URL is not set.
  * Dates follow the current India week so the layout can be reviewed any day.
+ * Dishes follow the kitchen: clean plates, no potatoes, regular dal or maida chapati.
  */
 export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
   const monday = mondayOf(today);
@@ -15,7 +16,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       date: monday,
       meal: "breakfast",
       diet: "veg",
-      dishes: "Idli with chutney",
+      dishes: "Ragi dosa",
       note: "Sample",
       imageId: null,
     },
@@ -23,7 +24,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       date: monday,
       meal: "lunch",
       diet: "veg",
-      dishes: "Vegetable curry, steamed rice",
+      dishes: "Palak paneer, beetroot roti, multigrain dal",
       note: "Sample",
       imageId: null,
     },
@@ -31,7 +32,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       date: monday,
       meal: "lunch",
       diet: "non-veg",
-      dishes: "Chicken curry, naan",
+      dishes: "Palak chicken, beetroot roti, multigrain dal",
       note: "Sample",
       imageId: null,
     },
@@ -39,7 +40,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       date: monday,
       meal: "dinner",
       diet: "veg",
-      dishes: "Seasoned rice",
+      dishes: "Baked hara bhara kebab, multigrain dal",
       note: "Sample",
       imageId: null,
     },
@@ -47,7 +48,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       date: tuesday,
       meal: "breakfast",
       diet: "veg",
-      dishes: "Idli with chutney",
+      dishes: "Ragi roti",
       note: "Sample",
       imageId: null,
     },
@@ -55,7 +56,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       date: tuesday,
       meal: "lunch",
       diet: "veg",
-      dishes: "Vegetable curry, steamed rice",
+      dishes: "Palak paneer, beetroot roti, watermelon juice",
       note: "Sample",
       imageId: null,
     },
@@ -63,7 +64,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       date: tuesday,
       meal: "dinner",
       diet: "non-veg",
-      dishes: "Chicken curry, naan",
+      dishes: "Chicken soup, ragi roti",
       note: "Sample",
       imageId: null,
     },
@@ -71,7 +72,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       date: wednesday,
       meal: "lunch",
       diet: "veg",
-      dishes: "Seasoned rice",
+      dishes: "Baked hara bhara kebab, beetroot roti",
       note: "Sample",
       imageId: null,
     },
@@ -79,7 +80,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       date: wednesday,
       meal: "dinner",
       diet: "veg",
-      dishes: "Vegetable curry, steamed rice",
+      dishes: "Palak paneer, ragi roti, multigrain dal",
       note: "Sample",
       imageId: null,
     },

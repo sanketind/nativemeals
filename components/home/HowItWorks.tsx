@@ -3,18 +3,18 @@ import { Container } from "@/components/ui/Container";
 const steps = [
   {
     number: "01",
-    title: "Choose your plan",
-    body: "Select a meal schedule that suits your routine.",
+    title: "Pick the meals",
+    body: "Lunch at the office, dinner at home, or the full day. Monday to Friday, or a 6-day week.",
   },
   {
     number: "02",
-    title: "Tell us your preferences",
-    body: "Share your food preferences and service location.",
+    title: "Tell us where it goes",
+    body: "Veg or non-veg, your office gate, and your home for work-from-home days.",
   },
   {
     number: "03",
-    title: "Enjoy your meals",
-    body: "Follow the confirmed ordering and delivery or collection arrangement.",
+    title: "Start Monday",
+    body: "We confirm the price and the handover spot. Skip a day on WhatsApp when the week changes.",
   },
 ];
 

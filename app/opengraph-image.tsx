@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Native Meals — Clean, healthy meals.";
+export const alt = "Native Meals — Healthy meals in Hinjewadi.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -26,7 +26,7 @@ export default function OpenGraphImage() {
             textTransform: "uppercase",
           }}
         >
-          Healthy meal plans
+          Healthy meal plans · Hinjewadi
         </div>
         <div
           style={{
@@ -39,10 +39,10 @@ export default function OpenGraphImage() {
           Native Meals
         </div>
         <div style={{ fontSize: 36, color: "#292A26", marginTop: 20 }}>
-          Clean, healthy meals.
+          Healthy meals, cooked the same morning.
         </div>
         <div style={{ fontSize: 24, color: "#414B35", marginTop: 48 }}>
-          Wakad, Hinjewadi, Baner, Aundh, Tathwade, Punewale
+          Hinjewadi, Wakad and nearby Pune
         </div>
       </div>
     ),

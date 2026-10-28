@@ -70,6 +70,7 @@ function orderedMeals(meals: MealType[]): MealSlot[] | null {
 }
 
 export function formatDuration(label: string, days: number) {
+  if (days === 1) return label;
   if (label === `${days} days`) return label;
   return `${label} · ${days} days`;
 }

@@ -9,7 +9,7 @@ import { displayPhone, phoneHref, whatsappHref } from "@/lib/contact";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Enquire about Native Meals in Pune. Share your name, phone and what you are looking for.",
+    "Start a healthy meal plan in Hinjewadi, Wakad or nearby Pune. Share your locality and whether you want veg or non-veg.",
 };
 
 export default function ContactPage() {
@@ -29,7 +29,8 @@ export default function ContactPage() {
           <div>
             <h2 className="font-serif text-3xl text-charcoal">Reach us directly.</h2>
             <p className="mt-3 text-sm text-charcoal/70">
-              Serving {siteConfig.serviceAreaLine}, {siteConfig.city}.
+              Serving {siteConfig.serviceAreaShort}, {siteConfig.city}. Office
+              tiffins go to the gate or the security desk.
             </p>
             <ul className="mt-6 space-y-3 text-lg">
               {call ? (
@@ -60,9 +61,8 @@ export default function ContactPage() {
               ) : null}
             </ul>
             {!call && !email && !whatsapp ? (
-              <p className="mt-4 leading-relaxed text-charcoal/60">
-                Phone, email and WhatsApp are not listed yet. Use the form, and
-                connect those details in the site settings before launch.
+              <p className="mt-4 leading-relaxed text-charcoal/70">
+                Use the form and we will reply on your phone.
               </p>
             ) : null}
           </div>

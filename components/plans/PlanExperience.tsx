@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { pricing, type DurationId } from "@/data/plans";
+import { foodAppLunchRange, pricing, type DurationId } from "@/data/plans";
 import { formatInr } from "@/lib/format";
 import {
   defaultMealsForPlan,
@@ -36,7 +36,7 @@ export function PlanExperience() {
   const fromUrl = defaultMealsForPlan(requested).join(",");
   const [seenUrl, setSeenUrl] = useState(fromUrl);
   const [meals, setMeals] = useState<MealSlot[]>(() => defaultMealsForPlan(requested));
-  const [duration, setDuration] = useState<DurationId>("monthly");
+  const [duration, setDuration] = useState<DurationId>("weekdays-month");
   const [diet, setDiet] = useState<DietChoice>("either");
 
   if (seenUrl !== fromUrl) {
@@ -45,6 +45,7 @@ export function PlanExperience() {
   }
 
   const estimate = quote({ meals, duration });
+  const lunchLine = estimate?.lines.find((line) => line.meal === "lunch");
 
   function toggleMeal(meal: MealSlot) {
     setMeals((current) => {
@@ -62,9 +63,10 @@ export function PlanExperience() {
     <>
       <Section id="build">
         <Container>
-          <SectionHeading eyebrow="Your plan" title="Build a plan around your day.">
-            Pick the meals and how long you want them. The longer you stay, the
-            less each meal costs.
+          <SectionHeading eyebrow="Your plan" title="Build a plan around your week.">
+            Monday to Friday is set up for office weeks. A single meal is the
+            way to try the food before a longer plan. The longer you stay,
+            the less each meal costs.
           </SectionHeading>
           <div className="mt-10 grid items-start gap-8 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="space-y-8">
@@ -108,7 +110,10 @@ export function PlanExperience() {
                 <legend className="font-mono text-xs uppercase tracking-[0.16em] text-olive">
                   Duration
                 </legend>
-                <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4" role="radiogroup">
+                <p className="mt-2 text-sm text-charcoal/60">
+                  Mon–Fri is five days. The 6-day and monthly options add Saturday.
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2" role="radiogroup">
                   {pricing.durations.map((option) => {
                     const selected = duration === option.id;
                     return (
@@ -196,8 +201,16 @@ export function PlanExperience() {
                 {pricing.status === "draft" ? (
                   <p className="mt-3 text-sm text-cream/75">{pricing.note}</p>
                 ) : null}
+                {lunchLine ? (
+                  <p className="mt-3 text-sm text-cream/75">
+                    A food-app lunch around Hinjewadi is often {formatInr(foodAppLunchRange.low)}–{formatInr(foodAppLunchRange.high)} before fees.{" "}
+                    {estimate.days === 1
+                      ? `This lunch is ${formatInr(lunchLine.perMeal)}.`
+                      : `${estimate.days} lunches here are ${formatInr(lunchLine.perMeal * estimate.days)}.`}
+                  </p>
+                ) : null}
                 <p className="mt-2 text-sm text-cream/75">
-                  Delivery charges, if any, confirmed before you start.
+                  Any delivery charge is confirmed before you start.
                 </p>
                 <Button
                   variant="inverse"
@@ -206,7 +219,7 @@ export function PlanExperience() {
                     document.getElementById("enquire")?.scrollIntoView();
                   }}
                 >
-                  Continue with these details
+                  Start Monday
                 </Button>
               </aside>
             ) : null}
@@ -218,14 +231,14 @@ export function PlanExperience() {
         <Container className="max-w-xl">
           <h2 className="font-serif text-4xl text-charcoal">Your details.</h2>
           <p className="mt-3 leading-relaxed text-charcoal/75">
-            Name, phone and locality are enough for us to reply. We confirm the
-            price, the address and the start date before anything begins.
-            Nothing is charged on this page.
+            Name, phone and locality are enough. We confirm the price, the
+            handover spot and the Monday you start. Nothing is charged on this
+            page.
           </p>
           <div className="mt-8">
             <EnquiryForm
               type="plan"
-              submitLabel="Send enquiry"
+              submitLabel="Start Monday"
               selection={{ meals, duration, diet }}
             />
           </div>

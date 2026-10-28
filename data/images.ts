@@ -70,24 +70,24 @@ export const images = {
     placeholder: true,
   },
   planLunch: {
-    src: "/images/thali.jpg",
-    alt: "A midday plate of rotis, sabzi and dal",
-    credit: "Unsplash",
-    sourceUrl: "https://unsplash.com/photos/1546833999-b9f581a1996d",
-    placeholder: true,
-  },
-  planDinner: {
-    src: "/images/chicken-naan.jpg",
-    alt: "Chicken curry with naan",
-    credit: "Unsplash",
-    sourceUrl: "https://unsplash.com/photos/1565557623262-b51c2513a641",
-    placeholder: true,
-  },
-  planEveryday: {
     src: "/images/rice-curry.jpg",
     alt: "Vegetable curry and rice",
     credit: "Unsplash",
     sourceUrl: "https://unsplash.com/photos/1585937421612-70a008356fbe",
+    placeholder: true,
+  },
+  planDinner: {
+    src: "/images/seasoned-rice.jpg",
+    alt: "Seasoned rice with herbs in brass bowls",
+    credit: "Unsplash",
+    sourceUrl: "https://unsplash.com/photos/1563379091339-03b21ab4a4f8",
+    placeholder: true,
+  },
+  planEveryday: {
+    src: "/images/idli.jpg",
+    alt: "Idli with sambar and chutney",
+    credit: "Unsplash",
+    sourceUrl: "https://unsplash.com/photos/1630383249896-424e482df921",
     placeholder: true,
   },
   about: {

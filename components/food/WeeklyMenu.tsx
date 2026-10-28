@@ -80,7 +80,7 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
   const days = menu.days;
   const support =
     menu.source === "sample"
-      ? "A sample week, so you can see how the menu will read. The kitchen replaces it from a spreadsheet."
+      ? "A sample of the kind of week we cook, so you can see the style. The live menu for the current week replaces this."
       : menu.rangeLabel
         ? `Posted for ${menu.rangeLabel}.`
         : "What the kitchen is cooking, updated through the week.";
@@ -96,7 +96,9 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
         </h2>
         <p className="mt-4 text-lg leading-relaxed text-charcoal/75">{support}</p>
         {menu.source === "sample" ? (
-          <SampleContentNote>Sample week. Not this week&apos;s real menu.</SampleContentNote>
+          <SampleContentNote>
+            Sample week, so you can judge the food. The live menu replaces this.
+          </SampleContentNote>
         ) : null}
       </div>
 
@@ -104,7 +106,7 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
         <EmptyWeek source={menu.days.length === 0 ? menu.source : "empty"} />
       ) : (
         <>
-          <div className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-2 md:overflow-visible xl:grid-cols-3">
+          <div className="mt-8 flex max-w-full snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-2 md:overflow-visible xl:grid-cols-3">
             {days.map((day) => (
               <DayCard key={day.date} day={day} />
             ))}

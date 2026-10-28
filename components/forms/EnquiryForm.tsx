@@ -242,7 +242,7 @@ export function EnquiryForm({
         error={errors.locality}
         hint={
           type === "serviceability"
-            ? "For example, Wakad, Baner or Hinjewadi."
+            ? "For example, Hinjewadi Phase 2, Maan or Wakad."
             : undefined
         }
       >

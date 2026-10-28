@@ -15,7 +15,7 @@ export function BrandPromiseSection() {
   return (
     <Section tone="white">
       <Container>
-        <SectionHeading eyebrow="Why Native Meals" title="Healthy meals, ready for the day." />
+        <SectionHeading eyebrow="How we serve" title="Healthy meals, ready for the working day." />
         <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {siteConfig.promises.map((item) => {
             const Icon = icons[item.icon];

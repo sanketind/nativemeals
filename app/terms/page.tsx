@@ -5,7 +5,7 @@ import { Section } from "@/components/ui/Section";
 
 export const metadata: Metadata = {
   title: "Terms",
-  description: "Draft terms for Native Meals.",
+  description: "How a Native Meals meal plan starts, including skipping a day and sample menus.",
   robots: { index: false, follow: false },
 };
 
@@ -13,29 +13,24 @@ export default function TermsPage() {
   return (
     <>
       <PageHeader eyebrow="Terms" title="Terms of use.">
-        Draft for review. This is not final legal text and should be replaced
-        before launch.
+        How a plan starts, how skipping a day works, and what a sample menu means.
       </PageHeader>
       <Section>
         <Container className="max-w-3xl space-y-6 leading-relaxed text-charcoal/80">
           <p className="rounded-2xl bg-sage px-4 py-3 text-sm text-olive">
-            Draft. Have this reviewed, along with any food-business registration
-            details that need to be published, before the site goes live.
+            Sending a message is a request. The plan starts once we confirm the
+            meals, the price and where the tiffin is handed over.
           </p>
           <p>
-            Sending an enquiry is not an order. A plan starts only after Native
-            Meals confirms the meals, the price, and the delivery or collection
-            arrangement with you.
+            Prices shown as introductory are confirmed with you before a plan
+            starts. Sample dishes are labelled as samples and describe the
+            style of food, rather than a promise of that exact dish.
           </p>
           <p>
-            Prices, menus, service areas, and pause or cancellation terms shown
-            as unconfirmed are not an offer. Sample dishes on the site are
-            labelled as samples and are not a commitment to serve that dish.
-          </p>
-          <p>
-            Payment, refunds, missed deliveries and changes to a plan will be
-            set out here once those policies are decided. Until then, ask us
-            and we will explain the current position before you commit.
+            You can skip a meal by messaging us before the cutoff for that day, pause
+            while you travel, and carry a skipped meal forward. You can keep an
+            office-gate address and a home address. Payment, refunds and missed
+            deliveries are confirmed with you before the first tiffin.
           </p>
         </Container>
       </Section>

@@ -7,33 +7,84 @@ export type PricingTier = {
   label: string;
   /** Null until that duration has a confirmed price. */
   price: number | null;
+  days: number;
+  /** Shown on the plan card. The builder still lists every duration. */
+  onCard: boolean;
 };
 
-export const durationIds = ["trial", "weekly", "biweekly", "monthly"] as const;
+export const durationIds = [
+  "taste",
+  "trial",
+  "weekdays",
+  "weekly",
+  "biweekly",
+  "weekdays-month",
+  "monthly",
+] as const;
 export type DurationId = (typeof durationIds)[number];
 
 /**
  * Draft per-meal prices, in rupees. Longer plans cost less per meal.
  * TODO: Replace every number with the confirmed price before launch, then set
  * status to "confirmed" so the draft note disappears.
- * `days` assumes six delivery days a week: 3, 6, 12 and 24.
+ * Monday to Friday uses the weekly rate for 5 days and the monthly rate for
+ * 22 weekdays. The 6-day options stay for people who also want Saturday.
+ * A single meal uses the 3-day rate, so the first try is one plate.
  * Veg and non-veg use the same rate.
  */
 export const pricing = {
   status: "draft" as "draft" | "confirmed",
-  note: "Introductory pricing, subject to confirmation.",
+  note: "Introductory prices. We confirm the total before you start.",
   durations: [
-    { id: "trial", label: "3 days", days: 3 },
-    { id: "weekly", label: "Weekly", days: 6 },
-    { id: "biweekly", label: "2 weeks", days: 12 },
-    { id: "monthly", label: "Monthly", days: 24 },
-  ] as const satisfies readonly { id: DurationId; label: string; days: number }[],
+    { id: "taste", label: "1 meal", days: 1, onCard: true },
+    { id: "trial", label: "3 days", days: 3, onCard: false },
+    { id: "weekdays", label: "Mon–Fri", days: 5, onCard: true },
+    { id: "weekly", label: "6 days", days: 6, onCard: false },
+    { id: "biweekly", label: "2 weeks", days: 12, onCard: false },
+    { id: "weekdays-month", label: "Weekday month", days: 22, onCard: true },
+    { id: "monthly", label: "Monthly", days: 24, onCard: true },
+  ] as const satisfies readonly {
+    id: DurationId;
+    label: string;
+    days: number;
+    onCard: boolean;
+  }[],
   perMeal: {
-    breakfast: { trial: 129, weekly: 119, biweekly: 109, monthly: 99 },
-    lunch: { trial: 189, weekly: 179, biweekly: 169, monthly: 159 },
-    dinner: { trial: 189, weekly: 179, biweekly: 169, monthly: 159 },
+    breakfast: {
+      taste: 129,
+      trial: 129,
+      weekdays: 119,
+      weekly: 119,
+      biweekly: 109,
+      "weekdays-month": 99,
+      monthly: 99,
+    },
+    lunch: {
+      taste: 189,
+      trial: 189,
+      weekdays: 179,
+      weekly: 179,
+      biweekly: 169,
+      "weekdays-month": 159,
+      monthly: 159,
+    },
+    dinner: {
+      taste: 189,
+      trial: 189,
+      weekdays: 179,
+      weekly: 179,
+      biweekly: 169,
+      "weekdays-month": 159,
+      monthly: 159,
+    },
   } satisfies Record<MealType, Record<DurationId, number>>,
 };
+
+/**
+ * Illustrative range for a food-app lunch around Hinjewadi, used only as a
+ * comparison next to our own price. It is not a quote from any app.
+ */
+export const foodAppLunchRange = { low: 200, high: 400 };
 
 export type MealPlan = {
   id: PlanId;
@@ -45,7 +96,7 @@ export type MealPlan = {
   meals: MealType[];
   /** "meal" for a single meal, "day" when the price is all selected meals. */
   priceUnit: "meal" | "day";
-  /** Headline price at the monthly rate. Null until confirmed. */
+  /** Headline price at the weekday-month rate. Null until confirmed. */
   price: number | null;
   /** Short line under the price, for example "on a monthly plan". */
   priceNote: string | null;
@@ -78,39 +129,49 @@ function tiersFor(meals: MealType[]): PricingTier[] {
   return pricing.durations.map((duration) => ({
     label: duration.label,
     price: rate(meals, duration.id),
+    days: duration.days,
+    onCard: duration.onCard,
   }));
 }
 
-const monthlyNote = "on a monthly plan";
+const monthlyNote = "on a Monday to Friday month";
 
 const planSeeds: Omit<MealPlan, "price" | "priceNote" | "pricingTiers" | "priceUnit">[] = [
   {
     id: "lunch",
     name: "Lunch Plan",
-    summary: "For customers who want an easier midday meal.",
+    summary: "A healthy lunch at the office gate, Monday to Friday.",
     description:
-      "A lunch you can count on through the week. The days, dishes and price are confirmed with you before anything starts.",
+      "Lunch for office weeks. Start with one meal, or take Monday to Friday for the days you are in.",
     imageId: "planLunch",
     meals: ["lunch"],
-    frequency: null,
-    duration: null,
-    includes: null,
-    deliveryTerms: null,
+    frequency: "Monday to Friday, or six days",
+    duration: "One meal up to a month",
+    includes: [
+      "The day's lunch from the weekly menu",
+      "Cooked that morning",
+      "Office gate or your door",
+    ],
+    deliveryTerms: "Office gate, security desk, or your door",
     dietOptions: ["veg", "non-veg"],
     availability: "enquiry",
   },
   {
     id: "dinner",
     name: "Dinner Plan",
-    summary: "For customers who want a dependable meal at the end of the day.",
+    summary: "Dinner at the PG or the flat, without deciding what to cook.",
     description:
-      "Dinner taken care of, so the evening does not start with deciding what to cook. We confirm the details with you first.",
+      "Dinner taken care of after work, from the same weekly menu, handed over at your door.",
     imageId: "planDinner",
     meals: ["dinner"],
-    frequency: null,
-    duration: null,
-    includes: null,
-    deliveryTerms: null,
+    frequency: "Monday to Friday, or six days",
+    duration: "One meal up to a month",
+    includes: [
+      "The day's dinner from the weekly menu",
+      "Cooked that morning",
+      "Your door on the way home",
+    ],
+    deliveryTerms: "Your door, or the office gate if you leave late",
     dietOptions: ["veg", "non-veg"],
     availability: "enquiry",
   },
@@ -119,13 +180,17 @@ const planSeeds: Omit<MealPlan, "price" | "priceNote" | "pricingTiers" | "priceU
     name: "All-day Plan",
     summary: "Breakfast, lunch and dinner, on one plan.",
     description:
-      "Breakfast, lunch and dinner, or any mix of them. Tell us what your routine looks like and we will confirm what we can offer.",
+      "The full day, or any mix of the three. Useful when both lunch at the office and dinner at home should just show up.",
     imageId: "planEveryday",
     meals: ["breakfast", "lunch", "dinner"],
-    frequency: null,
-    duration: null,
-    includes: null,
-    deliveryTerms: null,
+    frequency: "Monday to Friday, or six days",
+    duration: "One meal up to a month",
+    includes: [
+      "Breakfast, lunch and dinner from the weekly menu",
+      "Cooked that morning",
+      "Skip a day or pause when you travel",
+    ],
+    deliveryTerms: "Office gate on work days, your door on the others",
     dietOptions: ["veg", "non-veg"],
     availability: "enquiry",
   },
@@ -136,7 +201,7 @@ export const plans: MealPlan[] = planSeeds.map((plan) => {
   return {
     ...plan,
     priceUnit: single ? "meal" : "day",
-    price: rate(plan.meals, "monthly"),
+    price: rate(plan.meals, "weekdays-month"),
     priceNote: single ? monthlyNote : `all three meals, ${monthlyNote}`,
     pricingTiers: tiersFor(plan.meals),
   };

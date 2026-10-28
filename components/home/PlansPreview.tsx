@@ -1,27 +1,34 @@
 import { plans, pricing } from "@/data/plans";
+import { formatInr } from "@/lib/format";
 import { MealPlanCard } from "@/components/plans/MealPlanCard";
+import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function PlansPreview() {
   return (
-    <Section id="plans" tone="white">
+    <Section id="plans">
       <Container>
-        <SectionHeading eyebrow="Meal plans" title="A plan for healthy meals.">
-          Choose a meal routine that works for your day.
+        <SectionHeading eyebrow="Meal plans" title="One price per meal.">
+          Try one lunch for {formatInr(pricing.perMeal.lunch.taste)}. Longer
+          plans cost less per meal.
         </SectionHeading>
-        <ul className="mt-12 grid gap-5 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-5 md:grid-cols-3">
           {plans.map((plan) => (
             <li key={plan.id}>
-              <MealPlanCard plan={plan} />
+              <MealPlanCard plan={plan} compact />
             </li>
           ))}
         </ul>
-        <p className="mt-6 max-w-2xl text-sm leading-relaxed text-charcoal/60">
-          {pricing.status === "draft" ? `${pricing.note} ` : null}
-          Delivery terms are confirmed with you when you enquire.
-        </p>
+        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <ButtonLink href="/meal-plans#build" variant="secondary">
+            See every duration
+          </ButtonLink>
+          {pricing.status === "draft" ? (
+            <p className="text-sm text-charcoal/60">{pricing.note}</p>
+          ) : null}
+        </div>
       </Container>
     </Section>
   );

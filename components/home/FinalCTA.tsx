@@ -6,16 +6,18 @@ import { cn } from "@/lib/cn";
 
 export function FinalCTA({
   tone = "white",
-  title = "Make room for healthier meals.",
-  body = "Tell us what your day looks like, and we'll help you explore a clean meal plan.",
-  primaryHref = "/meal-plans",
-  primaryLabel = "Explore Meal Plans",
+  title = "Start Monday.",
+  body = "Try one lunch first. Tell us your office gate or your locality.",
+  primaryHref = "/meal-plans#build",
+  primaryLabel = "Start Monday",
+  whatsappMessage = "Hi Native Meals, I want to start healthy meals on Monday. My office or locality is ",
 }: {
   tone?: "white" | "olive";
   title?: string;
   body?: string;
   primaryHref?: string;
   primaryLabel?: string;
+  whatsappMessage?: string;
 }) {
   const olive = tone === "olive";
   return (
@@ -43,18 +45,26 @@ export function FinalCTA({
           {body}
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <ButtonLink href={primaryHref} variant={olive ? "inverse" : "primary"}>
-            {primaryLabel}
-          </ButtonLink>
           {siteConfig.contact.whatsapp ? (
             <WhatsAppCTA
-              variant="secondary"
-              className={olive ? "border-cream/30 bg-transparent text-cream hover:border-cream" : undefined}
-              message="Hello Native Meals, I would like to talk about meal plans."
+              variant={olive ? "inverse" : "primary"}
+              message={whatsappMessage}
             >
-              Chat With Us
+              Start on WhatsApp
             </WhatsAppCTA>
-          ) : (
+          ) : null}
+          <ButtonLink
+            href={primaryHref}
+            variant={siteConfig.contact.whatsapp ? "secondary" : olive ? "inverse" : "primary"}
+            className={
+              olive && siteConfig.contact.whatsapp
+                ? "border-cream/30 bg-transparent text-cream hover:border-cream"
+                : undefined
+            }
+          >
+            {primaryLabel}
+          </ButtonLink>
+          {siteConfig.contact.whatsapp ? null : (
             <ButtonLink
               href="/contact"
               variant="secondary"

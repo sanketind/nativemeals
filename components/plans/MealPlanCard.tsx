@@ -4,21 +4,36 @@ import { DietBadge } from "@/components/ui/DietBadge";
 import { FoodImage } from "@/components/ui/FoodImage";
 import { ButtonLink } from "@/components/ui/Button";
 
-export function MealPlanCard({ plan }: { plan: MealPlan }) {
+export function MealPlanCard({
+  plan,
+  compact = false,
+}: {
+  plan: MealPlan;
+  compact?: boolean;
+}) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-charcoal/10 bg-white">
-      <div className="relative aspect-[16/10] bg-sage">
-        <FoodImage
-          imageId={plan.imageId}
-          sizes="(min-width: 768px) 30vw, 100vw"
-        />
-      </div>
+      {compact ? null : (
+        <div className="relative aspect-[16/10] bg-sage">
+          <FoodImage
+            imageId={plan.imageId}
+            sizes="(min-width: 768px) 30vw, 100vw"
+          />
+        </div>
+      )}
       <div className="flex flex-1 flex-col p-6">
         <h3 className="font-serif text-2xl text-charcoal">{plan.name}</h3>
         <p className="mt-2 text-sm leading-relaxed text-charcoal/75">
           {plan.summary}
         </p>
-        <div className="mt-6">
+        {!compact && plan.includes && plan.includes.length > 0 ? (
+          <ul className="mt-4 space-y-1 text-sm text-charcoal/75">
+            {plan.includes.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        ) : null}
+        <div className={compact ? "mt-5 flex-1" : "mt-6"}>
           {plan.price !== null ? (
             <p className="flex flex-wrap items-end gap-x-2 gap-y-1">
               <span className="font-serif text-4xl leading-none text-charcoal">
@@ -42,40 +57,54 @@ export function MealPlanCard({ plan }: { plan: MealPlan }) {
             </p>
           )}
         </div>
-        {plan.pricingTiers && plan.pricingTiers.length > 0 ? (
+        {!compact && plan.pricingTiers && plan.pricingTiers.some((tier) => tier.onCard) ? (
           <>
           <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-charcoal/50">
             {plan.priceUnit === "day" ? "Per day, by duration" : "Per meal, by duration"}
           </p>
-          <dl className="mt-3 grid grid-cols-2 gap-y-3 sm:grid-cols-4 sm:divide-x sm:divide-charcoal/10 sm:border-t sm:border-charcoal/10 sm:pt-4">
-            {plan.pricingTiers.map((tier) => (
-              <div key={tier.label} className="px-2 first:pl-0">
+          <dl className="mt-3 grid grid-cols-2 gap-3">
+            {plan.pricingTiers.filter((tier) => tier.onCard).map((tier) => (
+              <div key={tier.label} className="rounded-2xl bg-cream px-3 py-2">
                 <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-charcoal/50">
                   {tier.label}
                 </dt>
                 <dd className="mt-1 text-sm font-semibold text-charcoal">
                   {tier.price !== null ? formatInr(tier.price) : "On enquiry"}
                 </dd>
+                {tier.price !== null ? (
+                  <p className="mt-0.5 text-xs text-charcoal/55">
+                    {tier.days === 1
+                      ? "try one meal"
+                      : `${tier.days} days · ${formatInr(tier.price * tier.days)}`}
+                  </p>
+                ) : null}
               </div>
             ))}
           </dl>
           </>
         ) : null}
-        <p className="mt-4 text-sm leading-relaxed text-charcoal/70">
-          {plan.frequency && plan.duration
-            ? `${plan.frequency} · ${plan.duration}`
-            : "Schedule confirmed when you enquire."}
-        </p>
-        {plan.dietOptions && plan.dietOptions.length > 0 ? (
-          <div className="mt-3 flex gap-3">
-            {plan.dietOptions.map((diet) => (
-              <DietBadge key={diet} diet={diet} />
-            ))}
-          </div>
-        ) : null}
+        {compact ? null : (
+          <>
+            <p className="mt-4 text-sm leading-relaxed text-charcoal/70">
+              {plan.frequency && plan.duration
+                ? `${plan.frequency} · ${plan.duration}`
+                : "Schedule confirmed when you start."}
+            </p>
+            {plan.deliveryTerms ? (
+              <p className="mt-2 text-sm leading-relaxed text-charcoal/60">{plan.deliveryTerms}</p>
+            ) : null}
+            {plan.dietOptions && plan.dietOptions.length > 0 ? (
+              <div className="mt-3 flex gap-3">
+                {plan.dietOptions.map((diet) => (
+                  <DietBadge key={diet} diet={diet} />
+                ))}
+              </div>
+            ) : null}
+          </>
+        )}
         <div className="mt-6">
           <ButtonLink href={`/meal-plans?plan=${plan.id}#build`}>
-            Build this plan
+            Start this plan
           </ButtonLink>
         </div>
       </div>

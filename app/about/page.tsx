@@ -10,15 +10,15 @@ import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 export const metadata: Metadata = {
   title: "Our Story",
   description:
-    `Why Native Meals exists: clean, healthy meals for breakfast, lunch and dinner, serving ${siteConfig.serviceAreaLine}, Pune.`,
+    `Healthy meals from Native Meals for ${siteConfig.serviceAreaShort}, Pune. Breakfast, lunch and dinner, cooked the same morning.`,
 };
 
 export default function AboutPage() {
   return (
     <>
-      <PageHeader eyebrow="Our story" title="Clean meals, for a busy day.">
-        Native Meals is a meal service for people who want to eat well without
-        planning, shopping and cooking every day.
+      <PageHeader eyebrow="Our story" title="Healthy meals, for a working week.">
+        Native Meals cooks healthy meals for people in {siteConfig.serviceAreaShort} who
+        want to eat well without planning, shopping and cooking every day.
       </PageHeader>
       <Section>
         <Container className="grid items-start gap-12 md:grid-cols-2">
@@ -32,10 +32,9 @@ export default function AboutPage() {
               </h2>
               <p className="mt-4 leading-relaxed text-charcoal/75">
                 Planning, shopping, cooking and cleaning, every single day, is
-                a lot to carry on top of a job and a household. Native Meals
-                exists so that work is handled: clean, healthy meals for
-                breakfast, lunch and dinner. We serve {siteConfig.serviceAreaLine}{" "}
-                in {siteConfig.city}.
+                a lot to carry on top of a job. Native Meals exists so that
+                work is handled: healthy breakfast, lunch and dinner, across{" "}
+                {siteConfig.serviceAreaShort} in {siteConfig.city}.
               </p>
             </article>
             <article>
@@ -43,11 +42,9 @@ export default function AboutPage() {
                 What we cook.
               </h2>
               <p className="mt-4 leading-relaxed text-charcoal/75">
-                Healthy meals for the day. The menu is not locked to one style,
-                so a week can include a sandwich, scrambled eggs or oats as well
-                as a fuller plate. Vegetarian and non-vegetarian choices both
-                belong here. What is actually cooking is on this week&apos;s
-                menu.
+                Healthy meals, planned across the week so the days balance out.
+                Vegetarian and non-vegetarian are both on the menu, at the same
+                price. What is actually cooking is on this week&apos;s menu.
               </p>
             </article>
             <article>
@@ -55,10 +52,13 @@ export default function AboutPage() {
                 Freshness, cleanliness, and consistency.
               </h2>
               <p className="mt-4 leading-relaxed text-charcoal/75">
-                Meals are cooked fresh the same morning and delivered to your
-                desk or your door, with attention to cleanliness and to tasting
-                the same from one day to the next. Kitchen details are shared
-                when you enquire.
+                Meals are cooked the same morning and handed over at your office
+                gate, the security desk, or your door, with attention to
+                cleanliness and to tasting the same from one day to the next.
+                {siteConfig.kitchenLocality
+                  ? ` The kitchen is in ${siteConfig.kitchenLocality}.`
+                  : " Kitchen details are shared when you start."}
+                {siteConfig.fssai ? ` FSSAI ${siteConfig.fssai}.` : ""}
               </p>
             </article>
             <article>
@@ -89,7 +89,7 @@ export default function AboutPage() {
             See if a plan fits your week.
           </h2>
           <div className="flex flex-wrap gap-3">
-            <ButtonLink href="/meal-plans">Explore Meal Plans</ButtonLink>
+            <ButtonLink href="/meal-plans">Start Monday</ButtonLink>
             <WhatsAppCTA variant="secondary">Chat With Us</WhatsAppCTA>
             {!siteConfig.contact.whatsapp ? (
               <ButtonLink href="/contact" variant="secondary">

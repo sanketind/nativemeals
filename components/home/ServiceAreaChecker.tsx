@@ -26,19 +26,26 @@ export function ServiceAreaChecker() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-lg leading-relaxed text-charcoal/75">
-            Native Meals serves {siteConfig.serviceAreaLine} in {siteConfig.city}.
-            Share your locality and we will confirm the address.
+          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-olive">
+            Tech parks
           </p>
-          <p className="mt-4 text-sm leading-relaxed text-charcoal/60">
-            This does not check your address automatically. We confirm it when
-            we reply.
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {siteConfig.techParks.map((park) => (
+              <li
+                key={park}
+                className="rounded-full border border-charcoal/10 bg-white/70 px-3 py-1.5 text-sm text-charcoal"
+              >
+                {park}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-lg leading-relaxed text-charcoal/75">
+            Native Meals serves {siteConfig.serviceAreaShort} in {siteConfig.city}.
+            Office tiffins are handed over at the gate or the security desk.
+            Share your phase or locality and we will confirm it.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <WhatsAppCTA
-              variant="secondary"
-              message="Hello Native Meals, can you serve my address? My locality is "
-            >
+            <WhatsAppCTA variant="secondary" message={siteConfig.messages.service}>
               Chat on WhatsApp
             </WhatsAppCTA>
             {!siteConfig.contact.whatsapp ? (
@@ -49,7 +56,7 @@ export function ServiceAreaChecker() {
           </div>
         </div>
         <div className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
-          <EnquiryForm type="serviceability" submitLabel="Check Availability" />
+          <EnquiryForm type="serviceability" submitLabel="Check my area" />
         </div>
       </Container>
     </Section>

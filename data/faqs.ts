@@ -1,4 +1,6 @@
-export type FaqPage = "home" | "faqs" | "plans";
+import { siteConfig } from "@/data/site-config";
+
+export type FaqPage = "faqs" | "plans";
 
 export type Faq = {
   id: string;
@@ -7,83 +9,90 @@ export type Faq = {
   pages: FaqPage[];
 };
 
+const cutoff = siteConfig.delivery.skipCutoff
+  ? `before ${siteConfig.delivery.skipCutoff}`
+  : "before the day's cutoff";
+
 /**
- * Answers stay conservative on purpose. Where a policy is not decided, the
- * copy says so. TODO comments mark lines that must be replaced before launch.
+ * Answers a customer can act on. Sample-menu and draft-price lines stay
+ * until the live sheet and confirmed prices replace them.
  */
 export const faqs: Faq[] = [
   {
     id: "what-is-native-meals",
     question: "What is Native Meals?",
     answer:
-      "Native Meals prepares clean, healthy meals for breakfast, lunch and dinner, so you spend less time planning and cooking. We serve Wakad, Hinjewadi, Baner, Aundh, Tathwade and Punewale in Pune. The menu can include a sandwich, scrambled eggs or oats as well as a fuller plate.",
-    pages: ["home", "faqs"],
+      `Native Meals serves healthy breakfast, lunch and dinner on a meal plan. Each meal is cooked the same morning and handed over at your office gate or your door. We serve ${siteConfig.serviceAreaShort} in Pune.`,
+    pages: ["faqs"],
   },
   {
     id: "service-area",
     question: "Which areas do you currently serve?",
     answer:
-      "We serve Wakad, Hinjewadi, Baner, Aundh, Tathwade and Punewale in Pune. Share your locality and we will confirm the address.",
-    pages: ["home", "faqs", "plans"],
+      `We serve ${siteConfig.serviceAreaLine} in Pune, including ${siteConfig.techParkLine}. Office tiffins are handed over at the gate or the security desk. Share your phase, tech park or locality and we will confirm the address.`,
+    pages: ["faqs", "plans"],
   },
   {
     id: "veg-non-veg",
     question: "Do you offer vegetarian and non-vegetarian meals?",
     answer:
-      "Yes. Tell us your preference when you enquire, and we will confirm what is available for the plan you want.",
-    pages: ["home", "faqs", "plans"],
+      "Yes, at the same price. Tell us which you want when you start, and the day's menu shows what is cooking.",
+    pages: ["faqs", "plans"],
   },
   {
     id: "which-plans",
     question: "What meal plans are available?",
     answer:
-      "We are setting up a Lunch Plan, a Dinner Plan and an All-day Plan. Share what your day looks like and we will help you explore the option that fits. Nothing is confirmed until we reply.",
-    pages: ["home", "faqs", "plans"],
+      "Lunch, dinner, or breakfast, lunch and dinner together. Most people in Hinjewadi take Monday to Friday. A 6-day week is there if you also want Saturday. You can start with a single meal.",
+    pages: ["faqs", "plans"],
   },
   {
     id: "how-subscriptions-work",
     question: "How do subscriptions work?",
     answer:
-      "Choose a plan, tell us your preferences and where you are, and we confirm the ordering and the delivery or collection arrangement with you. This site does not start an automatic subscription or take payment.",
-    pages: ["home", "faqs", "plans"],
+      "Pick the meals and a length, from one meal up to a month. Tell us veg or non-veg, and whether the tiffin goes to your office gate or your home. We confirm the start date before the first meal. This site does not take payment or start a plan on its own.",
+    pages: ["faqs", "plans"],
   },
   {
     id: "pause-or-change",
     question: "Can I pause or change my plan?",
-    // TODO: Replace with the confirmed pause, change and cancellation policy.
     answer:
-      "Pause, change and cancellation terms are still being finalised. Ask when you enquire and we will explain what is possible before you commit to anything.",
-    pages: ["home", "faqs", "plans"],
+      `Yes. Message us on WhatsApp ${cutoff} to skip a meal, or pause the plan when you travel or go on leave. A skipped meal carries forward. You can keep two addresses: the office gate on days you go in, and your home on work-from-home days.`,
+    pages: ["faqs", "plans"],
   },
   {
     id: "delivery",
     question: "How are the meals delivered?",
-    // TODO: Replace with the confirmed delivery and collection arrangement.
-    answer:
-      "Delivery and collection depend on your location and plan. We confirm the arrangement with you when you enquire. We do not publish fixed delivery times yet.",
-    pages: ["home", "faqs", "plans"],
+    answer: siteConfig.delivery.handover,
+    pages: ["faqs", "plans"],
   },
   {
     id: "pricing",
     question: "How does pricing work?",
-    // TODO: Rewrite once pricing.status in data/plans.ts is "confirmed".
     answer:
-      "Each meal has its own price, and a longer plan costs less per meal. The prices on the Meal Plans page are introductory. We confirm the total, and any delivery charge, before you start.",
-    pages: ["home", "faqs", "plans"],
+      "Each meal has its own price, and a longer plan costs less per meal. One meal is the short trial. Monday to Friday is priced for office weeks, so Saturday is a separate choice. We confirm the total, and any delivery charge, before you start. The prices on the Meal Plans page are introductory.",
+    pages: ["faqs", "plans"],
   },
   {
     id: "weekly-menu",
     question: "How does this week's menu work?",
     answer:
-      "The kitchen posts the week, and the site shows the current Monday to Sunday. A day with nothing posted does not appear. Until that sheet is connected, you will see a week marked as a sample.",
-    pages: ["home", "faqs"],
+      "The menu runs Monday to Sunday. A day with nothing posted is left off. Until the live week is up, the menu you see is a sample of the kind of food, so you can judge the style.",
+    pages: ["faqs"],
   },
   {
     id: "choose-dishes",
     question: "Can I choose the dishes?",
     answer:
-      "This week's menu is what the kitchen is cooking. Tell us what you prefer when you enquire and we will confirm what we can do. There is no build-your-own plate.",
-    pages: ["home", "faqs"],
+      "This week's menu is what the kitchen is cooking. Tell us veg or non-veg, and anything you avoid, when you start. There is no build-your-own plate.",
+    pages: ["faqs"],
+  },
+  {
+    id: "whats-in-the-box",
+    question: "What is in each meal?",
+    answer:
+      "The day's breakfast, lunch or dinner from the weekly menu, cooked that morning. The menu changes through the week, and veg and non-veg are both on it. Check this week's menu to see what is cooking.",
+    pages: ["faqs", "plans"],
   },
 ];
 

@@ -1,10 +1,9 @@
 import { MessageCircle } from "lucide-react";
+import { siteConfig } from "@/data/site-config";
 import { whatsappHref } from "@/lib/contact";
 
 export function FloatingWhatsApp() {
-  const href = whatsappHref(
-    "Hello Native Meals, I would like to enquire about meals in Pune.",
-  );
+  const href = whatsappHref(siteConfig.messages.general);
   if (!href) return null;
   return (
     <a

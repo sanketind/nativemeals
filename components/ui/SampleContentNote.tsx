@@ -1,7 +1,7 @@
 import { siteConfig } from "@/data/site-config";
 
 export function SampleContentNote({
-  children = "Sample content. Replace before launch.",
+  children = "Sample, so you can see the style. The live version replaces this.",
 }: {
   children?: React.ReactNode;
 }) {

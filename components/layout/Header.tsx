@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/data/site-config";
-import { ButtonLink } from "@/components/ui/Button";
+import { StartCTA } from "@/components/ui/StartCTA";
 import { Container } from "@/components/ui/Container";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { Wordmark } from "@/components/layout/Wordmark";
@@ -24,10 +24,11 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-1">
-          <ButtonLink href="/meal-plans" className="px-3.5 py-2 sm:px-5">
-            <span className="sm:hidden">Plans</span>
-            <span className="hidden sm:inline">Explore Plans</span>
-          </ButtonLink>
+          <StartCTA
+            className="px-3.5 py-2 sm:px-5"
+            whatsappLabel="Start on WhatsApp"
+            fallbackLabel="Start Monday"
+          />
           <MobileNav />
         </div>
       </Container>

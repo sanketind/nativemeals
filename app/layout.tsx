@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: [...siteConfig.keywords],
   openGraph: {
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
@@ -61,7 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <Header />
-        <main id="main" className="flex-1 pb-24 md:pb-0">
+        <main id="main" className="min-w-0 flex-1 pb-24 md:pb-0">
           {children}
         </main>
         <Footer />
