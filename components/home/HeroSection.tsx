@@ -35,14 +35,14 @@ export function HeroSection() {
             <span aria-hidden="true" className="text-olive/30">
               ·
             </span>
-            Hinjewadi
+            Pune
           </p>
           <h1 className="mt-6 max-w-xl font-sans text-[clamp(2.05rem,5.15vw,5rem)] font-extrabold leading-[1.04] tracking-[-0.045em] text-olive">
             Healthy meals, at your office gate.
           </h1>
           <p className="mt-5 max-w-md text-[clamp(1.05rem,1.5vw,1.25rem)] font-normal leading-[1.7] text-muted">
             Breakfast, lunch and dinner, cooked the same morning and handed
-            over at your Hinjewadi office gate or your door.
+            over at your office or your door.
           </p>
           <p className="mt-4 max-w-md text-[1.06rem] font-semibold leading-[1.5] text-olive">
             Try one lunch for {formatInr(trialLunch)}. A Monday to Friday month
