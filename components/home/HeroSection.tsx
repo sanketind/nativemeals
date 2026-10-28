@@ -31,18 +31,18 @@ export function HeroSection() {
         <div>
           <p className="inline-flex items-center gap-2 rounded-full border border-olive/15 bg-white/70 px-3 py-1.5 font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
             <span aria-hidden="true" className="size-1.5 rounded-full bg-terracotta" />
-            Healthy meal plans
+            Monday to Friday
             <span aria-hidden="true" className="text-olive/30">
               ·
             </span>
-            Pune
+            {siteConfig.city}
           </p>
           <h1 className="mt-6 max-w-xl font-sans text-[clamp(2.05rem,5.15vw,5rem)] font-extrabold leading-[1.04] tracking-[-0.045em] text-olive">
-            Healthy meals, at your office gate.
+            Daily Healthy Meal Subscription
           </h1>
           <p className="mt-5 max-w-md text-[clamp(1.05rem,1.5vw,1.25rem)] font-normal leading-[1.7] text-muted">
             Breakfast, lunch and dinner, cooked the same morning and handed
-            over at your office or your door.
+            over at your office gate or your door.
           </p>
           <p className="mt-4 max-w-md text-[1.06rem] font-semibold leading-[1.5] text-olive">
             Try one lunch for {formatInr(trialLunch)}. A Monday to Friday month
@@ -77,7 +77,7 @@ export function HeroSection() {
             />
           </div>
           <p className="absolute bottom-4 right-4 flex items-center gap-2 rounded-2xl bg-white/95 px-3.5 py-2.5 text-sm font-semibold text-olive shadow-lg">
-            Healthy meal plans
+            Cooked the same morning
           </p>
         </div>
       </Container>
