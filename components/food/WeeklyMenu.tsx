@@ -25,7 +25,7 @@ function DayCard({
     >
       <header className="bg-sage/80 px-5 py-4">
         <div className="flex items-baseline justify-between gap-3">
-          <h3 className="font-serif text-2xl text-charcoal">{day.weekday}</h3>
+          <h3 className="font-serif text-xl text-charcoal md:text-2xl">{day.weekday}</h3>
           <p className="font-mono text-[11px] tracking-[0.14em] text-olive">
             {day.dateLabel}
           </p>
@@ -63,7 +63,7 @@ function EmptyWeek({ source }: { source: WeeklyMenuData["source"] }) {
       : "This week's menu will be posted soon.";
   return (
     <div className="mt-8 rounded-3xl border border-dashed border-charcoal/20 bg-white px-6 py-10">
-      <p className="max-w-xl text-lg leading-relaxed text-charcoal/75">{message}</p>
+      <p className="max-w-xl text-base leading-relaxed text-charcoal/75 md:text-lg">{message}</p>
       <div className="mt-6 flex flex-wrap gap-3">
         <WhatsAppCTA message="Hello Native Meals, could you share this week's menu?">
           Ask on WhatsApp
@@ -91,10 +91,10 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta-ink">
           This week
         </p>
-        <h2 className="mt-3 font-serif text-4xl leading-tight text-charcoal md:text-5xl">
+        <h2 className="mt-3 font-serif text-3xl leading-tight text-charcoal md:text-5xl">
           This week&apos;s menu.
         </h2>
-        <p className="mt-4 text-lg leading-relaxed text-charcoal/75">{support}</p>
+        <p className="mt-4 text-base leading-relaxed text-charcoal/75 md:text-lg">{support}</p>
         {menu.source === "sample" ? (
           <SampleContentNote>
             Sample week, so you can judge the food. The live menu replaces this.

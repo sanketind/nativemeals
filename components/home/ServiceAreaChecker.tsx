@@ -13,7 +13,7 @@ export function ServiceAreaChecker() {
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta-ink">
             Service area
           </p>
-          <h2 className="mt-3 font-serif text-4xl leading-tight text-charcoal md:text-5xl">
+          <h2 className="mt-3 font-serif text-3xl leading-tight text-charcoal md:text-5xl">
             Where we serve.
           </h2>
           <ul className="mt-5 flex flex-wrap gap-2">
@@ -39,7 +39,7 @@ export function ServiceAreaChecker() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-lg leading-relaxed text-charcoal/75">
+          <p className="mt-4 text-base leading-relaxed text-charcoal/75 md:text-lg">
             Native Meals serves {siteConfig.serviceAreaShort} in {siteConfig.city}.
             Office tiffins are handed over at the gate or the security desk.
             Share your phase or locality and we will confirm it.

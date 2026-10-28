@@ -12,7 +12,7 @@ export function MobileCTABar() {
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-charcoal/10 bg-cream/95 px-4 py-3 backdrop-blur md:hidden">
       <div className="flex items-center gap-3">
         <p className="min-w-24 leading-tight">
-          <span className="block font-serif text-lg text-charcoal">
+          <span className="block font-serif text-base text-charcoal">
             Lunch {formatInr(lunch)}
           </span>
           <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-charcoal/55">

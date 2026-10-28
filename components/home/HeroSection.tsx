@@ -37,10 +37,10 @@ export function HeroSection() {
             </span>
             Hinjewadi
           </p>
-          <h1 className="mt-6 max-w-xl font-serif text-5xl leading-[1.02] tracking-tight text-charcoal sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-xl font-serif text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-6xl lg:text-7xl">
             Healthy meals, at your office gate.
           </h1>
-          <p className="mt-5 max-w-md text-lg leading-relaxed text-charcoal/80">
+          <p className="mt-5 max-w-md text-base leading-relaxed text-charcoal/80 md:text-lg">
             Breakfast, lunch and dinner, cooked the same morning and handed
             over at your Hinjewadi office gate or your door.
           </p>

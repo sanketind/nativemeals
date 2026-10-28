@@ -102,7 +102,7 @@ export function MobileNav() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="rounded-2xl px-3 py-3 text-lg text-charcoal hover:bg-sage"
+                  className="rounded-2xl px-3 py-3 text-base text-charcoal hover:bg-sage"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
@@ -110,7 +110,7 @@ export function MobileNav() {
               ))}
               <Link
                 href="/contact"
-                className="rounded-2xl px-3 py-3 text-lg text-charcoal hover:bg-sage"
+                className="rounded-2xl px-3 py-3 text-base text-charcoal hover:bg-sage"
                 onClick={() => setOpen(false)}
               >
                 Contact

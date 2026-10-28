@@ -16,7 +16,7 @@ export function KitchenRules() {
               key={rule.title}
               className="rounded-3xl border border-charcoal/10 bg-white p-6"
             >
-              <h3 className="font-serif text-2xl text-charcoal">{rule.title}</h3>
+              <h3 className="font-serif text-xl text-charcoal md:text-2xl">{rule.title}</h3>
               <p className="mt-2 leading-relaxed text-charcoal/75">{rule.body}</p>
             </li>
           ))}

@@ -27,12 +27,12 @@ export default function ContactPage() {
       <Section>
         <Container className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div>
-            <h2 className="font-serif text-3xl text-charcoal">Reach us directly.</h2>
+            <h2 className="font-serif text-2xl text-charcoal md:text-3xl">Reach us directly.</h2>
             <p className="mt-3 text-sm text-charcoal/70">
               Serving {siteConfig.serviceAreaShort}, {siteConfig.city}. Office
               tiffins go to the gate or the security desk.
             </p>
-            <ul className="mt-6 space-y-3 text-lg">
+            <ul className="mt-6 space-y-3 text-base md:text-lg">
               {call ? (
                 <li>
                   <a href={call} className="text-olive hover:underline">

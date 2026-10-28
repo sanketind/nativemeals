@@ -94,7 +94,7 @@ export function PlanExperience() {
                         )}
                       >
                         <span className="block font-medium text-charcoal">{choice.label}</span>
-                        <span className="mt-3 block font-serif text-2xl text-charcoal">
+                        <span className="mt-3 block font-serif text-xl text-charcoal sm:text-2xl">
                           {formatInr(rate)}
                         </span>
                         <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.14em] text-charcoal/50">
@@ -174,7 +174,7 @@ export function PlanExperience() {
                 <p className="font-mono text-xs uppercase tracking-[0.16em] text-terracotta">
                   Estimate
                 </p>
-                <h3 className="mt-3 font-serif text-3xl">{estimate.planName}</h3>
+                <h3 className="mt-3 font-serif text-2xl md:text-3xl">{estimate.planName}</h3>
                 <dl className="mt-6 space-y-3 text-sm">
                   <Row label="Meals a day" value={String(estimate.lines.length)} />
                   <Row
@@ -194,7 +194,7 @@ export function PlanExperience() {
                   <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-cream/60">
                     Estimated total
                   </span>
-                  <span className="mt-1 block font-serif text-4xl">
+                  <span className="mt-1 block font-serif text-3xl sm:text-4xl">
                     {formatInr(estimate.total)}
                   </span>
                 </p>
@@ -229,7 +229,7 @@ export function PlanExperience() {
 
       <Section id="enquire" tone="white">
         <Container className="max-w-xl">
-          <h2 className="font-serif text-4xl text-charcoal">Your details.</h2>
+          <h2 className="font-serif text-3xl text-charcoal md:text-4xl">Your details.</h2>
           <p className="mt-3 leading-relaxed text-charcoal/75">
             Name, phone and locality are enough. We confirm the price, the
             handover spot and the Monday you start. Nothing is charged on this

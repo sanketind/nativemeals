@@ -22,7 +22,7 @@ export function MealPlanCard({
         </div>
       )}
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-serif text-2xl text-charcoal">{plan.name}</h3>
+        <h3 className="font-serif text-xl text-charcoal md:text-2xl">{plan.name}</h3>
         <p className="mt-2 text-sm leading-relaxed text-charcoal/75">
           {plan.summary}
         </p>
@@ -36,7 +36,7 @@ export function MealPlanCard({
         <div className={compact ? "mt-5 flex-1" : "mt-6"}>
           {plan.price !== null ? (
             <p className="flex flex-wrap items-end gap-x-2 gap-y-1">
-              <span className="font-serif text-4xl leading-none text-charcoal">
+              <span className="font-serif text-3xl leading-none text-charcoal md:text-4xl">
                 {formatInr(plan.price)}
               </span>
               <span className="pb-1 font-mono text-[11px] uppercase tracking-[0.16em] text-charcoal/50">
@@ -48,7 +48,7 @@ export function MealPlanCard({
             </p>
           ) : (
             <p>
-              <span className="font-serif text-3xl text-charcoal">
+              <span className="font-serif text-2xl text-charcoal md:text-3xl">
                 Pricing on enquiry
               </span>
               <span className="mt-1 block font-mono text-[11px] uppercase tracking-[0.16em] text-charcoal/50">

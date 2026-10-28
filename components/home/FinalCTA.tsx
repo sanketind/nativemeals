@@ -30,7 +30,7 @@ export function FinalCTA({
         ) : null}
         <h2
           className={cn(
-            "font-serif text-4xl leading-tight md:text-5xl",
+            "font-serif text-3xl leading-tight md:text-5xl",
             olive ? "mt-3 text-cream" : "text-charcoal",
           )}
         >
@@ -38,7 +38,7 @@ export function FinalCTA({
         </h2>
         <p
           className={cn(
-            "mx-auto mt-4 max-w-xl text-lg leading-relaxed",
+            "mx-auto mt-4 max-w-xl text-base leading-relaxed md:text-lg",
             olive ? "text-cream/80" : "text-charcoal/75",
           )}
         >

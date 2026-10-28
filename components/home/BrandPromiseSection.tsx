@@ -24,7 +24,7 @@ export function BrandPromiseSection() {
                 <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-sage text-olive">
                   <Icon aria-hidden="true" className="size-5" />
                 </span>
-                <h3 className="mt-5 font-serif text-2xl text-charcoal">{item.title}</h3>
+                <h3 className="mt-5 font-serif text-xl text-charcoal md:text-2xl">{item.title}</h3>
                 <p className="mt-2 leading-relaxed text-charcoal/75">{item.body}</p>
               </li>
             );

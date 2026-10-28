@@ -25,7 +25,7 @@ export function HowItWorks() {
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta">
           How it works
         </p>
-        <h2 className="mt-3 max-w-2xl font-serif text-4xl leading-tight md:text-5xl">
+        <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight md:text-5xl">
           Your meals, made simple.
         </h2>
         <ol className="mt-12 grid gap-4 md:grid-cols-3">
@@ -34,7 +34,7 @@ export function HowItWorks() {
               <p className="font-mono text-sm tracking-[0.16em] text-terracotta-ink">
                 {step.number}
               </p>
-              <h3 className="mt-8 font-serif text-2xl">{step.title}</h3>
+              <h3 className="mt-8 font-serif text-xl md:text-2xl">{step.title}</h3>
               <p className="mt-3 leading-relaxed text-charcoal/75">{step.body}</p>
             </li>
           ))}

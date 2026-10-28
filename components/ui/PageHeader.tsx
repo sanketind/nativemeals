@@ -25,11 +25,11 @@ export function PageHeader({
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta-ink">
             {eyebrow}
           </p>
-          <h1 className="mt-3 max-w-3xl font-serif text-4xl leading-[1.08] tracking-tight text-charcoal md:text-6xl">
+          <h1 className="mt-3 max-w-3xl font-serif text-3xl leading-[1.08] tracking-tight text-charcoal md:text-6xl">
             {title}
           </h1>
           {children ? (
-            <div className="mt-5 max-w-2xl text-lg leading-relaxed text-charcoal/75">
+            <div className="mt-5 max-w-2xl text-base leading-relaxed text-charcoal/75 md:text-lg">
               {children}
             </div>
           ) : null}

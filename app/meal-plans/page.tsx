@@ -62,10 +62,10 @@ export default function MealPlansPage() {
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta-ink">
             Meal plans
           </p>
-          <h1 className="mt-3 max-w-3xl font-serif text-4xl leading-[1.08] tracking-tight text-charcoal md:text-6xl">
+          <h1 className="mt-3 max-w-3xl font-serif text-3xl leading-[1.08] tracking-tight text-charcoal md:text-6xl">
             Monday to Friday, at the office gate.
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-charcoal/75">
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-charcoal/75 md:text-lg">
             Try one lunch for {formatInr(lunchTrial)}, or take a weekday month
             at {formatInr(lunchMonth)} a meal. We confirm the price, the
             handover spot and the start date before anything begins.
@@ -75,7 +75,7 @@ export default function MealPlansPage() {
           </div>
           <ul className="mt-10 grid gap-4 border-t border-charcoal/10 pt-6 sm:grid-cols-3">
             <li>
-              <p className="font-serif text-2xl text-charcoal">
+              <p className="font-serif text-xl text-charcoal sm:text-2xl">
                 {formatInr(lunchMonth)} lunch
               </p>
               <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-charcoal/50">
@@ -84,13 +84,13 @@ export default function MealPlansPage() {
               </p>
             </li>
             <li>
-              <p className="font-serif text-2xl text-charcoal">1 meal to a month</p>
+              <p className="font-serif text-xl text-charcoal sm:text-2xl">1 meal to a month</p>
               <p className="mt-1 text-sm text-charcoal/60">
                 Mon–Fri, or six days when you want Saturday
               </p>
             </li>
             <li>
-              <p className="font-serif text-2xl text-charcoal">Veg and non-veg</p>
+              <p className="font-serif text-xl text-charcoal sm:text-2xl">Veg and non-veg</p>
               <p className="mt-1 text-sm text-charcoal/60">Same price either way</p>
             </li>
           </ul>
@@ -113,7 +113,7 @@ export default function MealPlansPage() {
 
       <Section>
         <Container>
-          <h2 className="font-serif text-4xl text-charcoal">Or start from a plan.</h2>
+          <h2 className="font-serif text-3xl text-charcoal md:text-4xl">Or start from a plan.</h2>
           <p className="mt-3 max-w-2xl leading-relaxed text-charcoal/75">
             Lunch and dinner are priced per meal. The all-day plan is the per-day
             cost of breakfast, lunch and dinner together. A food-app lunch around
@@ -137,7 +137,7 @@ export default function MealPlansPage() {
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta">
             How it works
           </p>
-          <h2 className="mt-3 max-w-2xl font-serif text-4xl leading-tight md:text-5xl">
+          <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight md:text-5xl">
             From a choice to a tiffin at the gate.
           </h2>
           <ol className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -146,7 +146,7 @@ export default function MealPlansPage() {
                 <p className="font-mono text-sm tracking-[0.16em] text-terracotta-ink">
                   {step.number}
                 </p>
-                <h3 className="mt-8 font-serif text-2xl">{step.title}</h3>
+                <h3 className="mt-8 font-serif text-xl md:text-2xl">{step.title}</h3>
                 <p className="mt-3 leading-relaxed text-charcoal/75">{step.body}</p>
               </li>
             ))}
@@ -160,7 +160,7 @@ export default function MealPlansPage() {
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta-ink">
               Before you start
             </p>
-            <h2 className="mt-3 font-serif text-4xl leading-tight text-charcoal">
+            <h2 className="mt-3 font-serif text-3xl leading-tight text-charcoal md:text-4xl">
               Your address, schedule and start date are confirmed with you.
             </h2>
           </div>

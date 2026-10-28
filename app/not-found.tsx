@@ -12,10 +12,10 @@ export default function NotFound() {
       <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta-ink">
         404
       </p>
-      <h1 className="mt-3 font-serif text-5xl text-charcoal">
+      <h1 className="mt-3 font-serif text-4xl text-charcoal sm:text-5xl">
         That page is not on the menu.
       </h1>
-      <p className="mt-4 max-w-md text-lg text-charcoal/70">
+      <p className="mt-4 max-w-md text-base text-charcoal/70 md:text-lg">
         The link may be out of date. The menu, the plans and a way to start
         are all still here.
       </p>

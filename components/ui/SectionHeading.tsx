@@ -35,7 +35,7 @@ export function SectionHeading({
       ) : null}
       <Heading
         className={cn(
-          "font-serif text-4xl leading-[1.08] tracking-tight md:text-5xl",
+          "font-serif text-3xl leading-[1.08] tracking-tight md:text-5xl",
           eyebrow && "mt-3",
           tone === "inverse" ? "text-cream" : "text-charcoal",
         )}
@@ -45,7 +45,7 @@ export function SectionHeading({
       {children ? (
         <p
           className={cn(
-            "mt-4 text-lg leading-relaxed",
+            "mt-4 text-base leading-relaxed md:text-lg",
             tone === "inverse" ? "text-cream/80" : "text-charcoal/75",
           )}
         >

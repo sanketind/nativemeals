@@ -27,7 +27,7 @@ export default function AboutPage() {
           </div>
           <div className="space-y-12">
             <article>
-              <h2 className="font-serif text-3xl text-charcoal">
+              <h2 className="font-serif text-2xl text-charcoal md:text-3xl">
                 Why Native Meals exists.
               </h2>
               <p className="mt-4 leading-relaxed text-charcoal/75">
@@ -38,7 +38,7 @@ export default function AboutPage() {
               </p>
             </article>
             <article>
-              <h2 className="font-serif text-3xl text-charcoal">
+              <h2 className="font-serif text-2xl text-charcoal md:text-3xl">
                 What we cook.
               </h2>
               <p className="mt-4 leading-relaxed text-charcoal/75">
@@ -48,7 +48,7 @@ export default function AboutPage() {
               </p>
             </article>
             <article>
-              <h2 className="font-serif text-3xl text-charcoal">
+              <h2 className="font-serif text-2xl text-charcoal md:text-3xl">
                 Freshness, cleanliness, and consistency.
               </h2>
               <p className="mt-4 leading-relaxed text-charcoal/75">
@@ -62,7 +62,7 @@ export default function AboutPage() {
               </p>
             </article>
             <article>
-              <h2 className="font-serif text-3xl text-charcoal">
+              <h2 className="font-serif text-2xl text-charcoal md:text-3xl">
                 The name.
               </h2>
               <p className="mt-4 leading-relaxed text-charcoal/75">
@@ -72,7 +72,7 @@ export default function AboutPage() {
             </article>
             {siteConfig.founderNote ? (
               <article className="rounded-3xl bg-sage/70 p-6">
-                <h2 className="font-serif text-3xl text-charcoal">
+                <h2 className="font-serif text-2xl text-charcoal md:text-3xl">
                   {siteConfig.founderNote.heading}
                 </h2>
                 <p className="mt-4 leading-relaxed text-charcoal/75">
@@ -85,7 +85,7 @@ export default function AboutPage() {
       </Section>
       <Section tone="white">
         <Container className="flex flex-col items-start gap-4">
-          <h2 className="font-serif text-4xl text-charcoal">
+          <h2 className="font-serif text-3xl text-charcoal md:text-4xl">
             See if a plan fits your week.
           </h2>
           <div className="flex flex-wrap gap-3">
