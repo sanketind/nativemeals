@@ -202,39 +202,69 @@ export function assembleWeeklyMenu(
   };
 }
 
+function unavailableMenu(today: string): WeeklyMenuData {
+  return {
+    source: "error",
+    today,
+    days: [],
+    rangeLabel: "",
+    footnote: siteConfig.weeklyMenu.footnote,
+  };
+}
+
+/** Absolute http(s) URL, or null when the setting is missing or not a URL. */
+function weeklyMenuUrl() {
+  const raw = process.env.WEEKLY_MENU_CSV_URL?.trim();
+  if (!raw) return null;
+
+  const candidate = raw
+    .replace(/[\u200B-\u200D\uFEFF]/g, "")
+    .replace(/^['"]+|['"]+$/g, "")
+    .replace(/\s+/g, "")
+    .replace(/^WEEKLY_MENU_CSV_URL=/, "");
+
+  try {
+    const parsed = new URL(candidate);
+    if (parsed.protocol !== "https:" && parsed.protocol !== "http:") return null;
+    return parsed.href;
+  } catch {
+    return null;
+  }
+}
+
 async function loadWeeklyMenu(): Promise<WeeklyMenuData> {
   "use cache";
   cacheTag("weekly-menu");
   cacheLife({ stale: 300, revalidate: 900, expire: 60 * 60 * 24 });
 
   const today = indiaTodayIso();
-  const url = process.env.WEEKLY_MENU_CSV_URL?.trim();
+  const configured = Boolean(process.env.WEEKLY_MENU_CSV_URL?.trim());
+  const url = weeklyMenuUrl();
 
-  if (!url) {
+  if (!configured) {
     return assembleWeeklyMenu(buildSampleWeeklyRows(today), "sample", today);
   }
 
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Weekly menu request failed (${response.status}).`);
+  if (!url) {
+    console.error("WEEKLY_MENU_CSV_URL is set, but it is not a valid http(s) URL.");
+    return unavailableMenu(today);
   }
-  const rows = parseWeeklyCsv(await response.text());
-  return assembleWeeklyMenu(rows, "sheet", today);
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Weekly menu request failed (${response.status}).`);
+    }
+    const rows = parseWeeklyCsv(await response.text());
+    return assembleWeeklyMenu(rows, "sheet", today);
+  } catch (error) {
+    console.error("Weekly menu could not be loaded.", error);
+    return unavailableMenu(today);
+  }
 }
 
 export async function getWeeklyMenu(): Promise<WeeklyMenuData> {
-  try {
-    return await loadWeeklyMenu();
-  } catch (error) {
-    console.error("Weekly menu could not be loaded.", error);
-    return {
-      source: "error",
-      today: indiaTodayIso(),
-      days: [],
-      rangeLabel: "",
-      footnote: siteConfig.weeklyMenu.footnote,
-    };
-  }
+  return loadWeeklyMenu();
 }
 
 export function upcomingDays(menu: WeeklyMenuData, count = 3) {
