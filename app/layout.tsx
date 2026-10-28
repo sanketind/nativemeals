@@ -38,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${outfit.variable} h-full antialiased`}
+      className={`${outfit.variable} h-full max-w-full overflow-x-clip antialiased`}
       data-scroll-behavior="smooth"
     >
       <body className="flex min-h-full flex-col bg-cream font-sans font-normal text-muted">

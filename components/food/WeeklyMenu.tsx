@@ -19,7 +19,7 @@ function DayCard({
   return (
     <article
       className={cn(
-        "w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl border border-charcoal/10 bg-white md:w-auto",
+        "w-[85%] min-w-0 shrink-0 snap-start overflow-hidden rounded-3xl border border-charcoal/10 bg-white md:w-auto",
         day.isToday && "ring-2 ring-olive",
       )}
     >
@@ -42,8 +42,8 @@ function DayCard({
             <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
               {mealLabels[meal.meal]}
             </p>
-            <div className="mt-1.5 flex items-start justify-between gap-3">
-              <p className="font-semibold leading-snug text-olive">{meal.dishes}</p>
+            <div className="mt-1.5 flex min-w-0 items-start justify-between gap-3">
+              <p className="min-w-0 font-semibold leading-snug text-olive">{meal.dishes}</p>
               <DietBadge diet={meal.diet} />
             </div>
             {meal.note && meal.note.toLowerCase() !== "sample" ? (
@@ -106,10 +106,12 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
         <EmptyWeek source={menu.days.length === 0 ? menu.source : "empty"} />
       ) : (
         <>
-          <div className="mt-6 flex max-w-full snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:mt-8 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible xl:grid-cols-3">
-            {days.map((day) => (
-              <DayCard key={day.date} day={day} />
-            ))}
+          <div className="mt-6 min-w-0 overflow-x-clip md:mt-8 md:overflow-visible">
+            <div className="flex w-full snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pb-2 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible xl:grid-cols-3">
+              {days.map((day) => (
+                <DayCard key={day.date} day={day} />
+              ))}
+            </div>
           </div>
           <p className="mt-3 font-sans text-[0.78rem] font-semibold tracking-[0.04em] text-muted md:hidden">
             Swipe for the week

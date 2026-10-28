@@ -127,7 +127,7 @@ export function EnquiryForm({
 
   return (
     <form onSubmit={onSubmit} noValidate className="relative space-y-4">
-      <div className="absolute -left-[9999px]" aria-hidden="true">
+      <div className="absolute left-0 top-0 h-px w-px overflow-hidden" aria-hidden="true">
         <label htmlFor={`${formId}-company`}>Company</label>
         <input
           id={`${formId}-company`}
