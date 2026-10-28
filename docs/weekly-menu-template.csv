@@ -1,0 +1,6 @@
+date,meal,diet,dishes,note,image,show
+2026-11-02,Breakfast,Veg,"Idli, sambar, chutney",,breakfast,TRUE
+2026-11-02,Lunch,Veg,"Toor dal, jeera rice, bhindi, 2 phulka",,vegetarian,TRUE
+2026-11-02,Lunch,Non-veg,"Chicken curry, rice",,nonVegetarian,TRUE
+2026-11-02,Dinner,Veg,"Roti, mixed sabzi, dal",,,TRUE
+2026-11-03,Breakfast,Veg,"Poha with peanuts",,,FALSE

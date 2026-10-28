@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #fff8ef;
+  --color-olive: #414b35;
+  --color-olive-deep: #343c2b;
+  --color-terracotta: #c66a46;
+  /* Darker terracotta for small text. #C66A46 fails contrast on cream. */
+  --color-terracotta-ink: #8e4328;
+  --color-sage: #dce4d5;
+  --color-charcoal: #292a26;
+  --color-white: #ffffff;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, georgia, serif;
+  --font-mono: var(--font-plex), ui-monospace, monospace;
+}
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fraunces at its default weight reads thin next to the reference sites.
+   SOFT 0 keeps the serif crisp instead of fluffy. */
+.font-serif {
+  font-weight: 650;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+}
+
+h1.font-serif {
+  font-weight: 720;
+}
+
+.font-mono {
+  font-weight: 500;
+}
+
+::selection {
+  background: #dce4d5;
+  color: #292a26;
+}
+
+:focus-visible {
+  outline: 2px solid #c66a46;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

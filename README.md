@@ -1,0 +1,156 @@
+# Native Meals
+
+The website for Native Meals, an everyday Indian meal service in Pune: Wakad, Hinjewadi, Baner, Aundh, Tathwade and Punewale.
+
+Everyday food. A little more like home.
+
+## Run it
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+```bash
+pnpm lint
+pnpm exec tsc --noEmit
+pnpm build
+```
+
+Copy `.env.example` to `.env.local` and fill in only the values you actually have. Empty values are fine. The site stays honest about anything that is missing.
+
+## Where things live
+
+Do not scatter business details through the components. Change them here:
+
+| What | Where |
+| --- | --- |
+| Service area, phone, WhatsApp, email, social links | `data/site-config.ts` and `.env.local` |
+| Sample dish list | `data/menu.ts` |
+| Plans and per-meal prices | `data/plans.ts` (`pricing`, then each plan) |
+| FAQ answers | `data/faqs.ts` |
+| Photos and alt text | `public/images/` and `data/images.ts` |
+| This week's menu | A Google Sheet. See below. |
+| Kitchen commitments and a founder note | `data/site-config.ts`. Both stay hidden until you add real text. |
+
+Delivery times, pause rules and contact numbers stay blank until they are real. The pages say so, or hide the control. Do not type a guess into those fields.
+
+Meal prices are the exception. `data/plans.ts` holds introductory numbers so the plan builder can show a total. They are marked draft until you replace them. See [Plans and prices](#plans-and-prices).
+
+### Contact details
+
+Set these in `.env.local`:
+
+- `NEXT_PUBLIC_PHONE` — shown as a tap-to-call link.
+- `NEXT_PUBLIC_WHATSAPP_NUMBER` — country code plus number, for example `9198XXXXXXX`. Turns on WhatsApp buttons.
+- `NEXT_PUBLIC_EMAIL` — shown on the contact page, and offered if a form cannot be delivered.
+- `NEXT_PUBLIC_SITE_URL` — the real domain, used for the sitemap and link previews.
+
+### Enquiry forms
+
+Forms on Meal Plans, Contact and the service-area check post to `/api/enquiry`.
+
+1. If `ENQUIRY_WEBHOOK_URL` is set, the site sends a JSON body to that address. Point it at Zapier, Make, a Google Apps Script, or anything that accepts a POST.
+2. If it is not set, or the request fails, the visitor gets a link that opens WhatsApp with the same details filled in. Nothing is sent until they tap it.
+3. If WhatsApp is not configured either, the form says so. It does not pretend the message was received.
+
+The body looks like this:
+
+```json
+{
+  "source": "nativemeals-website",
+  "receivedAt": "2026-10-27T12:00:00.000Z",
+  "type": "plan",
+  "name": "Asha Rao",
+  "phone": "9876543210",
+  "plan": "Lunch Plan",
+  "diet": "veg",
+  "locality": "Wakad",
+  "message": ""
+}
+```
+
+`type` is `plan`, `contact` or `serviceability`. A hidden field traps simple bots and those submissions are ignored.
+
+The service-area box does not check a postcode. It only records the locality so someone can reply.
+
+## Weekly menu, for the kitchen team
+
+You do not need a developer to change the menu. You edit a Google Sheet. The website reads it.
+
+### Once
+
+1. Create a Google Sheet and paste in the rows from `docs/weekly-menu-template.csv`, or copy that file in with File, then Import.
+2. Share it with the people who plan the week.
+3. In the sheet: File, then Share, then Publish to web. Choose the menu tab and Comma-separated values (.csv). Publish.
+4. Copy the link. It looks like `https://docs.google.com/spreadsheets/d/.../pub?output=csv`.
+5. Give that link to whoever looks after the website, to put in `WEEKLY_MENU_CSV_URL`.
+6. Choose a password, put it in `REVALIDATE_SECRET`, and bookmark this address (use your real domain and password):
+
+   `https://your-domain.com/api/revalidate?secret=YOUR_SECRET`
+
+### Each week
+
+Add one row per meal option.
+
+| Column | What to type |
+| --- | --- |
+| date | `2026-11-02`, or `02/11/2026` |
+| meal | Breakfast, Lunch or Dinner |
+| diet | Veg or Non-veg |
+| dishes | The plate, in your own words. Example: `Dal tadka, jeera rice, bhindi, 2 phulka` |
+| note | Optional. A short extra, or leave it blank. |
+| image | Optional. Leave it blank. A photo key from the site can go here later. |
+| show | `TRUE` to publish the row. `FALSE` to keep next week drafted. |
+
+Two options for the same meal, for example veg and non-veg lunch, are two rows.
+
+The site shows the current Monday-to-Sunday week, in India time. Days you have not filled in simply do not appear. A mistyped row is skipped. It will not break the page.
+
+Changes show up within about 15 minutes. To see them immediately, open the publish bookmark from step 6 and wait for the line that says the refresh was requested. Then reload the site.
+
+If the sheet cannot be reached, the last menu that loaded stays up. If nothing is posted for this week, visitors see that the menu will be posted soon, with a way to ask.
+
+Until the sheet link is added, the site shows a sample week with a clear sample label. That sample disappears as soon as the sheet is connected.
+
+There is an optional line under the menu, `weeklyMenu.footnote` in `data/site-config.ts`. Leave it empty unless it is true. Do not write "Sunday is a day off" until that is the real arrangement.
+
+## Plans and prices
+
+All prices live in the `pricing` object in `data/plans.ts`. The plan cards and the builder read from it. Do not type prices anywhere else.
+
+- `status` — `"draft"` shows “Introductory pricing, subject to confirmation.” Set it to `"confirmed"` once the numbers are real, and the note disappears.
+- `perMeal` — rupees for breakfast, lunch and dinner at each duration: 3 days, weekly, 2 weeks, monthly. A longer plan should cost less per meal. Veg and non-veg use the same rate.
+- `durations[].days` — how many meals of each kind are in that plan. The current numbers assume six delivery days a week (3, 6, 12, 24). Change them if the kitchen delivers on a different pattern.
+
+The builder multiplies the selected meals by those days and shows an estimate. The enquiry API calculates the same total again, so the browser cannot submit a different price.
+
+Lunch is lunch only. Dinner is dinner only. Any other mix, including breakfast on its own, is the Everyday plan. Its card shows the per-day cost of all three meals.
+
+`frequency`, `includes` and `deliveryTerms` on each plan stay `null` until those terms are decided. The site says they are confirmed with you.
+
+## Photographs
+
+Stock photos in `public/images/` are stand-ins. Credits are in `public/images/CREDITS.md`. Before launch, replace the files (keep the same names, or change `src` in `data/images.ts`) and rewrite the alt text so it describes the real photo. Set `placeholder` to `false` when a photo is yours.
+
+The dish names in `data/menu.ts` match those stand-in photos. Replace that list with the real menu. Do not leave a dish name sitting on a photo of something else.
+
+## Launch checklist
+
+Confirm all of these before publishing:
+
+- Final menu and dish descriptions
+- Replace the draft prices in `data/plans.ts` and set `pricing.status` to `"confirmed"`
+- Serviceable locations, if the list grows beyond Wakad, Hinjewadi, Baner, Aundh, Tathwade and Punewale
+- Delivery and collection arrangements
+- Business phone and WhatsApp number
+- Contact email and social links
+- Actual food photography
+- Cancellation, pause and refund policies
+- Privacy policy and terms, reviewed
+- Any food-business registration and compliance details that must be shown
+- `NEXT_PUBLIC_SITE_URL` set to the real domain
+- Weekly menu sheet connected, and the sample label gone
+- Enquiry webhook connected, and a test enquiry received
