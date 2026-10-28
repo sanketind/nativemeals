@@ -17,7 +17,7 @@ export function HeroSection() {
     <section className="overflow-hidden bg-[radial-gradient(circle_at_92%_15%,rgba(249,216,43,0.18),transparent_26%)]">
       <Container className="grid items-center gap-8 py-10 md:grid-cols-2 md:gap-16 md:py-24">
         <div>
-          <p className="inline-flex max-w-full items-center gap-2 rounded-full border border-olive/15 bg-white/70 px-3 py-1.5 font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
+          <p className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-olive/15 bg-white/70 px-2.5 py-1 font-sans text-[0.65rem] font-bold uppercase tracking-[0.08em] text-terracotta-ink md:gap-2 md:px-3 md:py-1.5 md:text-[0.78rem] md:tracking-[0.12em]">
             <span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-terracotta" />
             {siteConfig.launchArea}
           </p>
