@@ -11,8 +11,15 @@ const variants: Record<Variant, string> = {
   ghost: "text-olive hover:bg-sage",
 };
 
+type Size = "md" | "sm";
+
+const sizes: Record<Size, string> = {
+  md: "px-5 py-3 text-sm",
+  sm: "px-4 py-2 text-sm",
+};
+
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold tracking-tight transition-colors disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-full font-bold tracking-tight transition-colors disabled:cursor-not-allowed disabled:opacity-60";
 
 function isExternal(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
@@ -21,15 +28,17 @@ function isExternal(href: string) {
 export function ButtonLink({
   href,
   variant = "primary",
+  size = "md",
   className,
   children,
 }: {
   href: string;
   variant?: Variant;
+  size?: Size;
   className?: string;
   children: React.ReactNode;
 }) {
-  const classes = cn(base, variants[variant], className);
+  const classes = cn(base, sizes[size], variants[variant], className);
   if (href.startsWith("/") || href.startsWith("#")) {
     return (
       <Link href={href} className={classes}>
@@ -52,15 +61,19 @@ export function ButtonLink({
 
 export function Button({
   variant = "primary",
+  size = "md",
   className,
   type = "button",
   children,
   ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant }) {
+}: React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: Variant;
+  size?: Size;
+}) {
   return (
     <button
       type={type}
-      className={cn(base, variants[variant], className)}
+      className={cn(base, sizes[size], variants[variant], className)}
       {...props}
     >
       {children}

@@ -58,7 +58,7 @@ export default function MealPlansPage() {
   return (
     <>
       <header className="border-b border-charcoal/5 bg-white">
-        <Container className="py-14 md:py-20">
+        <Container className="py-10 md:py-20">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta-ink">
             Meal plans
           </p>
@@ -132,7 +132,7 @@ export default function MealPlansPage() {
         </Container>
       </Section>
 
-      <section className="bg-olive py-16 text-cream md:py-24">
+      <section className="bg-olive py-12 text-cream md:py-24">
         <Container>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta">
             How it works
@@ -140,14 +140,14 @@ export default function MealPlansPage() {
           <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight md:text-5xl">
             From a choice to a tiffin at the gate.
           </h2>
-          <ol className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-8 grid gap-3 md:mt-12 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
             {steps.map((step) => (
-              <li key={step.number} className="rounded-3xl bg-white p-6 text-charcoal">
+              <li key={step.number} className="rounded-3xl bg-white p-5 text-charcoal md:p-6">
                 <p className="font-mono text-sm tracking-[0.16em] text-terracotta-ink">
                   {step.number}
                 </p>
-                <h3 className="mt-8 font-serif text-xl md:text-2xl">{step.title}</h3>
-                <p className="mt-3 leading-relaxed text-charcoal/75">{step.body}</p>
+                <h3 className="mt-3 font-serif text-lg md:mt-8 md:text-2xl">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-charcoal/75">{step.body}</p>
               </li>
             ))}
           </ol>

@@ -8,7 +8,7 @@ import { Wordmark } from "@/components/layout/Wordmark";
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-charcoal/5 bg-cream/90 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between gap-3">
+      <Container className="flex h-14 items-center justify-between gap-3 md:h-16">
         <Link href="/" aria-label="Native Meals, home" className="shrink-0">
           <Wordmark />
         </Link>
@@ -24,11 +24,13 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-1">
-          <StartCTA
-            className="px-3.5 py-2 sm:px-5"
-            whatsappLabel="Start on WhatsApp"
-            fallbackLabel="Start Monday"
-          />
+          <div className="hidden md:block">
+            <StartCTA
+              className="px-5 py-2"
+              whatsappLabel="Start on WhatsApp"
+              fallbackLabel="Start Monday"
+            />
+          </div>
           <MobileNav />
         </div>
       </Container>

@@ -10,14 +10,14 @@ export function KitchenRules() {
         <SectionHeading eyebrow="Our kitchen rules" title="What our kitchen leaves out.">
           These rules hold for every meal on the menu, veg and non-veg.
         </SectionHeading>
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-12 md:gap-4 lg:grid-cols-3">
           {siteConfig.kitchenRules.map((rule) => (
             <li
               key={rule.title}
-              className="rounded-3xl border border-charcoal/10 bg-white p-6"
+              className="rounded-3xl border border-charcoal/10 bg-white p-5 md:p-6"
             >
-              <h3 className="font-serif text-xl text-charcoal md:text-2xl">{rule.title}</h3>
-              <p className="mt-2 leading-relaxed text-charcoal/75">{rule.body}</p>
+              <h3 className="font-serif text-lg text-charcoal md:text-2xl">{rule.title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-charcoal/75">{rule.body}</p>
             </li>
           ))}
         </ul>

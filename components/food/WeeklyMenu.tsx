@@ -106,7 +106,7 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
         <EmptyWeek source={menu.days.length === 0 ? menu.source : "empty"} />
       ) : (
         <>
-          <div className="mt-8 flex max-w-full snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-2 md:overflow-visible xl:grid-cols-3">
+          <div className="mt-6 flex max-w-full snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:mt-8 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible xl:grid-cols-3">
             {days.map((day) => (
               <DayCard key={day.date} day={day} />
             ))}

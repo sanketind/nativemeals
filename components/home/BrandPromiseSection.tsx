@@ -16,16 +16,16 @@ export function BrandPromiseSection() {
     <Section tone="white">
       <Container>
         <SectionHeading eyebrow="How we serve" title="Healthy meals, ready for the working day." />
-        <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-8 grid gap-6 sm:grid-cols-2 md:mt-12 md:gap-8 lg:grid-cols-4">
           {siteConfig.promises.map((item) => {
             const Icon = icons[item.icon];
             return (
               <li key={item.title}>
-                <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-sage text-olive">
+                <span className="inline-flex size-10 items-center justify-center rounded-2xl bg-sage text-olive md:size-12">
                   <Icon aria-hidden="true" className="size-5" />
                 </span>
-                <h3 className="mt-5 font-serif text-xl text-charcoal md:text-2xl">{item.title}</h3>
-                <p className="mt-2 leading-relaxed text-charcoal/75">{item.body}</p>
+                <h3 className="mt-3 font-serif text-lg text-charcoal md:mt-5 md:text-2xl">{item.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-charcoal/75">{item.body}</p>
               </li>
             );
           })}

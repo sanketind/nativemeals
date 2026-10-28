@@ -14,7 +14,7 @@ export function PlansPreview() {
           Try one lunch for {formatInr(pricing.perMeal.lunch.taste)}. Longer
           plans cost less per meal.
         </SectionHeading>
-        <ul className="mt-10 grid gap-5 md:grid-cols-3">
+        <ul className="mt-8 grid gap-4 md:mt-10 md:grid-cols-3 md:gap-5">
           {plans.map((plan) => (
             <li key={plan.id}>
               <MealPlanCard plan={plan} compact />

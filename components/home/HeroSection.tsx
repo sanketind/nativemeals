@@ -27,7 +27,7 @@ const facts = [
 export function HeroSection() {
   return (
     <section className="overflow-hidden">
-      <Container className="grid items-center gap-12 py-16 md:grid-cols-2 md:gap-16 md:py-24">
+      <Container className="grid items-center gap-8 py-10 md:grid-cols-2 md:gap-16 md:py-24">
         <div>
           <p className="inline-flex items-center gap-2 rounded-full border border-charcoal/10 bg-white px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-olive">
             <span aria-hidden="true" className="size-1.5 rounded-full bg-terracotta" />

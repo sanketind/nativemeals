@@ -21,7 +21,7 @@ export function MealPlanCard({
           />
         </div>
       )}
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col p-5 md:p-6">
         <h3 className="font-serif text-xl text-charcoal md:text-2xl">{plan.name}</h3>
         <p className="mt-2 text-sm leading-relaxed text-charcoal/75">
           {plan.summary}

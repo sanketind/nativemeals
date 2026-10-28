@@ -21,7 +21,7 @@ export function FinalCTA({
 }) {
   const olive = tone === "olive";
   return (
-    <section className={cn("py-16 md:py-24", olive ? "bg-olive text-cream" : "bg-white")}>
+    <section className={cn("py-12 md:py-24", olive ? "bg-olive text-cream" : "bg-white")}>
       <Container className="max-w-3xl text-center">
         {olive ? (
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-terracotta">

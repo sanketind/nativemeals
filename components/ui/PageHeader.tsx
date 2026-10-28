@@ -17,7 +17,7 @@ export function PageHeader({
     <header className="border-b border-charcoal/5 bg-white">
       <Container
         className={cn(
-          "py-14 md:py-20",
+          "py-10 md:py-20",
           imageId && "grid items-center gap-10 md:grid-cols-2",
         )}
       >
