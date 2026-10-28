@@ -1,8 +1,15 @@
 # Native Meals
 
-The website for Native Meals, an everyday Indian meal service in Pune: Wakad, Hinjewadi, Baner, Aundh, Tathwade and Punewale.
+The website for Native Meals: healthy breakfast, lunch and dinner for Hinjewadi, Wakad and nearby Pune. Meals are cooked the same morning and handed over at the office gate, the security desk, or the door. Monday to Friday is the main pattern.
 
-Everyday food. A little more like home.
+Healthy meals in Hinjewadi.
+
+## Read the project
+
+- [Business](docs/business.md) — who it is for, where it serves, and what must not be invented.
+- [Design](docs/design.md) — colour, type, voice, and photos.
+- [Product](docs/product.md) — pages, enquiry, plans, and this week's menu.
+- [Development](docs/development.md) — where the code lives, and how the site stays honest.
 
 ## Run it
 
@@ -33,7 +40,7 @@ Do not scatter business details through the components. Change them here:
 | FAQ answers | `data/faqs.ts` |
 | Photos and alt text | `public/images/` and `data/images.ts` |
 | This week's menu | A Google Sheet. See below. |
-| Kitchen commitments and a founder note | `data/site-config.ts`. Both stay hidden until you add real text. |
+| Kitchen rules and a founder note | `data/site-config.ts`. The kitchen rules are published. The founder note stays hidden until there is a real story. |
 
 Delivery times, pause rules and contact numbers stay blank until they are real. The pages say so, or hide the control. Do not type a guess into those fields.
 
