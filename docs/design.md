@@ -34,7 +34,7 @@ Say what the service does in plain words.
 - Breakfast, lunch and dinner, on a Monday to Friday plan.
 - Veg or non-veg. Lunch and dinner cost more for non-veg. Breakfast is the same either way.
 
-The pill and the photo badge do not repeat "meal plans" or "subscription". The pill is Monday to Friday · Pune. The badge says the meals are cooked the same morning.
+The pill and the photo badge do not repeat "meal plans" or "subscription". The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The badge says the meals are cooked the same morning.
 
 Do not name a cuisine to explain the product. People already understand the food. Do not add a nutritionist, calorie counts, protein grams, weight-loss results, testimonials, or star ratings. Kitchen rules are allowed only when they are true for every meal, and they already live in `data/site-config.ts`.
 
@@ -46,4 +46,4 @@ Files in `public/images/` are credited stand-ins. Credits are in `public/images/
 
 ## Layout
 
-The first screen is a short pill, a heavy headline, one sentence, a price line, two actions, and a quiet row of facts beside one rounded photo. The pill is Monday to Friday · Pune. Pune comes from `city` in `data/site-config.ts`. The headline is Daily Healthy Meal Subscription. The sentence is breakfast, lunch and dinner, cooked the same morning and handed over at the office gate or the door. The price line is one lunch, then the Monday to Friday month rate, from `data/plans.ts`. The photo badge says Cooked the same morning. Later sections are full-width bands: white, ivory, or deep green. Cards are rounded. The weekly menu is a set of day cards on the homepage, not a separate food catalogue.
+The first screen is a short pill, a heavy headline, one sentence, two actions, and a quiet row of kitchen differentiators beside one rounded photo. The row says freshly cooked, no maida, no preservatives, and cooked in steel. Delivery windows stay in the delivery answer, not in this row. The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The headline is Daily Healthy Meal Subscription. The sentence is breakfast, lunch and dinner, cooked the same morning and handed over at the office gate or the door. Prices stay on the plan cards, not in the hero. The photo badge says Cooked the same morning. Later sections are full-width bands: white, ivory, or deep green. Cards are rounded. The weekly menu is a set of day cards on the homepage, not a separate food catalogue.

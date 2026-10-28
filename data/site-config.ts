@@ -5,6 +5,8 @@ function readPublic(name: string) {
 
 export type PromiseIcon = "clean" | "fresh" | "easy" | "diet";
 
+export type HeroFactIcon = "cooked" | "maida" | "fresh" | "steel";
+
 export type SocialLink = {
   label: string;
   href: string;
@@ -33,19 +35,26 @@ const techParkLine = joinAreas(techParks);
  */
 const fssai = readPublic("NEXT_PUBLIC_FSSAI");
 const kitchenLocality = readPublic("NEXT_PUBLIC_KITCHEN_LOCALITY");
+const breakfastBy = readPublic("NEXT_PUBLIC_BREAKFAST_BY");
 const lunchBy = readPublic("NEXT_PUBLIC_LUNCH_BY");
 const dinnerBy = readPublic("NEXT_PUBLIC_DINNER_BY");
 const skipCutoff = readPublic("NEXT_PUBLIC_SKIP_CUTOFF");
 
 const windowBits = [
+  breakfastBy ? `breakfast by ${breakfastBy}` : null,
   lunchBy ? `lunch by ${lunchBy}` : null,
   dinnerBy ? `dinner by ${dinnerBy}` : null,
 ].filter((bit): bit is string => Boolean(bit));
 
+function joinWindows(bits: string[]) {
+  if (bits.length <= 1) return bits[0] ?? "";
+  return `${bits.slice(0, -1).join(", ")} and ${bits.at(-1)}`;
+}
+
 const handover =
   windowBits.length > 0
-    ? `Handed over at your office gate, security desk, or your door, with ${windowBits.join(" and ")}.`
-    : "Handed over at your office gate, security desk, or your door. We confirm the lunch and dinner window before you start.";
+    ? `Handed over at your office gate, security desk, or your door, with ${joinWindows(windowBits)}.`
+    : "Handed over at your office gate, security desk, or your door. We confirm the breakfast, lunch and dinner window before you start.";
 
 /**
  * Carry-forward and refunds stay unpublished until those policies are real.
@@ -99,6 +108,7 @@ export const siteConfig = {
   /** Kitchen neighbourhood. Hidden until NEXT_PUBLIC_KITCHEN_LOCALITY is set. */
   kitchenLocality,
   delivery: {
+    breakfastBy,
     lunchBy,
     dinnerBy,
     skipCutoff,
@@ -131,6 +141,13 @@ export const siteConfig = {
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms" },
   ],
+  /** Short kitchen differentiators for the hero. Full wording lives in kitchenRules. */
+  heroFacts: [
+    { icon: "cooked" as const, label: "Freshly cooked" },
+    { icon: "maida" as const, label: "No maida" },
+    { icon: "fresh" as const, label: "No preservatives" },
+    { icon: "steel" as const, label: "Cooked in steel" },
+  ] satisfies { icon: HeroFactIcon; label: string }[],
   promises: [
     {
       icon: "fresh" as const,

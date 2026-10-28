@@ -50,7 +50,7 @@ Leave the env var empty. The site hides the fact rather than printing a placehol
 - Phone, WhatsApp and email.
 - FSSAI licence number.
 - The kitchen's neighbourhood.
-- The clock time for lunch, the clock time for dinner, and the cutoff for skipping a meal.
+- The cutoff for skipping a meal. Breakfast, lunch and dinner windows are printed only when their env vars are set.
 - Social profiles.
 - A founder story. `founderNote` stays null until there is a real one.
 

@@ -17,7 +17,7 @@ There is no separate food page. This week's menu is the block on the homepage, a
 
 The homepage order is: hero, promises, plan cards, this week's menu, how it works, kitchen rules, service area, then a closing call to action.
 
-The hero headline is Daily Healthy Meal Subscription. The pill is Monday to Friday · Pune. Under the headline: breakfast, lunch and dinner, cooked the same morning and handed over at the office gate or the door. The photo badge says Cooked the same morning. The price line is one lunch, then the Monday to Friday month rate. The words name the offer. Starting one is still an enquiry. The page does not take payment.
+The hero headline is Daily Healthy Meal Subscription. The pill is Hinjewadi, Wakad and Baner, Pune. Under the headline: breakfast, lunch and dinner, cooked the same morning and handed over at the office gate or the door. The photo badge says Cooked the same morning. Prices are on the plan cards, not in the hero. The words name the offer. Starting one is still an enquiry. The page does not take payment.
 
 ## Enquiry
 
@@ -52,4 +52,4 @@ If the sheet cannot be loaded, the page says so and offers a way to ask. It does
 
 ## What is still open
 
-Pause, skip, and cancellation rules are explained when someone enquires, unless a real cutoff has been set in `NEXT_PUBLIC_SKIP_CUTOFF`. Fixed clock times for lunch and dinner appear only when those env vars are set. The legal pages are drafts and must be reviewed before launch. The full launch list is in the [README](../README.md#launch-checklist).
+Pause, skip, and cancellation rules are explained when someone enquires, unless a real cutoff has been set in `NEXT_PUBLIC_SKIP_CUTOFF`. Fixed clock times for breakfast, lunch and dinner appear only when those env vars are set. The legal pages are drafts and must be reviewed before launch. The full launch list is in the [README](../README.md#launch-checklist).
