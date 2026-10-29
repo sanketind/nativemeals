@@ -3,6 +3,7 @@ import { formatInr } from "@/lib/format";
 import { DietBadge } from "@/components/ui/DietBadge";
 import { FoodImage } from "@/components/ui/FoodImage";
 import { ButtonLink } from "@/components/ui/Button";
+import { cn } from "@/lib/cn";
 
 export function MealPlanCard({
   plan,
@@ -13,14 +14,12 @@ export function MealPlanCard({
 }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-charcoal/10 bg-white">
-      {compact ? null : (
-        <div className="relative aspect-[16/10] bg-sage">
-          <FoodImage
-            imageId={plan.imageId}
-            sizes="(min-width: 768px) 30vw, 100vw"
-          />
-        </div>
-      )}
+      <div className={cn("relative bg-sage", compact ? "aspect-[2/1]" : "aspect-[16/10]")}>
+        <FoodImage
+          imageId={plan.imageId}
+          sizes="(min-width: 768px) 30vw, 100vw"
+        />
+      </div>
       <div className="flex flex-1 flex-col p-5 md:p-6">
         <h3 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">{plan.name}</h3>
         <p className="mt-2 text-[0.94rem] font-normal leading-[1.65] text-muted">

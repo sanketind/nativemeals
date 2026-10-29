@@ -3,8 +3,6 @@ function readPublic(name: string) {
   return value ? value : null;
 }
 
-export type PromiseIcon = "clean" | "fresh" | "easy" | "diet";
-
 export type HeroFactIcon = "cooked" | "maida" | "fresh" | "steel";
 
 export type SocialLink = {
@@ -129,7 +127,6 @@ export const siteConfig = {
     { href: "/#this-week", label: "This week's menu" },
     { href: "/meal-plans", label: "Meal Plans" },
     { href: "/about", label: "Our Story" },
-    { href: "/faqs", label: "FAQs" },
   ],
   footerNav: [
     { href: "/#this-week", label: "This week's menu" },
@@ -140,59 +137,37 @@ export const siteConfig = {
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms" },
   ],
-  /** Short kitchen differentiators for the hero. Full wording lives in kitchenRules. */
+  /** Short kitchen differentiators for the hero. */
   heroFacts: [
     { icon: "cooked" as const, label: "Freshly cooked" },
     { icon: "maida" as const, label: "No maida" },
     { icon: "fresh" as const, label: "No preservatives" },
     { icon: "steel" as const, label: "Cooked in steel" },
   ] satisfies { icon: HeroFactIcon; label: string }[],
-  promises: [
-    {
-      icon: "fresh" as const,
-      title: "Cooked the same morning",
-      body: "Prepared the morning it goes out. Nothing from yesterday.",
-    },
-    {
-      icon: "clean" as const,
-      title: "Planned through the week",
-      body: "Each day's meal comes from the weekly menu, balanced across the week.",
-    },
-    {
-      icon: "easy" as const,
-      title: "Monday to Friday, at the gate",
-      body: "Handed over at your office gate on work days, or at your door.",
-    },
-    {
-      icon: "diet" as const,
-      title: "Veg and non-veg",
-      body: "Choose veg or non-veg. Lunch and dinner cost more for non-veg.",
-    },
-  ] satisfies { icon: PromiseIcon; title: string; body: string }[],
   /** Confirmed by the kitchen. Add a rule only once it holds for every meal. */
   kitchenRules: [
     {
-      title: "No potatoes. In anything.",
+      title: "No potatoes",
       body: "Not as filler and not on the side. No dish on the menu uses them.",
     },
     {
-      title: "No maida.",
-      body: "Rotis are made from millet or multigrain flour, never refined flour.",
+      title: "Millet rotis, no maida",
+      body: "Rotis are millet or multigrain flour, never refined flour.",
     },
     {
-      title: "No plain dal.",
-      body: "Every dal is made from mixed pulses or multigrains.",
+      title: "Mixed-pulse dal",
+      body: "Every dal is mixed pulses or multigrains. No plain dal.",
     },
     {
-      title: "No preservatives, no mayo.",
-      body: "Sauces and chutneys are made in our own kitchen.",
+      title: "No preservatives",
+      body: "No mayo. Sauces and chutneys are made in our own kitchen.",
     },
     {
-      title: "No non-stick, no aluminium.",
-      body: "Every pot and pan in the kitchen is steel.",
+      title: "Steel pots",
+      body: "No non-stick and no aluminium. Every pot and pan is steel.",
     },
     {
-      title: "Eco-friendly packaging.",
+      title: "Eco-friendly boxes",
       body: "Meals travel to your gate or your door in eco-friendly containers.",
     },
   ] satisfies { title: string; body: string }[],

@@ -18,7 +18,7 @@ export default function FaqsPage() {
   return (
     <>
       <JsonLd data={faqPage(faqs)} />
-      <PageHeader eyebrow="FAQs" title="The useful questions.">
+      <PageHeader eyebrow="FAQs" title="The useful questions." imageId="vegetarian">
         Areas, the meals, Monday to Friday, and how to skip a day.
       </PageHeader>
       <Section>
@@ -26,7 +26,7 @@ export default function FaqsPage() {
           <FAQAccordion items={faqs} />
         </Container>
       </Section>
-      <FinalCTA />
+      <FinalCTA tone="olive" />
     </>
   );
 }

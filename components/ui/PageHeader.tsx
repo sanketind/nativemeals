@@ -14,11 +14,11 @@ export function PageHeader({
   children?: React.ReactNode;
 }) {
   return (
-    <header className="border-b border-charcoal/5 bg-white">
+    <header className="overflow-hidden bg-[radial-gradient(circle_at_92%_15%,rgba(249,216,43,0.18),transparent_26%)]">
       <Container
         className={cn(
           "py-10 md:py-20",
-          imageId && "grid items-center gap-10 md:grid-cols-2",
+          imageId && "grid items-center gap-8 md:grid-cols-2 md:gap-16 md:py-24",
         )}
       >
         <div>
@@ -35,7 +35,7 @@ export function PageHeader({
           ) : null}
         </div>
         {imageId ? (
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.6rem] bg-sage">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-sage shadow-sm">
             <FoodImage
               imageId={imageId}
               priority

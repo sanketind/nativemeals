@@ -15,9 +15,9 @@ The website explains the service and takes an enquiry. It does not take payment,
 
 There is no separate food page. This week's menu is the block on the homepage, at `#this-week`. The header and footer link there. An old `/our-food` address redirects to that block.
 
-The homepage order is: hero, promises, plan cards, this week's menu, how it works, kitchen rules, service area, then a closing call to action.
+The homepage order is: hero, breakfast lunch and dinner photos, plan cards, this week's menu, how it works, kitchen rules, service area, then a closing call to action.
 
-The hero headline is Daily Healthy Meal Subscription. The pill is Hinjewadi, Wakad and Baner, Pune. Under the headline: breakfast, lunch and dinner, cooked the same morning and handed over at the office gate or the door. The photo badge says Cooked the same morning. Prices are on the plan cards, not in the hero. The words name the offer. Starting one is still an enquiry. The page does not take payment.
+The hero headline is Daily Healthy Meal Subscription. The pill is Hinjewadi, Wakad and Baner, Pune. Under the headline: breakfast, lunch and dinner, cooked the same morning and handed over at the office gate or the door. The photo shows a second plate in the corner. One badge says Cooked the same morning. Another shows lunch from the confirmed veg rate. Each plan card shows its own price. The words name the offer. Starting one is still an enquiry. The page does not take payment.
 
 ## Enquiry
 

@@ -22,7 +22,7 @@ Change a business fact in `data/`, not in a component.
 
 | Fact | File |
 | --- | --- |
-| Name, areas, tech parks, promises, kitchen rules, handover copy | `data/site-config.ts` |
+| Name, areas, tech parks, kitchen rules, handover copy | `data/site-config.ts` |
 | Phone, WhatsApp, email, site URL, FSSAI, kitchen locality, breakfast, lunch and dinner times, skip cutoff | `.env.local` |
 | Plans and per-meal prices | `data/plans.ts` |
 | FAQ answers | `data/faqs.ts` |

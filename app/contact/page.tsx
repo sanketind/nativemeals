@@ -4,7 +4,8 @@ import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
-import { displayPhone, phoneHref, whatsappHref } from "@/lib/contact";
+import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
+import { displayPhone, phoneHref } from "@/lib/contact";
 
 export const metadata = pageMeta(
   "Start a meal plan",
@@ -14,58 +15,63 @@ export const metadata = pageMeta(
 export default function ContactPage() {
   const phone = siteConfig.contact.phone;
   const email = siteConfig.contact.email;
-  const whatsapp = whatsappHref();
-  const call = phoneHref(phone);
+  const call = phone ? phoneHref(phone) : null;
 
   return (
     <>
-      <PageHeader eyebrow="Contact" title="Tell us what your days look like.">
+      <PageHeader
+        eyebrow="Contact"
+        title="Tell us what your days look like."
+        imageId="dayDinner"
+      >
         A name, a phone number and a short note is enough. We reply with what
         is actually available.
       </PageHeader>
-      <Section>
-        <Container className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
+      <Section tone="sage">
+        <Container className="grid gap-10 md:grid-cols-2 md:items-start">
           <div>
-            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">Reach us directly.</h2>
-            <p className="mt-3 text-[0.94rem] leading-[1.65] text-muted">
-              Serving {siteConfig.serviceAreaShort}, {siteConfig.city}. Office
-              tiffins go to the gate or the security desk.
-            </p>
-            <ul className="mt-6 space-y-3 text-base md:text-lg">
-              {call ? (
-                <li>
-                  <a href={call} className="text-olive hover:underline">
-                    {displayPhone(phone)}
-                  </a>
+            <h2 className="font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">
+              Reach us directly.
+            </h2>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {siteConfig.serviceAreas.map((area) => (
+                <li
+                  key={area}
+                  className="rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-olive"
+                >
+                  {area}
                 </li>
-              ) : null}
-              {email ? (
-                <li>
-                  <a href={`mailto:${email}`} className="text-olive hover:underline">
-                    {email}
-                  </a>
-                </li>
-              ) : null}
-              {whatsapp ? (
-                <li>
-                  <a
-                    href={whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-olive hover:underline"
-                  >
-                    WhatsApp
-                  </a>
-                </li>
-              ) : null}
+              ))}
             </ul>
-            {!call && !email && !whatsapp ? (
-              <p className="mt-4 text-[0.94rem] leading-[1.65] text-muted">
+            <p className="mt-5 text-[1.06rem] font-normal leading-[1.7] text-muted">
+              Office tiffins go to the gate or the security desk.
+            </p>
+            {call && phone ? (
+              <p className="mt-6 font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-bold leading-none tracking-[-0.03em] text-olive">
+                <a href={call} className="hover:text-olive-deep">
+                  {displayPhone(phone)}
+                </a>
+              </p>
+            ) : null}
+            {email ? (
+              <p className="mt-3">
+                <a href={`mailto:${email}`} className="text-olive hover:underline">
+                  {email}
+                </a>
+              </p>
+            ) : null}
+            {!call && !email ? (
+              <p className="mt-6 text-[0.94rem] leading-[1.65] text-muted">
                 Use the form and we will reply on your phone.
               </p>
             ) : null}
+            <div className="mt-6">
+              <WhatsAppCTA variant="secondary" message={siteConfig.messages.general}>
+                Chat on WhatsApp
+              </WhatsAppCTA>
+            </div>
           </div>
-          <div className="rounded-3xl bg-white p-6 md:p-8">
+          <div className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
             <EnquiryForm type="contact" submitLabel="Send message" />
           </div>
         </Container>

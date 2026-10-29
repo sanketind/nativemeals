@@ -1,5 +1,7 @@
 import { CookingPot, Flame, Leaf, WheatOff } from "lucide-react";
+import { pricing } from "@/data/plans";
 import { siteConfig, type HeroFactIcon } from "@/data/site-config";
+import { formatInr } from "@/lib/format";
 import { StartCTA } from "@/components/ui/StartCTA";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -54,7 +56,21 @@ export function HeroSection() {
               sizes="(min-width: 768px) 46vw, 100vw"
             />
           </div>
-          <p className="absolute bottom-4 right-4 flex items-center gap-2 rounded-2xl bg-white/95 px-3.5 py-2.5 text-sm font-semibold text-olive shadow-lg">
+          <div className="absolute bottom-4 left-4 aspect-square w-28 overflow-hidden rounded-2xl border-4 border-cream shadow-lg sm:w-36 md:bottom-6 md:left-6 md:w-44">
+            <FoodImage
+              imageId="heroInset"
+              sizes="(min-width: 768px) 11rem, 7rem"
+            />
+          </div>
+          <p className="absolute left-4 top-4 rounded-2xl bg-cream px-3.5 py-2.5 shadow-lg">
+            <span className="font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-olive">
+              Lunch from
+            </span>
+            <span className="mt-1 block rounded-full bg-terracotta px-2.5 py-1 text-center font-sans text-lg font-extrabold leading-none text-olive">
+              {formatInr(pricing.perMeal.lunch.taste)}
+            </span>
+          </p>
+          <p className="absolute right-4 top-4 rounded-2xl bg-white/95 px-3.5 py-2.5 text-sm font-semibold text-olive shadow-lg">
             Cooked the same morning
           </p>
         </div>

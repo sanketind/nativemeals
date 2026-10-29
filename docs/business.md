@@ -34,14 +34,14 @@ Durations are one meal, 3 days, Monday to Friday (5 days), 6 days, 2 weeks (12 d
 
 ## How a meal is cooked
 
-These rules are published because the kitchen has confirmed they hold for every meal. They live in `kitchenRules` in `data/site-config.ts`. Add a rule only when it is true for the whole menu.
+These rules are published because the kitchen has confirmed they hold for every meal. They live in `kitchenRules` in `data/site-config.ts`. The homepage shows each rule as a title and one sentence. Add a rule only when it is true for the whole menu.
 
-- No potatoes, not as filler and not on the side.
-- No maida. Rotis are millet or multigrain flour.
-- No plain dal. Every dal is mixed pulses or multigrains.
-- No preservatives and no mayo. Sauces and chutneys are made in the kitchen.
-- No non-stick and no aluminium. Pots and pans are steel.
-- Meals travel in eco-friendly containers.
+- No potatoes. Not as filler and not on the side. No dish on the menu uses them.
+- Millet rotis, no maida. Rotis are millet or multigrain flour, never refined flour.
+- Mixed-pulse dal. Every dal is mixed pulses or multigrains. No plain dal.
+- No preservatives. No mayo. Sauces and chutneys are made in our own kitchen.
+- Steel pots. No non-stick and no aluminium. Every pot and pan is steel.
+- Eco-friendly boxes. Meals travel to the gate or the door in eco-friendly containers.
 
 ## What stays unsaid until it is real
 

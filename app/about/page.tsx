@@ -1,104 +1,88 @@
 import { siteConfig } from "@/data/site-config";
 import { pageMeta } from "@/lib/page-meta";
-import { ButtonLink } from "@/components/ui/Button";
+import { FinalCTA } from "@/components/home/FinalCTA";
 import { Container } from "@/components/ui/Container";
-import { FoodImage } from "@/components/ui/FoodImage";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
-import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 
 export const metadata = pageMeta(
   "Healthy meals in Pune",
   `Why Native Meals exists for people working in ${siteConfig.serviceAreaShort}, and the kitchen rules that hold for every meal.`,
 );
 
+const points = [
+  {
+    title: "Why it exists",
+    body: `Planning, shopping and cooking every day is a lot on top of a job. Native Meals handles breakfast, lunch and dinner in ${siteConfig.serviceAreaShort}.`,
+  },
+  {
+    title: "What we cook",
+    body: "Vegetarian and non-vegetarian, planned across the week. Lunch and dinner cost more for non-veg. Breakfast is the same either way.",
+  },
+  {
+    title: "Cooked that morning",
+    body: "Handed over at your office gate, the security desk, or your door.",
+  },
+  {
+    title: "The name",
+    body: "Native is food you can come back to. Meals is breakfast, lunch and dinner, on a plan.",
+  },
+];
+
 export default function AboutPage() {
+  const kitchenLine = [
+    siteConfig.kitchenLocality ? `The kitchen is in ${siteConfig.kitchenLocality}.` : null,
+    siteConfig.fssai ? `FSSAI ${siteConfig.fssai}.` : null,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <>
-      <PageHeader eyebrow="Our story" title="Healthy meals, for a working week.">
-        Native Meals cooks healthy meals for people in {siteConfig.serviceAreaShort} who
-        want to eat well without planning, shopping and cooking every day.
+      <PageHeader
+        eyebrow="Our story"
+        title="Healthy meals, for a working week."
+        imageId="about"
+      >
+        Native Meals cooks for people in {siteConfig.serviceAreaShort} who want
+        to eat well without planning every meal.
       </PageHeader>
-      <Section>
-        <Container className="grid items-start gap-12 md:grid-cols-2">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-sage md:sticky md:top-24">
-            <FoodImage imageId="about" sizes="(min-width: 768px) 40vw, 100vw" />
-          </div>
-          <div className="space-y-12">
-            <article>
-              <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
-                Why Native Meals exists.
-              </h2>
-              <p className="mt-4 text-[0.94rem] font-normal leading-[1.65] text-muted">
-                Planning, shopping, cooking and cleaning, every single day, is
-                a lot to carry on top of a job. Native Meals exists so that
-                work is handled: healthy breakfast, lunch and dinner, across{" "}
-                {siteConfig.serviceAreaShort} in {siteConfig.city}.
-              </p>
-            </article>
-            <article>
-              <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
-                What we cook.
-              </h2>
-              <p className="mt-4 text-[0.94rem] font-normal leading-[1.65] text-muted">
-                Healthy meals, planned across the week so the days balance out.
-                Vegetarian and non-vegetarian are both on the menu. Lunch and
-                dinner cost more for non-veg. Breakfast is the same either way.
-                What is actually cooking is on this week&apos;s menu.
-              </p>
-            </article>
-            <article>
-              <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
-                Freshness, cleanliness, and consistency.
-              </h2>
-              <p className="mt-4 text-[0.94rem] font-normal leading-[1.65] text-muted">
-                Meals are cooked the same morning and handed over at your office
-                gate, the security desk, or your door, with attention to
-                cleanliness and to tasting the same from one day to the next.
-                {siteConfig.kitchenLocality
-                  ? ` The kitchen is in ${siteConfig.kitchenLocality}.`
-                  : " Kitchen details are shared when you start."}
-                {siteConfig.fssai ? ` FSSAI ${siteConfig.fssai}.` : ""}
-              </p>
-            </article>
-            <article>
-              <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
-                The name.
-              </h2>
-              <p className="mt-4 text-[0.94rem] font-normal leading-[1.65] text-muted">
-                Native is food you can come back to. Meals is breakfast, lunch
-                and dinner, on a plan rather than a one-off order.
-              </p>
-            </article>
-            {siteConfig.founderNote ? (
-              <article className="rounded-3xl bg-sage/70 p-6">
-                <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
-                  {siteConfig.founderNote.heading}
-                </h2>
-                <p className="mt-4 text-[0.94rem] font-normal leading-[1.65] text-muted">
-                  {siteConfig.founderNote.body}
-                </p>
-              </article>
-            ) : null}
-          </div>
-        </Container>
-      </Section>
       <Section tone="white">
-        <Container className="flex flex-col items-start gap-4">
-          <h2 className="font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">
-            See if a plan fits your week.
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            <ButtonLink href="/meal-plans#enquire">Start your plan</ButtonLink>
-            <WhatsAppCTA variant="secondary">Chat With Us</WhatsAppCTA>
-            {!siteConfig.contact.whatsapp ? (
-              <ButtonLink href="/contact" variant="secondary">
-                Contact us
-              </ButtonLink>
-            ) : null}
-          </div>
+        <Container>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {points.map((point) => (
+              <li
+                key={point.title}
+                className="rounded-3xl border border-charcoal/10 bg-cream p-5 md:p-6"
+              >
+                <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+                  {point.title}
+                </h2>
+                <p className="mt-2 text-[0.94rem] font-normal leading-[1.65] text-muted">
+                  {point.body}
+                  {point.title === "Cooked that morning" && kitchenLine ? ` ${kitchenLine}` : ""}
+                </p>
+              </li>
+            ))}
+          </ul>
+          {siteConfig.founderNote ? (
+            <article className="mt-4 rounded-3xl bg-sage/70 p-6">
+              <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+                {siteConfig.founderNote.heading}
+              </h2>
+              <p className="mt-2 text-[0.94rem] font-normal leading-[1.65] text-muted">
+                {siteConfig.founderNote.body}
+              </p>
+            </article>
+          ) : null}
         </Container>
       </Section>
+      <FinalCTA
+        tone="olive"
+        title="See if a plan fits your week."
+        body="Try one lunch first. Tell us your office, your home, and the day you want to start."
+        primaryHref="/meal-plans#enquire"
+      />
     </>
   );
 }

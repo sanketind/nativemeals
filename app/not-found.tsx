@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
+    <section className="bg-[radial-gradient(circle_at_92%_15%,rgba(249,216,43,0.18),transparent_26%)]">
     <Container className="py-24">
       <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
         404
@@ -26,5 +27,6 @@ export default function NotFound() {
         </ButtonLink>
       </div>
     </Container>
+    </section>
   );
 }

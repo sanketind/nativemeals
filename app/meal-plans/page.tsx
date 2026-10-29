@@ -13,6 +13,7 @@ import { FinalCTA } from "@/components/home/FinalCTA";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { FAQSplit } from "@/components/ui/FAQSplit";
+import { FoodImage } from "@/components/ui/FoodImage";
 import { Section } from "@/components/ui/Section";
 
 const vegLunch = pricing.perMeal.lunch.taste;
@@ -61,8 +62,9 @@ export default function MealPlansPage() {
   return (
     <>
       <JsonLd data={[faqPage(faqsFor("plans")), mealPlanOffers()]} />
-      <header className="border-b border-charcoal/5 bg-white">
-        <Container className="py-10 md:py-20">
+      <header className="overflow-hidden bg-[radial-gradient(circle_at_92%_15%,rgba(249,216,43,0.18),transparent_26%)]">
+        <Container className="grid items-center gap-8 py-10 md:grid-cols-2 md:gap-16 md:py-24">
+          <div>
           <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
             Meal plans
           </p>
@@ -77,7 +79,7 @@ export default function MealPlansPage() {
           <div className="mt-8">
             <ButtonLink href="#build">Start your plan</ButtonLink>
           </div>
-          <ul className="mt-10 grid gap-4 border-t border-charcoal/10 pt-6 sm:grid-cols-3">
+          <ul className="mt-10 grid gap-4 border-t border-charcoal/10 pt-6">
             <li>
               <p className="font-sans text-[1.28rem] font-bold leading-[1.3] tracking-[-0.02em] text-olive">
                 {formatInr(vegLunch)} veg lunch
@@ -99,7 +101,7 @@ export default function MealPlansPage() {
               <p className="mt-1 text-sm text-muted">Same for veg and non-veg</p>
             </li>
           </ul>
-          <ol className="mt-8 grid gap-3 sm:grid-cols-3">
+          <ol className="mt-8 grid gap-3">
             {flow.map((step) => (
               <li key={step.number} className="flex items-center gap-3">
                 <span className="flex size-8 items-center justify-center rounded-full bg-olive font-sans text-xs font-bold text-cream">
@@ -109,6 +111,24 @@ export default function MealPlansPage() {
               </li>
             ))}
           </ol>
+          </div>
+          <div className="relative mx-auto w-full max-w-lg md:max-w-none">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-sage shadow-sm">
+              <FoodImage
+                imageId="planLunch"
+                priority
+                sizes="(min-width: 768px) 46vw, 100vw"
+              />
+            </div>
+            <p className="absolute left-4 top-4 rounded-2xl bg-cream px-3.5 py-2.5 shadow-lg">
+              <span className="font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-olive">
+                Lunch from
+              </span>
+              <span className="mt-1 block rounded-full bg-terracotta px-2.5 py-1 text-center font-sans text-lg font-extrabold leading-none text-olive">
+                {formatInr(vegLunch)}
+              </span>
+            </p>
+          </div>
         </Container>
       </header>
 
@@ -148,7 +168,7 @@ export default function MealPlansPage() {
           <ol className="mt-8 grid gap-3 md:mt-12 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
             {steps.map((step) => (
               <li key={step.number} className="rounded-3xl bg-white p-5 text-charcoal md:p-6">
-                <p className="font-sans text-[0.78rem] font-bold tracking-[0.12em] text-terracotta-ink">
+                <p className="font-sans text-4xl font-extrabold leading-none tracking-[-0.04em] text-terracotta-ink md:text-5xl">
                   {step.number}
                 </p>
                 <h3 className="mt-3 font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">{step.title}</h3>

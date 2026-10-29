@@ -1,5 +1,4 @@
-import { plans, nonVegPerMeal, pricing } from "@/data/plans";
-import { formatInr } from "@/lib/format";
+import { plans, pricing } from "@/data/plans";
 import { MealPlanCard } from "@/components/plans/MealPlanCard";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -10,11 +9,7 @@ export function PlansPreview() {
   return (
     <Section id="plans">
       <Container>
-        <SectionHeading eyebrow="Meal plans" title="One price per meal.">
-          Try one lunch for {formatInr(pricing.perMeal.lunch.taste)} veg.
-          Non-veg is {formatInr(nonVegPerMeal.lunch)}. Breakfast is{" "}
-          {formatInr(pricing.perMeal.breakfast.taste)}.
-        </SectionHeading>
+        <SectionHeading eyebrow="Meal plans" title="One price per meal." />
         <ul className="mt-8 grid gap-4 md:mt-10 md:grid-cols-3 md:gap-5">
           {plans.map((plan) => (
             <li key={plan.id}>

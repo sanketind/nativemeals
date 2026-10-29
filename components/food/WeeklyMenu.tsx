@@ -19,12 +19,19 @@ function DayCard({
     <article
       className={cn(
         "relative w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl border border-charcoal/10 bg-white md:w-auto",
-        day.isToday && "ring-2 ring-olive",
+        day.isToday && "ring-2 ring-olive md:col-span-2",
       )}
     >
       <header className="bg-sage/80 px-5 py-4">
         <div className="flex items-baseline justify-between gap-3">
-          <h3 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">{day.weekday}</h3>
+          <h3
+            className={cn(
+              "font-sans font-bold leading-[1.3] text-olive",
+              day.isToday ? "text-2xl md:text-3xl" : "text-[1.17rem]",
+            )}
+          >
+            {day.weekday}
+          </h3>
           <p className="font-sans text-[0.72rem] font-bold tracking-[0.12em] text-olive">
             {day.dateLabel}
           </p>
@@ -35,14 +42,28 @@ function DayCard({
           </p>
         ) : null}
       </header>
-      <div className="divide-y divide-dashed divide-charcoal/15 px-5">
+      <div
+        className={cn(
+          "px-5",
+          day.isToday
+            ? "divide-y divide-dashed divide-charcoal/15 md:grid md:grid-cols-3 md:divide-x md:divide-y-0"
+            : "divide-y divide-dashed divide-charcoal/15",
+        )}
+      >
         {day.meals.map((meal, index) => (
-          <div key={`${meal.meal}-${meal.diet}-${index}`} className="py-4">
+          <div key={`${meal.meal}-${meal.diet}-${index}`} className={cn("py-4", day.isToday && "md:px-4 md:first:pl-0 md:last:pr-0")}>
             <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
               {mealLabels[meal.meal]}
             </p>
             <div className="mt-1.5 flex items-start justify-between gap-3">
-              <p className="font-semibold leading-snug text-olive">{meal.dishes}</p>
+              <p
+                className={cn(
+                  "leading-snug text-olive",
+                  day.isToday ? "text-lg font-bold md:text-xl" : "font-semibold",
+                )}
+              >
+                {meal.dishes}
+              </p>
               <DietBadge diet={meal.diet} />
             </div>
             {meal.note && meal.note.toLowerCase() !== "sample" ? (
@@ -77,7 +98,7 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
   const days = menu.days;
   const support =
     menu.source === "sample"
-      ? "A sample of the kind of week we cook, so you can see the style. The live menu for the current week replaces this."
+      ? null
       : menu.rangeLabel
         ? `Posted for ${menu.rangeLabel}.`
         : "What the kitchen is cooking, updated through the week.";
@@ -91,11 +112,11 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
         <h2 className="mt-3 font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">
           This week&apos;s menu.
         </h2>
-        <p className="mt-4 text-[1.06rem] font-normal leading-[1.7] text-muted">{support}</p>
+        {support ? (
+          <p className="mt-4 text-[1.06rem] font-normal leading-[1.7] text-muted">{support}</p>
+        ) : null}
         {menu.source === "sample" ? (
-          <SampleContentNote>
-            Sample week, so you can judge the food. The live menu replaces this.
-          </SampleContentNote>
+          <SampleContentNote>Sample week. The live menu replaces this.</SampleContentNote>
         ) : null}
       </div>
 
