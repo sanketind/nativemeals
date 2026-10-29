@@ -90,7 +90,7 @@ export default function AboutPage() {
             See if a plan fits your week.
           </h2>
           <div className="flex flex-wrap gap-3">
-            <ButtonLink href="/meal-plans">Start Monday</ButtonLink>
+            <ButtonLink href="/meal-plans#enquire">Start your plan</ButtonLink>
             <WhatsAppCTA variant="secondary">Chat With Us</WhatsAppCTA>
             {!siteConfig.contact.whatsapp ? (
               <ButtonLink href="/contact" variant="secondary">

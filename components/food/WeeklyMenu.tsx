@@ -2,7 +2,6 @@ import type { WeeklyMenuData } from "@/lib/weekly-menu";
 import { DietBadge } from "@/components/ui/DietBadge";
 import { SampleContentNote } from "@/components/ui/SampleContentNote";
 import { ButtonLink } from "@/components/ui/Button";
-import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 import { cn } from "@/lib/cn";
 
 const mealLabels = {
@@ -65,9 +64,7 @@ function EmptyWeek({ source }: { source: WeeklyMenuData["source"] }) {
     <div className="mt-8 rounded-3xl border border-dashed border-charcoal/20 bg-white px-6 py-10">
       <p className="max-w-xl text-[1.06rem] font-normal leading-[1.7] text-muted">{message}</p>
       <div className="mt-6 flex flex-wrap gap-3">
-        <WhatsAppCTA message="Hello Native Meals, could you share this week's menu?">
-          Ask on WhatsApp
-        </WhatsAppCTA>
+        <ButtonLink href="/meal-plans#enquire">Start your plan</ButtonLink>
         <ButtonLink href="/contact" variant="secondary">
           Contact us
         </ButtonLink>

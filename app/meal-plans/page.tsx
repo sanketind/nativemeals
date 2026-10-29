@@ -74,7 +74,7 @@ export default function MealPlansPage() {
             handover spot and the start date before anything begins.
           </p>
           <div className="mt-8">
-            <ButtonLink href="#build">Start Monday</ButtonLink>
+            <ButtonLink href="#build">Start your plan</ButtonLink>
           </div>
           <ul className="mt-10 grid gap-4 border-t border-charcoal/10 pt-6 sm:grid-cols-3">
             <li>
@@ -205,8 +205,7 @@ export default function MealPlansPage() {
         title="Start with one lunch, or a Monday to Friday month."
         body="Choose the meals and the length, then send your details. We confirm the handover spot before the first tiffin."
         primaryHref="#build"
-        primaryLabel="Start Monday"
-        whatsappMessage="Hi Native Meals, I want a Monday to Friday lunch plan. My office or locality is "
+        primaryLabel="Start your plan"
       />
     </>
   );

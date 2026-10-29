@@ -30,18 +30,20 @@ export function ButtonLink({
   variant = "primary",
   size = "md",
   className,
+  onClick,
   children,
 }: {
   href: string;
   variant?: Variant;
   size?: Size;
   className?: string;
+  onClick?: () => void;
   children: React.ReactNode;
 }) {
   const classes = cn(base, sizes[size], variants[variant], className);
   if (href.startsWith("/") || href.startsWith("#")) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} onClick={onClick}>
         {children}
       </Link>
     );
@@ -50,6 +52,7 @@ export function ButtonLink({
     <a
       href={href}
       className={classes}
+      onClick={onClick}
       {...(isExternal(href)
         ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}

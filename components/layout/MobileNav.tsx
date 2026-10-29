@@ -116,8 +116,8 @@ export function MobileNav() {
                 Contact
               </Link>
             </nav>
-            <ButtonLink href="/meal-plans" className="mt-6">
-              Explore Plans
+            <ButtonLink href="/meal-plans#enquire" className="mt-6" onClick={() => setOpen(false)}>
+              Start your plan
             </ButtonLink>
           </div>
         </div>

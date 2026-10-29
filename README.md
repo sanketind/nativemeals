@@ -50,7 +50,7 @@ Meal prices live in `data/plans.ts`. The plan cards and the builder read from it
 Set these in `.env.local`:
 
 - `NEXT_PUBLIC_PHONE` — shown as a tap-to-call link.
-- `NEXT_PUBLIC_WHATSAPP_NUMBER` — country code plus number, for example `9198XXXXXXX`. Turns on WhatsApp buttons.
+- `NEXT_PUBLIC_WHATSAPP_NUMBER` — country code plus number, for example `9198XXXXXXX`. Turns on the contact WhatsApp links. Starting a plan uses the meal-plan form.
 - `NEXT_PUBLIC_EMAIL` — shown on the contact page, and offered if a form cannot be delivered.
 - `NEXT_PUBLIC_SITE_URL` — the real domain, used for the sitemap and link previews.
 

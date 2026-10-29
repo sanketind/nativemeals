@@ -24,11 +24,7 @@ export function Header() {
         </nav>
         <div className="flex items-center gap-1">
           <div className="hidden md:block">
-            <StartCTA
-              className="px-5 py-2"
-              whatsappLabel="Start on WhatsApp"
-              fallbackLabel="Start Monday"
-            />
+            <StartCTA className="px-5 py-2" />
           </div>
           <MobileNav />
         </div>

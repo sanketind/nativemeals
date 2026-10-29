@@ -14,7 +14,7 @@ const steps = [
   },
   {
     number: "03",
-    title: "Start Monday",
+    title: "Start your plan",
     body: `We confirm the price and the handover spot. ${siteConfig.delivery.skipNote}`,
   },
 ];

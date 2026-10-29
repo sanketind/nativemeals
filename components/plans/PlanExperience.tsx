@@ -225,7 +225,7 @@ export function PlanExperience() {
                     document.getElementById("enquire")?.scrollIntoView();
                   }}
                 >
-                  Start Monday
+                  Start your plan
                 </Button>
               </aside>
             ) : null}
@@ -244,7 +244,7 @@ export function PlanExperience() {
           <div className="mt-8">
             <EnquiryForm
               type="plan"
-              submitLabel="Start Monday"
+              submitLabel="Start your plan"
               selection={{ meals, duration, diet }}
             />
           </div>
