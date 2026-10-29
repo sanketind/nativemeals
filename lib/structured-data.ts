@@ -20,6 +20,7 @@ export function foodEstablishment(): JsonLdNode {
     "@id": `${siteConfig.url}/#business`,
     name: siteConfig.name,
     url: siteConfig.url,
+    logo: `${siteConfig.url}/logo.svg`,
     description: siteConfig.description,
     address: {
       "@type": "PostalAddress",
