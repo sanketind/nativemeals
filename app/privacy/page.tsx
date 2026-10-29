@@ -38,7 +38,9 @@ export default function PrivacyPage() {
             <p>
               A meal-plan enquiry asks for your name, a 10-digit mobile number,
               the meals and length you picked, whether you want veg, non-veg,
-              or either, your locality, and an optional note.
+              or either, your locality, whether the tiffin goes to the office, home,
+              or both, that address, the day you want the first tiffin, and an
+              optional note.
             </p>
             <p>
               A contact message asks for your name, a mobile number, and a

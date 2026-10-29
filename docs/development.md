@@ -38,9 +38,9 @@ Change a business fact in `data/`, not in a component.
 
 `components/forms/EnquiryForm.tsx` posts to `app/api/enquiry/route.ts`.
 
-The route validates the body in `lib/validation.ts`, drops honeypot submissions, and builds the estimate in `lib/contact.ts`. A filled `company` field returns success and is not saved. When the visitor picked meals, the JSON includes an `estimate` object. The sheet script reads that object for duration, days, total and meals.
+The route validates the body in `lib/validation.ts`, drops honeypot submissions, and builds the estimate in `lib/contact.ts`. A filled `company` field returns success and is not saved. When the visitor picked meals, the JSON includes an `estimate` object. The sheet script reads that object for duration, days, total and meals, and writes the start date, handover, and address in their own columns.
 
-A plan enquiry needs a name, a 10-digit Indian mobile number (starting 6–9), and a locality. Contact needs a name, a phone number and a message. The service-area check needs a phone number and a locality. The name can be left blank there.
+A plan enquiry needs a name, a 10-digit Indian mobile number (starting 6–9), a locality, office, home, or both, the address, and a start date. Contact needs a name, a phone number and a message. The service-area check needs a phone number and a locality. The name can be left blank there.
 
 Order of delivery:
 

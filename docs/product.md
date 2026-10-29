@@ -24,13 +24,13 @@ The hero headline is Daily Healthy Meal Subscription. The pill is Hinjewadi, Wak
 The conversion is a form, not a checkout.
 
 1. On Meal Plans, the visitor picks meals, a duration, and veg, non-veg, or either. The page shows an estimate from `data/plans.ts`.
-2. They send a name, a 10-digit mobile number, and a locality. A hidden company field catches simple bots and those submissions are ignored.
+2. They send a name, a 10-digit mobile number, a locality, office or home, the address, and the day they want the first tiffin. A hidden company field catches simple bots and those submissions are ignored.
 3. The form posts to `/api/enquiry`. The server calculates the estimate again. A total typed in the browser is not trusted.
 4. If `ENQUIRY_WEBHOOK_URL` is set, the site POSTs JSON there.
 5. If it is not set, or the request fails, the visitor gets a WhatsApp link with the same details, and an email link when an address exists. Nothing is sent until they tap it.
 6. If WhatsApp is not configured either, the form says it cannot take the message.
 
-Contact and the service-area check use the same route, with a different `type`: `plan`, `contact`, or `serviceability`. A plan enquiry needs a name, a 10-digit Indian mobile number and a locality. Contact needs a name, a phone number and a message, and the locality can be left blank. The service-area check needs a phone number and a locality, and the name can be left blank.
+Contact and the service-area check use the same route, with a different `type`: `plan`, `contact`, or `serviceability`. A plan enquiry needs a name, a 10-digit Indian mobile number, a locality, office, home, or both, the address, and a start date. That date can be today or any day in the next six months. When they want both places, the form asks for the office and the home. Contact needs a name, a phone number and a message, and the locality can be left blank. The service-area check needs a phone number and a locality, and the name can be left blank.
 
 Nothing is charged on the page. Price, address, and start date are confirmed before the first meal.
 

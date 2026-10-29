@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import { plans, pricing, type DurationId } from "@/data/plans";
+import { addIsoDays, indiaTodayIso } from "@/lib/dates";
 import { formatInr } from "@/lib/format";
 import { formatDuration, quote, type MealSlot } from "@/lib/pricing";
 import {
@@ -11,6 +12,7 @@ import {
   type EnquiryInput,
   type EnquiryType,
   type FieldErrors,
+  type HandoverChoice,
 } from "@/lib/validation";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
@@ -32,6 +34,12 @@ type SubmitState =
       emailUrl: string | null;
     }
   | { status: "error"; reason: "unconfigured" | "failed" };
+
+const handoverChoices: { id: Exclude<HandoverChoice, "">; label: string }[] = [
+  { id: "office", label: "Office" },
+  { id: "home", label: "Home" },
+  { id: "both", label: "Both" },
+];
 
 const fieldClass =
   "mt-2 w-full rounded-2xl border border-charcoal/15 bg-white px-4 py-3 text-base text-charcoal outline-none placeholder:text-charcoal/35 focus:border-olive";
@@ -122,8 +130,10 @@ export function EnquiryForm({
   const showPlan = type === "plan" && !picked;
   const showDiet = type === "plan" && !picked;
   const showMessage = type !== "serviceability";
+  const showStart = type === "plan";
   const nameRequired = type !== "serviceability";
   const localityRequired = type !== "contact";
+  const today = indiaTodayIso();
 
   return (
     <form onSubmit={onSubmit} noValidate className="relative space-y-4">
@@ -257,6 +267,116 @@ export function EnquiryForm({
           aria-describedby={errors.locality ? `${formId}-locality-error` : undefined}
         />
       </Field>
+
+      {showStart ? (
+        <fieldset>
+          <legend className="text-sm font-medium text-charcoal">
+            Where it goes
+            <span className="text-error"> *</span>
+          </legend>
+          <p className="mt-1 text-sm text-muted">Office days, home, or both.</p>
+          <div
+            className="mt-3 flex flex-wrap gap-2"
+            role="radiogroup"
+            aria-invalid={Boolean(errors.handover)}
+          >
+            {handoverChoices.map((choice) => {
+              const selected = values.handover === choice.id;
+              return (
+                <button
+                  key={choice.id}
+                  type="button"
+                  role="radio"
+                  aria-checked={selected}
+                  onClick={() => update("handover", choice.id)}
+                  className={cn(
+                    "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                    selected
+                      ? "bg-olive text-white"
+                      : "bg-white text-olive ring-1 ring-charcoal/10 hover:ring-olive/30",
+                  )}
+                >
+                  {choice.label}
+                </button>
+              );
+            })}
+          </div>
+          {errors.handover ? (
+            <p id={`${formId}-handover-error`} className="mt-1 text-sm text-error">
+              {errors.handover}
+            </p>
+          ) : null}
+        </fieldset>
+      ) : null}
+
+      {showStart && values.handover ? (
+        <Field
+          id={`${formId}-address`}
+          label={values.handover === "home" ? "Home address" : "Office address"}
+          required
+          error={errors.address}
+          hint={
+            values.handover === "home"
+              ? "Building and flat."
+              : "Building and gate, or the tech park."
+          }
+        >
+          <input
+            id={`${formId}-address`}
+            name="address"
+            autoComplete="street-address"
+            value={values.address}
+            onChange={(event) => update("address", event.target.value)}
+            className={inputClass(Boolean(errors.address))}
+            aria-invalid={Boolean(errors.address)}
+            aria-describedby={errors.address ? `${formId}-address-error` : undefined}
+          />
+        </Field>
+      ) : null}
+
+      {showStart && values.handover === "both" ? (
+        <Field
+          id={`${formId}-home`}
+          label="Home address"
+          required
+          error={errors.homeAddress}
+          hint="For work-from-home days."
+        >
+          <input
+            id={`${formId}-home`}
+            name="homeAddress"
+            autoComplete="street-address"
+            value={values.homeAddress}
+            onChange={(event) => update("homeAddress", event.target.value)}
+            className={inputClass(Boolean(errors.homeAddress))}
+            aria-invalid={Boolean(errors.homeAddress)}
+            aria-describedby={errors.homeAddress ? `${formId}-home-error` : undefined}
+          />
+        </Field>
+      ) : null}
+
+      {showStart ? (
+        <Field
+          id={`${formId}-start`}
+          label="Start date"
+          required
+          error={errors.startDate}
+          hint="The day you want the first tiffin. We confirm it before we start."
+        >
+          <input
+            id={`${formId}-start`}
+            name="startDate"
+            type="date"
+            min={today}
+            max={addIsoDays(today, 180)}
+            value={values.startDate}
+            onChange={(event) => update("startDate", event.target.value)}
+            className={inputClass(Boolean(errors.startDate))}
+            aria-invalid={Boolean(errors.startDate)}
+            aria-describedby={errors.startDate ? `${formId}-start-error` : undefined}
+          />
+        </Field>
+      ) : null}
 
       {showMessage ? (
         <Field

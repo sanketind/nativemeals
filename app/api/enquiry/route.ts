@@ -85,6 +85,10 @@ export async function POST(request: Request) {
     plan: estimate?.plan ?? (input.plan ? (getPlan(input.plan)?.name ?? input.plan) : ""),
     diet: input.diet,
     locality: input.locality,
+    handover: input.handover,
+    address: input.address,
+    homeAddress: input.handover === "both" ? input.homeAddress : "",
+    startDate: input.startDate,
     message: input.message,
     estimate,
   };

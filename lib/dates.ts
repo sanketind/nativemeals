@@ -74,6 +74,16 @@ export function formatRange(start: string, end: string) {
   return `${dayMonth.format(startDate)} – ${dayMonth.format(endDate)}`;
 }
 
+/** "2 Nov 2026", for an enquiry. */
+export function formatSpokenDate(iso: string) {
+  return new Intl.DateTimeFormat("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(utcDate(iso));
+}
+
 export function isValidIsoDate(iso: string) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(iso)) return false;
   const [year, month, day] = iso.split("-").map(Number);

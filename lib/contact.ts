@@ -1,4 +1,5 @@
 import { siteConfig } from "@/data/site-config";
+import { formatSpokenDate, isValidIsoDate } from "@/lib/dates";
 import { getPlan } from "@/data/plans";
 import { formatInr } from "@/lib/format";
 import { quote } from "@/lib/pricing";
@@ -38,7 +39,7 @@ export function whatsappHref(message?: string) {
 
 export function enquiryMessage(input: Pick<
   EnquiryInput,
-  "type" | "name" | "phone" | "plan" | "diet" | "locality" | "message" | "selection"
+  "type" | "name" | "phone" | "plan" | "diet" | "locality" | "handover" | "address" | "homeAddress" | "startDate" | "message" | "selection"
 >) {
   const estimate = input.selection
     ? quote({ ...input.selection, diet: input.diet })
@@ -74,6 +75,18 @@ export function enquiryMessage(input: Pick<
   }
   if (dietLabel) lines.push(`Preference: ${dietLabel}`);
   if (input.locality) lines.push(`Locality: ${input.locality}`);
+  if (input.handover === "office") lines.push("Handover: Office");
+  if (input.handover === "home") lines.push("Handover: Home");
+  if (input.handover === "both") lines.push("Handover: Office and home");
+  if (input.address) {
+    lines.push(`${input.handover === "both" ? "Office" : "Address"}: ${input.address}`);
+  }
+  if (input.handover === "both" && input.homeAddress) {
+    lines.push(`Home: ${input.homeAddress}`);
+  }
+  if (input.startDate && isValidIsoDate(input.startDate)) {
+    lines.push(`Start: ${formatSpokenDate(input.startDate)}`);
+  }
   if (input.message) lines.push(`Note: ${input.message}`);
   return lines.join("\n");
 }

@@ -39,12 +39,12 @@ const steps = [
   {
     number: "02",
     title: "Share your details",
-    body: "Your name, phone, locality, and veg or non-veg. Add a second address if office days and home days differ.",
+    body: "Your name, phone, locality, office or home, and the day you want to start.",
   },
   {
     number: "03",
     title: "We confirm the start",
-    body: "The handover spot, the window and the Monday you start are agreed before the first tiffin.",
+    body: "The handover spot and the window are agreed before the first tiffin, including the day you chose.",
   },
   {
     number: "04",

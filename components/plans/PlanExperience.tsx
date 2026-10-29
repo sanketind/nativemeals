@@ -237,9 +237,9 @@ export function PlanExperience() {
         <Container className="max-w-xl">
           <h2 className="font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">Your details.</h2>
           <p className="mt-3 text-[1.06rem] font-normal leading-[1.7] text-muted">
-            Name, phone and locality are enough. We confirm the price, the
-            handover spot and the Monday you start. Nothing is charged on this
-            page.
+            Name, phone, locality, where the tiffin goes, and the day you want
+            to start. We confirm the price and the handover spot. Nothing is
+            charged on this page.
           </p>
           <div className="mt-8">
             <EnquiryForm

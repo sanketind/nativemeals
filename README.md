@@ -7,6 +7,7 @@ The website for Native Meals: a daily healthy meal subscription for Hinjewadi, W
 - [Business](docs/business.md) — who it is for, where it serves, and what must not be invented.
 - [Design](docs/design.md) — colour, type, voice, and photos.
 - [Product](docs/product.md) — pages, enquiry, plans, and this week's menu.
+- [Subscription journeys](docs/subscription-journeys.md) — a reference only, of two other checkouts. It does not change this site.
 - [Development](docs/development.md) — where the code lives, and how the site stays honest.
 
 ## Run it
@@ -68,7 +69,7 @@ To store enquiries in a Google Sheet, use a **new** spreadsheet. Do not use the 
 3. Deploy, then New deployment, then Web app. Execute as yourself. Who has access: Anyone. Deploy and copy the web app URL.
 4. Put that URL in `ENQUIRY_WEBHOOK_URL` and restart the site.
 
-The first successful enquiry creates an `Enquiries` tab. After that, Start Monday saves the row and tells the visitor the message was received.
+The first successful enquiry creates an `Enquiries` tab. After that, Start Monday saves the row and tells the visitor the message was received. If that tab already exists, paste the updated script and make a new deployment. The next enquiry adds any missing columns, including the start date, where the tiffin goes, and the address.
 
 The body looks like this:
 
@@ -82,6 +83,10 @@ The body looks like this:
   "plan": "Lunch Plan",
   "diet": "veg",
   "locality": "Wakad",
+  "handover": "office",
+  "address": "Quadron Business Park, gate 2",
+  "homeAddress": "",
+  "startDate": "2026-11-02",
   "message": "",
   "estimate": {
     "pricingStatus": "confirmed",
@@ -96,7 +101,7 @@ The body looks like this:
 }
 ```
 
-`type` is `plan`, `contact` or `serviceability`. The server writes `estimate` from the current rates in `data/plans.ts`. The figures above only show the shape of one Monday to Friday veg lunch. A hidden field traps simple bots and those submissions are ignored.
+`type` is `plan`, `contact` or `serviceability`. A plan enquiry includes `startDate`, the day they want the first tiffin, as `YYYY-MM-DD`. `handover` is `office`, `home`, or `both`. `address` is the office or the home. When `handover` is `both`, `address` is the office and `homeAddress` is the home. The server writes `estimate` from the current rates in `data/plans.ts`. The figures above only show the shape of one Monday to Friday veg lunch. A hidden field traps simple bots and those submissions are ignored.
 
 The service-area box does not check a postcode. It only records the locality so someone can reply.
 

@@ -42,8 +42,8 @@ export default function TermsPage() {
             <p>
               We serve {siteConfig.serviceAreaLine} in {siteConfig.city},
               including {siteConfig.techParkLine}. {siteConfig.delivery.handover}{" "}
-              We confirm the address before the first meal. You can keep an
-              office-gate address and a home address.
+              We confirm the address before the first meal. A plan can name the
+              office, the home, or both.
             </p>
           </article>
 

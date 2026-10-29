@@ -1,4 +1,5 @@
 import { getPlan } from "@/data/plans";
+import { addIsoDays, indiaTodayIso, isValidIsoDate } from "@/lib/dates";
 import {
   isDurationId,
   isMealSlot,
@@ -9,6 +10,7 @@ import {
 
 export type EnquiryType = "plan" | "contact" | "serviceability";
 export type DietChoice = "" | "veg" | "non-veg" | "either";
+export type HandoverChoice = "" | "office" | "home" | "both";
 
 export type EnquiryInput = {
   type: EnquiryType;
@@ -17,6 +19,14 @@ export type EnquiryInput = {
   plan: string;
   diet: DietChoice;
   locality: string;
+  /** Office, home, or both. Required for a plan enquiry. */
+  handover: HandoverChoice;
+  /** Office address, home address, or the office when both are set. */
+  address: string;
+  /** Home address when handover is both. */
+  homeAddress: string;
+  /** Preferred first tiffin, YYYY-MM-DD. Required for a plan enquiry. */
+  startDate: string;
   message: string;
   /** Set by the plan picker. The server recomputes the price from this. */
   selection: PlanSelection | null;
@@ -53,6 +63,10 @@ export function emptyEnquiry(type: EnquiryType, plan = ""): EnquiryInput {
     plan,
     diet: "",
     locality: "",
+    handover: "",
+    address: "",
+    homeAddress: "",
+    startDate: "",
     message: "",
     selection: null,
     company: "",
@@ -109,6 +123,26 @@ export function validateEnquiry(input: EnquiryInput): FieldErrors {
     errors.locality = "Tell us your locality so we can check.";
   }
 
+  if (input.type === "plan") {
+    if (input.handover !== "office" && input.handover !== "home" && input.handover !== "both") {
+      errors.handover = "Choose office, home, or both.";
+    } else if (input.address.length < 8) {
+      errors.address = "Add the building, gate, or flat.";
+    }
+    if (input.handover === "both" && input.homeAddress.length < 8) {
+      errors.homeAddress = "Add the home address too.";
+    }
+
+    const today = indiaTodayIso();
+    if (!isValidIsoDate(input.startDate)) {
+      errors.startDate = "Choose the day you want to start.";
+    } else if (input.startDate < today) {
+      errors.startDate = "Choose today or a later day.";
+    } else if (input.startDate > addIsoDays(today, 180)) {
+      errors.startDate = "Choose a day in the next six months.";
+    }
+  }
+
   if (messageRequired && input.message.length < 2) {
     errors.message = "Add a short note so we know how to help.";
   }
@@ -124,6 +158,7 @@ export function parseEnquiryBody(body: unknown): EnquiryInput | null {
     return null;
   }
   const diet = clean(record.diet, 20);
+  const handover = clean(record.handover, 10);
   let selection: PlanSelection | null = null;
   if ("selection" in record && record.selection != null) {
     // An unreadable selection must fail validation, not fall through to the plan id.
@@ -136,6 +171,10 @@ export function parseEnquiryBody(body: unknown): EnquiryInput | null {
     plan: clean(record.plan, 40),
     diet: diet === "veg" || diet === "non-veg" || diet === "either" ? diet : "",
     locality: clean(record.locality, 120),
+    handover: handover === "office" || handover === "home" || handover === "both" ? handover : "",
+    address: clean(record.address, 200),
+    homeAddress: clean(record.homeAddress, 200),
+    startDate: clean(record.startDate, 10),
     message: clean(record.message, 1000),
     selection,
     company: clean(record.company, 80),

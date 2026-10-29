@@ -17,6 +17,10 @@ var HEADERS = [
   "days",
   "total",
   "meals",
+  "startDate",
+  "handover",
+  "address",
+  "homeAddress",
 ];
 
 function doPost(e) {
@@ -44,6 +48,10 @@ function doPost(e) {
       estimate.days || "",
       estimate.total || "",
       meals,
+      data.startDate || "",
+      data.handover || "",
+      data.address || "",
+      data.homeAddress || "",
     ]);
     return json_({ ok: true });
   } catch (error) {
@@ -60,6 +68,20 @@ function getSheet_() {
   if (sheet.getLastRow() === 0) {
     sheet.appendRow(HEADERS);
     sheet.setFrozenRows(1);
+    return sheet;
+  }
+  var width = Math.max(sheet.getLastColumn(), 1);
+  var headers = sheet.getRange(1, 1, 1, width).getValues()[0];
+  var missing = [];
+  for (var h = 0; h < HEADERS.length; h++) {
+    var found = false;
+    for (var i = 0; i < headers.length; i++) {
+      if (String(headers[i]).trim() === HEADERS[h]) found = true;
+    }
+    if (!found) missing.push(HEADERS[h]);
+  }
+  if (missing.length) {
+    sheet.getRange(1, width + 1, 1, missing.length).setValues([missing]);
   }
   return sheet;
 }
