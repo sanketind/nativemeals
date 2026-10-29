@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { siteConfig } from "@/data/site-config";
@@ -68,60 +69,63 @@ export function MobileNav() {
         <Menu aria-hidden="true" className="size-5" />
         <span className="sr-only">Open menu</span>
       </button>
-      {open ? (
-        <div className="fixed inset-0 z-50 md:hidden">
-          <button
-            type="button"
-            className="absolute inset-0 bg-charcoal/40"
-            aria-label="Close menu"
-            onClick={() => setOpen(false)}
-          />
-          <div
-            ref={panelRef}
-            id="mobile-navigation"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={titleId}
-            className="absolute inset-y-0 right-0 flex w-[min(100%,20rem)] flex-col bg-cream px-6 py-6 shadow-2xl"
-          >
-            <div className="flex items-center justify-between">
-              <p id={titleId} className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
-                Menu
-              </p>
+      {open && typeof document !== "undefined"
+        ? createPortal(
+            <div className="fixed inset-0 z-[80] md:hidden">
               <button
                 type="button"
-                className="inline-flex size-11 items-center justify-center rounded-full text-olive"
+                className="absolute inset-0 bg-charcoal/40"
+                aria-label="Close menu"
                 onClick={() => setOpen(false)}
+              />
+              <div
+                ref={panelRef}
+                id="mobile-navigation"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby={titleId}
+                className="absolute inset-y-0 right-0 flex w-[min(100%,20rem)] flex-col bg-cream px-6 py-6 shadow-2xl"
               >
-                <X aria-hidden="true" className="size-5" />
-                <span className="sr-only">Close menu</span>
-              </button>
-            </div>
-            <nav className="mt-8 flex flex-col gap-1" aria-label="Mobile">
-              {siteConfig.nav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-2xl px-3 py-3 text-base font-semibold text-olive hover:bg-sage"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <Link
-                href="/contact"
-                className="rounded-2xl px-3 py-3 text-base font-semibold text-olive hover:bg-sage"
-                onClick={() => setOpen(false)}
-              >
-                Contact
-              </Link>
-            </nav>
-            <ButtonLink href="/meal-plans#enquire" className="mt-6" onClick={() => setOpen(false)}>
-              Start your plan
-            </ButtonLink>
-          </div>
-        </div>
-      ) : null}
+                <div className="flex items-center justify-between">
+                  <p id={titleId} className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
+                    Menu
+                  </p>
+                  <button
+                    type="button"
+                    className="inline-flex size-11 items-center justify-center rounded-full text-olive"
+                    onClick={() => setOpen(false)}
+                  >
+                    <X aria-hidden="true" className="size-5" />
+                    <span className="sr-only">Close menu</span>
+                  </button>
+                </div>
+                <nav className="mt-8 flex flex-col gap-1" aria-label="Mobile">
+                  {siteConfig.nav.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="rounded-2xl px-3 py-3 text-base font-semibold text-olive hover:bg-sage"
+                      onClick={() => setOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                  <Link
+                    href="/contact"
+                    className="rounded-2xl px-3 py-3 text-base font-semibold text-olive hover:bg-sage"
+                    onClick={() => setOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                </nav>
+                <ButtonLink href="/meal-plans#enquire" className="mt-6" onClick={() => setOpen(false)}>
+                  Start your plan
+                </ButtonLink>
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </>
   );
 }
