@@ -28,11 +28,6 @@ export function HeroSection() {
             Breakfast, lunch and dinner, cooked the same morning and handed
             over at your office gate or your door.
           </p>
-          {siteConfig.kitchenLocality ? (
-            <p className="mt-2 text-sm text-muted">
-              Kitchen in {siteConfig.kitchenLocality}.
-            </p>
-          ) : null}
           <div className="mt-8 flex flex-wrap gap-3">
             <StartCTA />
             <ButtonLink href="#this-week" variant="secondary">

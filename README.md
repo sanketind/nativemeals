@@ -1,8 +1,6 @@
 # Native Meals
 
-The website for Native Meals: healthy breakfast, lunch and dinner for Hinjewadi, Wakad and nearby Pune. Meals are cooked the same morning and handed over at the office gate, the security desk, or the door. Monday to Friday is the main pattern.
-
-Healthy meals in Hinjewadi.
+The website for Native Meals: a daily healthy meal subscription for Hinjewadi, Wakad and Baner, Pune. Meals are cooked the same morning and handed over at the office gate, the security desk, or the door. Monday to Friday is the main pattern.
 
 ## Read the project
 

@@ -1,6 +1,6 @@
 # Business
 
-Native Meals is a healthy meal service for people working and living around Hinjewadi, Pune. It sells breakfast, lunch and dinner on a plan. The homepage calls that offer a daily healthy meal subscription. The meals are cooked the morning they go out, and handed over at an office gate, a security desk, or a door. Monday to Friday is the pattern the site leads with. A six-day week is there for people who also want Saturday. The site takes an enquiry. It does not start or charge the subscription itself.
+Native Meals is a healthy meal service for people working and living in Hinjewadi, Wakad and Baner, Pune. It sells breakfast, lunch and dinner on a plan. The homepage calls that offer a daily healthy meal subscription. The meals are cooked the morning they go out, and handed over at an office gate, a security desk, or a door. Monday to Friday is the pattern the site leads with. A six-day week is there for people who also want Saturday. The site takes an enquiry. It does not start or charge the subscription itself.
 
 This note records what the site is allowed to say. If a fact is not here, and it is not in `data/site-config.ts`, do not add it to a page.
 
@@ -8,7 +8,7 @@ This note records what the site is allowed to say. If a fact is not here, and it
 
 People who already have a job, and do not want planning, shopping and cooking on top of it. Lunch is for the office. Dinner is for the PG or the flat after work. The full day is for someone who wants both, or breakfast as well.
 
-The site speaks to offices in and near Hinjewadi, including people who work from home some days and need the meal at the door instead of the gate.
+The site speaks to offices in Hinjewadi, Wakad and Baner, including people who work from home some days and need the meal at the door instead of the gate.
 
 ## Where it serves
 

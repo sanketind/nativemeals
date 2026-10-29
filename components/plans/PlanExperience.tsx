@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { foodAppLunchRange, nonVegPerMeal, pricing, type DurationId } from "@/data/plans";
+import { siteConfig } from "@/data/site-config";
 import { formatInr } from "@/lib/format";
 import {
   defaultMealsForPlan,
@@ -208,7 +209,7 @@ export function PlanExperience() {
                 ) : null}
                 {lunchLine ? (
                   <p className="mt-3 text-sm text-cream/75">
-                    A food-app lunch around Hinjewadi is often {formatInr(foodAppLunchRange.low)}–{formatInr(foodAppLunchRange.high)} before fees.{" "}
+                    A food-app lunch around {siteConfig.serviceAreaShort} is often {formatInr(foodAppLunchRange.low)}–{formatInr(foodAppLunchRange.high)} before fees.{" "}
                     {estimate.days === 1
                       ? `This lunch is ${formatInr(lunchLine.perMeal)}.`
                       : `${estimate.days} lunches here are ${formatInr(lunchLine.perMeal * estimate.days)}.`}

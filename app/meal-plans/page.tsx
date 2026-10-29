@@ -18,8 +18,10 @@ const nonVegLunch = nonVegPerMeal.lunch;
 const breakfast = pricing.perMeal.breakfast.taste;
 
 export const metadata: Metadata = {
-  title: "Healthy meal plans in Hinjewadi",
-  description: `Monday to Friday healthy meal plans for Hinjewadi, Wakad and nearby Pune. Lunch is ${formatInr(vegLunch)} veg or ${formatInr(nonVegLunch)} non-veg. Breakfast is ${formatInr(breakfast)}.`,
+  title: {
+    absolute: siteConfig.metaTitle,
+  },
+  description: siteConfig.description,
 };
 
 const flow = [
@@ -119,7 +121,7 @@ export default function MealPlansPage() {
           <p className="mt-3 max-w-2xl text-[1.06rem] font-normal leading-[1.7] text-muted">
             Lunch and dinner are priced per meal. The all-day plan is the per-day
             cost of breakfast, lunch and dinner together. A food-app lunch around
-            Hinjewadi is often {formatInr(foodAppLunchRange.low)}–{formatInr(foodAppLunchRange.high)} before fees.
+            {siteConfig.serviceAreaShort} is often {formatInr(foodAppLunchRange.low)}–{formatInr(foodAppLunchRange.high)} before fees.
           </p>
           {pricing.status === "draft" ? (
             <p className="mt-3 text-sm text-muted">{pricing.note}</p>

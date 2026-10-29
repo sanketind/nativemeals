@@ -15,13 +15,13 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.tagline}`,
+    default: siteConfig.metaTitle,
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],
   openGraph: {
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    title: siteConfig.metaTitle,
     description: siteConfig.description,
     siteName: siteConfig.name,
     locale: "en_IN",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    title: siteConfig.metaTitle,
     description: siteConfig.description,
   },
 };

@@ -44,7 +44,7 @@ export const faqs: Faq[] = [
     id: "which-plans",
     question: "What meal plans are available?",
     answer:
-      "Lunch, dinner, or breakfast, lunch and dinner together. Most people in Hinjewadi take Monday to Friday. A 6-day week is there if you also want Saturday. You can start with a single meal.",
+      "Lunch, dinner, or breakfast, lunch and dinner together. Most people take Monday to Friday. A 6-day week is there if you also want Saturday. You can start with a single meal.",
     pages: ["faqs", "plans"],
   },
   {

@@ -9,7 +9,7 @@ import { displayPhone, phoneHref, whatsappHref } from "@/lib/contact";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a healthy meal plan in Hinjewadi, Wakad or nearby Pune. Share your locality and whether you want veg or non-veg.",
+    "Start a healthy meal plan in Hinjewadi, Wakad and Baner, Pune. Share your locality and whether you want veg or non-veg.",
 };
 
 export default function ContactPage() {

@@ -74,7 +74,7 @@ function flatRate(amount: number): Record<DurationId, number> {
 }
 
 /**
- * Illustrative range for a food-app lunch around Hinjewadi, used only as a
+ * Illustrative range for a food-app lunch around Hinjewadi, Wakad and Baner, used only as a
  * comparison next to our own price. It is not a quote from any app.
  */
 export const foodAppLunchRange = { low: 200, high: 400 };

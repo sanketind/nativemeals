@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-export const alt = "Native Meals — Healthy meals in Hinjewadi.";
+export const alt = "Native Meals — Daily Healthy Meal Subscription";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -32,7 +32,7 @@ export default async function OpenGraphImage() {
             fontWeight: 700,
           }}
         >
-          Healthy meal plans · Hinjewadi
+          Daily healthy meal subscription
         </div>
         <div
           style={{
@@ -58,7 +58,7 @@ export default async function OpenGraphImage() {
           Healthy meals, cooked the same morning.
         </div>
         <div style={{ fontSize: 24, color: "#197241", marginTop: 48, fontWeight: 700 }}>
-          Hinjewadi, Wakad and nearby Pune
+          Hinjewadi, Wakad and Baner, Pune
         </div>
       </div>
     ),

@@ -19,7 +19,7 @@ export async function Footer() {
           <Wordmark />
           <p className="mt-4 max-w-sm text-[0.94rem] leading-[1.65] text-muted">
             Cooked the same morning and handed over at your office gate or your door.
-            Serving {siteConfig.serviceAreaShort}.
+            Serving {siteConfig.launchArea}.
           </p>
         </div>
         <nav className="md:col-span-3" aria-label="Footer">
@@ -43,14 +43,8 @@ export async function Footer() {
           <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
             Contact
           </p>
-          <p className="mt-4 text-sm text-muted">
-            Serving {siteConfig.serviceAreaShort}, {siteConfig.city}
-          </p>
-          {siteConfig.fssai ? (
-            <p className="mt-2 text-sm text-muted">FSSAI {siteConfig.fssai}</p>
-          ) : null}
           {hasContact ? (
-            <ul className="mt-3 space-y-2 text-sm">
+            <ul className="mt-4 space-y-2 text-sm">
               {phone && phoneHref(phone) ? (
                 <li>
                   <a className="hover:text-olive" href={phoneHref(phone) ?? undefined}>
@@ -79,13 +73,20 @@ export async function Footer() {
               ) : null}
             </ul>
           ) : (
-            <p className="mt-3 text-sm leading-relaxed text-muted">
+            <p className="mt-4 text-sm leading-relaxed text-muted">
               <Link href="/contact" className="hover:text-olive">
                 Write to us
               </Link>{" "}
               and we will reply on your phone.
             </p>
           )}
+          <p className="mt-3 text-sm leading-relaxed text-muted">
+            <span className="font-semibold text-olive">Address. </span>
+            {siteConfig.address}
+          </p>
+          {siteConfig.fssai ? (
+            <p className="mt-2 text-sm text-muted">FSSAI {siteConfig.fssai}</p>
+          ) : null}
           {siteConfig.socials.length > 0 ? (
             <ul className="mt-4 flex flex-wrap gap-3 text-sm">
               {siteConfig.socials.map((social) => (

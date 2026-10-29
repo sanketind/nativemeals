@@ -66,9 +66,11 @@ const skipNote = skipCutoff
 
 export const siteConfig = {
   name: "Native Meals",
-  tagline: "Healthy meals in Hinjewadi.",
+  /** Browser tab, Open Graph and Twitter title. */
+  metaTitle: "Native Meals — Daily Healthy Meal Subscription",
+  tagline: "Daily Healthy Meal Subscription — Hinjewadi, Wakad and Baner, Pune",
   description:
-    "Healthy breakfast, lunch and dinner for Hinjewadi, Wakad and nearby Pune. Cooked the same morning and handed over at your office gate or your door. Monday to Friday plans.",
+    "Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner, cooked the same morning and handed over at your office gate or your door.",
   /**
    * TODO: Set NEXT_PUBLIC_SITE_URL to the real domain before launch.
    * Used for metadata, Open Graph and the sitemap.
@@ -92,6 +94,8 @@ export const siteConfig = {
     "healthy food delivery Wakad",
     "diet meal plan Hinjewadi",
   ],
+  address:
+    "Satyam Shivam Apartment, near NKGSB Bank, Shankar Kalat Nagar, Wakad, Pimpri-Chinchwad, Maharashtra 411057",
   contact: {
     /** TODO: Set NEXT_PUBLIC_PHONE, for example +91 98XXXX XXXX. */
     phone: readPublic("NEXT_PUBLIC_PHONE"),
@@ -119,12 +123,12 @@ export const siteConfig = {
   socials: [] as SocialLink[],
   messages: {
     general:
-      "Hi Native Meals, I want healthy meals in Hinjewadi. I am looking at a lunch trial.",
+      "Hi Native Meals, I want a daily healthy meal subscription. I am looking at a lunch trial.",
     trial:
       "Hi Native Meals, I want to try one lunch. My office or locality is ",
     service:
       "Hi Native Meals, can you deliver to my office gate? My locality is ",
-    plans: "Hi Native Meals, I want a Monday to Friday lunch plan in Hinjewadi.",
+    plans: "Hi Native Meals, I want a Monday to Friday lunch plan in Hinjewadi, Wakad or Baner.",
   },
   nav: [
     { href: "/#this-week", label: "This week's menu" },

@@ -9,7 +9,7 @@ import { Section } from "@/components/ui/Section";
 export const metadata: Metadata = {
   title: "FAQs",
   description:
-    "Native Meals FAQs for Hinjewadi and nearby Pune: areas and tech parks, what is in the box, Monday to Friday plans, skipping a day, and pricing.",
+    "Native Meals FAQs for Hinjewadi, Wakad and Baner, Pune: areas and tech parks, what is in the box, Monday to Friday plans, skipping a day, and pricing.",
 };
 
 export default function FaqsPage() {
