@@ -173,7 +173,7 @@ Confirm all of these before publishing:
 - Contact email and social links
 - Actual food photography
 - Cancellation, pause and refund policies
-- Privacy policy and terms, reviewed
+- Privacy policy and terms. They describe the enquiry. Update them if storage or payment changes
 - Any food-business registration and compliance details that must be shown
 - `NEXT_PUBLIC_SITE_URL` set to the real domain
 - Weekly menu sheet connected, and the sample label gone

@@ -71,8 +71,8 @@ The homepage renders `components/food/WeeklyMenu.tsx` with the id `this-week`. `
 | `app/about/page.tsx` | Story |
 | `app/faqs/page.tsx` | All FAQ answers |
 | `app/contact/page.tsx` | Contact form |
-| `app/privacy/page.tsx`, `app/terms/page.tsx` | Draft legal pages, `noindex` |
-| `app/sitemap.ts`, `app/robots.ts` | Search files. Legal pages stay out of the sitemap. |
+| `app/privacy/page.tsx`, `app/terms/page.tsx` | Privacy and terms. They describe the enquiry. |
+| `app/sitemap.ts`, `app/robots.ts` | Search files. Privacy and terms are included. |
 
 Shared layout, header, and footer are under `components/layout/` and `app/layout.tsx`.
 

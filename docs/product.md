@@ -11,7 +11,7 @@ The website explains the service and takes an enquiry. It does not take payment,
 | `/about` | Reads why the service exists. |
 | `/faqs` | Reads the practical answers. |
 | `/contact` | Sends a question. |
-| `/privacy`, `/terms` | Draft legal pages. They are `noindex`. |
+| `/privacy`, `/terms` | How an enquiry is stored, and how a plan starts. |
 
 There is no separate food page. This week's menu is the block on the homepage, at `#this-week`. The header and footer link there. An old `/our-food` address redirects to that block.
 
@@ -56,4 +56,4 @@ If the sheet cannot be loaded, or the link is not a valid web address, the page 
 
 ## What is still open
 
-Pause, skip, and cancellation rules are explained when someone enquires, unless a real cutoff has been set in `NEXT_PUBLIC_SKIP_CUTOFF`. Fixed clock times for breakfast, lunch and dinner appear only when those env vars are set. The legal pages are drafts and must be reviewed before launch. The full launch list is in the [README](../README.md#launch-checklist).
+Pause, skip, and cancellation rules are explained when someone enquires, unless a real cutoff has been set in `NEXT_PUBLIC_SKIP_CUTOFF`. Fixed clock times for breakfast, lunch and dinner appear only when those env vars are set. Privacy and terms describe that enquiry. Update them if how an enquiry is stored, or how a plan is paid for, changes. The full launch list is in the [README](../README.md#launch-checklist).
