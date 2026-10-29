@@ -76,6 +76,14 @@ The homepage renders `components/food/WeeklyMenu.tsx` with the id `this-week`. `
 
 Shared layout, header, and footer are under `components/layout/` and `app/layout.tsx`.
 
+## Search
+
+The homepage title and description live in `data/site-config.ts` (`metaTitle`, `description`). Every other route sets its own through `pageMeta` in `lib/page-meta.ts`. The visible headline is not the title tag.
+
+`app/layout.tsx` sets a canonical URL for each page from `NEXT_PUBLIC_SITE_URL`. Structured data is built in `lib/structured-data.ts` and rendered by `components/seo/JsonLd.tsx`. It uses the same facts as the pages. Phone, email, and social profiles are included only when those values are set. A photo is included only after `placeholder` is `false` in `data/images.ts`. Handover times are not opening hours, so they are left out. There is no rating, and meal offers are not marked as something you can buy on the page.
+
+`app/robots.ts` allows the public site and disallows `/api/`. Submit `sitemap.xml` in Search Console only after `NEXT_PUBLIC_SITE_URL` is the live domain. `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` prints the verification meta tag when it is set, and prints nothing when it is empty.
+
 ## Honesty in code
 
 - Hide a contact, a licence number, or a clock time when the env var is empty.

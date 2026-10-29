@@ -27,6 +27,7 @@ function joinAreas(areas: readonly string[]) {
 }
 
 const serviceAreaLine = joinAreas(serviceAreas);
+const serviceAreaShort = "Hinjewadi, Wakad and Baner";
 const techParkLine = joinAreas(techParks);
 
 /**
@@ -66,8 +67,8 @@ const skipNote = skipCutoff
 
 export const siteConfig = {
   name: "Native Meals",
-  /** Browser tab, Open Graph and Twitter title. */
-  metaTitle: "Native Meals — Daily Healthy Meal Subscription",
+  /** Homepage browser tab, Open Graph and Twitter title. Other routes set their own. */
+  metaTitle: `Daily Healthy Meal Subscription in ${serviceAreaShort}`,
   tagline: "Daily Healthy Meal Subscription — Hinjewadi, Wakad and Baner, Pune",
   description:
     "Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner, cooked the same morning and handed over at your office gate or your door.",
@@ -76,24 +77,18 @@ export const siteConfig = {
    * Used for metadata, Open Graph and the sitemap.
    */
   url: readPublic("NEXT_PUBLIC_SITE_URL") ?? "http://localhost:3000",
+  /** Search Console HTML-tag content. Omitted from the page until the env var is set. */
+  googleSiteVerification: readPublic("NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION"),
   city: "Pune",
   serviceAreas: [...serviceAreas],
   /** Full list, for the service-area section and FAQs. */
   serviceAreaLine,
   /** Short form for headlines, the footer and search descriptions. */
-  serviceAreaShort: "Hinjewadi, Wakad and Baner",
+  serviceAreaShort,
   techParks: [...techParks],
   techParkLine,
   /** Full line including the city, for sentences that need both. */
   launchArea: `${serviceAreaLine}, Pune`,
-  keywords: [
-    "healthy meals Hinjewadi",
-    "healthy tiffin service in Hinjewadi",
-    "healthy meal subscription Pune",
-    "office lunch Hinjewadi",
-    "healthy food delivery Wakad",
-    "diet meal plan Hinjewadi",
-  ],
   address:
     "Satyam Shivam Apartment, near NKGSB Bank, Shankar Kalat Nagar, Wakad, Pimpri-Chinchwad, Maharashtra 411057",
   contact: {

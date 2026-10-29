@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { siteConfig } from "@/data/site-config";
+import { pageMeta } from "@/lib/page-meta";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { FoodImage } from "@/components/ui/FoodImage";
@@ -7,11 +7,10 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 
-export const metadata: Metadata = {
-  title: "Our Story",
-  description:
-    `Healthy meals from Native Meals for ${siteConfig.serviceAreaShort}, Pune. Breakfast, lunch and dinner, cooked the same morning.`,
-};
+export const metadata = pageMeta(
+  "Healthy meals in Pune",
+  `Why Native Meals exists for people working in ${siteConfig.serviceAreaShort}, and the kitchen rules that hold for every meal.`,
+);
 
 export default function AboutPage() {
   return (

@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
 import { Suspense } from "react";
 import { faqsFor } from "@/data/faqs";
 import { siteConfig } from "@/data/site-config";
+import { pageMeta } from "@/lib/page-meta";
+import { faqPage, mealPlanOffers } from "@/lib/structured-data";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { foodAppLunchRange, nonVegPerMeal, plans, pricing } from "@/data/plans";
 import { whatsappHref } from "@/lib/contact";
 import { formatInr } from "@/lib/format";
@@ -17,12 +19,10 @@ const vegLunch = pricing.perMeal.lunch.taste;
 const nonVegLunch = nonVegPerMeal.lunch;
 const breakfast = pricing.perMeal.breakfast.taste;
 
-export const metadata: Metadata = {
-  title: {
-    absolute: siteConfig.metaTitle,
-  },
-  description: siteConfig.description,
-};
+export const metadata = pageMeta(
+  "Monday to Friday Meal Plans",
+  `Monday to Friday lunch and dinner in ${siteConfig.serviceAreaShort}, Pune. Veg lunch is ${formatInr(vegLunch)}, breakfast is ${formatInr(breakfast)}. The handover is confirmed before the first meal.`,
+);
 
 const flow = [
   { number: "01", label: "Your plan" },
@@ -60,6 +60,7 @@ const talkHref =
 export default function MealPlansPage() {
   return (
     <>
+      <JsonLd data={[faqPage(faqsFor("plans")), mealPlanOffers()]} />
       <header className="border-b border-charcoal/5 bg-white">
         <Container className="py-10 md:py-20">
           <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">

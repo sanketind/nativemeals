@@ -4,6 +4,8 @@ import { siteConfig } from "@/data/site-config";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { foodEstablishment } from "@/lib/structured-data";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -19,7 +21,9 @@ export const metadata: Metadata = {
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [...siteConfig.keywords],
+  alternates: {
+    canonical: "./",
+  },
   openGraph: {
     title: siteConfig.metaTitle,
     description: siteConfig.description,
@@ -32,6 +36,9 @@ export const metadata: Metadata = {
     title: siteConfig.metaTitle,
     description: siteConfig.description,
   },
+  ...(siteConfig.googleSiteVerification
+    ? { verification: { google: siteConfig.googleSiteVerification } }
+    : {}),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -48,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <JsonLd data={foodEstablishment()} />
         <Header />
         <main id="main" className="min-w-0 flex-1">
           {children}

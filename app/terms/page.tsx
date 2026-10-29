@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
 import { siteConfig } from "@/data/site-config";
+import { pageMeta } from "@/lib/page-meta";
 import { WriteToUs } from "@/components/legal/WriteToUs";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 
-export const metadata: Metadata = {
-  title: "Terms",
-  description:
-    "How a Native Meals plan starts. An enquiry is a request. The meals, the price, and the handover are confirmed before the first tiffin.",
-};
+export const metadata = pageMeta(
+  "Terms",
+  "How a Native Meals plan starts. An enquiry is a request. The meals, the price, and the handover are confirmed before the first tiffin.",
+);
 
 export default function TermsPage() {
   return (

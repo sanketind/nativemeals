@@ -4,7 +4,7 @@ export type BrandImage = {
   credit: string;
   sourceUrl: string;
   /** True until the file is replaced with Native Meals photography. */
-  placeholder: true;
+  placeholder: boolean;
 };
 
 /**

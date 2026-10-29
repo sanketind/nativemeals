@@ -1,14 +1,13 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/page-meta";
 import { WriteToUs } from "@/components/legal/WriteToUs";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "What Native Meals asks for when you enquire about a meal plan, where those details are kept, and how to ask us to correct or delete them.",
-};
+export const metadata = pageMeta(
+  "Privacy Policy",
+  "What Native Meals asks for when you enquire about a meal plan, where those details are kept, and how to ask us to correct or delete them.",
+);
 
 export default function PrivacyPage() {
   return (

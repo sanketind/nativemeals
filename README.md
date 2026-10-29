@@ -181,5 +181,6 @@ Confirm all of these before publishing:
 - Privacy policy and terms. They describe the enquiry. Update them if storage or payment changes
 - Any food-business registration and compliance details that must be shown
 - `NEXT_PUBLIC_SITE_URL` set to the real domain
+- Submit `sitemap.xml` in Google Search Console once that domain, the weekly menu, and the real photos are live
 - Weekly menu sheet connected, and the sample label gone
 - Enquiry webhook connected, and a test enquiry received

@@ -1,16 +1,15 @@
-import type { Metadata } from "next";
 import { siteConfig } from "@/data/site-config";
+import { pageMeta } from "@/lib/page-meta";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { displayPhone, phoneHref, whatsappHref } from "@/lib/contact";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Start a healthy meal plan in Hinjewadi, Wakad and Baner, Pune. Share your locality and whether you want veg or non-veg.",
-};
+export const metadata = pageMeta(
+  "Start a meal plan",
+  `Ask about a meal plan in ${siteConfig.serviceAreaShort}, Pune. Share your locality and whether you want veg or non-veg.`,
+);
 
 export default function ContactPage() {
   const phone = siteConfig.contact.phone;

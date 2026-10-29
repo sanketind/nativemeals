@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const nextConfig: NextConfig = {
   async redirects() {
-    return [{ source: "/our-food", destination: "/#this-week", permanent: false }];
+    return [{ source: "/our-food", destination: "/#this-week", permanent: true }];
   },
   cacheComponents: true,
   partialPrefetching: true,
