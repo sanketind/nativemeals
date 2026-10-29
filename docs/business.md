@@ -28,9 +28,9 @@ Three plans, all enquiry, none paid for on the website:
 - Dinner Plan. Dinner at the PG or the flat.
 - All-day Plan. Breakfast, lunch and dinner, or any mix of the three.
 
-Veg and non-veg lunch and dinner are different prices. Breakfast is one rate. The visitor chooses veg, non-veg, or either.
+Veg and non-veg lunch and dinner are different prices. Breakfast is one rate. The visitor chooses veg, non-veg, or either. Either is priced at the veg rate until they choose non-veg.
 
-Durations run from a single meal up to a month. Monday to Friday uses five days a week, or 22 weekdays in a month. The six-day options stay for Saturday. The rate per meal does not change with the length. The numbers in `data/plans.ts` are confirmed. How to change them is in the [README](../README.md#plans-and-prices).
+Durations are one meal, 3 days, Monday to Friday (5 days), 6 days, 2 weeks (12 days), a weekday month (22 days) and a 24-day month. The six-day lengths are there for Saturday. The rate per meal does not change with the length. The numbers in `data/plans.ts` are confirmed. How to change them is in the [README](../README.md#plans-and-prices).
 
 ## How a meal is cooked
 
@@ -54,4 +54,4 @@ Leave the env var empty. The site hides the fact rather than printing a placehol
 - Social profiles.
 - A founder story. `founderNote` stays null until there is a real one.
 
-Also do not invent ratings, testimonials, calorie or protein numbers, a nutritionist, a weight-loss claim, or a medical plan. The menu on the homepage is a sample until the Google Sheet is connected. Delivery and collection details that are still open are confirmed with the person before they start. Pause, change and cancellation terms are explained then, not published as if they were settled.
+Also do not invent ratings, testimonials, calorie or protein numbers, a nutritionist, a weight-loss claim, or a medical plan. The menu on the homepage is a sample until the Google Sheet is connected. If that sheet cannot be loaded, the page says so. It does not put the sample or an older week in its place. Delivery and collection details that are still open are confirmed with the person before they start. Pause, change and cancellation terms are explained then, not published as if they were settled.

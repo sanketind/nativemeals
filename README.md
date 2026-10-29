@@ -35,7 +35,7 @@ Do not scatter business details through the components. Change them here:
 | What | Where |
 | --- | --- |
 | Service area, phone, WhatsApp, email, social links | `data/site-config.ts` and `.env.local` |
-| Sample dish list | `data/menu.ts` |
+| Meal and diet types | `data/menu.ts`. The sample dish list in that file is not shown on a page. |
 | Plans and per-meal prices | `data/plans.ts` (`pricing`, then each plan) |
 | FAQ answers | `data/faqs.ts` |
 | Photos and alt text | `public/images/` and `data/images.ts` |
@@ -84,11 +84,21 @@ The body looks like this:
   "plan": "Lunch Plan",
   "diet": "veg",
   "locality": "Wakad",
-  "message": ""
+  "message": "",
+  "estimate": {
+    "pricingStatus": "confirmed",
+    "plan": "Lunch Plan",
+    "duration": "Mon–Fri",
+    "days": 5,
+    "meals": [{ "meal": "Lunch", "perMeal": 229 }],
+    "perDay": 229,
+    "total": 1145,
+    "note": ""
+  }
 }
 ```
 
-`type` is `plan`, `contact` or `serviceability`. A hidden field traps simple bots and those submissions are ignored.
+`type` is `plan`, `contact` or `serviceability`. The server writes `estimate` from the current rates in `data/plans.ts`. The figures above only show the shape of one Monday to Friday veg lunch. A hidden field traps simple bots and those submissions are ignored.
 
 The service-area box does not check a postcode. It only records the locality so someone can reply.
 
@@ -127,7 +137,7 @@ The site shows the current Monday-to-Sunday week, in India time. Days you have n
 
 Changes show up within about 15 minutes. To see them immediately, open the publish bookmark from step 6 and wait for the line that says the refresh was requested. Then reload the site.
 
-If the sheet cannot be reached, the last menu that loaded stays up. If nothing is posted for this week, visitors see that the menu will be posted soon, with a way to ask.
+If the sheet cannot be reached, or the link is not a valid web address, the page says the menu could not be loaded and offers a way to ask. It does not keep the previous week, and it does not show the sample. If nothing is posted for this week, visitors see that the menu will be posted soon, with a way to ask.
 
 Until the sheet link is added, the site shows a sample week with a clear sample label. That sample disappears as soon as the sheet is connected.
 
@@ -137,7 +147,7 @@ There is an optional line under the menu, `weeklyMenu.footnote` in `data/site-co
 
 All prices live in the `pricing` object in `data/plans.ts`. The plan cards and the builder read from it. Do not type prices anywhere else.
 
-- `status` — `"draft"` shows “Introductory pricing, subject to confirmation.” Set it to `"confirmed"` once the numbers are real, and the note disappears.
+- `status` — `"draft"` shows `pricing.note` (“We confirm the total before you start.”). Set `status` to `"confirmed"` once the numbers are real, and that note disappears. It is already `"confirmed"`.
 - `perMeal` — the veg rate, in rupees, for breakfast, lunch and dinner. It is the same at every duration. Non-veg lunch and dinner use `nonVegPerMeal`. Breakfast is the same either way.
 - `durations[].days` — how many meals of each kind are in that plan. Monday to Friday is 1 meal, then 5 days, then 22 weekdays in a month. The six-day options stay for Saturday: 6 days, 12 days, and 24 days. A 3-day length sits between the single meal and the Monday to Friday week.
 
@@ -151,14 +161,14 @@ Lunch is lunch only. Dinner is dinner only. Any other mix, including breakfast o
 
 Stock photos in `public/images/` are stand-ins. Credits are in `public/images/CREDITS.md`. Before launch, replace the files (keep the same names, or change `src` in `data/images.ts`) and rewrite the alt text so it describes the real photo. Set `placeholder` to `false` when a photo is yours.
 
-The dish names in `data/menu.ts` match those stand-in photos. Replace that list with the real menu. Do not leave a dish name sitting on a photo of something else.
+The photos on the site are the hero, the plan cards and the About page. `data/menu.ts` has a sample dish list that no page renders. The dishes visitors read are the weekly menu. An optional `image` cell in the sheet can use a key from `data/images.ts`. Do not leave a dish name sitting on a photo of something else.
 
 ## Launch checklist
 
 Confirm all of these before publishing:
 
 - Final menu and dish descriptions
-- Replace the draft prices in `data/plans.ts` and set `pricing.status` to `"confirmed"`
+- Prices in `data/plans.ts` are confirmed. If a number changes, change it there and keep `pricing.status` at `"confirmed"`
 - Serviceable locations, if the list grows beyond Hinjewadi, Wakad and Baner
 - Delivery and collection arrangements
 - Business phone and WhatsApp number

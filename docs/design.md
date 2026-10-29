@@ -6,17 +6,19 @@ The site should feel like a calm meal service for an office week. Healthy, clean
 
 Tokens are in `app/globals.css`.
 
-| Token | Hex | Use |
-| --- | --- | --- |
-| Cream | `#FFFDF4` | Page background |
-| Olive | `#0C3F25` | Headings, primary buttons, the dark band |
-| Olive deep | `#082F1F` | Hover on primary buttons and navigation links |
-| Sunflower | `#F9D82B` | Focus rings and small marks. Not for small text. |
-| Leaf | `#197241` | Small labels. Sunflower fails contrast on ivory. |
-| Sage | `#E4F2E6` | Soft fills behind cards and photos |
-| Muted | `#526158` | Body copy |
-| Charcoal | `#292A26` | Stronger text and selection |
-| Error | `#9B3A2F` | Form errors |
+| Token | CSS variable | Hex | Use |
+| --- | --- | --- | --- |
+| Cream | `--color-cream` | `#FFFDF4` | Page background |
+| Olive | `--color-olive` | `#0C3F25` | Headings, primary buttons, the dark band |
+| Olive deep | `--color-olive-deep` | `#082F1F` | Hover on primary buttons and navigation links |
+| Sunflower | `--color-terracotta` | `#F9D82B` | Focus rings and small marks. Not for small text. |
+| Leaf | `--color-terracotta-ink` | `#197241` | Small labels. Sunflower fails contrast on ivory. |
+| Sage | `--color-sage` | `#E4F2E6` | Soft fills behind cards and photos |
+| Muted | `--color-muted` | `#526158` | Body copy |
+| Charcoal | `--color-charcoal` | `#292A26` | Stronger text and selection |
+| Error | `--color-error` | `#9B3A2F` | Form errors |
+
+The CSS names `terracotta` and `terracotta-ink` are the sunflower and leaf colours. Use the variables above. There is no `--color-sunflower`.
 
 The hero has a soft sunflower glow in the corner. The rest of the page stays ivory, white, and deep green.
 
@@ -46,4 +48,4 @@ Files in `public/images/` are credited stand-ins. Credits are in `public/images/
 
 ## Layout
 
-The first screen is a short pill, a heavy headline, one sentence, two actions, and a quiet row of kitchen differentiators beside one rounded photo. The row says freshly cooked, no maida, no preservatives, and cooked in steel. Delivery windows stay in the delivery answer, not in this row. The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The headline is Daily Healthy Meal Subscription. The sentence is breakfast, lunch and dinner, cooked the same morning and handed over at the office gate or the door. Prices stay on the plan cards, not in the hero. The photo badge says Cooked the same morning. Later sections are full-width bands: white, ivory, or deep green. Cards are rounded. The weekly menu is a set of day cards on the homepage, not a separate food catalogue.
+The header is a white pill, sticky at the top. The first screen is a short pill, a heavy headline, one sentence, two actions, and a quiet row of kitchen differentiators beside one rounded photo. The row says freshly cooked, no maida, no preservatives, and cooked in steel. Delivery windows stay in the delivery answer, not in this row. The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The headline is Daily Healthy Meal Subscription. The sentence is breakfast, lunch and dinner, cooked the same morning and handed over at the office gate or the door. Prices stay on the plan cards, not in the hero. The photo badge says Cooked the same morning. Later sections are full-width bands: white, ivory, or deep green. Cards are rounded. The weekly menu is a set of day cards on the homepage, not a separate food catalogue.

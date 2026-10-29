@@ -43,8 +43,9 @@ export default function AboutPage() {
               </h2>
               <p className="mt-4 text-[0.94rem] font-normal leading-[1.65] text-muted">
                 Healthy meals, planned across the week so the days balance out.
-                Vegetarian and non-vegetarian are both on the menu, at the same
-                price. What is actually cooking is on this week&apos;s menu.
+                Vegetarian and non-vegetarian are both on the menu. Lunch and
+                dinner cost more for non-veg. Breakfast is the same either way.
+                What is actually cooking is on this week&apos;s menu.
               </p>
             </article>
             <article>

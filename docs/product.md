@@ -30,7 +30,7 @@ The conversion is a form, not a checkout.
 5. If it is not set, or the request fails, the visitor gets a WhatsApp link with the same details, and an email link when an address exists. Nothing is sent until they tap it.
 6. If WhatsApp is not configured either, the form says it cannot take the message.
 
-Contact and the service-area check use the same route, with a different `type`: `plan`, `contact`, or `serviceability`.
+Contact and the service-area check use the same route, with a different `type`: `plan`, `contact`, or `serviceability`. A plan enquiry needs a name, a 10-digit Indian mobile number and a locality. Contact needs a name, a phone number and a message, and the locality can be left blank. The service-area check needs a phone number and a locality, and the name can be left blank.
 
 Nothing is charged on the page. Price, address, and start date are confirmed before the first meal.
 
@@ -40,7 +40,11 @@ Three cards: Lunch Plan, Dinner Plan, and All-day Plan. The builder can mix meal
 
 The prices live in `data/plans.ts` with `pricing.status` set to `"confirmed"`. Do not copy the price table into this document. The code is the source. How to change a number is in the [README](../README.md#plans-and-prices).
 
-A comparison range for a typical food-app lunch sits next to the Native Meals price. It is an illustration, not a quote from any app.
+Choosing either is priced at the veg rate. When lunch or dinner is in the selection, the estimate notes the higher non-veg price. Breakfast stays one rate.
+
+Durations are one meal, 3 days, Monday to Friday (5 days), 6 days, 2 weeks (12 days), a weekday month (22 days) and a 24-day month. The plan cards show one meal, Monday to Friday, the weekday month and the 24-day month. The builder lists every length.
+
+A comparison range for a typical food-app lunch sits next to the Native Meals price. It is an illustration, not a quote from any app. It lives in `foodAppLunchRange` in `data/plans.ts`.
 
 ## This week's menu
 
@@ -48,7 +52,7 @@ Visitors see the current Monday-to-Sunday week in India time. A day with nothing
 
 The kitchen edits a Google Sheet. The operating steps, the columns, and the publish bookmark are in the [README](../README.md#weekly-menu-for-the-kitchen-team).
 
-If the sheet cannot be loaded, the page says so and offers a way to ask. It does not invent the week's dishes.
+If the sheet cannot be loaded, or the link is not a valid web address, the page says so and offers a way to ask. It does not show the sample, and it does not keep the previous week. A sheet that loads with nothing in the current week says the menu will be posted soon. The page does not invent the week's dishes.
 
 ## What is still open
 
