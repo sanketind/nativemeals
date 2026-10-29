@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { plans, pricing, type DurationId } from "@/data/plans";
 import { addIsoDays, indiaTodayIso } from "@/lib/dates";
 import { formatInr } from "@/lib/format";
@@ -61,6 +61,7 @@ export function EnquiryForm({
   );
   const [errors, setErrors] = useState<FieldErrors>({});
   const [state, setState] = useState<SubmitState>({ status: "idle" });
+  const [today, setToday] = useState<string | null>(null);
 
   function update<K extends keyof EnquiryInput>(key: K, value: EnquiryInput[K]) {
     setValues((current) => ({ ...current, [key]: value }));
@@ -133,7 +134,11 @@ export function EnquiryForm({
   const showStart = type === "plan";
   const nameRequired = type !== "serviceability";
   const localityRequired = type !== "contact";
-  const today = indiaTodayIso();
+
+  useEffect(() => {
+    if (!showStart) return;
+    setToday(indiaTodayIso());
+  }, [showStart]);
 
   return (
     <form onSubmit={onSubmit} noValidate className="relative space-y-4">
@@ -367,8 +372,8 @@ export function EnquiryForm({
             id={`${formId}-start`}
             name="startDate"
             type="date"
-            min={today}
-            max={addIsoDays(today, 180)}
+            min={today ?? undefined}
+            max={today ? addIsoDays(today, 180) : undefined}
             value={values.startDate}
             onChange={(event) => update("startDate", event.target.value)}
             className={inputClass(Boolean(errors.startDate))}
