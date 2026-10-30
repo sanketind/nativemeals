@@ -1,9 +1,9 @@
 import Link from "next/link";
+import { MapPin, Phone, ShieldCheck } from "lucide-react";
 import { siteConfig } from "@/data/site-config";
 import { copyrightYear } from "@/lib/clock";
-import { displayPhone, phoneHref, whatsappHref } from "@/lib/contact";
+import { displayPhone, phoneHref } from "@/lib/contact";
 import { Container } from "@/components/ui/Container";
-import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 import { Wordmark } from "@/components/layout/Wordmark";
 
 const legalHrefs = new Set(["/privacy", "/terms"]);
@@ -12,7 +12,6 @@ export async function Footer() {
   const year = await copyrightYear();
   const phone = siteConfig.contact.phone;
   const phoneLink = phone ? phoneHref(phone) : null;
-  const whatsapp = whatsappHref();
   const explore = siteConfig.footerNav.filter((item) => !legalHrefs.has(item.href));
   const legal = siteConfig.footerNav.filter((item) => legalHrefs.has(item.href));
 
@@ -54,37 +53,36 @@ export async function Footer() {
           <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta">
             Contact
           </p>
-          {phone && phoneLink ? (
-            <ul className="mt-4 space-y-2 text-sm font-medium">
-              <li>
+          <ul className="mt-4 space-y-3 text-sm">
+            {phone && phoneLink ? (
+              <li className="flex items-start gap-2.5 font-medium">
+                <Phone aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-terracotta" />
                 <a className="text-cream hover:text-terracotta" href={phoneLink}>
                   {displayPhone(phone)}
                 </a>
               </li>
-            </ul>
-          ) : null}
-          {!phoneLink && !whatsapp ? (
-            <p className="mt-4 text-sm leading-relaxed text-cream/80">
-              <Link href="/contact" className="font-medium text-cream hover:text-terracotta">
-                Write to us
-              </Link>{" "}
-              and we will reply on your phone.
-            </p>
-          ) : null}
-          {whatsapp ? (
-            <div className="mt-4">
-              <WhatsAppCTA variant="inverse" size="sm" message={siteConfig.messages.general}>
-                Chat on WhatsApp
-              </WhatsAppCTA>
-            </div>
-          ) : null}
-          <p className="mt-5 text-sm leading-relaxed text-cream/75">
-            <span className="font-semibold text-cream">Address. </span>
-            {siteConfig.address}
-          </p>
-          {siteConfig.fssai ? (
-            <p className="mt-2 text-sm text-cream/75">FSSAI {siteConfig.fssai}</p>
-          ) : null}
+            ) : (
+              <li className="leading-relaxed text-cream/80">
+                <Link href="/contact" className="font-medium text-cream hover:text-terracotta">
+                  Write to us
+                </Link>{" "}
+                and we will reply on your phone.
+              </li>
+            )}
+            <li className="flex items-start gap-2.5 leading-relaxed text-cream/75">
+              <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-terracotta" />
+              <span>{siteConfig.address}</span>
+            </li>
+            {siteConfig.fssai ? (
+              <li className="flex items-start gap-2.5 text-cream/75">
+                <ShieldCheck
+                  aria-hidden="true"
+                  className="mt-0.5 size-4 shrink-0 text-terracotta"
+                />
+                <span>FSSAI {siteConfig.fssai}</span>
+              </li>
+            ) : null}
+          </ul>
           {siteConfig.socials.length > 0 ? (
             <ul className="mt-4 flex flex-wrap gap-3 text-sm">
               {siteConfig.socials.map((social) => (

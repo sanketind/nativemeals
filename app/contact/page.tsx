@@ -1,10 +1,10 @@
+import { Phone } from "lucide-react";
 import { siteConfig } from "@/data/site-config";
 import { pageMeta } from "@/lib/page-meta";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
-import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 import { displayPhone, phoneHref } from "@/lib/contact";
 
 export const metadata = pageMeta(
@@ -47,7 +47,8 @@ export default function ContactPage() {
               Office tiffins go to the gate or the security desk.
             </p>
             {call && phone ? (
-              <p className="mt-6 font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-bold leading-none tracking-[-0.03em] text-olive">
+              <p className="mt-6 flex items-center gap-2.5 font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-bold leading-none tracking-[-0.03em] text-olive">
+                <Phone aria-hidden="true" className="size-5 shrink-0 text-olive" />
                 <a href={call} className="hover:text-olive-deep">
                   {displayPhone(phone)}
                 </a>
@@ -65,11 +66,6 @@ export default function ContactPage() {
                 Use the form and we will reply on your phone.
               </p>
             ) : null}
-            <div className="mt-6">
-              <WhatsAppCTA variant="secondary" message={siteConfig.messages.general}>
-                Chat on WhatsApp
-              </WhatsAppCTA>
-            </div>
           </div>
           <div className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
             <EnquiryForm type="contact" submitLabel="Send message" />
