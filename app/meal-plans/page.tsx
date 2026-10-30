@@ -4,7 +4,7 @@ import { siteConfig } from "@/data/site-config";
 import { pageMeta } from "@/lib/page-meta";
 import { faqPage, mealPlanOffers } from "@/lib/structured-data";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { foodAppLunchRange, nonVegPerMeal, plans, pricing } from "@/data/plans";
+import { nonVegPerMeal, plans, pricing } from "@/data/plans";
 import { whatsappHref } from "@/lib/contact";
 import { formatInr } from "@/lib/format";
 import { PlanExperience } from "@/components/plans/PlanExperience";
@@ -16,9 +16,9 @@ import { FAQSplit } from "@/components/ui/FAQSplit";
 import { FoodImage } from "@/components/ui/FoodImage";
 import { Section } from "@/components/ui/Section";
 
-const vegLunch = pricing.perMeal.lunch.taste;
+const vegLunch = pricing.perMeal.lunch;
 const nonVegLunch = nonVegPerMeal.lunch;
-const breakfast = pricing.perMeal.breakfast.taste;
+const breakfast = pricing.perMeal.breakfast;
 
 export const metadata = pageMeta(
   "Monday to Friday Meal Plans",
@@ -35,7 +35,7 @@ const steps = [
   {
     number: "01",
     title: "Choose meals and duration",
-    body: "Lunch, dinner, breakfast, or a mix. One meal, Monday to Friday, or a full month.",
+    body: "Lunch, dinner, breakfast, or a mix. Three days, two weeks, or four weeks.",
   },
   {
     number: "02",
@@ -89,9 +89,9 @@ export default function MealPlansPage() {
               </p>
             </li>
             <li>
-              <p className="font-sans text-[1.28rem] font-bold leading-[1.3] tracking-[-0.02em] text-olive">1 meal to a month</p>
+              <p className="font-sans text-[1.28rem] font-bold leading-[1.3] tracking-[-0.02em] text-olive">3 days to 4 weeks</p>
               <p className="mt-1 text-sm text-muted">
-                Mon–Fri, or six days when you want Saturday
+                Monday to Friday, or with Saturday
               </p>
             </li>
             <li>
@@ -141,8 +141,7 @@ export default function MealPlansPage() {
           <h2 className="font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">Or start from a plan.</h2>
           <p className="mt-3 max-w-2xl text-[1.06rem] font-normal leading-[1.7] text-muted">
             Lunch and dinner are priced per meal. The all-day plan is the per-day
-            cost of breakfast, lunch and dinner together. A food-app lunch around
-            {siteConfig.serviceAreaShort} is often {formatInr(foodAppLunchRange.low)}–{formatInr(foodAppLunchRange.high)} before fees.
+            cost of breakfast, lunch and dinner together.
           </p>
           {pricing.status === "draft" ? (
             <p className="mt-3 text-sm text-muted">{pricing.note}</p>
@@ -223,7 +222,7 @@ export default function MealPlansPage() {
 
       <FinalCTA
         tone="olive"
-        title="Start with one lunch, or a Monday to Friday month."
+        title="Start with three days, or stay for four weeks."
         body="Choose the meals and the length, then send your details. We confirm the handover spot before the first tiffin."
         primaryHref="#build"
         primaryLabel="Start your plan"

@@ -91,17 +91,17 @@ The body looks like this:
   "estimate": {
     "pricingStatus": "confirmed",
     "plan": "Lunch Plan",
-    "duration": "Mon–Fri",
-    "days": 5,
+    "duration": "Mon–Fri, 4 weeks",
+    "days": 20,
     "meals": [{ "meal": "Lunch", "perMeal": 229 }],
     "perDay": 229,
-    "total": 1145,
+    "total": 4580,
     "note": ""
   }
 }
 ```
 
-`type` is `plan`, `contact` or `serviceability`. A plan enquiry includes `startDate`, the day they want the first tiffin, as `YYYY-MM-DD`. `handover` is `office`, `home`, or `both`. `address` is the office or the home. When `handover` is `both`, `address` is the office and `homeAddress` is the home. The server writes `estimate` from the current rates in `data/plans.ts`. The figures above only show the shape of one Monday to Friday veg lunch. A hidden field traps simple bots and those submissions are ignored.
+`type` is `plan`, `contact` or `serviceability`. A plan enquiry includes `startDate`, the day they want the first tiffin, as `YYYY-MM-DD`. `handover` is `office`, `home`, or `both`. `address` is the office or the home. When `handover` is `both`, `address` is the office and `homeAddress` is the home. The server writes `estimate` from the current rates in `data/plans.ts`. The figures above only show the shape of one Monday to Friday veg lunch for four weeks. A hidden field traps simple bots and those submissions are ignored.
 
 The service-area box does not check a postcode. It only records the locality so someone can reply.
 
@@ -151,10 +151,10 @@ There is an optional line under the menu, `weeklyMenu.footnote` in `data/site-co
 All prices live in the `pricing` object in `data/plans.ts`. The plan cards and the builder read from it. Do not type prices anywhere else.
 
 - `status` — `"draft"` shows `pricing.note` (“We confirm the total before you start.”). Set `status` to `"confirmed"` once the numbers are real, and that note disappears. It is already `"confirmed"`.
-- `perMeal` — the veg rate, in rupees, for breakfast, lunch and dinner. It is the same at every duration. Non-veg lunch and dinner use `nonVegPerMeal`. Breakfast is the same either way.
-- `durations[].days` — how many meals of each kind are in that plan. Monday to Friday is 1 meal, then 5 days, then 22 weekdays in a month. The six-day options stay for Saturday: 6 days, 12 days, and 24 days. A 3-day length sits between the single meal and the Monday to Friday week.
+- `perMeal` — the veg rate, in rupees, for breakfast, lunch and dinner. It is the same at every length. Non-veg lunch and dinner use `nonVegPerMeal`. Breakfast is the same either way.
+- Days are `weekdays` (Monday to Friday) or `saturday` (Monday to Saturday). Lengths are `trial` (3 days), `two-weeks`, and `four-weeks`. Three days is always 3 tiffins. Two weeks is 10 or 12. Four weeks is 20 or 24. `deliveryDays` in `data/plans.ts` is the count.
 
-The builder multiplies the selected meals by those days and shows an estimate. The enquiry API calculates the same total again, so the browser cannot submit a different price.
+The builder multiplies the selected meals by that tiffin count and shows an estimate. The enquiry API calculates the same total again, so the browser cannot submit a different price.
 
 Lunch is lunch only. Dinner is dinner only. Any other mix, including breakfast on its own, is the All-day Plan. Its card shows the per-day cost of all three meals.
 

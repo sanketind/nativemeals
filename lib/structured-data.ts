@@ -81,10 +81,10 @@ export function mealPlanOffers(): JsonLdNode | null {
     "@type": "OfferCatalog",
     name: `${siteConfig.name} meal plans`,
     itemListElement: [
-      offer("Breakfast", pricing.perMeal.breakfast.taste),
-      offer("Veg lunch", pricing.perMeal.lunch.taste),
+      offer("Breakfast", pricing.perMeal.breakfast),
+      offer("Veg lunch", pricing.perMeal.lunch),
       offer("Non-veg lunch", nonVegPerMeal.lunch),
-      offer("Veg dinner", pricing.perMeal.dinner.taste),
+      offer("Veg dinner", pricing.perMeal.dinner),
       offer("Non-veg dinner", nonVegPerMeal.dinner),
     ],
   };

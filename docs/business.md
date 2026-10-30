@@ -30,7 +30,7 @@ Three plans, all enquiry, none paid for on the website:
 
 Veg and non-veg lunch and dinner are different prices. Breakfast is one rate. The visitor chooses veg, non-veg, or either. Either is priced at the veg rate until they choose non-veg.
 
-Durations are one meal, 3 days, Monday to Friday (5 days), 6 days, 2 weeks (12 days), a weekday month (22 days) and a 24-day month. The six-day lengths are there for Saturday. The rate per meal does not change with the length. The numbers in `data/plans.ts` are confirmed. How to change them is in the [README](../README.md#plans-and-prices).
+Days are Monday to Friday, or Monday to Saturday. Lengths are 3 days, 2 weeks, or 4 weeks. Three days is 3 tiffins. Two weeks is 10 tiffins on Monday to Friday, or 12 with Saturday. Four weeks is 20, or 24 with Saturday. The rate per meal does not change with the length. The numbers in `data/plans.ts` are confirmed. How to change them is in the [README](../README.md#plans-and-prices).
 
 ## How a meal is cooked
 

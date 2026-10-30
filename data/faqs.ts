@@ -15,9 +15,9 @@ export type Faq = {
  * Answers a customer can act on. The weekly menu stays labelled as a sample
  * until the live sheet replaces it.
  */
-const vegLunch = formatInr(pricing.perMeal.lunch.taste);
+const vegLunch = formatInr(pricing.perMeal.lunch);
 const nonVegLunch = formatInr(nonVegPerMeal.lunch);
-const breakfast = formatInr(pricing.perMeal.breakfast.taste);
+const breakfast = formatInr(pricing.perMeal.breakfast);
 export const faqs: Faq[] = [
   {
     id: "what-is-native-meals",
@@ -44,14 +44,14 @@ export const faqs: Faq[] = [
     id: "which-plans",
     question: "What meal plans are available?",
     answer:
-      "Lunch, dinner, or breakfast, lunch and dinner together. Most people take Monday to Friday. A 6-day week is there if you also want Saturday. You can start with a single meal.",
+      "Lunch, dinner, or breakfast, lunch and dinner together. Choose Monday to Friday, or Monday to Saturday. Lengths are 3 days, 2 weeks, or 4 weeks.",
     pages: ["faqs", "plans"],
   },
   {
     id: "how-subscriptions-work",
     question: "How do subscriptions work?",
     answer:
-      "Pick the meals and a length, from one meal up to a month. Tell us veg or non-veg, and whether the tiffin goes to your office gate or your home. We confirm the start date before the first meal. This site does not take payment or start a plan on its own.",
+      "Pick the meals, the days, and a length: 3 days, 2 weeks, or 4 weeks. Tell us veg or non-veg, and whether the tiffin goes to your office gate or your home. We confirm the start date before the first meal. This site does not take payment or start a plan on its own.",
     pages: ["faqs", "plans"],
   },
   {
@@ -71,7 +71,7 @@ export const faqs: Faq[] = [
     id: "pricing",
     question: "How does pricing work?",
     answer:
-      `Breakfast is ${breakfast}. Lunch and dinner are ${vegLunch} veg and ${nonVegLunch} non-veg. The price per meal is the same for one meal or a month. Monday to Friday is five days, and Saturday is a separate choice. We confirm the total, and any delivery charge, before you start.`,
+      `Breakfast is ${breakfast}. Lunch and dinner are ${vegLunch} veg and ${nonVegLunch} non-veg. The price per meal is the same for 3 days, 2 weeks, or 4 weeks. Monday to Friday is five tiffins a week. Saturday makes it six. A 3-day try is three tiffins either way. We confirm the total, and any delivery charge, before you start.`,
     pages: ["faqs", "plans"],
   },
   {

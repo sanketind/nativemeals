@@ -112,8 +112,12 @@ export const siteConfig = {
     skipNote,
     handover,
   },
-  /** TODO: Add real profiles when they exist. Leave empty until then. */
-  socials: [] as SocialLink[],
+  socials: [
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/nativemeals.in/",
+    },
+  ] satisfies SocialLink[],
   messages: {
     general:
       "Hi Native Meals, I want a daily healthy meal subscription. I am looking at a lunch trial.",

@@ -1,8 +1,9 @@
 import { getPlan } from "@/data/plans";
 import { addIsoDays, indiaTodayIso, isValidIsoDate } from "@/lib/dates";
 import {
-  isDurationId,
+  isLengthId,
   isMealSlot,
+  isScheduleId,
   quote,
   type MealSlot,
   type PlanSelection,
@@ -84,9 +85,10 @@ function parseSelection(value: unknown): PlanSelection | null {
     }
     meals.push(meal);
   }
-  const duration = clean(record.duration, 20);
-  if (!isDurationId(duration) || meals.length === 0) return null;
-  return { meals, duration };
+  const schedule = clean(record.schedule, 20);
+  const length = clean(record.length, 20);
+  if (!isScheduleId(schedule) || !isLengthId(length) || meals.length === 0) return null;
+  return { meals, schedule, length };
 }
 
 export function validateEnquiry(input: EnquiryInput): FieldErrors {
@@ -108,7 +110,7 @@ export function validateEnquiry(input: EnquiryInput): FieldErrors {
   if (input.type === "plan") {
     if (input.selection) {
       if (!quote(input.selection)) {
-        errors.plan = "Choose at least one meal and a duration.";
+        errors.plan = "Choose at least one meal, the days, and a length.";
       }
     } else if (!getPlan(input.plan)) {
       errors.plan = "Choose a meal plan.";
@@ -162,7 +164,11 @@ export function parseEnquiryBody(body: unknown): EnquiryInput | null {
   let selection: PlanSelection | null = null;
   if ("selection" in record && record.selection != null) {
     // An unreadable selection must fail validation, not fall through to the plan id.
-    selection = parseSelection(record.selection) ?? { meals: [], duration: "trial" };
+    selection = parseSelection(record.selection) ?? {
+      meals: [],
+      schedule: "weekdays",
+      length: "trial",
+    };
   }
   return {
     type,

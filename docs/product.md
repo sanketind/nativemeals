@@ -23,7 +23,7 @@ The hero headline is Daily Healthy Meal Subscription. The pill is Hinjewadi, Wak
 
 The conversion is a form, not a checkout.
 
-1. On Meal Plans, the visitor picks meals, a duration, and veg, non-veg, or either. The page shows an estimate from `data/plans.ts`.
+1. On Meal Plans, the visitor picks meals, Monday to Friday or Monday to Saturday, a length, and veg, non-veg, or either. The page shows an estimate from `data/plans.ts`.
 2. They send a name, a 10-digit mobile number, a locality, office or home, the address, and the day they want the first tiffin. A hidden company field catches simple bots and those submissions are ignored.
 3. The form posts to `/api/enquiry`. The server calculates the estimate again. A total typed in the browser is not trusted.
 4. If `ENQUIRY_WEBHOOK_URL` is set, the site POSTs JSON there.
@@ -42,9 +42,7 @@ The prices live in `data/plans.ts` with `pricing.status` set to `"confirmed"`. D
 
 Choosing either is priced at the veg rate. When lunch or dinner is in the selection, the estimate notes the higher non-veg price. Breakfast stays one rate.
 
-Durations are one meal, 3 days, Monday to Friday (5 days), 6 days, 2 weeks (12 days), a weekday month (22 days) and a 24-day month. The plan cards show one meal, Monday to Friday, the weekday month and the 24-day month. The builder lists every length.
-
-A comparison range for a typical food-app lunch sits next to the Native Meals price. It is an illustration, not a quote from any app. It lives in `foodAppLunchRange` in `data/plans.ts`.
+The builder asks two questions. Days are Monday to Friday, or Monday to Saturday. Lengths are 3 days, 2 weeks, or 4 weeks. Three days is always 3 tiffins. Two weeks is 10 tiffins on Monday to Friday, or 12 with Saturday. Four weeks is 20, or 24 with Saturday. Sunday stays off. A 28-day run of every calendar day is not a length. The plan cards show those three lengths with both counts.
 
 ## This week's menu
 

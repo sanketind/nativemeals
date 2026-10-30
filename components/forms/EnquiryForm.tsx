@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
-import { plans, pricing, type DurationId } from "@/data/plans";
+import { plans, pricing, type LengthId, type ScheduleId } from "@/data/plans";
 import { addIsoDays, indiaTodayIso } from "@/lib/dates";
 import { formatInr } from "@/lib/format";
-import { formatDuration, quote, type MealSlot } from "@/lib/pricing";
+import { formatSelection, quote, type MealSlot } from "@/lib/pricing";
 import {
   emptyEnquiry,
   validateEnquiry,
@@ -19,7 +19,8 @@ import { cn } from "@/lib/cn";
 
 export type BuilderSelection = {
   meals: MealSlot[];
-  duration: DurationId;
+  schedule: ScheduleId;
+  length: LengthId;
   diet: DietChoice;
 };
 
@@ -74,7 +75,7 @@ export function EnquiryForm({
       diet: selection ? selection.diet : values.diet,
       plan: selection ? "" : values.plan,
       selection: selection
-        ? { meals: selection.meals, duration: selection.duration }
+        ? { meals: selection.meals, schedule: selection.schedule, length: selection.length }
         : null,
     };
     const nextErrors = validateEnquiry(payload);
@@ -159,7 +160,7 @@ export function EnquiryForm({
           <p className="font-semibold">{picked.planName}</p>
           <p className="mt-1 text-muted">
             {picked.lines.map((line) => line.label).join(", ")} ·{" "}
-            {formatDuration(picked.durationLabel, picked.days)} · {dietLabel(selection?.diet ?? "")}
+            {formatSelection(picked)} · {dietLabel(selection?.diet ?? "")}
           </p>
           <p className="mt-2 font-semibold">Estimated total {formatInr(picked.total)}</p>
           {pricing.status === "draft" ? (

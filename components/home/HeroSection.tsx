@@ -67,7 +67,7 @@ export function HeroSection() {
               Lunch from
             </span>
             <span className="mt-1 block rounded-full bg-terracotta px-2.5 py-1 text-center font-sans text-lg font-extrabold leading-none text-olive">
-              {formatInr(pricing.perMeal.lunch.taste)}
+              {formatInr(pricing.perMeal.lunch)}
             </span>
           </p>
           <p className="absolute right-4 top-4 rounded-2xl bg-white/95 px-3.5 py-2.5 text-sm font-semibold text-olive shadow-lg">

@@ -65,7 +65,7 @@ flowchart LR
 
 The builder is one page, [components/plans/PlanExperience.tsx](../components/plans/PlanExperience.tsx), then [components/forms/EnquiryForm.tsx](../components/forms/EnquiryForm.tsx). [Product](product.md) is explicit. The site explains the service and takes an enquiry. It does not take payment, start a subscription, or check an address.
 
-Meals are breakfast, lunch, and dinner, on one duration for the whole plan: 1 meal, 3 days, Mon–Fri (5), 6 days (Saturday included), 2 weeks (12), a weekday month (22), and a monthly plan (24). One day pattern covers every selected meal. There is no per-meal day pattern, no meals-per-day bundle, no snacks, and no daily add-ons. Sunday is already off. A 28-day run of every calendar day is not a Native Meals length.
+Meals are breakfast, lunch, and dinner. Days are Monday to Friday or Monday to Saturday, and that one pattern covers every selected meal. Lengths are 3 days (always 3 tiffins), 2 weeks (10 or 12), and 4 weeks (20 or 24). There is no per-meal day pattern, no meals-per-day bundle, no snacks, and no daily add-ons. Sunday is already off. A 28-day run of every calendar day is not a Native Meals length.
 
 Rates in [data/plans.ts](../data/plans.ts) are flat per plate: breakfast ₹149, lunch and dinner ₹229 for veg and ₹249 for non-veg. The diet choice is veg, non-veg, or either. Either is priced at the veg rate. There is no goal that leaves the price alone, and no Sattvik, Jain, vegan, allergy, dislike, chapati count, or rice choice. [Business](business.md) says not to invent calorie numbers, protein numbers, a weight-loss claim, or a medical plan. Rasamrit's goal list stays in this note.
 

@@ -56,27 +56,23 @@ export function MealPlanCard({
             </p>
           )}
         </div>
-        {!compact && plan.pricingTiers && plan.pricingTiers.some((tier) => tier.onCard) ? (
+        {!compact && plan.pricingTiers && plan.pricingTiers.length > 0 ? (
           <>
           <p className="mt-5 font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">
-            {plan.priceUnit === "day" ? "Per day, by duration" : "Per meal, by duration"}
+            Lengths
           </p>
-          <dl className="mt-3 grid grid-cols-2 gap-3">
-            {plan.pricingTiers.filter((tier) => tier.onCard).map((tier) => (
+          <p className="mt-1 text-xs text-muted">Monday to Friday, or with Saturday</p>
+          <dl className="mt-3 grid grid-cols-3 gap-3">
+            {plan.pricingTiers.map((tier) => (
               <div key={tier.label} className="rounded-2xl bg-cream px-3 py-2">
                 <dt className="font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">
                   {tier.label}
                 </dt>
                 <dd className="mt-1 text-sm font-semibold text-olive">
-                  {tier.price !== null ? formatInr(tier.price) : "On enquiry"}
+                  {tier.weekdays === tier.withSaturday
+                    ? tier.weekdays
+                    : `${tier.weekdays} or ${tier.withSaturday}`}
                 </dd>
-                {tier.price !== null ? (
-                  <p className="mt-0.5 text-xs text-muted">
-                    {tier.days === 1
-                      ? "try one meal"
-                      : `${tier.days} days · ${formatInr(tier.price * tier.days)}`}
-                  </p>
-                ) : null}
               </div>
             ))}
           </dl>

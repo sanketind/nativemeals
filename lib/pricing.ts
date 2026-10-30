@@ -1,10 +1,14 @@
 import type { MealType } from "@/data/menu";
 import {
+  deliveryDays,
   getPlan,
+  lengths,
   nonVegPerMeal,
   pricing,
-  type DurationId,
+  schedules,
+  type LengthId,
   type PlanId,
+  type ScheduleId,
 } from "@/data/plans";
 import { formatInr } from "@/lib/format";
 
@@ -13,7 +17,8 @@ export type MealSlot = (typeof mealSlots)[number];
 
 export type PlanSelection = {
   meals: MealSlot[];
-  duration: DurationId;
+  schedule: ScheduleId;
+  length: LengthId;
 };
 
 const mealLabels: Record<MealSlot, string> = {
@@ -26,8 +31,12 @@ export function isMealSlot(value: string): value is MealSlot {
   return (mealSlots as readonly string[]).includes(value);
 }
 
-export function isDurationId(value: string): value is DurationId {
-  return pricing.durations.some((duration) => duration.id === value);
+export function isScheduleId(value: string): value is ScheduleId {
+  return schedules.some((schedule) => schedule.id === value);
+}
+
+export function isLengthId(value: string): value is LengthId {
+  return lengths.some((length) => length.id === value);
 }
 
 /** Lunch only and dinner only map to those plans. Any other mix is Everyday. */
@@ -52,8 +61,11 @@ export type QuoteLine = {
 
 export type Quote = {
   meals: MealSlot[];
-  durationId: DurationId;
-  durationLabel: string;
+  scheduleId: ScheduleId;
+  scheduleLabel: string;
+  scheduleSpoken: string;
+  lengthId: LengthId;
+  lengthLabel: string;
   days: number;
   planId: PlanId;
   planName: string;
@@ -70,7 +82,7 @@ export type PriceDiet = "" | "veg" | "non-veg" | "either";
 
 export function mealRate(meal: MealSlot, diet: PriceDiet | undefined) {
   if (diet === "non-veg") return nonVegPerMeal[meal];
-  return pricing.perMeal[meal].taste;
+  return pricing.perMeal[meal];
 }
 
 function orderedMeals(meals: MealType[]): MealSlot[] | null {
@@ -80,21 +92,30 @@ function orderedMeals(meals: MealType[]): MealSlot[] | null {
   return unique;
 }
 
-export function formatDuration(label: string, days: number) {
-  if (days === 1) return label;
-  if (label === `${days} days`) return label;
-  return `${label} · ${days} days`;
+/** "Mon–Fri, 2 weeks (10 days)". A 3-day try already says the count. */
+export function formatSelection(input: {
+  scheduleLabel: string;
+  lengthLabel: string;
+  days: number;
+}) {
+  if (input.lengthLabel === `${input.days} days`) {
+    return `${input.scheduleLabel}, ${input.lengthLabel}`;
+  }
+  return `${input.scheduleLabel}, ${input.lengthLabel} (${input.days} days)`;
 }
 
 export function quote(input: {
   meals: MealSlot[];
-  duration: string;
+  schedule: string;
+  length: string;
   diet?: PriceDiet;
 }): Quote | null {
   const meals = orderedMeals(input.meals);
   if (!meals) return null;
-  const duration = pricing.durations.find((item) => item.id === input.duration);
-  if (!duration) return null;
+  if (!isScheduleId(input.schedule) || !isLengthId(input.length)) return null;
+  const schedule = schedules.find((item) => item.id === input.schedule);
+  const length = lengths.find((item) => item.id === input.length);
+  if (!schedule || !length) return null;
 
   const lines = meals.map((meal) => ({
     meal,
@@ -108,17 +129,21 @@ export function quote(input: {
     input.diet === "non-veg" || !hasMain
       ? ""
       : `Non-veg lunch and dinner are ${formatInr(nonVegPerMeal.lunch)} each.`;
+  const days = deliveryDays(schedule.id, length.id);
 
   return {
     meals,
-    durationId: duration.id,
-    durationLabel: duration.label,
-    days: duration.days,
+    scheduleId: schedule.id,
+    scheduleLabel: schedule.label,
+    scheduleSpoken: schedule.spoken,
+    lengthId: length.id,
+    lengthLabel: length.label,
+    days,
     planId,
     planName: getPlan(planId)?.name ?? "All-day Plan",
     lines,
     perDay,
-    total: perDay * duration.days,
+    total: perDay * days,
     pricingStatus: pricing.status,
     note: pricing.note,
     dietNote,

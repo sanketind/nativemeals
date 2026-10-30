@@ -2,7 +2,7 @@ import { siteConfig } from "@/data/site-config";
 import { formatSpokenDate, isValidIsoDate } from "@/lib/dates";
 import { getPlan } from "@/data/plans";
 import { formatInr } from "@/lib/format";
-import { quote } from "@/lib/pricing";
+import { formatSelection, quote } from "@/lib/pricing";
 import type { EnquiryInput } from "@/lib/validation";
 
 export function digitsOnly(value: string) {
@@ -67,7 +67,7 @@ export function enquiryMessage(input: Pick<
   if (planName) lines.push(`Plan: ${planName}`);
   if (estimate) {
     lines.push(`Meals: ${estimate.lines.map((line) => line.label).join(", ")}`);
-    lines.push(`Duration: ${estimate.durationLabel} (${estimate.days} days)`);
+    lines.push(`Duration: ${formatSelection(estimate)}`);
     const caveat =
       estimate.pricingStatus === "draft" ? " (introductory, subject to confirmation)" : "";
     lines.push(`Estimate: ${formatInr(estimate.total)}${caveat}`);
@@ -98,7 +98,7 @@ export function enquiryEstimate(input: Pick<EnquiryInput, "selection" | "diet">)
   return {
     pricingStatus: estimate.pricingStatus,
     plan: estimate.planName,
-    duration: estimate.durationLabel,
+    duration: `${estimate.scheduleLabel}, ${estimate.lengthLabel}`,
     days: estimate.days,
     meals: estimate.lines.map((line) => ({
       meal: line.label,

@@ -19,7 +19,7 @@ export function PlansPreview() {
         </ul>
         <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
           <ButtonLink href="/meal-plans#build" variant="secondary">
-            See every duration
+            Build a plan
           </ButtonLink>
           {pricing.status === "draft" ? (
             <p className="text-sm text-muted">{pricing.note}</p>
