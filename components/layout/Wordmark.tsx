@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { type as typeStyles } from "@/components/ui/styles";
 
 export function BrandMark({
   className,
@@ -7,8 +8,8 @@ export function BrandMark({
   className?: string;
   tone?: "olive" | "cream";
 }) {
-  const bodyFill = tone === "cream" ? "#FFFDF4" : "#0C3F25";
-  const domeFill = tone === "cream" ? "#B8DFC2" : "#197241";
+  const bodyFill = tone === "cream" ? "var(--color-cream)" : "var(--color-olive)";
+  const domeFill = tone === "cream" ? "var(--color-mark-dome)" : "var(--color-terracotta-ink)";
 
   return (
     <svg viewBox="10 6 44 52" className={className} aria-hidden="true">
@@ -22,7 +23,7 @@ export function BrandMark({
         d="M20.5 25.5c0-3.8 5.1-6.3 11.5-6.3s11.5 2.5 11.5 6.3v2.5h-23v-2.5Z"
         fill={domeFill}
       />
-      <rect x="21" y="31.9" width="22" height="3.4" rx="1.7" fill="#F9D82B" />
+      <rect x="21" y="31.9" width="22" height="3.4" rx="1.7" fill="var(--color-terracotta)" />
     </svg>
   );
 }
@@ -39,7 +40,7 @@ export function Wordmark({
       <BrandMark tone={tone} className="size-9 shrink-0" />
       <span
         className={cn(
-          "font-sans text-[1.15rem] font-extrabold leading-none tracking-[-0.03em] sm:text-[1.25rem]",
+          typeStyles.wordmark,
           tone === "cream" ? "text-cream" : "text-olive",
         )}
       >

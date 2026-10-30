@@ -1,6 +1,7 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { cn } from "@/lib/cn";
+import { Section } from "@/components/ui/Section";
+import { Eyebrow, Heading, Text } from "@/components/ui/Type";
 
 export function FinalCTA({
   tone = "white",
@@ -17,36 +18,27 @@ export function FinalCTA({
 }) {
   const olive = tone === "olive";
   return (
-    <section className={cn("py-12 md:py-24", olive ? "bg-olive text-cream" : "bg-white")}>
+    <Section tone={olive ? "olive" : "white"} className={olive ? "text-cream" : undefined}>
       <Container className="text-center">
-        {olive ? (
-          <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta">
-            Ready when you are
-          </p>
-        ) : null}
-        <h2
-          className={cn(
-            olive
-              ? "mt-3 font-sans text-[clamp(2.3rem,5vw,4.4rem)] font-bold leading-[1.05] tracking-[-0.04em] text-cream"
-              : "font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive",
-          )}
+        {olive ? <Eyebrow tone="sunflower">Ready when you are</Eyebrow> : null}
+        <Heading
+          size={olive ? "closing" : "title"}
+          className={olive ? "mt-3" : undefined}
         >
           {title}
-        </h2>
-        <p
-          className={cn(
-            "mx-auto mt-4 max-w-xl text-[1.06rem] font-normal leading-[1.7]",
-            olive ? "text-cream/80" : "text-muted",
-          )}
+        </Heading>
+        <Text
+          tone={olive ? "inverse" : "default"}
+          className="mx-auto mt-4 max-w-xl"
         >
           {body}
-        </p>
+        </Text>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <ButtonLink href={primaryHref} variant={olive ? "inverse" : "primary"}>
             {primaryLabel}
           </ButtonLink>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 }

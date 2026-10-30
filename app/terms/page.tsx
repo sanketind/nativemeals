@@ -2,8 +2,12 @@ import { siteConfig } from "@/data/site-config";
 import { pageMeta } from "@/lib/page-meta";
 import { WriteToUs } from "@/components/legal/WriteToUs";
 import { Container } from "@/components/ui/Container";
+import { Note } from "@/components/ui/Note";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
+import { Heading } from "@/components/ui/Type";
+import { type as typeStyles } from "@/components/ui/styles";
+import { cn } from "@/lib/cn";
 
 export const metadata = pageMeta(
   "Terms",
@@ -17,16 +21,16 @@ export default function TermsPage() {
         How a plan starts. Updated 29 October 2026.
       </PageHeader>
       <Section>
-        <Container className="space-y-10 text-[1.06rem] font-normal leading-[1.7] text-muted">
-          <p className="rounded-2xl bg-sage px-4 py-3 text-sm text-olive">
+        <Container className={cn("space-y-10", typeStyles.lead, "text-muted")}>
+          <Note className="px-4 py-3">
             Sending a message is a request. The plan starts once we confirm the
             meals, the price, and where the tiffin is handed over.
-          </p>
+          </Note>
 
           <article className="space-y-4">
-            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+            <Heading as="h2" size="card">
               The price on the page.
-            </h2>
+            </Heading>
             <p>
               The figure is the meal price for the meals and length you picked.
               We confirm that total with you before a plan starts. Any delivery
@@ -35,9 +39,9 @@ export default function TermsPage() {
           </article>
 
           <article className="space-y-4">
-            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+            <Heading as="h2" size="card">
               Where the tiffin goes.
-            </h2>
+            </Heading>
             <p>
               We serve {siteConfig.serviceAreaLine} in {siteConfig.city},
               including {siteConfig.techParkLine}. {siteConfig.delivery.handover}{" "}
@@ -47,9 +51,9 @@ export default function TermsPage() {
           </article>
 
           <article className="space-y-4">
-            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+            <Heading as="h2" size="card">
               The menu.
-            </h2>
+            </Heading>
             <p>
               The menu is what the kitchen has posted for the current week. A
               day with nothing posted is not a meal we have promised. If the
@@ -62,9 +66,9 @@ export default function TermsPage() {
           </article>
 
           <article className="space-y-4">
-            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+            <Heading as="h2" size="card">
               Pause, payment, and a missed tiffin.
-            </h2>
+            </Heading>
             <p>
               {siteConfig.delivery.skipNote} Payment and a missed delivery are
               confirmed with you before the first tiffin.
@@ -72,9 +76,9 @@ export default function TermsPage() {
           </article>
 
           <article className="space-y-4">
-            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+            <Heading as="h2" size="card">
               What this is.
-            </h2>
+            </Heading>
             <p>
               Native Meals sells meals for a working week. The site does not
               offer a medical plan, a weight-loss plan, or nutrition advice.

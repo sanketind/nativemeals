@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { siteConfig } from "@/data/site-config";
 import { ButtonLink } from "@/components/ui/Button";
+import { Eyebrow } from "@/components/ui/Type";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -87,9 +88,7 @@ export function MobileNav() {
                 className="absolute inset-y-0 right-0 flex w-[min(100%,20rem)] flex-col bg-cream px-6 py-6 shadow-2xl"
               >
                 <div className="flex items-center justify-between">
-                  <p id={titleId} className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
-                    Menu
-                  </p>
+                  <Eyebrow id={titleId}>Menu</Eyebrow>
                   <button
                     type="button"
                     className="inline-flex size-11 items-center justify-center rounded-full text-olive"
@@ -104,7 +103,7 @@ export function MobileNav() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="rounded-2xl px-3 py-3 text-base font-semibold text-olive hover:bg-sage"
+                      className="rounded-control px-3 py-3 text-base font-semibold text-olive hover:bg-sage"
                       onClick={() => setOpen(false)}
                     >
                       {item.label}
@@ -112,7 +111,7 @@ export function MobileNav() {
                   ))}
                   <Link
                     href="/contact"
-                    className="rounded-2xl px-3 py-3 text-base font-semibold text-olive hover:bg-sage"
+                    className="rounded-control px-3 py-3 text-base font-semibold text-olive hover:bg-sage"
                     onClick={() => setOpen(false)}
                   >
                     Contact

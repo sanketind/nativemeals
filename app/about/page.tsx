@@ -1,9 +1,11 @@
 import { siteConfig } from "@/data/site-config";
 import { pageMeta } from "@/lib/page-meta";
 import { FinalCTA } from "@/components/home/FinalCTA";
+import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
+import { Heading, Text } from "@/components/ui/Type";
 
 export const metadata = pageMeta(
   "Healthy meals in Pune",
@@ -51,29 +53,26 @@ export default function AboutPage() {
         <Container>
           <ul className="grid gap-3 sm:grid-cols-2">
             {points.map((point) => (
-              <li
-                key={point.title}
-                className="rounded-3xl border border-charcoal/10 bg-cream p-5 md:p-6"
-              >
-                <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+              <Card key={point.title} as="li" tone="cream">
+                <Heading as="h2" size="card">
                   {point.title}
-                </h2>
-                <p className="mt-2 text-[0.94rem] font-normal leading-[1.65] text-muted">
+                </Heading>
+                <Text size="body" className="mt-2">
                   {point.body}
                   {point.title === "Cooked that morning" && kitchenLine ? ` ${kitchenLine}` : ""}
-                </p>
-              </li>
+                </Text>
+              </Card>
             ))}
           </ul>
           {siteConfig.founderNote ? (
-            <article className="mt-4 rounded-3xl bg-sage/70 p-6">
-              <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+            <Card as="article" tone="sage" bordered={false} padded={false} className="mt-4 p-6">
+              <Heading as="h2" size="card">
                 {siteConfig.founderNote.heading}
-              </h2>
-              <p className="mt-2 text-[0.94rem] font-normal leading-[1.65] text-muted">
+              </Heading>
+              <Text size="body" className="mt-2">
                 {siteConfig.founderNote.body}
-              </p>
-            </article>
+              </Text>
+            </Card>
           ) : null}
         </Container>
       </Section>

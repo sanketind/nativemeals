@@ -1,25 +1,9 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
+import { button } from "@/components/ui/styles";
 
-type Variant = "primary" | "secondary" | "inverse" | "ghost";
-
-const variants: Record<Variant, string> = {
-  primary: "bg-olive text-white hover:bg-olive-deep",
-  secondary:
-    "border border-olive/55 bg-white text-olive hover:bg-sage",
-  inverse: "bg-cream text-olive hover:bg-white",
-  ghost: "text-olive hover:bg-sage",
-};
-
-type Size = "md" | "sm";
-
-const sizes: Record<Size, string> = {
-  md: "px-6 py-3.5 text-base",
-  sm: "px-4 py-2 text-sm",
-};
-
-const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-normal transition-colors disabled:cursor-not-allowed disabled:opacity-60";
+type Variant = keyof typeof button.variants;
+type Size = keyof typeof button.sizes;
 
 function isExternal(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
@@ -40,7 +24,7 @@ export function ButtonLink({
   onClick?: () => void;
   children: React.ReactNode;
 }) {
-  const classes = cn(base, sizes[size], variants[variant], className);
+  const classes = cn(button.base, button.sizes[size], button.variants[variant], className);
   if (href.startsWith("/") || href.startsWith("#")) {
     return (
       <Link href={href} className={classes} onClick={onClick}>
@@ -76,7 +60,7 @@ export function Button({
   return (
     <button
       type={type}
-      className={cn(base, sizes[size], variants[variant], className)}
+      className={cn(button.base, button.sizes[size], button.variants[variant], className)}
       {...props}
     >
       {children}

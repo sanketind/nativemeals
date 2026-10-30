@@ -1,4 +1,5 @@
 import type { Faq } from "@/data/faqs";
+import { Text } from "@/components/ui/Type";
 
 export function FAQAccordion({ items }: { items: Faq[] }) {
   return (
@@ -14,9 +15,9 @@ export function FAQAccordion({ items }: { items: Faq[] }) {
               +
             </span>
           </summary>
-          <p className="max-w-3xl pb-5 pr-8 text-[0.94rem] font-normal leading-[1.65] text-muted">
+          <Text size="body" className="max-w-3xl pb-5 pr-8">
             {item.answer}
-          </p>
+          </Text>
         </details>
       ))}
     </div>

@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { FoodImage } from "@/components/ui/FoodImage";
+import { PhotoBadge, PhotoFrame } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
 
 const plates = [
@@ -16,14 +17,16 @@ export function BrandPromiseSection() {
         <ul className="grid gap-4 sm:grid-cols-3">
           {plates.map((plate) => (
             <li key={plate.id}>
-              <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-sage">
-                <FoodImage
-                  imageId={plate.id}
-                  sizes="(min-width: 640px) 30vw, 100vw"
-                />
-                <figcaption className="absolute bottom-4 left-4 rounded-2xl bg-white/95 px-3.5 py-2.5 text-sm font-semibold text-olive shadow-lg">
-                  {plate.label}
-                </figcaption>
+              <figure>
+                <PhotoFrame className="aspect-[4/5]">
+                  <FoodImage
+                    imageId={plate.id}
+                    sizes="(min-width: 640px) 30vw, 100vw"
+                  />
+                  <PhotoBadge as="figcaption" tone="white" className="bottom-4 left-4">
+                    {plate.label}
+                  </PhotoBadge>
+                </PhotoFrame>
               </figure>
             </li>
           ))}

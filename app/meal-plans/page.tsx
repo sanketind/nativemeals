@@ -11,10 +11,15 @@ import { PlanExperience } from "@/components/plans/PlanExperience";
 import { MealPlanCard } from "@/components/plans/MealPlanCard";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { ButtonLink } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { FAQSplit } from "@/components/ui/FAQSplit";
 import { FoodImage } from "@/components/ui/FoodImage";
+import { PhotoBadge, PhotoFrame } from "@/components/ui/Photo";
 import { Section } from "@/components/ui/Section";
+import { Caption, Eyebrow, Heading, PriceMark, StepIndex, Text } from "@/components/ui/Type";
+import { surface } from "@/components/ui/styles";
+import { cn } from "@/lib/cn";
 
 const vegLunch = pricing.perMeal.lunch;
 const nonVegLunch = nonVegPerMeal.lunch;
@@ -62,42 +67,40 @@ export default function MealPlansPage() {
   return (
     <>
       <JsonLd data={[faqPage(faqsFor("plans")), mealPlanOffers()]} />
-      <header className="overflow-hidden bg-[radial-gradient(circle_at_92%_15%,rgba(249,216,43,0.18),transparent_26%)]">
+      <header className={cn("overflow-hidden", surface.pageGlow)}>
         <Container className="grid items-center gap-8 py-10 md:grid-cols-2 md:gap-16 md:py-24">
           <div>
-          <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
-            Meal plans
-          </p>
-          <h1 className="mt-3 max-w-3xl font-sans text-[clamp(2.05rem,5.15vw,5rem)] font-extrabold leading-[1.04] tracking-[-0.045em] text-olive">
+          <Eyebrow>Meal plans</Eyebrow>
+          <Heading as="h1" size="display" className="mt-3 max-w-3xl">
             Monday to Friday, at the office gate.
-          </h1>
-          <p className="mt-5 max-w-2xl text-[clamp(1.05rem,1.5vw,1.25rem)] font-normal leading-[1.7] text-muted">
+          </Heading>
+          <Text size="lede" className="mt-5 max-w-2xl">
             Lunch is {formatInr(vegLunch)} veg or {formatInr(nonVegLunch)}{" "}
             non-veg. Breakfast is {formatInr(breakfast)}. We confirm the
             handover spot and the start date before anything begins.
-          </p>
+          </Text>
           <div className="mt-8">
             <ButtonLink href="#build">Start your plan</ButtonLink>
           </div>
           <ul className="mt-10 grid gap-4 border-t border-charcoal/10 pt-6">
             <li>
-              <p className="font-sans text-[1.28rem] font-bold leading-[1.3] tracking-[-0.02em] text-olive">
+              <Heading as="p" size="stat">
                 {formatInr(vegLunch)} veg lunch
-              </p>
-              <p className="mt-1 font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">
+              </Heading>
+              <Caption className="mt-1 block">
                 non-veg {formatInr(nonVegLunch)}
-              </p>
+              </Caption>
             </li>
             <li>
-              <p className="font-sans text-[1.28rem] font-bold leading-[1.3] tracking-[-0.02em] text-olive">3 days to 4 weeks</p>
+              <Heading as="p" size="stat">3 days to 4 weeks</Heading>
               <p className="mt-1 text-sm text-muted">
                 Monday to Friday, or with Saturday
               </p>
             </li>
             <li>
-              <p className="font-sans text-[1.28rem] font-bold leading-[1.3] tracking-[-0.02em] text-olive">
+              <Heading as="p" size="stat">
                 Breakfast {formatInr(breakfast)}
-              </p>
+              </Heading>
               <p className="mt-1 text-sm text-muted">Same for veg and non-veg</p>
             </li>
           </ul>
@@ -113,21 +116,17 @@ export default function MealPlansPage() {
           </ol>
           </div>
           <div className="relative mx-auto w-full max-w-lg md:max-w-none">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-sage shadow-sm">
+            <PhotoFrame shadow className="aspect-[4/5]">
               <FoodImage
                 imageId="planLunch"
                 priority
                 sizes="(min-width: 768px) 46vw, 100vw"
               />
-            </div>
-            <p className="absolute left-4 top-4 rounded-2xl bg-cream px-3.5 py-2.5 shadow-lg">
-              <span className="font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-olive">
-                Lunch from
-              </span>
-              <span className="mt-1 block rounded-full bg-terracotta px-2.5 py-1 text-center font-sans text-lg font-extrabold leading-none text-olive">
-                {formatInr(vegLunch)}
-              </span>
-            </p>
+            </PhotoFrame>
+            <PhotoBadge className="left-4 top-4">
+              <Caption tone="olive">Lunch from</Caption>
+              <PriceMark>{formatInr(vegLunch)}</PriceMark>
+            </PhotoBadge>
           </div>
         </Container>
       </header>
@@ -138,11 +137,11 @@ export default function MealPlansPage() {
 
       <Section>
         <Container>
-          <h2 className="font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">Or start from a plan.</h2>
-          <p className="mt-3 max-w-2xl text-[1.06rem] font-normal leading-[1.7] text-muted">
+          <Heading>Or start from a plan.</Heading>
+          <Text className="mt-3 max-w-2xl">
             Lunch and dinner are priced per meal. The all-day plan is the per-day
             cost of breakfast, lunch and dinner together.
-          </p>
+          </Text>
           {pricing.status === "draft" ? (
             <p className="mt-3 text-sm text-muted">{pricing.note}</p>
           ) : null}
@@ -156,51 +155,49 @@ export default function MealPlansPage() {
         </Container>
       </Section>
 
-      <section className="bg-olive py-12 text-cream md:py-24">
+      <Section tone="olive" className="text-cream">
         <Container>
-          <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta">
-            How it works
-          </p>
-          <h2 className="mt-3 max-w-2xl font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-cream">
+          <Eyebrow tone="sunflower">How it works</Eyebrow>
+          <Heading tone="inverse" className="mt-3 max-w-2xl">
             From a choice to a tiffin at the gate.
-          </h2>
+          </Heading>
           <ol className="mt-8 grid gap-3 md:mt-12 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
             {steps.map((step) => (
-              <li key={step.number} className="rounded-3xl bg-white p-5 text-charcoal md:p-6">
-                <p className="font-sans text-4xl font-extrabold leading-none tracking-[-0.04em] text-terracotta-ink md:text-5xl">
-                  {step.number}
-                </p>
-                <h3 className="mt-3 font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">{step.title}</h3>
-                <p className="mt-2 text-[0.94rem] font-normal leading-[1.65] text-muted">{step.body}</p>
-              </li>
+              <Card key={step.number} as="li" bordered={false} className="text-charcoal">
+                <StepIndex>{step.number}</StepIndex>
+                <Heading as="h3" size="card" className="mt-3">
+                  {step.title}
+                </Heading>
+                <Text size="body" className="mt-2">
+                  {step.body}
+                </Text>
+              </Card>
             ))}
           </ol>
         </Container>
-      </section>
+      </Section>
 
       <Section tone="white">
         <Container className="grid items-start gap-10 lg:grid-cols-2">
           <div>
-            <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
-              Before you start
-            </p>
-            <h2 className="mt-3 font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">
+            <Eyebrow>Before you start</Eyebrow>
+            <Heading className="mt-3">
               Your address, schedule and start date are confirmed with you.
-            </h2>
+            </Heading>
           </div>
-          <ul className="space-y-4 text-[1.06rem] leading-[1.7] text-muted">
-            <li className="rounded-2xl bg-cream px-5 py-4">
+          <ul className="space-y-4">
+            <Text as="li" className={surface.row}>
               We confirm your locality or tech park before the first tiffin.
-            </li>
-            <li className="rounded-2xl bg-cream px-5 py-4">
+            </Text>
+            <Text as="li" className={surface.row}>
               Office tiffins go to the gate or the security desk. Home tiffins go to your door.
-            </li>
-            <li className="rounded-2xl bg-cream px-5 py-4">
+            </Text>
+            <Text as="li" className={surface.row}>
               {siteConfig.delivery.skipNote} You can keep a second address for work-from-home days.
-            </li>
-            <li className="rounded-2xl bg-cream px-5 py-4">
+            </Text>
+            <Text as="li" className={surface.row}>
               The price you see is an estimate. We confirm it, and any delivery charge, before you start.
-            </li>
+            </Text>
           </ul>
         </Container>
       </Section>

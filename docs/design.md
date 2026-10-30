@@ -20,11 +20,49 @@ Tokens are in `app/globals.css`.
 
 The CSS names `terracotta` and `terracotta-ink` are the sunflower and leaf colours. Use the variables above. There is no `--color-sunflower`.
 
-The hero has a soft sunflower glow in the corner. The rest of the page stays ivory, white, and deep green.
+Two colours sit outside the brand palette. `--color-veg` and `--color-nonveg` are only the diet mark. `--color-whatsapp` is the WhatsApp brand green, only on the floating chat button. `--color-mark-dome` is the lighter leaf on the cream wordmark.
+
+The hero has a soft sunflower glow in the corner, from `bg-page-glow`. The rest of the page stays ivory, white, and deep green. Focus rings and text selection use the theme colours.
 
 ## Type
 
 Outfit is the only typeface, loaded in `app/layout.tsx` at weights 400 through 800. Headlines are heavy and tight. Body copy is regular. Buttons and the wordmark stay bold. Do not add a second display font.
+
+Sizes live in `app/globals.css` as `text-*` utilities. Use those, or the components in `components/ui`, instead of a one-off `clamp()` or `text-[…]`.
+
+| Step | Utility | Use |
+| --- | --- | --- |
+| Eyebrow | `text-eyebrow` | Uppercase labels. Leaf on ivory, sunflower on olive. |
+| Eyebrow, compact | `text-eyebrow-compact` | The hero area pill on small screens. It becomes `text-eyebrow` from the `md` breakpoint. |
+| Display | `text-display` | Page title. |
+| Closing | `text-closing` | The large headline on an olive closing band. |
+| Title | `text-title` | Section title. |
+| Stat | `text-stat` | A short fact, such as a price line in a header. |
+| Card | `text-card` | Card and legal headings. |
+| Lede | `text-lede` | The sentence under a page title. |
+| Lead | `text-lead` | The sentence under a section title, and legal body copy. |
+| Body | `text-body` | Card and footer copy. |
+| Price | `text-price` | A secondary price, or a phone number. |
+| Price, large | `text-price-lg` | The main price on a card or estimate. |
+| Caption | `text-caption` | Uppercase meta under a price. |
+| Hint | `text-hint` | The "swipe for the week" line. |
+| Wordmark | `text-wordmark` | The name in the header and footer. |
+| Nav | `text-nav` | Desktop navigation links. |
+
+Step numbers use `text-5xl` at the small breakpoint and `text-6xl` from `md`, with `tracking-step`. The homepage and the meal-plans page share that size.
+
+## Shape
+
+| Token | Utility | Use |
+| --- | --- | --- |
+| Control | `rounded-control` | Inputs, choice tiles, notes, photo badges. |
+| Card | `rounded-card` | Cards, panels, the estimate. |
+| Photo | `rounded-photo` | Food photographs. |
+| Full | `rounded-full` | Buttons, chips, the header. |
+
+`shadow-raise` is the header. `shadow-float` is a badge sitting on a photo. Quiet panels keep `shadow-sm`.
+
+A sage section band is `bg-sage/50`. An inset note is solid sage, or `bg-sage/70` when it sits inside a form. Those are two surfaces.
 
 ## Voice
 
@@ -45,6 +83,24 @@ The name: Native is food you come back to. Meals is breakfast, lunch and dinner 
 ## Photos
 
 Files in `public/images/` are credited stand-ins. Credits are in `public/images/CREDITS.md`. A dish name must describe the photo it sits on. Before launch, replace the files and the alt text, and mark the photo as no longer a placeholder in `data/images.ts`. Do not leave a name on a picture of a different dish.
+
+## Components
+
+Build new UI from `components/ui`. Class strings for type, surfaces, and controls live in `components/ui/styles.ts`.
+
+| Component | Use |
+| --- | --- |
+| `Eyebrow`, `Heading`, `Text`, `Caption`, `Price`, `PriceMark`, `StepIndex` | Type. `Heading` sizes are `display`, `closing`, `title`, `stat`, and `card`. |
+| `Section`, `Container`, `SectionHeading`, `PageHeader` | Page bands, the content width, a section title with an eyebrow, and the top of an interior page. |
+| `Card`, `Panel` | A hairline card, or the white form column. |
+| `Note` | A sage inset. `solid` for a callout, `soft` inside a form. |
+| `PhotoFrame`, `PhotoBadge` | A food photograph and the label on it. |
+| `Chip` | An area or tech-park pill. `area` plus `compact` is the hero locality pill. |
+| `Button`, `ButtonLink` | Actions. Variants are `primary`, `secondary`, `inverse`, and `ghost`. |
+| `Field`, `TextInput`, `Choice` | Labels, text fields, and the pill or tile choices in a form. Selects and textareas use `controlClass`. |
+| `DietBadge` | The veg or non-veg mark. |
+
+The Open Graph image repeats the cream, olive, leaf, and muted hex values. `next/og` cannot read the CSS theme. If a brand colour changes, update that image with the theme.
 
 ## Layout
 

@@ -4,7 +4,7 @@ A map of the codebase. How to run the site, connect the weekly sheet, confirm pr
 
 ## Stack
 
-Next.js 16 App Router, React 19, Tailwind CSS 4, TypeScript, pnpm. Icons are `lucide-react` only. There is no animation library, form library, or component kit.
+Next.js 16 App Router, React 19, Tailwind CSS 4, TypeScript, pnpm. Icons are `lucide-react` only. There is no animation library or form library. Shared UI lives in `components/ui`, and the colour, type, radius, and shadow tokens live in `app/globals.css`. Build new screens from those. The rules for which piece to use are in [design.md](design.md).
 
 ```bash
 pnpm install

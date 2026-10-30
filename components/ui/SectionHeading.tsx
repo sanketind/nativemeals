@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { Eyebrow, Heading, Text } from "@/components/ui/Type";
 
 export function SectionHeading({
   eyebrow,
@@ -15,42 +16,17 @@ export function SectionHeading({
   tone?: "default" | "inverse";
   as?: "h1" | "h2";
 }) {
-  const Heading = as;
+  const inverse = tone === "inverse";
   return (
-    <div
-      className={cn(
-        "max-w-2xl",
-        align === "center" && "mx-auto text-center",
-      )}
-    >
-      {eyebrow ? (
-        <p
-          className={cn(
-            "font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em]",
-            tone === "inverse" ? "text-terracotta" : "text-terracotta-ink",
-          )}
-        >
-          {eyebrow}
-        </p>
-      ) : null}
-      <Heading
-        className={cn(
-          "font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em]",
-          eyebrow && "mt-3",
-          tone === "inverse" ? "text-cream" : "text-olive",
-        )}
-      >
+    <div className={cn("max-w-2xl", align === "center" && "mx-auto text-center")}>
+      {eyebrow ? <Eyebrow tone={inverse ? "sunflower" : "leaf"}>{eyebrow}</Eyebrow> : null}
+      <Heading as={as} size="title" tone={tone} className={eyebrow ? "mt-3" : undefined}>
         {title}
       </Heading>
       {children ? (
-        <p
-          className={cn(
-            "mt-4 text-[1.06rem] font-normal leading-[1.7]",
-            tone === "inverse" ? "text-cream/80" : "text-muted",
-          )}
-        >
+        <Text tone={inverse ? "inverse" : "default"} className="mt-4">
           {children}
-        </p>
+        </Text>
       ) : null}
     </div>
   );

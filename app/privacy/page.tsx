@@ -1,8 +1,12 @@
 import { pageMeta } from "@/lib/page-meta";
 import { WriteToUs } from "@/components/legal/WriteToUs";
 import { Container } from "@/components/ui/Container";
+import { Note } from "@/components/ui/Note";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
+import { Heading } from "@/components/ui/Type";
+import { type as typeStyles } from "@/components/ui/styles";
+import { cn } from "@/lib/cn";
 
 export const metadata = pageMeta(
   "Privacy Policy",
@@ -17,23 +21,23 @@ export default function PrivacyPage() {
         29 October 2026.
       </PageHeader>
       <Section>
-        <Container className="space-y-10 text-[1.06rem] font-normal leading-[1.7] text-muted">
-          <p className="rounded-2xl bg-sage px-4 py-3 text-sm text-olive">
+        <Container className={cn("space-y-10", typeStyles.lead, "text-muted")}>
+          <Note className="px-4 py-3">
             We use your details to reply about a meal plan. We do not ask for
             payment details on this site.
-          </p>
+          </Note>
 
           <article className="space-y-4">
-            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+            <Heading as="h2" size="card">
               Who we are.
-            </h2>
+            </Heading>
             <WriteToUs />
           </article>
 
           <article className="space-y-4">
-            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+            <Heading as="h2" size="card">
               What you send.
-            </h2>
+            </Heading>
             <p>
               A meal-plan enquiry asks for your name, a 10-digit mobile number,
               the meals and length you picked, whether you want veg, non-veg,
@@ -52,9 +56,9 @@ export default function PrivacyPage() {
           </article>
 
           <article className="space-y-4">
-            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+            <Heading as="h2" size="card">
               Where it goes.
-            </h2>
+            </Heading>
             <p>
               When the form can be saved, we store the enquiry in a private
               spreadsheet so we can reply. That spreadsheet is not the weekly
@@ -74,9 +78,9 @@ export default function PrivacyPage() {
           </article>
 
           <article className="space-y-4">
-            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+            <Heading as="h2" size="card">
               What we use it for.
-            </h2>
+            </Heading>
             <p>
               We use those details to reply about meals, whether we can hand a
               tiffin over at your address, the price, and the day you start. We
@@ -89,9 +93,9 @@ export default function PrivacyPage() {
           </article>
 
           <article className="space-y-4">
-            <h2 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">
+            <Heading as="h2" size="card">
               Correct or delete.
-            </h2>
+            </Heading>
             <p>
               Message us and say what to change or remove. We will correct or
               delete the enquiry details we hold.

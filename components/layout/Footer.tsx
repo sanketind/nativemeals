@@ -5,8 +5,33 @@ import { copyrightYear } from "@/lib/clock";
 import { displayPhone, phoneHref } from "@/lib/contact";
 import { Container } from "@/components/ui/Container";
 import { Wordmark } from "@/components/layout/Wordmark";
+import { Chip } from "@/components/ui/Chip";
+import { Eyebrow, Text } from "@/components/ui/Type";
 
 const legalHrefs = new Set(["/privacy", "/terms"]);
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+const socialIcons: Record<string, typeof InstagramIcon> = {
+  Instagram: InstagramIcon,
+};
 
 export async function Footer() {
   const year = await copyrightYear();
@@ -20,25 +45,20 @@ export async function Footer() {
       <Container className="grid gap-10 py-14 md:grid-cols-12 md:py-16">
         <div className="md:col-span-5">
           <Wordmark tone="cream" />
-          <p className="mt-4 max-w-sm text-[0.94rem] leading-[1.65] text-cream/80">
+          <Text size="body" tone="inverse" className="mt-4 max-w-sm">
             Cooked the same morning and handed over at your office gate or your door.
             Serving {siteConfig.launchArea}.
-          </p>
+          </Text>
           <ul className="mt-5 flex flex-wrap gap-2">
             {siteConfig.serviceAreas.map((area) => (
-              <li
-                key={area}
-                className="rounded-full bg-cream/10 px-3 py-1.5 text-sm font-semibold text-cream"
-              >
-                {area}
+              <li key={area}>
+                <Chip tone="inverse">{area}</Chip>
               </li>
             ))}
           </ul>
         </div>
         <nav className="md:col-span-3" aria-label="Footer">
-          <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta">
-            Explore
-          </p>
+          <Eyebrow tone="sunflower">Explore</Eyebrow>
           <ul className="mt-4 space-y-2.5">
             {explore.map((item) => (
               <li key={item.href}>
@@ -50,9 +70,7 @@ export async function Footer() {
           </ul>
         </nav>
         <div className="md:col-span-4">
-          <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta">
-            Contact
-          </p>
+          <Eyebrow tone="sunflower">Contact</Eyebrow>
           <ul className="mt-4 space-y-3 text-sm">
             {phone && phoneLink ? (
               <li className="flex items-start gap-2.5 font-medium">
@@ -82,11 +100,13 @@ export async function Footer() {
                 <span>FSSAI {siteConfig.fssai}</span>
               </li>
             ) : null}
-          </ul>
-          {siteConfig.socials.length > 0 ? (
-            <ul className="mt-4 flex flex-wrap gap-3 text-sm">
-              {siteConfig.socials.map((social) => (
-                <li key={social.href}>
+            {siteConfig.socials.map((social) => {
+              const Icon = socialIcons[social.label];
+              return (
+                <li key={social.href} className="flex items-start gap-2.5 font-medium">
+                  {Icon ? (
+                    <Icon className="mt-0.5 size-4 shrink-0 text-terracotta" />
+                  ) : null}
                   <a
                     href={social.href}
                     className="text-cream hover:text-terracotta"
@@ -96,9 +116,9 @@ export async function Footer() {
                     {social.label}
                   </a>
                 </li>
-              ))}
-            </ul>
-          ) : null}
+              );
+            })}
+          </ul>
         </div>
       </Container>
       <div className="border-t border-cream/15 bg-olive-deep">

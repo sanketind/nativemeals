@@ -1,7 +1,9 @@
 import { siteConfig } from "@/data/site-config";
+import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Heading, Text } from "@/components/ui/Type";
 
 export function KitchenRules() {
   return (
@@ -12,13 +14,14 @@ export function KitchenRules() {
         </SectionHeading>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-12 lg:grid-cols-3">
           {siteConfig.kitchenRules.map((rule) => (
-            <li
-              key={rule.title}
-              className="rounded-3xl border border-charcoal/10 bg-white p-5 md:p-6"
-            >
-              <h3 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">{rule.title}</h3>
-              <p className="mt-1.5 text-[0.94rem] font-normal leading-[1.65] text-muted">{rule.body}</p>
-            </li>
+            <Card key={rule.title} as="li">
+              <Heading as="h3" size="card">
+                {rule.title}
+              </Heading>
+              <Text size="body" className="mt-1.5">
+                {rule.body}
+              </Text>
+            </Card>
           ))}
         </ul>
       </Container>

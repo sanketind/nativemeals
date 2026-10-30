@@ -8,11 +8,97 @@
   /* Leaf green for small labels. Sunflower fails contrast on ivory. */
   --color-terracotta-ink: #197241;
   --color-sage: #e4f2e6;
+  /* Lighter leaf used only on the cream wordmark dome. */
+  --color-mark-dome: #b8dfc2;
   --color-muted: #526158;
   --color-error: #9b3a2f;
   --color-charcoal: #292a26;
   --color-white: #ffffff;
+  /* Diet marks. Outside the brand palette, used only on the veg / non-veg badge. */
+  --color-veg: #2f6b45;
+  --color-nonveg: #8e4328;
+  /* WhatsApp brand green. Not a Native Meals colour. */
+  --color-whatsapp: #128c7e;
   --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+  --text-eyebrow: 0.78rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.12em;
+  --text-eyebrow--font-weight: 700;
+  --text-eyebrow-compact: 0.65rem;
+  --text-eyebrow-compact--line-height: 1.2;
+  --text-eyebrow-compact--letter-spacing: 0.08em;
+  --text-eyebrow-compact--font-weight: 700;
+  --text-display: clamp(2.05rem, 5.15vw, 5rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.045em;
+  --text-display--font-weight: 800;
+  --text-closing: clamp(2.3rem, 5vw, 4.4rem);
+  --text-closing--line-height: 1.05;
+  --text-closing--letter-spacing: -0.04em;
+  --text-closing--font-weight: 700;
+  --text-title: clamp(1.95rem, 4.2vw, 3.65rem);
+  --text-title--line-height: 1.08;
+  --text-title--letter-spacing: -0.035em;
+  --text-title--font-weight: 700;
+  --text-stat: 1.28rem;
+  --text-stat--line-height: 1.3;
+  --text-stat--letter-spacing: -0.02em;
+  --text-stat--font-weight: 700;
+  --text-card: 1.17rem;
+  --text-card--line-height: 1.3;
+  --text-card--font-weight: 700;
+  --text-lede: clamp(1.05rem, 1.5vw, 1.25rem);
+  --text-lede--line-height: 1.7;
+  --text-lede--font-weight: 400;
+  --text-lead: 1.06rem;
+  --text-lead--line-height: 1.7;
+  --text-lead--font-weight: 400;
+  --text-body: 0.94rem;
+  --text-body--line-height: 1.65;
+  --text-body--font-weight: 400;
+  --text-price-lg: clamp(1.75rem, 3vw, 2.55rem);
+  --text-price-lg--line-height: 1;
+  --text-price-lg--letter-spacing: -0.03em;
+  --text-price-lg--font-weight: 700;
+  --text-price: clamp(1.5rem, 2.4vw, 2rem);
+  --text-price--line-height: 1;
+  --text-price--letter-spacing: -0.03em;
+  --text-price--font-weight: 700;
+  --text-caption: 0.72rem;
+  --text-caption--line-height: 1.2;
+  --text-caption--letter-spacing: 0.12em;
+  --text-caption--font-weight: 700;
+  --text-hint: 0.78rem;
+  --text-hint--line-height: 1.4;
+  --text-hint--letter-spacing: 0.04em;
+  --text-hint--font-weight: 600;
+  --text-wordmark: 1.15rem;
+  --text-wordmark--line-height: 1;
+  --text-wordmark--letter-spacing: -0.03em;
+  --text-wordmark--font-weight: 800;
+  --text-wordmark-lg: 1.25rem;
+  --text-wordmark-lg--line-height: 1;
+  --text-wordmark-lg--letter-spacing: -0.03em;
+  --text-wordmark-lg--font-weight: 800;
+  --text-nav: 15px;
+  --text-nav--line-height: 1.25;
+  --text-nav--font-weight: 600;
+
+  --tracking-step: -0.04em;
+
+  --radius-control: 1rem;
+  --radius-card: 1.5rem;
+  --radius-photo: 1.75rem;
+
+  --shadow-raise: 0 12px 40px -16px rgba(41, 42, 38, 0.35);
+  --shadow-float: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  --background-image-page-glow: radial-gradient(
+    circle at 92% 15%,
+    color-mix(in srgb, var(--color-terracotta) 18%, transparent),
+    transparent 26%
+  );
 }
 
 html {
@@ -28,12 +114,12 @@ body {
 }
 
 ::selection {
-  background: #e4f2e6;
-  color: #292a26;
+  background: var(--color-sage);
+  color: var(--color-charcoal);
 }
 
 :focus-visible {
-  outline: 2px solid #f9d82b;
+  outline: 2px solid var(--color-terracotta);
   outline-offset: 3px;
 }
 

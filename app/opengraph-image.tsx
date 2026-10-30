@@ -13,6 +13,7 @@ export default async function OpenGraphImage() {
     (
       <div
         style={{
+          /* Hex values match the theme in app/globals.css. next/og cannot read those variables. */
           background: "#FFFDF4",
           width: "100%",
           height: "100%",

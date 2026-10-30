@@ -2,6 +2,9 @@ import type { WeeklyMenuData } from "@/lib/weekly-menu";
 import { DietBadge } from "@/components/ui/DietBadge";
 import { SampleContentNote } from "@/components/ui/SampleContentNote";
 import { ButtonLink } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Eyebrow, Heading, Text } from "@/components/ui/Type";
+import { type as typeStyles } from "@/components/ui/styles";
 import { cn } from "@/lib/cn";
 
 const mealLabels = {
@@ -16,31 +19,28 @@ function DayCard({
   day: WeeklyMenuData["days"][number];
 }) {
   return (
-    <article
+    <Card
+      as="article"
+      padded={false}
       className={cn(
-        "relative w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl border border-charcoal/10 bg-white md:w-auto",
+        "relative w-[85%] shrink-0 snap-start overflow-hidden md:w-auto",
         day.isToday && "ring-2 ring-olive md:col-span-2",
       )}
     >
       <header className="bg-sage/80 px-5 py-4">
         <div className="flex items-baseline justify-between gap-3">
-          <h3
-            className={cn(
-              "font-sans font-bold leading-[1.3] text-olive",
-              day.isToday ? "text-2xl md:text-3xl" : "text-[1.17rem]",
-            )}
-          >
-            {day.weekday}
-          </h3>
-          <p className="font-sans text-[0.72rem] font-bold tracking-[0.12em] text-olive">
-            {day.dateLabel}
-          </p>
+          {day.isToday ? (
+            <h3 className="font-sans text-2xl font-bold leading-snug text-olive md:text-3xl">
+              {day.weekday}
+            </h3>
+          ) : (
+            <Heading as="h3" size="card">
+              {day.weekday}
+            </Heading>
+          )}
+          <p className={cn(typeStyles.caption, "text-olive")}>{day.dateLabel}</p>
         </div>
-        {day.isToday ? (
-          <p className="mt-1 font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
-            Today
-          </p>
-        ) : null}
+        {day.isToday ? <Eyebrow className="mt-1">Today</Eyebrow> : null}
       </header>
       <div
         className={cn(
@@ -52,9 +52,7 @@ function DayCard({
       >
         {day.meals.map((meal, index) => (
           <div key={`${meal.meal}-${meal.diet}-${index}`} className={cn("py-4", day.isToday && "md:px-4 md:first:pl-0 md:last:pr-0")}>
-            <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
-              {mealLabels[meal.meal]}
-            </p>
+            <Eyebrow>{mealLabels[meal.meal]}</Eyebrow>
             <div className="mt-1.5 flex items-start justify-between gap-3">
               <p
                 className={cn(
@@ -72,7 +70,7 @@ function DayCard({
           </div>
         ))}
       </div>
-    </article>
+    </Card>
   );
 }
 
@@ -82,15 +80,19 @@ function EmptyWeek({ source }: { source: WeeklyMenuData["source"] }) {
       ? "We couldn't load this week's menu just now. Please check again shortly, or ask us directly."
       : "This week's menu will be posted soon.";
   return (
-    <div className="mt-8 rounded-3xl border border-dashed border-charcoal/20 bg-white px-6 py-10">
-      <p className="max-w-xl text-[1.06rem] font-normal leading-[1.7] text-muted">{message}</p>
+    <Card
+      padded={false}
+      bordered={false}
+      className="mt-8 border border-dashed border-charcoal/20 px-6 py-10"
+    >
+      <Text className="max-w-xl">{message}</Text>
       <div className="mt-6 flex flex-wrap gap-3">
         <ButtonLink href="/meal-plans#enquire">Start your plan</ButtonLink>
         <ButtonLink href="/contact" variant="secondary">
           Contact us
         </ButtonLink>
       </div>
-    </div>
+    </Card>
   );
 }
 
@@ -106,15 +108,9 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
   return (
     <div id="this-week" className="scroll-mt-24">
       <div className="max-w-2xl">
-        <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
-          This week
-        </p>
-        <h2 className="mt-3 font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">
-          This week&apos;s menu.
-        </h2>
-        {support ? (
-          <p className="mt-4 text-[1.06rem] font-normal leading-[1.7] text-muted">{support}</p>
-        ) : null}
+        <Eyebrow>This week</Eyebrow>
+        <Heading className="mt-3">This week&apos;s menu.</Heading>
+        {support ? <Text className="mt-4">{support}</Text> : null}
         {menu.source === "sample" ? (
           <SampleContentNote>Sample week. The live menu replaces this.</SampleContentNote>
         ) : null}
@@ -129,7 +125,7 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
               <DayCard key={day.date} day={day} />
             ))}
           </div>
-          <p className="mt-3 font-sans text-[0.78rem] font-semibold tracking-[0.04em] text-muted md:hidden">
+          <p className={cn(typeStyles.hint, "mt-3 text-muted md:hidden")}>
             Swipe for the week
           </p>
         </>

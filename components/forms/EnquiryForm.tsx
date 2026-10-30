@@ -15,7 +15,9 @@ import {
   type HandoverChoice,
 } from "@/lib/validation";
 import { Button } from "@/components/ui/Button";
-import { cn } from "@/lib/cn";
+import { Choice, Field, TextInput } from "@/components/ui/Field";
+import { Note } from "@/components/ui/Note";
+import { controlClass, fieldError, fieldHint, fieldLabel } from "@/components/ui/styles";
 
 export type BuilderSelection = {
   meals: MealSlot[];
@@ -41,9 +43,6 @@ const handoverChoices: { id: Exclude<HandoverChoice, "">; label: string }[] = [
   { id: "home", label: "Home" },
   { id: "both", label: "Both" },
 ];
-
-const fieldClass =
-  "mt-2 w-full rounded-2xl border border-charcoal/15 bg-white px-4 py-3 text-base text-charcoal outline-none placeholder:text-charcoal/35 focus:border-olive";
 
 export function EnquiryForm({
   type,
@@ -156,7 +155,7 @@ export function EnquiryForm({
       </div>
 
       {picked ? (
-        <div className="rounded-2xl bg-sage/70 px-4 py-3 text-sm leading-relaxed text-olive">
+        <Note tone="soft" className="px-4 py-3">
           <p className="font-semibold">{picked.planName}</p>
           <p className="mt-1 text-muted">
             {picked.lines.map((line) => line.label).join(", ")} ·{" "}
@@ -166,7 +165,7 @@ export function EnquiryForm({
           {pricing.status === "draft" ? (
             <p className="mt-1 text-muted">{pricing.note}</p>
           ) : null}
-        </div>
+        </Note>
       ) : null}
       {errors.plan && !showPlan ? (
         <p className="text-sm text-error">{errors.plan}</p>
@@ -178,14 +177,13 @@ export function EnquiryForm({
         required={nameRequired}
         error={errors.name}
       >
-        <input
+        <TextInput
           id={`${formId}-name`}
           name="name"
           autoComplete="name"
           value={values.name}
           onChange={(event) => update("name", event.target.value)}
-          className={inputClass(Boolean(errors.name))}
-          aria-invalid={Boolean(errors.name)}
+          invalid={Boolean(errors.name)}
           aria-describedby={errors.name ? `${formId}-name-error` : undefined}
         />
       </Field>
@@ -196,7 +194,7 @@ export function EnquiryForm({
         required
         error={errors.phone}
       >
-        <input
+        <TextInput
           id={`${formId}-phone`}
           name="phone"
           type="tel"
@@ -205,8 +203,7 @@ export function EnquiryForm({
           placeholder="98XXXX XXXX"
           value={values.phone}
           onChange={(event) => update("phone", event.target.value)}
-          className={inputClass(Boolean(errors.phone))}
-          aria-invalid={Boolean(errors.phone)}
+          invalid={Boolean(errors.phone)}
           aria-describedby={errors.phone ? `${formId}-phone-error` : undefined}
         />
       </Field>
@@ -218,7 +215,7 @@ export function EnquiryForm({
             name="plan"
             value={values.plan}
             onChange={(event) => update("plan", event.target.value)}
-            className={inputClass(Boolean(errors.plan))}
+            className={controlClass(Boolean(errors.plan))}
             aria-invalid={Boolean(errors.plan)}
             aria-describedby={errors.plan ? `${formId}-plan-error` : undefined}
           >
@@ -241,7 +238,7 @@ export function EnquiryForm({
             onChange={(event) =>
               update("diet", event.target.value as EnquiryInput["diet"])
             }
-            className={inputClass(false)}
+            className={controlClass(false)}
           >
             <option value="">No preference yet</option>
             <option value="veg">Vegetarian</option>
@@ -262,25 +259,24 @@ export function EnquiryForm({
             : undefined
         }
       >
-        <input
+        <TextInput
           id={`${formId}-locality`}
           name="locality"
           autoComplete="address-level2"
           value={values.locality}
           onChange={(event) => update("locality", event.target.value)}
-          className={inputClass(Boolean(errors.locality))}
-          aria-invalid={Boolean(errors.locality)}
+          invalid={Boolean(errors.locality)}
           aria-describedby={errors.locality ? `${formId}-locality-error` : undefined}
         />
       </Field>
 
       {showStart ? (
         <fieldset>
-          <legend className="text-sm font-medium text-charcoal">
+          <legend className={fieldLabel}>
             Where it goes
             <span className="text-error"> *</span>
           </legend>
-          <p className="mt-1 text-sm text-muted">Office days, home, or both.</p>
+          <p className={fieldHint}>Office days, home, or both.</p>
           <div
             className="mt-3 flex flex-wrap gap-2"
             role="radiogroup"
@@ -289,26 +285,20 @@ export function EnquiryForm({
             {handoverChoices.map((choice) => {
               const selected = values.handover === choice.id;
               return (
-                <button
+                <Choice
                   key={choice.id}
-                  type="button"
+                  selected={selected}
                   role="radio"
                   aria-checked={selected}
                   onClick={() => update("handover", choice.id)}
-                  className={cn(
-                    "rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                    selected
-                      ? "bg-olive text-white"
-                      : "bg-white text-olive ring-1 ring-charcoal/10 hover:ring-olive/30",
-                  )}
                 >
                   {choice.label}
-                </button>
+                </Choice>
               );
             })}
           </div>
           {errors.handover ? (
-            <p id={`${formId}-handover-error`} className="mt-1 text-sm text-error">
+            <p id={`${formId}-handover-error`} className={fieldError}>
               {errors.handover}
             </p>
           ) : null}
@@ -327,14 +317,13 @@ export function EnquiryForm({
               : "Building and gate, or the tech park."
           }
         >
-          <input
+          <TextInput
             id={`${formId}-address`}
             name="address"
             autoComplete="street-address"
             value={values.address}
             onChange={(event) => update("address", event.target.value)}
-            className={inputClass(Boolean(errors.address))}
-            aria-invalid={Boolean(errors.address)}
+            invalid={Boolean(errors.address)}
             aria-describedby={errors.address ? `${formId}-address-error` : undefined}
           />
         </Field>
@@ -348,14 +337,13 @@ export function EnquiryForm({
           error={errors.homeAddress}
           hint="For work-from-home days."
         >
-          <input
+          <TextInput
             id={`${formId}-home`}
             name="homeAddress"
             autoComplete="street-address"
             value={values.homeAddress}
             onChange={(event) => update("homeAddress", event.target.value)}
-            className={inputClass(Boolean(errors.homeAddress))}
-            aria-invalid={Boolean(errors.homeAddress)}
+            invalid={Boolean(errors.homeAddress)}
             aria-describedby={errors.homeAddress ? `${formId}-home-error` : undefined}
           />
         </Field>
@@ -369,7 +357,7 @@ export function EnquiryForm({
           error={errors.startDate}
           hint="The day you want the first tiffin. We confirm it before we start."
         >
-          <input
+          <TextInput
             id={`${formId}-start`}
             name="startDate"
             type="date"
@@ -377,8 +365,7 @@ export function EnquiryForm({
             max={today ? addIsoDays(today, 180) : undefined}
             value={values.startDate}
             onChange={(event) => update("startDate", event.target.value)}
-            className={inputClass(Boolean(errors.startDate))}
-            aria-invalid={Boolean(errors.startDate)}
+            invalid={Boolean(errors.startDate)}
             aria-describedby={errors.startDate ? `${formId}-start-error` : undefined}
           />
         </Field>
@@ -397,7 +384,7 @@ export function EnquiryForm({
             rows={4}
             value={values.message}
             onChange={(event) => update("message", event.target.value)}
-            className={inputClass(Boolean(errors.message))}
+            className={controlClass(Boolean(errors.message))}
             aria-invalid={Boolean(errors.message)}
             aria-describedby={errors.message ? `${formId}-message-error` : undefined}
           />
@@ -417,7 +404,7 @@ export function EnquiryForm({
           </p>
         ) : null}
         {state.status === "whatsapp" ? (
-          <div className="rounded-2xl bg-sage/70 p-4 text-olive">
+          <Note tone="soft" className="p-4">
             <p>
               {state.reason === "failed"
                 ? "We could not send that just now. You can still message us with the same details."
@@ -438,7 +425,7 @@ export function EnquiryForm({
                 </a>
               ) : null}
             </p>
-          </div>
+          </Note>
         ) : null}
         {state.status === "error" ? (
           <p className="text-error">
@@ -459,38 +446,3 @@ function dietLabel(diet: DietChoice) {
   return "No preference yet";
 }
 
-function inputClass(invalid: boolean) {
-  return cn(fieldClass, invalid && "border-error");
-}
-
-function Field({
-  id,
-  label,
-  required,
-  error,
-  hint,
-  children,
-}: {
-  id: string;
-  label: string;
-  required?: boolean;
-  error?: string;
-  hint?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <label htmlFor={id} className="text-sm font-medium text-charcoal">
-        {label}
-        {required ? <span className="text-error"> *</span> : null}
-      </label>
-      {hint ? <p className="mt-1 text-sm text-muted">{hint}</p> : null}
-      {children}
-      {error ? (
-        <p id={`${id}-error`} className="mt-1 text-sm text-error">
-          {error}
-        </p>
-      ) : null}
-    </div>
-  );
-}

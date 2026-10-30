@@ -3,6 +3,8 @@ import { formatInr } from "@/lib/format";
 import { DietBadge } from "@/components/ui/DietBadge";
 import { FoodImage } from "@/components/ui/FoodImage";
 import { ButtonLink } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Caption, Heading, Price, Text } from "@/components/ui/Type";
 import { cn } from "@/lib/cn";
 
 export function MealPlanCard({
@@ -13,7 +15,7 @@ export function MealPlanCard({
   compact?: boolean;
 }) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-charcoal/10 bg-white">
+    <Card as="article" padded={false} className="flex h-full flex-col overflow-hidden">
       <div className={cn("relative bg-sage", compact ? "aspect-[2/1]" : "aspect-[16/10]")}>
         <FoodImage
           imageId={plan.imageId}
@@ -21,70 +23,64 @@ export function MealPlanCard({
         />
       </div>
       <div className="flex flex-1 flex-col p-5 md:p-6">
-        <h3 className="font-sans text-[1.17rem] font-bold leading-[1.3] text-olive">{plan.name}</h3>
-        <p className="mt-2 text-[0.94rem] font-normal leading-[1.65] text-muted">
+        <Heading as="h3" size="card">
+          {plan.name}
+        </Heading>
+        <Text size="body" className="mt-2">
           {plan.summary}
-        </p>
+        </Text>
         {!compact && plan.includes && plan.includes.length > 0 ? (
-          <ul className="mt-4 space-y-1 text-[0.94rem] leading-[1.65] text-muted">
+          <ul className="mt-4 space-y-1">
             {plan.includes.map((item) => (
-              <li key={item}>{item}</li>
+              <Text key={item} as="li" size="body">
+                {item}
+              </Text>
             ))}
           </ul>
         ) : null}
         <div className={compact ? "mt-5 flex-1" : "mt-6"}>
           {plan.price !== null ? (
             <p className="flex flex-wrap items-end gap-x-2 gap-y-1">
-              <span className="font-sans text-[clamp(1.75rem,3vw,2.55rem)] font-bold leading-none tracking-[-0.03em] text-olive">
-                {formatInr(plan.price)}
-              </span>
-              <span className="pb-1 font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">
+              <Price size="lg">{formatInr(plan.price)}</Price>
+              <Caption className="pb-1">
                 {plan.priceUnit === "day" ? "per day" : "per meal"}
-              </span>
+              </Caption>
               {plan.priceNote ? (
                 <span className="w-full text-sm text-olive">{plan.priceNote}</span>
               ) : null}
             </p>
           ) : (
             <p>
-              <span className="font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-bold leading-none tracking-[-0.03em] text-olive">
-                Pricing on enquiry
-              </span>
-              <span className="mt-1 block font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">
-                per meal
-              </span>
+              <Price>Pricing on enquiry</Price>
+              <Caption className="mt-1 block">per meal</Caption>
             </p>
           )}
         </div>
         {!compact && plan.pricingTiers && plan.pricingTiers.length > 0 ? (
           <>
-          <p className="mt-5 font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">
-            Lengths
-          </p>
-          <p className="mt-1 text-xs text-muted">Monday to Friday, or with Saturday</p>
-          <dl className="mt-3 grid grid-cols-3 gap-3">
-            {plan.pricingTiers.map((tier) => (
-              <div key={tier.label} className="rounded-2xl bg-cream px-3 py-2">
-                <dt className="font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">
-                  {tier.label}
-                </dt>
-                <dd className="mt-1 text-sm font-semibold text-olive">
-                  {tier.weekdays === tier.withSaturday
-                    ? tier.weekdays
-                    : `${tier.weekdays} or ${tier.withSaturday}`}
-                </dd>
-              </div>
-            ))}
-          </dl>
+            <Caption className="mt-5">Lengths</Caption>
+            <p className="mt-1 text-xs text-muted">Monday to Friday, or with Saturday</p>
+            <dl className="mt-3 grid grid-cols-3 gap-3">
+              {plan.pricingTiers.map((tier) => (
+                <div key={tier.label} className="rounded-control bg-cream px-3 py-2">
+                  <Caption as="dt">{tier.label}</Caption>
+                  <dd className="mt-1 text-sm font-semibold text-olive">
+                    {tier.weekdays === tier.withSaturday
+                      ? tier.weekdays
+                      : `${tier.weekdays} or ${tier.withSaturday}`}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </>
         ) : null}
         {compact ? null : (
           <>
-            <p className="mt-4 text-[0.94rem] leading-[1.65] text-muted">
+            <Text size="body" className="mt-4">
               {plan.frequency && plan.duration
                 ? `${plan.frequency} · ${plan.duration}`
                 : "Schedule confirmed when you start."}
-            </p>
+            </Text>
             {plan.deliveryTerms ? (
               <p className="mt-2 text-sm leading-relaxed text-muted">{plan.deliveryTerms}</p>
             ) : null}
@@ -103,6 +99,6 @@ export function MealPlanCard({
           </ButtonLink>
         </div>
       </div>
-    </article>
+    </Card>
   );
 }

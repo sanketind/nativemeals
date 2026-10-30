@@ -20,10 +20,11 @@ import {
 import type { DietChoice } from "@/lib/validation";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { Button } from "@/components/ui/Button";
+import { Choice } from "@/components/ui/Field";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { cn } from "@/lib/cn";
+import { Caption, Eyebrow, Heading, Price, Text } from "@/components/ui/Type";
 
 const mealChoices: { id: MealSlot; label: string }[] = [
   { id: "breakfast", label: "Breakfast" },
@@ -78,9 +79,7 @@ export function PlanExperience() {
           <div className="mt-10 grid items-start gap-8 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="space-y-8">
               <fieldset>
-                <legend className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
-                  Meals
-                </legend>
+                <Eyebrow as="legend">Meals</Eyebrow>
                 <div className="mt-3 grid gap-3 sm:grid-cols-3">
                   {mealChoices.map((choice) => {
                     const selected = meals.includes(choice.id);
@@ -90,72 +89,61 @@ export function PlanExperience() {
                         ? nonVegPerMeal[choice.id]
                         : null;
                     return (
-                      <button
+                      <Choice
                         key={choice.id}
-                        type="button"
+                        shape="card"
+                        selected={selected}
                         aria-pressed={selected}
                         onClick={() => toggleMeal(choice.id)}
-                        className={cn(
-                          "rounded-2xl bg-white px-4 py-4 text-left ring-1 transition-colors",
-                          selected
-                            ? "ring-olive"
-                            : "ring-charcoal/10 hover:ring-olive/40",
-                        )}
                       >
                         <span className="block font-semibold text-olive">{choice.label}</span>
-                        <span className="mt-3 block font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-bold leading-none tracking-[-0.03em] text-olive">
-                          {formatInr(rate)}
-                        </span>
-                        <span className="mt-1 block font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-muted">
+                        <Price className="mt-3 block">{formatInr(rate)}</Price>
+                        <Caption className="mt-1 block">
                           {split ? `veg · non-veg ${formatInr(split)}` : "per meal"}
-                        </span>
-                      </button>
+                        </Caption>
+                      </Choice>
                     );
                   })}
                 </div>
               </fieldset>
 
               <fieldset>
-                <legend className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
-                  Days
-                </legend>
+                <Eyebrow as="legend">Days</Eyebrow>
                 <div className="mt-3 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Days">
                   {schedules.map((option) => {
                     const selected = schedule === option.id;
                     return (
-                      <button
+                      <Choice
                         key={option.id}
-                        type="button"
+                        shape="tile"
+                        selected={selected}
                         role="radio"
                         aria-checked={selected}
                         onClick={() => setSchedule(option.id)}
-                        className={choiceClass(selected)}
                       >
                         {option.label}
-                      </button>
+                      </Choice>
                     );
                   })}
                 </div>
               </fieldset>
 
               <fieldset>
-                <legend className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
-                  Length
-                </legend>
+                <Eyebrow as="legend">Length</Eyebrow>
                 <div className="mt-3 grid grid-cols-3 gap-2" role="radiogroup" aria-label="Length">
                   {lengths.map((option) => {
                     const selected = length === option.id;
                     return (
-                      <button
+                      <Choice
                         key={option.id}
-                        type="button"
+                        shape="tile"
+                        selected={selected}
                         role="radio"
                         aria-checked={selected}
                         onClick={() => setLength(option.id)}
-                        className={choiceClass(selected)}
                       >
                         {option.label}
-                      </button>
+                      </Choice>
                     );
                   })}
                 </div>
@@ -165,23 +153,21 @@ export function PlanExperience() {
               </fieldset>
 
               <fieldset>
-                <legend className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta-ink">
-                  Dietary preference
-                </legend>
+                <Eyebrow as="legend">Dietary preference</Eyebrow>
                 <div className="mt-3 grid grid-cols-3 gap-2" role="radiogroup" aria-label="Dietary preference">
                   {dietChoices.map((option) => {
                     const selected = diet === option.id;
                     return (
-                      <button
+                      <Choice
                         key={option.id}
-                        type="button"
+                        shape="tile"
+                        selected={selected}
                         role="radio"
                         aria-checked={selected}
                         onClick={() => setDiet(option.id)}
-                        className={choiceClass(selected)}
                       >
                         {option.label}
-                      </button>
+                      </Choice>
                     );
                   })}
                 </div>
@@ -189,11 +175,11 @@ export function PlanExperience() {
             </div>
 
             {estimate ? (
-              <aside className="rounded-3xl bg-olive p-6 text-cream lg:sticky lg:top-24">
-                <p className="font-sans text-[0.78rem] font-bold uppercase tracking-[0.12em] text-terracotta">
-                  Estimate
-                </p>
-                <h3 className="mt-3 font-sans text-[1.28rem] font-bold leading-[1.3] tracking-[-0.02em] text-cream">{estimate.planName}</h3>
+              <aside className="rounded-card bg-olive p-6 text-cream lg:sticky lg:top-24">
+                <Eyebrow tone="sunflower">Estimate</Eyebrow>
+                <Heading as="h3" size="stat" tone="inverse" className="mt-3">
+                  {estimate.planName}
+                </Heading>
                 <dl className="mt-6 space-y-3 text-sm">
                   <Row label="Meals a day" value={String(estimate.lines.length)} />
                   <Row label="Days" value={estimate.scheduleLabel} />
@@ -211,12 +197,12 @@ export function PlanExperience() {
                   <Row label="Per day" value={formatInr(estimate.perDay)} />
                 </dl>
                 <p className="mt-6 border-t border-cream/15 pt-5" aria-live="polite">
-                  <span className="block font-sans text-[0.72rem] font-bold uppercase tracking-[0.12em] text-cream/70">
+                  <Caption tone="inverse" className="block">
                     Estimated total
-                  </span>
-                  <span className="mt-1 block font-sans text-[clamp(1.75rem,3vw,2.55rem)] font-bold leading-none tracking-[-0.03em]">
+                  </Caption>
+                  <Price size="lg" tone="cream" className="mt-1 block">
                     {formatInr(estimate.total)}
-                  </span>
+                  </Price>
                 </p>
                 {estimate.dietNote ? (
                   <p className="mt-3 text-sm text-cream/75">{estimate.dietNote}</p>
@@ -241,12 +227,12 @@ export function PlanExperience() {
 
       <Section id="enquire" tone="white">
         <Container className="max-w-xl">
-          <h2 className="font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">Your details.</h2>
-          <p className="mt-3 text-[1.06rem] font-normal leading-[1.7] text-muted">
+          <Heading>Your details.</Heading>
+          <Text className="mt-3">
             Name, phone, locality, where the tiffin goes, and the day you want
             to start. We confirm the price and the handover spot. Nothing is
             charged on this page.
-          </p>
+          </Text>
           <div className="mt-8">
             <EnquiryForm
               type="plan"
@@ -257,15 +243,6 @@ export function PlanExperience() {
         </Container>
       </Section>
     </>
-  );
-}
-
-function choiceClass(selected: boolean) {
-  return cn(
-    "rounded-2xl px-3 py-3.5 text-center text-sm font-semibold whitespace-nowrap transition-colors",
-    selected
-      ? "bg-olive text-cream"
-      : "bg-white text-olive ring-1 ring-charcoal/10 hover:ring-olive/40",
   );
 }
 

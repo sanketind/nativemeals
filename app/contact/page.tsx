@@ -2,9 +2,14 @@ import { Phone } from "lucide-react";
 import { siteConfig } from "@/data/site-config";
 import { pageMeta } from "@/lib/page-meta";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
+import { Chip } from "@/components/ui/Chip";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { Panel } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
+import { Heading, Text } from "@/components/ui/Type";
+import { type as typeStyles } from "@/components/ui/styles";
+import { cn } from "@/lib/cn";
 import { displayPhone, phoneHref } from "@/lib/contact";
 
 export const metadata = pageMeta(
@@ -30,26 +35,21 @@ export default function ContactPage() {
       <Section tone="sage">
         <Container className="grid gap-10 md:grid-cols-2 md:items-start">
           <div>
-            <h2 className="font-sans text-[clamp(1.95rem,4.2vw,3.65rem)] font-bold leading-[1.08] tracking-[-0.035em] text-olive">
-              Reach us directly.
-            </h2>
+            <Heading>Reach us directly.</Heading>
             <ul className="mt-5 flex flex-wrap gap-2">
               {siteConfig.serviceAreas.map((area) => (
-                <li
-                  key={area}
-                  className="rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-olive"
-                >
-                  {area}
+                <li key={area}>
+                  <Chip>{area}</Chip>
                 </li>
               ))}
             </ul>
-            <p className="mt-5 text-[1.06rem] font-normal leading-[1.7] text-muted">
+            <Text className="mt-5">
               Office tiffins go to the gate or the security desk.
-            </p>
+            </Text>
             {call && phone ? (
-              <p className="mt-6 flex items-center gap-2.5 font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-bold leading-none tracking-[-0.03em] text-olive">
+              <p className="mt-6 flex items-center gap-2.5">
                 <Phone aria-hidden="true" className="size-5 shrink-0 text-olive" />
-                <a href={call} className="hover:text-olive-deep">
+                <a href={call} className={cn(typeStyles.price, "text-olive hover:text-olive-deep")}>
                   {displayPhone(phone)}
                 </a>
               </p>
@@ -62,14 +62,14 @@ export default function ContactPage() {
               </p>
             ) : null}
             {!call && !email ? (
-              <p className="mt-6 text-[0.94rem] leading-[1.65] text-muted">
+              <Text size="body" className="mt-6">
                 Use the form and we will reply on your phone.
-              </p>
+              </Text>
             ) : null}
           </div>
-          <div className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
+          <Panel>
             <EnquiryForm type="contact" submitLabel="Send message" />
-          </div>
+          </Panel>
         </Container>
       </Section>
     </>
