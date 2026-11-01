@@ -1,12 +1,21 @@
 # Subscription journeys
 
-A reference only, from screenshots of two other meal subscriptions. It records how those checkouts work. It does not change Native Meals pages, prices, or the enquiry.
+A reference only. Each section records what that service leads with, then how the checkout works. The Healthy Craft and Rasamrit notes come from screenshots. The Wellfed note comes from the public site on 1 Nov 2026, and payment was not completed. It does not change Native Meals pages, prices, or the enquiry.
 
 Names, phone numbers, email addresses, and street lines from the review screens stay out of this note. The fields are listed. The values are not.
 
 ## The Healthy Craft
 
 Site: `app.thehealthycraft.com`. The shots are a composite. Sign-in shows one mobile number. Cashfree shows another. The meal step appears once with breakfast, lunch and dinner, and later with dinner off and two snacks on. The pay total matches the second selection.
+
+**USPs.**
+
+- The line they lead with is "Food that knows your numbers." Every plate shows calories and macros.
+- The menu is pure vegetarian.
+- The customer builds the plate: Sattvik, Jain, or vegan, allergy chips, foods to leave off, a chapati count or a weighed rice, paneer, tofu, or soya, and optional ghee. A change can apply to one day.
+- Breakfast, lunch, and dinner are separate lines. A snack exists only with a parent meal.
+- The name on the bag is its own step. The area is accepted, with a stated window, before the flat is taken.
+- Sunday is off. A coupon waits until checkout.
 
 Progress is six steps after the phone screen. Payment is a Cashfree modal on the last step.
 
@@ -43,6 +52,14 @@ flowchart LR
 
 Route in the payment shot: `rasamrit.in/food-subscription`. Four steps, with the same summary card on the right the whole way. A bar above the steps says delivery across Bengaluru, 3, 14 and 28-day plans, and secure online payment. These shots include no phone OTP. The page states Bengaluru as available. It does not run a yes-or-no area check before the details.
 
+**USPs.**
+
+- The first choice is a health goal: healthy eating, weight loss, weight management, muscle gain, diabetes-friendly, PCOS, senior nutrition, or custom. The goal does not change the price. Copy says it helps the team plan the meals.
+- Veg or non-veg is a plan choice. Meals per day are a count, 1, 2, or 3, not named breakfast, lunch, and dinner.
+- Juice, detox water, a smoothie, a fruit bowl, overnight oats, and a salad can ride with the scheduled delivery. They have no separate delivery charge.
+- The public bar says delivery across Bengaluru. The team confirms the start date, the health profile, and the schedule after payment.
+- A pause or a plan change needs 24 hours. Payment is online only. One scheduled delivery a day is included.
+
 ```mermaid
 flowchart LR
   plan[1 Your plan] --> addons[2 Add-ons]
@@ -61,7 +78,79 @@ flowchart LR
 
 **Pay.** The Razorpay modal is for ₹12,572. It offers UPI, cards, EMI, net banking, a wallet, and a UPI QR with a countdown, plus bank and wallet offers.
 
+## Wellfed
+
+Site: `www.bewellfed.in`. WELLFED BY BODYRX LLP sells a prepaid lunch and dinner subscription in parts of Bengaluru. The marketing site, the purchase wizard, a customer web app at `app.bewellfed.in`, and a mobile app are separate. Login is a mobile OTP. Support is phone and WhatsApp on +91 8043284198, and email at hello@bewellfed.in, Monday to Saturday, 9am to 7pm. The published kitchen address is BHIVE Premium, Indiranagar. FSSAI and GSTIN sit in the footer.
+
+**USPs.**
+
+- Homely Indian meals, sold as fresh and calorie-counted. The 2-week and 1-month plans add nutritionist guidance. The 3-day trial does not.
+- Two menus. Everyday Indian is a salad, a dal, a vegetable, a protein, and a carb. Specials is wraps, biryani, and Indo-Chinese.
+- Protein and carb are chosen after purchase: paneer, soya, tofu, egg, or chicken, and the roti of the day, brown rice, or white rice.
+- Lunch and dinner are separate, and each has its own Monday-to-Saturday days. A longer plan costs less per meal. Delivery is included. A skip before 10pm the day before carries the meal forward, with no stated cap.
+- The kitchen line is no refined oil, no additives, and reusable containers. Skips and plate choices are changed in the account, on the web app or the mobile app.
+
+The public offer is two drops a day, lunch and dinner, Monday to Saturday. Sunday is closed. There is no breakfast. The terms say a plan includes up to two meals a day. The checkout review code also knows an evening snack. The public plans and FAQs name only lunch and dinner.
+
+Homepage order: the hero ("Healthy, Fresh Meals, Delivered Daily!"), benefit cards, two marquees (no refined oil, no additives, protein, fresh cooking; then reusable and plant-based packaging), a 3-day-trial call to action, four steps (explore the menu, build a subscription, eat from reusable containers, manage skips in the account), three price cards, then FAQs.
+
+Nav is Plans, Delivery Areas, Menu (Everyday Indian and Specials), Contact, Login, and "Get A 3-Day Trial". Every plan button goes to `/purchase`. That page refuses a desktop width and shows a QR code. The wizard runs at phone width.
+
+The menu is public.
+
+**Everyday Indian** (`/menu/everyday-indian`). One plate for lunch and one for dinner, Monday to Saturday. A typical plate is a salad, a dal, a vegetable, a protein slot, and a carb slot. Protein on the menu is paneer, soya, tofu, egg, or chicken. The menu copy also says egg whites. Carb is the roti of the day (bajra, ragi, multigrain, oats, and similar), brown rice, or white rice. The visitor picks these after purchase, inside the account, not in the builder.
+
+**Specials** (`/menu/specials`). A second week of wraps, biryani, Indo-Chinese, and parathas, split veg or chicken rather than five proteins.
+
+**Price cards.** The homepage and `/plans` show the same three. A longer plan costs less per meal. Delivery is included. All three say Monday to Saturday, lunch and dinner, and unlimited carry-forward.
+
+- 3 days is ₹289 per meal. There is no nutritionist line. The trial is non-refundable.
+- 2 weeks is ₹279 per meal, plus nutritionist guidance.
+- 1 month is ₹269 per meal, plus nutritionist guidance.
+
+Checkout adds 5% GST on `(meals × rate − coupon)` and labels the total inclusive of tax. The sticker rate is the pre-tax number. A coupon field exists on the pay step.
+
+The wizard is four steps. A sub-step keeps the same step number. The names below are the analytics names in the page script.
+
+```mermaid
+flowchart LR
+  meals[1 Schedule] --> plan[2 Tier]
+  plan --> login[3 Name and mobile]
+  login --> otp[OTP]
+  otp --> address[4 Address]
+  address --> map[Map pin]
+  map --> details[Flat and Home or Office]
+  details --> review[Review and start date]
+  review --> pay[Razorpay]
+```
+
+**1 Schedule.** Lunch and dinner are separate checkboxes. Each opens Monday to Saturday. Checking a meal selects all six days. Days can be turned off. At least one meal is required. Days belong to that meal. One pattern does not cover the whole plan.
+
+**2 Tier.** The heading is "Which subscription would you like?" Each card shows a per-meal price and a meal count. The copy includes "Unlimited Meal Carry Forward".
+
+**3 Account.** The form asks for a full name and an Indian mobile number. Sending the OTP agrees to the privacy policy. The code is six digits, by SMS. An existing customer is sent to the app to renew. An account with more than one subscription cannot renew online, and the screen tells them to contact support.
+
+**4 Address.** Search, then a map pin. A point outside the Bengaluru coverage polygon is blocked. The details are house or flat, apartment or building, landmark, and save as Home or Office. Copy says a different address per meal can be set later. A timings sheet says lunch about 10am to 1pm and dinner about 6pm to 8pm, and that meals may not arrive hot.
+
+**Review.** The screen repeats the plan, links the short policy, and asks for a start date. Sunday and some blocked dates cannot be a start date. Razorpay then offers UPI, cards, net banking, and wallets. Acceptance of the order comes after payment and a serviceability check. Someone from Wellfed may call to confirm the address.
+
+**After payment.** Skips, address changes, and meal preferences live in the web app and the mobile app. Protein and carb choices change there. The cutoff for a skip, an address, and preferences is 10:00pm IST the day before. After that, the meal counts as served, and the address and preferences lock.
+
+A valid skip or pause extends the subscription until the paid meals are delivered. A pause needs an end date. There is no indefinite pause, and a pause is not a cash refund. Termination is a WhatsApp request. Deliveries pause for six days, then the refund covers unused meals that were not already prepared. Delivered meals are repriced at ₹299 plus 5% GST, which is ₹314, and any discount or referral is forfeited. Their worked example: paid ₹12,500 for 48 meals, 8 delivered, refund ₹9,988. Refunds are requested on WhatsApp and take 7 to 10 working days. A quality issue must be reported within 4 hours. The usual remedy is an extension.
+
+**Delivery.** The policy page and the checkout copy disagree. `/delivery` says lunch 10:30am to 1:30pm and dinner 5:30pm to 8:30pm. The wizard says roughly 10am to 1pm and 6pm to 8pm, and that some areas are earlier. Neither guarantees a clock time. A same-day delivery outside the window gets no compensation.
+
+There is no Sunday delivery. Public holidays are discretionary, with advance notice. Coverage is a map at `/delivery-areas`: certain residential communities and office complexes, not all of Bengaluru. The rider calls and may wait 10 minutes. If the customer is missing, the bag can be left at security or marked failed, and the meal is still charged. A Wellfed miss is treated as a skip and is not charged.
+
 ## Where Native Meals stands
+
+**USPs.** These are the lines [Business](business.md) allows the site to say.
+
+- Daily healthy meals for people working and living in Hinjewadi, Wakad, and Baner. Lunch is for the office gate. Dinner is for the PG or the flat. Breakfast sits on the all-day mix.
+- Meals are cooked the morning they go out, and handed over at a gate, a security desk, or a door.
+- One rate per plate. The length does not discount it. Veg and non-veg lunch and dinner are different prices. Breakfast is one rate.
+- The kitchen rules that hold for every meal: no potatoes, millet rotis and no maida, mixed-pulse dal, no preservatives, steel pots, and eco-friendly boxes.
+- Starting is an enquiry. Price, address, and the first day are confirmed with the person before a meal is charged.
 
 The builder is one page, [components/plans/PlanExperience.tsx](../components/plans/PlanExperience.tsx), then [components/forms/EnquiryForm.tsx](../components/forms/EnquiryForm.tsx). [Product](product.md) is explicit. The site explains the service and takes an enquiry. It does not take payment, start a subscription, or check an address.
 
@@ -69,10 +158,12 @@ Meals are breakfast, lunch, and dinner. Days are Monday to Friday or Monday to S
 
 Rates in [data/plans.ts](../data/plans.ts) are flat per plate: breakfast ₹149, lunch and dinner ₹229 for veg and ₹249 for non-veg. The diet choice is veg, non-veg, or either. Either is priced at the veg rate. There is no goal that leaves the price alone, and no Sattvik, Jain, vegan, allergy, dislike, chapati count, or rice choice. [Business](business.md) says not to invent calorie numbers, protein numbers, a weight-loss claim, or a medical plan. Rasamrit's goal list stays in this note.
 
-The form asks for a name, a 10-digit mobile number, a locality, office or home, the address, and the day they want the first tiffin. Both places asks for the office and the home. It does not ask for an email, an OTP, or a pincode, and it does not keep an unfinished checkout. The server recalculates the estimate. The enquiry goes out through a webhook or a WhatsApp link. Price and the handover spot are confirmed with the person before the first meal. Rasamrit also confirms the start date after the form, and only after online payment. The Healthy Craft charges only after the map pin, and moves the first day to tomorrow once lunch has closed.
+The form asks for a name, a 10-digit mobile number, a locality, office or home, the address, and the day they want the first tiffin. Both places asks for the office and the home. It does not ask for an email, an OTP, or a pincode, and it does not keep an unfinished checkout. The server recalculates the estimate. The enquiry goes out through a webhook or a WhatsApp link. Price and the handover spot are confirmed with the person before the first meal. Rasamrit also confirms the start date after the form, and only after online payment. The Healthy Craft charges only after the map pin, and moves the first day to tomorrow once lunch has closed. Wellfed charges before the first meal, on Razorpay, after the map pin.
 
-The service area is Hinjewadi, Wakad, and Baner, typed as a locality. It is not a Bengaluru-wide claim, a radius yes or no, or a map pin. Eco-friendly containers are a kitchen rule on the site, not a checkout choice. Pause and change terms are explained when someone enquires. They are not published as a 24-hour rule. A lunch cutoff is printed only when its env var is set. It does not block a start date on the form.
+Wellfed's rate falls with the length: ₹289, ₹279, then ₹269 per meal. Native Meals keeps one rate per plate. Wellfed is lunch and dinner, and the days are chosen on each meal. Native Meals can include breakfast, and one day pattern covers every selected meal. Wellfed customises protein and carb after payment, and the marketing site publishes calories and a nutritionist. Those stay off the Native Meals site. [Business](business.md) already forbids inventing them.
+
+The service area is Hinjewadi, Wakad, and Baner, typed as a locality. It is not a Bengaluru-wide claim, a radius yes or no, or a map pin. Eco-friendly containers are a kitchen rule on the site, not a checkout choice. Pause and change terms are explained when someone enquires. They are not published as a 24-hour rule, and they are not published as Wellfed's 10pm-the-previous-day rule with carry-forward. A lunch cutoff is printed only when its env var is set. It does not block a start date on the form.
 
 ## What this note leaves alone
 
-OTP, maps, Cashfree, Razorpay, snacks, add-ons, health goals, and plate customisation stay off the Native Meals site. So do both platforms' prices, cities, calorie figures, and medical wording. This file is a reference. The pages keep their own facts.
+OTP, maps, Cashfree, Razorpay, snacks, the Wellfed evening-snack path, add-ons, health goals, nutritionist claims, and plate customisation stay off the Native Meals site. So do all three platforms' prices, cities, calorie figures, and medical wording. The USP lines record what each service publishes. They are not copied onto Native Meals pages. This file is a reference. The pages keep their own facts.
