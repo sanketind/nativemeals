@@ -23,7 +23,7 @@ export function FoodImage({
       priority={priority}
       loading={priority ? "eager" : undefined}
       sizes={sizes}
-      className={cn("object-cover", className)}
+      className={cn("rounded-[inherit] object-cover", className)}
     />
   );
 }

@@ -19,7 +19,17 @@ export function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className={cn("py-12 md:py-24", tones[tone], className)}>
+    <section
+      id={id}
+      className={cn(
+        "pb-12 md:pb-24",
+        "first:pt-12 md:first:pt-24",
+        "not-first:-mt-8 not-first:rounded-t-[2rem] not-first:pt-20",
+        "md:not-first:-mt-12 md:not-first:rounded-t-section md:not-first:pt-36",
+        tones[tone],
+        className,
+      )}
+    >
       {children}
     </section>
   );

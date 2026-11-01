@@ -16,7 +16,12 @@ export function MealPlanCard({
 }) {
   return (
     <Card as="article" padded={false} className="flex h-full flex-col overflow-hidden">
-      <div className={cn("relative bg-sage", compact ? "aspect-[2/1]" : "aspect-[16/10]")}>
+      <div
+        className={cn(
+          "relative overflow-hidden rounded-t-card bg-sage",
+          compact ? "aspect-[2/1]" : "aspect-[16/10]",
+        )}
+      >
         <FoodImage
           imageId={plan.imageId}
           sizes="(min-width: 768px) 30vw, 100vw"

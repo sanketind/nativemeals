@@ -28,7 +28,7 @@ The hero has a soft sunflower glow in the corner, from `bg-page-glow`. The rest 
 
 Outfit is the only typeface, loaded in `app/layout.tsx` at weights 400 through 800. Headlines are heavy and tight. Body copy is regular. Buttons and the wordmark stay bold. Do not add a second display font.
 
-Sizes live in `app/globals.css` as `text-*` utilities. Use those, or the components in `components/ui`, instead of a one-off `clamp()` or `text-[…]`.
+Sizes live in `app/globals.css` as `text-*` utilities. Use those, or the components in `components/ui`, instead of a one-off `clamp()` or `text-[…]`. Page titles and section titles stay large on a laptop, not only on a wide monitor. Card headings are a full step above body copy.
 
 | Step | Utility | Use |
 | --- | --- | --- |
@@ -59,6 +59,7 @@ Step numbers use `text-5xl` at the small breakpoint and `text-6xl` from `md`, wi
 | Card | `rounded-card` | Cards, panels, the estimate. |
 | Photo | `rounded-photo` | Food photographs. |
 | Full | `rounded-full` | Buttons, chips, the header. |
+| Section | `rounded-t-section` | The top of a band after another band. 2rem on a small screen, 3rem from `md`. The band overlaps the one above so the curve is visible. |
 
 `shadow-raise` is the header. `shadow-float` is a badge sitting on a photo. Quiet panels keep `shadow-sm`.
 
