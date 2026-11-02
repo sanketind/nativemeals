@@ -1,4 +1,4 @@
-import { CookingPot, Flame, Leaf, WheatOff } from "lucide-react";
+import { CalendarDays, CalendarRange, IndianRupee, Utensils } from "lucide-react";
 import { pricing } from "@/data/plans";
 import { siteConfig, type HeroFactIcon } from "@/data/site-config";
 import { formatInr } from "@/lib/format";
@@ -11,11 +11,11 @@ import { PhotoBadge, PhotoFrame } from "@/components/ui/Photo";
 import { Caption, Heading, PriceMark, Text } from "@/components/ui/Type";
 import { surface } from "@/components/ui/styles";
 
-const factIcons: Record<HeroFactIcon, typeof Leaf> = {
-  cooked: Flame,
-  maida: WheatOff,
-  fresh: Leaf,
-  steel: CookingPot,
+const factIcons: Record<HeroFactIcon, typeof CalendarDays> = {
+  days: CalendarDays,
+  diet: Utensils,
+  rate: IndianRupee,
+  start: CalendarRange,
 };
 
 export function HeroSection() {
@@ -40,7 +40,7 @@ export function HeroSection() {
               This week&apos;s menu
             </ButtonLink>
           </div>
-          <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3 border-t border-charcoal/10 pt-6">
+          <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-charcoal/10 pt-6">
             {siteConfig.heroFacts.map((fact) => {
               const Icon = factIcons[fact.icon];
               return (

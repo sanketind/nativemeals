@@ -37,11 +37,11 @@ Days are Monday to Friday, or Monday to Saturday. Lengths are 3 days, 2 weeks, o
 These rules are published because the kitchen has confirmed they hold for every meal. They live in `kitchenRules` in `data/site-config.ts`. The homepage shows each rule as a title and one sentence. Add a rule only when it is true for the whole menu.
 
 - No potatoes. Not as filler and not on the side. No dish on the menu uses them.
-- Millet rotis, no maida. Rotis are millet or multigrain flour, never refined flour.
-- Mixed-pulse dal. Every dal is mixed pulses or multigrains. No plain dal.
+- No maida. Rotis are millet or multigrain flour, never refined flour.
 - No preservatives. No mayo. Sauces and chutneys are made in our own kitchen.
-- Steel pots. No non-stick and no aluminium. Every pot and pan is steel.
-- Eco-friendly boxes. Meals travel to the gate or the door in eco-friendly containers.
+- No non-stick. No aluminium. Every pot and pan is steel.
+
+Meals travel to the gate or the door in an eco-friendly box. That sentence sits on the How it works step, not in the kitchen rules.
 
 ## What stays unsaid until it is real
 
@@ -50,8 +50,8 @@ Leave the env var empty. The site hides the fact rather than printing a placehol
 - Phone, WhatsApp and email.
 - FSSAI licence number.
 - The kitchen's neighbourhood.
-- The cutoff for skipping a meal. Breakfast, lunch and dinner windows are printed only when their env vars are set.
+- The cutoff for skipping a meal. A meal skipped before that cutoff is carried to the end of the plan. The site prints that sentence only when the cutoff env var is set. Breakfast, lunch and dinner windows are printed only when their env vars are set.
 - Social profiles.
 - A founder story. `founderNote` stays null until there is a real one.
 
-Also do not invent ratings, testimonials, calorie or protein numbers, a nutritionist, a weight-loss claim, or a medical plan. The menu on the homepage is a sample until the Google Sheet is connected. If that sheet cannot be loaded, the page says so. It does not put the sample or an older week in its place. Delivery and collection details that are still open are confirmed with the person before they start. Pause, change and cancellation terms are explained then, not published as if they were settled.
+Also do not invent ratings, testimonials, calorie or protein numbers, a nutritionist, a weight-loss claim, or a medical plan. The menu on the homepage is a sample until the Google Sheet is connected. If that sheet cannot be loaded, the page says so. It does not put the sample or an older week in its place. Delivery and collection details that are still open are confirmed with the person before they start. A skipped meal is carried to the end of the plan once the cutoff is published. Pause and cancellation are still explained with the person before the first meal, not published as if they were settled.

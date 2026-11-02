@@ -31,7 +31,7 @@ function doPost(e) {
     if (estimate.meals && estimate.meals.length) {
       meals = estimate.meals
         .map(function (meal) {
-          return meal.meal + " " + meal.perMeal;
+          return meal.meal + " " + meal.perMeal + (meal.days ? " x " + meal.days : "");
         })
         .join(", ");
     }

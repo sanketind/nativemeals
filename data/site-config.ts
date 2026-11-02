@@ -3,7 +3,7 @@ function readPublic(name: string) {
   return value ? value : null;
 }
 
-export type HeroFactIcon = "cooked" | "maida" | "fresh" | "steel";
+export type HeroFactIcon = "days" | "diet" | "rate" | "start";
 
 export type SocialLink = {
   label: string;
@@ -56,11 +56,12 @@ const handover =
     : "Handed over at your office gate, security desk, or your door. We confirm the breakfast, lunch and dinner window before you start.";
 
 /**
- * Carry-forward and refunds stay unpublished until those policies are real.
- * A clock time is named only when NEXT_PUBLIC_SKIP_CUTOFF is set.
+ * A skip before the cutoff is carried to the end of the plan.
+ * That sentence stays hidden until NEXT_PUBLIC_SKIP_CUTOFF is set.
+ * Pause and cancellation stay confirmed with the person.
  */
 const skipNote = skipCutoff
-  ? `Message us on WhatsApp before ${skipCutoff} to skip a meal. Pause and cancellation are confirmed with you before the first meal.`
+  ? `Message us on WhatsApp before ${skipCutoff} to skip a meal. That meal is carried to the end of the plan. Pause and cancellation are confirmed with you before the first meal.`
   : "Skip, pause and cancellation are confirmed with you before the first meal.";
 
 export const siteConfig = {
@@ -141,12 +142,12 @@ export const siteConfig = {
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms" },
   ],
-  /** Short kitchen differentiators for the hero. */
+  /** Offer facts for the hero. Keep these off the kitchen rules. */
   heroFacts: [
-    { icon: "cooked" as const, label: "Freshly cooked" },
-    { icon: "maida" as const, label: "No maida" },
-    { icon: "fresh" as const, label: "No preservatives" },
-    { icon: "steel" as const, label: "Cooked in steel" },
+    { icon: "days" as const, label: "Monday to Friday" },
+    { icon: "diet" as const, label: "Veg or non-veg" },
+    { icon: "rate" as const, label: "One rate per meal" },
+    { icon: "start" as const, label: "Start with 3 days" },
   ] satisfies { icon: HeroFactIcon; label: string }[],
   /** Confirmed by the kitchen. Add a rule only once it holds for every meal. */
   kitchenRules: [
@@ -155,24 +156,16 @@ export const siteConfig = {
       body: "Not as filler and not on the side. No dish on the menu uses them.",
     },
     {
-      title: "Millet rotis, no maida",
+      title: "No maida",
       body: "Rotis are millet or multigrain flour, never refined flour.",
-    },
-    {
-      title: "Mixed-pulse dal",
-      body: "Every dal is mixed pulses or multigrains. No plain dal.",
     },
     {
       title: "No preservatives",
       body: "No mayo. Sauces and chutneys are made in our own kitchen.",
     },
     {
-      title: "Steel pots",
-      body: "No non-stick and no aluminium. Every pot and pan is steel.",
-    },
-    {
-      title: "Eco-friendly boxes",
-      body: "Meals travel to your gate or your door in eco-friendly containers.",
+      title: "No non-stick",
+      body: "No aluminium. Every pot and pan is steel.",
     },
   ] satisfies { title: string; body: string }[],
   /**

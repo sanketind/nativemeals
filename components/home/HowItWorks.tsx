@@ -12,7 +12,7 @@ const steps = [
   {
     number: "02",
     title: "Tell us where it goes",
-    body: "Veg or non-veg, at the office gate or your door.",
+    body: "The office gate on days you go in, and your door on days you are home, in an eco-friendly box.",
   },
   {
     number: "03",

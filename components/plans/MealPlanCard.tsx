@@ -77,6 +77,9 @@ export function MealPlanCard({
                 </div>
               ))}
             </dl>
+            <p className="mt-3 text-sm text-muted">
+              3 days is 3 of each meal you pick, at the same price per meal. Nothing is charged on this page.
+            </p>
           </>
         ) : null}
         {compact ? null : (

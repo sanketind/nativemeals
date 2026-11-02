@@ -15,9 +15,12 @@ import { formatInr } from "@/lib/format";
 export const mealSlots = ["breakfast", "lunch", "dinner"] as const;
 export type MealSlot = (typeof mealSlots)[number];
 
+export type MealSchedules = Partial<Record<MealSlot, ScheduleId>>;
+
 export type PlanSelection = {
   meals: MealSlot[];
-  schedule: ScheduleId;
+  /** One pattern per selected meal. Lunch and dinner may differ. */
+  schedules: MealSchedules;
   length: LengthId;
 };
 
@@ -57,20 +60,28 @@ export type QuoteLine = {
   meal: MealSlot;
   label: string;
   perMeal: number;
+  scheduleId: ScheduleId;
+  scheduleLabel: string;
+  scheduleSpoken: string;
+  days: number;
 };
 
 export type Quote = {
   meals: MealSlot[];
-  scheduleId: ScheduleId;
+  /** True when every selected meal uses the same day pattern. */
+  samePattern: boolean;
+  scheduleId: ScheduleId | null;
   scheduleLabel: string;
   scheduleSpoken: string;
   lengthId: LengthId;
   lengthLabel: string;
-  days: number;
+  /** Shared count. Null when lunch and dinner use different patterns. */
+  days: number | null;
   planId: PlanId;
   planName: string;
   lines: QuoteLine[];
-  perDay: number;
+  /** Sum of the plate rates. Null when the patterns differ. */
+  perDay: number | null;
   total: number;
   pricingStatus: "draft" | "confirmed";
   note: string;
@@ -92,12 +103,12 @@ function orderedMeals(meals: MealType[]): MealSlot[] | null {
   return unique;
 }
 
-/** "Mon–Fri, 2 weeks (10 days)". A 3-day try already says the count. */
-export function formatSelection(input: {
-  scheduleLabel: string;
-  lengthLabel: string;
-  days: number;
-}) {
+/** "Mon–Fri, 2 weeks (10 days)". A split week names each meal. */
+export function formatSelection(input: Pick<Quote, "samePattern" | "scheduleLabel" | "lengthLabel" | "days" | "lines">) {
+  if (!input.samePattern || input.days === null) {
+    const parts = input.lines.map((line) => `${line.label} ${line.scheduleLabel}, ${line.days}`);
+    return `${input.lengthLabel}: ${parts.join("; ")}`;
+  }
   if (input.lengthLabel === `${input.days} days`) {
     return `${input.scheduleLabel}, ${input.lengthLabel}`;
   }
@@ -106,22 +117,34 @@ export function formatSelection(input: {
 
 export function quote(input: {
   meals: MealSlot[];
-  schedule: string;
+  schedules: Partial<Record<MealSlot, string>>;
   length: string;
   diet?: PriceDiet;
 }): Quote | null {
   const meals = orderedMeals(input.meals);
-  if (!meals) return null;
-  if (!isScheduleId(input.schedule) || !isLengthId(input.length)) return null;
-  const schedule = schedules.find((item) => item.id === input.schedule);
+  if (!meals || !isLengthId(input.length)) return null;
   const length = lengths.find((item) => item.id === input.length);
-  if (!schedule || !length) return null;
+  if (!length) return null;
 
-  const lines = meals.map((meal) => ({
-    meal,
-    label: mealLabels[meal],
-    perMeal: mealRate(meal, input.diet),
-  }));
+  const lines: QuoteLine[] = [];
+  for (const meal of meals) {
+    const raw = input.schedules[meal];
+    if (!raw || !isScheduleId(raw)) return null;
+    const schedule = schedules.find((item) => item.id === raw);
+    if (!schedule) return null;
+    lines.push({
+      meal,
+      label: mealLabels[meal],
+      perMeal: mealRate(meal, input.diet),
+      scheduleId: schedule.id,
+      scheduleLabel: schedule.label,
+      scheduleSpoken: schedule.spoken,
+      days: deliveryDays(schedule.id, length.id),
+    });
+  }
+
+  const samePattern = lines.every((line) => line.scheduleId === lines[0]?.scheduleId);
+  const shared = samePattern ? lines[0] : undefined;
   const perDay = lines.reduce((sum, line) => sum + line.perMeal, 0);
   const planId = planIdForMeals(meals);
   const hasMain = meals.some((meal) => meal === "lunch" || meal === "dinner");
@@ -129,21 +152,22 @@ export function quote(input: {
     input.diet === "non-veg" || !hasMain
       ? ""
       : `Non-veg lunch and dinner are ${formatInr(nonVegPerMeal.lunch)} each.`;
-  const days = deliveryDays(schedule.id, length.id);
 
   return {
     meals,
-    scheduleId: schedule.id,
-    scheduleLabel: schedule.label,
-    scheduleSpoken: schedule.spoken,
+    samePattern,
+    scheduleId: shared?.scheduleId ?? null,
+    scheduleLabel: shared?.scheduleLabel ?? lines.map((line) => `${line.label} ${line.scheduleLabel}`).join(", "),
+    scheduleSpoken:
+      shared?.scheduleSpoken ?? lines.map((line) => `${line.label} ${line.scheduleSpoken}`).join(", "),
     lengthId: length.id,
     lengthLabel: length.label,
-    days,
+    days: shared?.days ?? null,
     planId,
     planName: getPlan(planId)?.name ?? "All-day Plan",
     lines,
-    perDay,
-    total: perDay * days,
+    perDay: samePattern ? perDay : null,
+    total: lines.reduce((sum, line) => sum + line.perMeal * line.days, 0),
     pricingStatus: pricing.status,
     note: pricing.note,
     dietNote,

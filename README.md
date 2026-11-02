@@ -91,9 +91,9 @@ The body looks like this:
   "estimate": {
     "pricingStatus": "confirmed",
     "plan": "Lunch Plan",
-    "duration": "Mon–Fri, 4 weeks",
+    "duration": "Mon–Fri, 4 weeks (20 days)",
     "days": 20,
-    "meals": [{ "meal": "Lunch", "perMeal": 229 }],
+    "meals": [{ "meal": "Lunch", "perMeal": 229, "schedule": "Mon–Fri", "days": 20 }],
     "perDay": 229,
     "total": 4580,
     "note": ""
@@ -129,7 +129,7 @@ Add one row per meal option.
 | date | `2026-11-02`, or `02/11/2026` |
 | meal | Breakfast, Lunch or Dinner |
 | diet | Veg or Non-veg |
-| dishes | The plate, in your own words. Example: `Dal tadka, jeera rice, bhindi, 2 phulka` |
+| dishes | The plate, in your own words. Example: `Dal tadka, jeera rice, bhindi, 2 millet rotis` |
 | note | Optional. A short extra, or leave it blank. |
 | image | Optional. Leave it blank. A photo key from the site can go here later. |
 | show | `TRUE` to publish the row. `FALSE` to keep next week drafted. |

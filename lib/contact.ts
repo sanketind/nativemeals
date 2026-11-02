@@ -66,7 +66,11 @@ export function enquiryMessage(input: Pick<
   if (input.phone) lines.push(`Phone: ${input.phone}`);
   if (planName) lines.push(`Plan: ${planName}`);
   if (estimate) {
-    lines.push(`Meals: ${estimate.lines.map((line) => line.label).join(", ")}`);
+    lines.push(
+      `Meals: ${estimate.lines
+        .map((line) => `${line.label} ${line.scheduleSpoken}, ${line.days} at ${formatInr(line.perMeal)}`)
+        .join("; ")}`,
+    );
     lines.push(`Duration: ${formatSelection(estimate)}`);
     const caveat =
       estimate.pricingStatus === "draft" ? " (introductory, subject to confirmation)" : "";
@@ -98,11 +102,13 @@ export function enquiryEstimate(input: Pick<EnquiryInput, "selection" | "diet">)
   return {
     pricingStatus: estimate.pricingStatus,
     plan: estimate.planName,
-    duration: `${estimate.scheduleLabel}, ${estimate.lengthLabel}`,
+    duration: formatSelection(estimate),
     days: estimate.days,
     meals: estimate.lines.map((line) => ({
       meal: line.label,
       perMeal: line.perMeal,
+      schedule: line.scheduleLabel,
+      days: line.days,
     })),
     perDay: estimate.perDay,
     total: estimate.total,

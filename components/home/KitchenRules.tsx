@@ -12,7 +12,7 @@ export function KitchenRules() {
         <SectionHeading eyebrow="Our kitchen rules" title="What our kitchen leaves out.">
           These rules hold for every meal on the menu, veg and non-veg.
         </SectionHeading>
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-12 lg:grid-cols-3">
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-12 lg:grid-cols-4">
           {siteConfig.kitchenRules.map((rule) => (
             <Card key={rule.title} as="li">
               <Heading as="h3" size="card">

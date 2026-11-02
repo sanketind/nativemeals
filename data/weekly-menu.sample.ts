@@ -4,7 +4,7 @@ import type { WeeklyMenuRow } from "@/lib/weekly-menu";
 /**
  * Stand-in week used only when WEEKLY_MENU_CSV_URL is not set.
  * Dates follow the current India week so the layout can be reviewed any day.
- * Dishes follow the kitchen: clean plates, no potatoes, regular dal or maida chapati.
+ * Dishes follow the kitchen: no potatoes, millet or multigrain rotis, never maida.
  */
 export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
   const monday = mondayOf(today);

@@ -23,7 +23,7 @@ The hero headline is Daily Healthy Meal Subscription. The pill is Hinjewadi, Wak
 
 The conversion is a form, not a checkout.
 
-1. On Meal Plans, the visitor picks meals, Monday to Friday or Monday to Saturday, a length, and veg, non-veg, or either. The page shows an estimate from `data/plans.ts`.
+1. On Meal Plans, the visitor picks meals, Monday to Friday or Monday to Saturday, a length, and veg, non-veg, or either. Lunch and dinner can use different days. The page shows an estimate from `data/plans.ts`.
 2. They send a name, a 10-digit mobile number, a locality, office or home, the address, and the day they want the first tiffin. A hidden company field catches simple bots and those submissions are ignored.
 3. The form posts to `/api/enquiry`. The server calculates the estimate again. A total typed in the browser is not trusted.
 4. If `ENQUIRY_WEBHOOK_URL` is set, the site POSTs JSON there.
@@ -42,7 +42,7 @@ The prices live in `data/plans.ts` with `pricing.status` set to `"confirmed"`. D
 
 Choosing either is priced at the veg rate. When lunch or dinner is in the selection, the estimate notes the higher non-veg price. Breakfast stays one rate.
 
-The builder asks two questions. Days are Monday to Friday, or Monday to Saturday. Lengths are 3 days, 2 weeks, or 4 weeks. Three days is always 3 tiffins. Two weeks is 10 tiffins on Monday to Friday, or 12 with Saturday. Four weeks is 20, or 24 with Saturday. Sunday stays off. A 28-day run of every calendar day is not a length. The plan cards show those three lengths with both counts.
+The builder asks which meals, then the days, then a length. Days are Monday to Friday, or Monday to Saturday. One control covers the selection, unless both lunch and dinner are on. Then each has its own days. Breakfast follows lunch, or dinner when lunch is off. Lengths are 3 days, 2 weeks, or 4 weeks. Three days is 3 of each selected meal. Two weeks is 10 of that meal on Monday to Friday, or 12 with Saturday. Four weeks is 20, or 24 with Saturday. Sunday stays off. A 28-day run of every calendar day is not a length. The plan cards show those three lengths with both counts. The total is each meal's rate times its own count.
 
 ## This week's menu
 
@@ -54,4 +54,4 @@ If the sheet cannot be loaded, or the link is not a valid web address, the page 
 
 ## What is still open
 
-Pause, skip, and cancellation rules are explained when someone enquires, unless a real cutoff has been set in `NEXT_PUBLIC_SKIP_CUTOFF`. Fixed clock times for breakfast, lunch and dinner appear only when those env vars are set. Privacy and terms describe that enquiry. Update them if how an enquiry is stored, or how a plan is paid for, changes. The full launch list is in the [README](../README.md#launch-checklist).
+A meal skipped before the cutoff is carried to the end of the plan. That sentence is published only when `NEXT_PUBLIC_SKIP_CUTOFF` is set. Pause and cancellation are still explained when someone enquires. Fixed clock times for breakfast, lunch and dinner appear only when those env vars are set. Privacy and terms describe that enquiry. Update them if how an enquiry is stored, or how a plan is paid for, changes. The full launch list is in the [README](../README.md#launch-checklist).

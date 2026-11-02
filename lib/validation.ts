@@ -4,7 +4,9 @@ import {
   isLengthId,
   isMealSlot,
   isScheduleId,
+  mealSlots,
   quote,
+  type MealSchedules,
   type MealSlot,
   type PlanSelection,
 } from "@/lib/pricing";
@@ -85,10 +87,25 @@ function parseSelection(value: unknown): PlanSelection | null {
     }
     meals.push(meal);
   }
-  const schedule = clean(record.schedule, 20);
   const length = clean(record.length, 20);
-  if (!isScheduleId(schedule) || !isLengthId(length) || meals.length === 0) return null;
-  return { meals, schedule, length };
+  const schedules = parseSchedules(record.schedules, meals);
+  if (!schedules || !isLengthId(length) || meals.length === 0) return null;
+  return { meals, schedules, length };
+}
+
+function parseSchedules(value: unknown, meals: MealSlot[]): MealSchedules | null {
+  if (!value || typeof value !== "object") return null;
+  const record = value as Record<string, unknown>;
+  const schedules: MealSchedules = {};
+  for (const meal of meals) {
+    const raw = clean(record[meal], 20);
+    if (!isScheduleId(raw)) return null;
+    schedules[meal] = raw;
+  }
+  for (const key of Object.keys(record)) {
+    if (!(mealSlots as readonly string[]).includes(key)) return null;
+  }
+  return schedules;
 }
 
 export function validateEnquiry(input: EnquiryInput): FieldErrors {
@@ -166,7 +183,7 @@ export function parseEnquiryBody(body: unknown): EnquiryInput | null {
     // An unreadable selection must fail validation, not fall through to the plan id.
     selection = parseSelection(record.selection) ?? {
       meals: [],
-      schedule: "weekdays",
+      schedules: {},
       length: "trial",
     };
   }

@@ -44,7 +44,7 @@ export const faqs: Faq[] = [
     id: "which-plans",
     question: "What meal plans are available?",
     answer:
-      "Lunch, dinner, or breakfast, lunch and dinner together. Choose Monday to Friday, or Monday to Saturday. Lengths are 3 days, 2 weeks, or 4 weeks.",
+      "Lunch, dinner, or breakfast, lunch and dinner together. Choose Monday to Friday, or Monday to Saturday. Lunch and dinner can use different days. Lengths are 3 days, 2 weeks, or 4 weeks.",
     pages: ["faqs", "plans"],
   },
   {
@@ -71,7 +71,7 @@ export const faqs: Faq[] = [
     id: "pricing",
     question: "How does pricing work?",
     answer:
-      `Breakfast is ${breakfast}. Lunch and dinner are ${vegLunch} veg and ${nonVegLunch} non-veg. The price per meal is the same for 3 days, 2 weeks, or 4 weeks. Monday to Friday is five tiffins a week. Saturday makes it six. A 3-day try is three tiffins either way. We confirm the total, and any delivery charge, before you start.`,
+      `Breakfast is ${breakfast}. Lunch and dinner are ${vegLunch} veg and ${nonVegLunch} non-veg. The price per meal is the same for 3 days, 2 weeks, or 4 weeks. Monday to Friday is five of that meal a week. Saturday makes it six. A 3-day try is three of each meal you pick. We confirm the total, and any delivery charge, before you start.`,
     pages: ["faqs", "plans"],
   },
   {
@@ -85,7 +85,7 @@ export const faqs: Faq[] = [
     id: "choose-dishes",
     question: "Can I choose the dishes?",
     answer:
-      "This week's menu is what the kitchen is cooking. Tell us veg or non-veg, and anything you avoid, when you start. There is no build-your-own plate.",
+      "This week's menu is what the kitchen is cooking. Tell us veg or non-veg, and an allergy or something you avoid, when you start. We will say whether the kitchen can do it. There is no build-your-own plate.",
     pages: ["faqs"],
   },
   {

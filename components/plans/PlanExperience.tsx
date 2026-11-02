@@ -44,7 +44,9 @@ export function PlanExperience() {
   const fromUrl = defaultMealsForPlan(requested).join(",");
   const [seenUrl, setSeenUrl] = useState(fromUrl);
   const [meals, setMeals] = useState<MealSlot[]>(() => defaultMealsForPlan(requested));
-  const [schedule, setSchedule] = useState<ScheduleId>("weekdays");
+  const [shared, setShared] = useState<ScheduleId>("weekdays");
+  const [lunchDays, setLunchDays] = useState<ScheduleId>("weekdays");
+  const [dinnerDays, setDinnerDays] = useState<ScheduleId>("weekdays");
   const [length, setLength] = useState<LengthId>("four-weeks");
   const [diet, setDiet] = useState<DietChoice>("either");
 
@@ -53,18 +55,28 @@ export function PlanExperience() {
     setMeals(defaultMealsForPlan(requested));
   }
 
-  const estimate = quote({ meals, schedule, length, diet });
+  const splitDays = meals.includes("lunch") && meals.includes("dinner");
+  const mealSchedules = Object.fromEntries(
+    meals.map((meal) => [meal, scheduleFor(meal, meals, shared, lunchDays, dinnerDays)]),
+  ) as Partial<Record<MealSlot, ScheduleId>>;
+  const estimate = quote({ meals, schedules: mealSchedules, length, diet });
 
   function toggleMeal(meal: MealSlot) {
-    setMeals((current) => {
-      if (current.includes(meal)) {
-        if (current.length === 1) return current;
-        return current.filter((item) => item !== meal);
-      }
-      return mealChoices.map((choice) => choice.id).filter(
-        (id) => id === meal || current.includes(id),
-      );
-    });
+    const next = meals.includes(meal)
+      ? meals.length === 1
+        ? meals
+        : meals.filter((item) => item !== meal)
+      : mealChoices.map((choice) => choice.id).filter((id) => id === meal || meals.includes(id));
+    const wasSplit = meals.includes("lunch") && meals.includes("dinner");
+    const nowSplit = next.includes("lunch") && next.includes("dinner");
+    if (!wasSplit && nowSplit) {
+      setLunchDays(shared);
+      setDinnerDays(shared);
+    }
+    if (wasSplit && !nowSplit) {
+      setShared(next.includes("dinner") && !next.includes("lunch") ? dinnerDays : lunchDays);
+    }
+    setMeals(next);
   }
 
   return (
@@ -73,8 +85,9 @@ export function PlanExperience() {
         <Container>
           <SectionHeading eyebrow="Your plan" title="Build a plan around your week.">
             Monday to Friday is the office week. Add Saturday if you want it.
-            Three days is the short try. Two weeks and four weeks follow the
-            days you picked. The price per meal stays the same.
+            Lunch and dinner can use different days. Three days is 3 of each
+            meal you pick, at the same price per meal. Nothing is charged on
+            this page.
           </SectionHeading>
           <div className="mt-10 grid items-start gap-8 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="space-y-8">
@@ -107,26 +120,14 @@ export function PlanExperience() {
                 </div>
               </fieldset>
 
-              <fieldset>
-                <Eyebrow as="legend">Days</Eyebrow>
-                <div className="mt-3 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Days">
-                  {schedules.map((option) => {
-                    const selected = schedule === option.id;
-                    return (
-                      <Choice
-                        key={option.id}
-                        shape="tile"
-                        selected={selected}
-                        role="radio"
-                        aria-checked={selected}
-                        onClick={() => setSchedule(option.id)}
-                      >
-                        {option.label}
-                      </Choice>
-                    );
-                  })}
-                </div>
-              </fieldset>
+              {splitDays ? (
+                <>
+                  <DayChoices label="Lunch days" value={lunchDays} onChange={setLunchDays} />
+                  <DayChoices label="Dinner days" value={dinnerDays} onChange={setDinnerDays} />
+                </>
+              ) : (
+                <DayChoices label="Days" value={shared} onChange={setShared} />
+              )}
 
               <fieldset>
                 <Eyebrow as="legend">Length</Eyebrow>
@@ -182,19 +183,31 @@ export function PlanExperience() {
                 </Heading>
                 <dl className="mt-6 space-y-3 text-sm">
                   <Row label="Meals a day" value={String(estimate.lines.length)} />
-                  <Row label="Days" value={estimate.scheduleLabel} />
+                  {estimate.samePattern ? (
+                    <Row label="Days" value={estimate.scheduleLabel} />
+                  ) : (
+                    estimate.lines.map((line) => (
+                      <Row key={`${line.meal}-days`} label={`${line.label} days`} value={line.scheduleLabel} />
+                    ))
+                  )}
                   <Row
                     label="Duration"
-                    value={`${estimate.lengthLabel} · ${estimate.days} days`}
+                    value={
+                      estimate.days === null
+                        ? estimate.lengthLabel
+                        : `${estimate.lengthLabel} · ${estimate.days} days`
+                    }
                   />
                   {estimate.lines.map((line) => (
                     <Row
                       key={line.meal}
                       label={line.label}
-                      value={`${formatInr(line.perMeal)} / meal`}
+                      value={`${formatInr(line.perMeal)} / meal · ${line.days}`}
                     />
                   ))}
-                  <Row label="Per day" value={formatInr(estimate.perDay)} />
+                  {estimate.perDay !== null ? (
+                    <Row label="Per day" value={formatInr(estimate.perDay)} />
+                  ) : null}
                 </dl>
                 <p className="mt-6 border-t border-cream/15 pt-5" aria-live="polite">
                   <Caption tone="inverse" className="block">
@@ -237,7 +250,7 @@ export function PlanExperience() {
             <EnquiryForm
               type="plan"
               submitLabel="Start your plan"
-              selection={{ meals, schedule, length, diet }}
+              selection={{ meals, schedules: mealSchedules, length, diet }}
             />
           </div>
         </Container>
@@ -246,7 +259,56 @@ export function PlanExperience() {
   );
 }
 
+function DayChoices({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: ScheduleId;
+  onChange: (id: ScheduleId) => void;
+}) {
+  return (
+    <fieldset>
+      <Eyebrow as="legend">{label}</Eyebrow>
+      <div className="mt-3 grid grid-cols-2 gap-2" role="radiogroup" aria-label={label}>
+        {schedules.map((option) => {
+          const selected = value === option.id;
+          return (
+            <Choice
+              key={option.id}
+              shape="tile"
+              selected={selected}
+              role="radio"
+              aria-checked={selected}
+              onClick={() => onChange(option.id)}
+            >
+              {option.label}
+            </Choice>
+          );
+        })}
+      </div>
+    </fieldset>
+  );
+}
+
+function scheduleFor(
+  meal: MealSlot,
+  meals: MealSlot[],
+  shared: ScheduleId,
+  lunchDays: ScheduleId,
+  dinnerDays: ScheduleId,
+): ScheduleId {
+  const split = meals.includes("lunch") && meals.includes("dinner");
+  if (!split) return shared;
+  if (meal === "dinner") return dinnerDays;
+  return lunchDays;
+}
+
 function resultLine(estimate: Quote) {
+  if (!estimate.samePattern || estimate.days === null || estimate.perDay === null) {
+    return estimate.lines.map((line) => `${line.label} ${line.scheduleLabel}, ${line.days}`).join(" · ");
+  }
   const span = `${estimate.lengthLabel}, ${estimate.scheduleSpoken}`;
   if (estimate.lines.length === 1) {
     const line = estimate.lines[0];

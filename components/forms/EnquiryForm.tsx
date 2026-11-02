@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
-import { plans, pricing, type LengthId, type ScheduleId } from "@/data/plans";
+import { plans, pricing, type LengthId } from "@/data/plans";
 import { addIsoDays, indiaTodayIso } from "@/lib/dates";
 import { formatInr } from "@/lib/format";
-import { formatSelection, quote, type MealSlot } from "@/lib/pricing";
+import { formatSelection, quote, type MealSchedules, type MealSlot } from "@/lib/pricing";
 import {
   emptyEnquiry,
   validateEnquiry,
@@ -21,7 +21,7 @@ import { controlClass, fieldError, fieldHint, fieldLabel } from "@/components/ui
 
 export type BuilderSelection = {
   meals: MealSlot[];
-  schedule: ScheduleId;
+  schedules: MealSchedules;
   length: LengthId;
   diet: DietChoice;
 };
@@ -74,7 +74,7 @@ export function EnquiryForm({
       diet: selection ? selection.diet : values.diet,
       plan: selection ? "" : values.plan,
       selection: selection
-        ? { meals: selection.meals, schedule: selection.schedule, length: selection.length }
+        ? { meals: selection.meals, schedules: selection.schedules, length: selection.length }
         : null,
     };
     const nextErrors = validateEnquiry(payload);
