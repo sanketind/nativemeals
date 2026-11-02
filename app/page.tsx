@@ -4,6 +4,7 @@ import { FinalCTA } from "@/components/home/FinalCTA";
 import { HeroSection } from "@/components/home/HeroSection";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { KitchenRules } from "@/components/home/KitchenRules";
+import { WhatWeProvide } from "@/components/home/WhatWeProvide";
 import { PlansPreview } from "@/components/home/PlansPreview";
 import { ServiceAreaChecker } from "@/components/home/ServiceAreaChecker";
 import { WeeklyMenu } from "@/components/food/WeeklyMenu";
@@ -17,6 +18,7 @@ export default async function HomePage() {
     <>
       <HeroSection />
       <BrandPromiseSection />
+      <WhatWeProvide />
       <PlansPreview />
       <Section tone="white">
         <Container>

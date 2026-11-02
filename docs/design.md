@@ -1,6 +1,6 @@
 # Design
 
-The site should feel like a calm meal service for an office week. Healthy, clean, and specific about the handover. It should not look like a gym brand, a diet clinic, or a cuisine restaurant.
+The site should feel like a calm everyday meal service for an office week. Everyday food, balanced and healthy, and specific about the handover. It should not look like a gym brand, a diet clinic, or a cuisine restaurant. The voice does not tell someone the food should not feel like a diet.
 
 ## Colour
 
@@ -69,13 +69,13 @@ A sage section band is `bg-sage/50`. An inset note is solid sage, or `bg-sage/70
 
 Say what the service does in plain words.
 
-- Daily Healthy Meal Subscription. That is the homepage headline.
-- Healthy meals, cooked the same morning.
+- Everyday food. Balanced better. That is the homepage headline.
+- Everyday meals, balanced and healthy, cooked fresh. Cooked fresh does not name a time of day. Do not say the food should not feel like a diet.
 - Handed over at the office gate, the security desk, or the door.
 - Breakfast, lunch and dinner, on a Monday to Friday plan.
 - Veg or non-veg. Lunch and dinner cost more for non-veg. Breakfast is the same either way.
 
-The pill and the photo badge do not repeat "meal plans" or "subscription". The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The badge says the meals are cooked the same morning.
+The pill and the photo badge do not repeat "meal plans" or "subscription". The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The badge says the meals are cooked fresh.
 
 Do not name a cuisine to explain the product. People already understand the food. Do not add a nutritionist, calorie counts, protein grams, weight-loss results, testimonials, or star ratings. Kitchen rules are allowed only when they are true for every meal, and they already live in `data/site-config.ts`.
 
@@ -105,4 +105,4 @@ The Open Graph image repeats the cream, olive, leaf, and muted hex values. `next
 
 ## Layout
 
-The header is a white pill, sticky at the top. The first screen is a short pill, a heavy headline, one sentence, two actions, and a quiet row of four facts beside one rounded photo. The row says Monday to Friday, veg or non-veg, one rate per meal, and a start of 3 days. Delivery windows stay in the delivery answer. Kitchen rules stay in their own section. The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The headline is Daily Healthy Meal Subscription. The sentence is breakfast, lunch and dinner, cooked the same morning and handed over at the office gate or the door. Prices stay on the plan cards, not in the hero. The photo badge says Cooked the same morning. Later sections are full-width bands: white, ivory, or deep green. Cards are rounded. The weekly menu is a set of day cards on the homepage, not a separate food catalogue.
+The header is a white pill, sticky at the top. The first screen is a short pill, a heavy headline, one sentence, two actions, and a quiet row of four facts beside one rounded photo. The row names the kitchen rules: no potatoes, no maida, no preservatives, and no non-stick. The kitchen-rules section explains each one. Delivery windows stay in the delivery answer. Days, veg or non-veg, the rate, and the 3-day start stay on the plan cards. The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The headline is Everyday food. Balanced better. The sentence is breakfast, lunch and dinner you can eat every day. Balanced and healthy, cooked fresh, and handed over at the office gate or the door. Prices stay on the plan cards, not in the hero. The photo badge says Cooked fresh. After the breakfast, lunch and dinner photos, a sage band answers what a person weighs before they start: healthy ingredients, a changing menu, office days and home days, and that breakfast, lunch and dinner are cooked fresh, each for its own meal. Kitchen rules stay in their own section. Later sections are full-width bands: white, ivory, or deep green. Cards are rounded. The weekly menu is a set of day cards on the homepage, not a separate food catalogue.

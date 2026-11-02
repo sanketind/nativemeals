@@ -23,7 +23,7 @@ export const faqs: Faq[] = [
     id: "what-is-native-meals",
     question: "What is Native Meals?",
     answer:
-      `Native Meals serves healthy breakfast, lunch and dinner on a meal plan. Each meal is cooked the same morning and handed over at your office gate or your door. We serve ${siteConfig.serviceAreaShort} in Pune.`,
+      `Native Meals is everyday food, balanced and healthy: breakfast, lunch and dinner on a meal plan. Each meal is cooked fresh and handed over at your office gate or your door. We serve ${siteConfig.serviceAreaShort} in Pune.`,
     pages: ["faqs"],
   },
   {
@@ -92,7 +92,7 @@ export const faqs: Faq[] = [
     id: "whats-in-the-box",
     question: "What is in each meal?",
     answer:
-      "The day's breakfast, lunch or dinner from the weekly menu, cooked that morning. The menu changes through the week, and veg and non-veg are both on it. Check this week's menu to see what is cooking.",
+      "The day's breakfast, lunch or dinner from the weekly menu, cooked fresh. The menu changes through the week, and veg and non-veg are both on it. Check this week's menu to see what is cooking.",
     pages: ["faqs", "plans"],
   },
 ];

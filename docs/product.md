@@ -6,18 +6,22 @@ The website explains the service and takes an enquiry. It does not take payment,
 
 | Route | What the visitor does |
 | --- | --- |
-| `/` | Reads the offer, this week's menu, the plans, how it works, the kitchen rules, and where the service runs. |
+| `/` | Reads the offer, what the service provides, this week's menu, the plans, how it works, the kitchen rules, and where the service runs. |
 | `/meal-plans` | Builds a plan, sees an estimate, and sends details. |
-| `/about` | Reads why the service exists. |
+| `/about` | Reads why the service exists, what the kitchen holds to, the week a plan covers, and where it serves. |
 | `/faqs` | Reads the practical answers. |
 | `/contact` | Sends a question. |
 | `/privacy`, `/terms` | How an enquiry is stored, and how a plan starts. |
 
 There is no separate food page. This week's menu is the block on the homepage, at `#this-week`. The header and footer link there. An old `/our-food` address redirects to that block.
 
-The homepage order is: hero, breakfast lunch and dinner photos, plan cards, this week's menu, how it works, kitchen rules, service area, then a closing call to action.
+The story page is prose, then the kitchen rules from `siteConfig.kitchenRules`, then the three plans at their confirmed rates, then the neighbourhoods and tech parks. It sounds balanced and healthy. It does not comment on whether the food feels like a diet. It does not invent a founder story. `founderNote` stays hidden until it is real. Cooked fresh does not name a time of day.
 
-The hero headline is Daily Healthy Meal Subscription. The pill is Hinjewadi, Wakad and Baner, Pune. Under the headline: breakfast, lunch and dinner, cooked the same morning and handed over at the office gate or the door. The photo shows a second plate in the corner. One badge says Cooked the same morning. Another shows lunch from the confirmed veg rate. Each plan card shows its own price. The words name the offer. Starting one is still an enquiry. The page does not take payment.
+The homepage order is: hero, breakfast lunch and dinner photos, what we provide, plan cards, this week's menu, how it works, kitchen rules, service area, then a closing call to action.
+
+What we provide sits after the photos and before the plans. The four cards answer what a person weighs before they start: healthy ingredients (no potatoes, no maida, no preservatives, millet or multigrain rotis), a menu that changes, office days and home days, and that breakfast, lunch and dinner are cooked fresh, each for its own meal. The kitchen-rules section still explains each rule, including no non-stick.
+
+The hero headline is Everyday food. Balanced better. The pill is Hinjewadi, Wakad and Baner, Pune. Under the headline: breakfast, lunch and dinner you can eat every day. Balanced and healthy, cooked fresh, and handed over at the office gate or the door. The four facts under the actions name the kitchen rules: no potatoes, no maida, no preservatives, and no non-stick. The photo shows a second plate in the corner. One badge says Cooked fresh. Another shows lunch from the confirmed veg rate. Each plan card shows its own price. The words name the offer. Starting one is still an enquiry. The page does not take payment.
 
 ## Enquiry
 

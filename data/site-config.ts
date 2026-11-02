@@ -3,7 +3,7 @@ function readPublic(name: string) {
   return value ? value : null;
 }
 
-export type HeroFactIcon = "days" | "diet" | "rate" | "start";
+export type HeroFactIcon = "potatoes" | "maida" | "preservatives" | "cookware";
 
 export type SocialLink = {
   label: string;
@@ -67,10 +67,10 @@ const skipNote = skipCutoff
 export const siteConfig = {
   name: "Native Meals",
   /** Homepage browser tab, Open Graph and Twitter title. Other routes set their own. */
-  metaTitle: `Daily Healthy Meal Subscription in ${serviceAreaShort}`,
-  tagline: "Daily Healthy Meal Subscription — Hinjewadi, Wakad and Baner, Pune",
+  metaTitle: `Everyday food. Balanced better. — ${serviceAreaShort}`,
+  tagline: "Everyday food. Balanced better. — Hinjewadi, Wakad and Baner, Pune",
   description:
-    "Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner, cooked the same morning and handed over at your office gate or your door.",
+    "Everyday food, balanced and healthy, in Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner you can eat every day, cooked fresh and handed over at your office gate or your door.",
   /**
    * TODO: Set NEXT_PUBLIC_SITE_URL to the real domain before launch.
    * Used for metadata, Open Graph and the sitemap.
@@ -121,7 +121,7 @@ export const siteConfig = {
   ] satisfies SocialLink[],
   messages: {
     general:
-      "Hi Native Meals, I want a daily healthy meal subscription. I am looking at a lunch trial.",
+      "Hi Native Meals, I want everyday food on a plan. I am looking at a lunch trial.",
     trial:
       "Hi Native Meals, I want to try one lunch. My office or locality is ",
     service:
@@ -142,12 +142,12 @@ export const siteConfig = {
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms" },
   ],
-  /** Offer facts for the hero. Keep these off the kitchen rules. */
+  /** Short names of the kitchen rules, shown under the hero. The section below explains each one. */
   heroFacts: [
-    { icon: "days" as const, label: "Monday to Friday" },
-    { icon: "diet" as const, label: "Veg or non-veg" },
-    { icon: "rate" as const, label: "One rate per meal" },
-    { icon: "start" as const, label: "Start with 3 days" },
+    { icon: "potatoes" as const, label: "No potatoes" },
+    { icon: "maida" as const, label: "No maida" },
+    { icon: "preservatives" as const, label: "No preservatives" },
+    { icon: "cookware" as const, label: "No non-stick" },
   ] satisfies { icon: HeroFactIcon; label: string }[],
   /** Confirmed by the kitchen. Add a rule only once it holds for every meal. */
   kitchenRules: [

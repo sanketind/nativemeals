@@ -140,7 +140,7 @@ const planSeeds: Omit<MealPlan, "price" | "priceNote" | "pricingTiers" | "priceU
   {
     id: "lunch",
     name: "Lunch Plan",
-    summary: "A healthy lunch at the office gate, Monday to Friday.",
+    summary: "Everyday lunch at the office gate, Monday to Friday.",
     description:
       "Lunch for office weeks. Three days to try it, or two or four weeks for the days you are in.",
     imageId: "planLunch",
@@ -149,7 +149,7 @@ const planSeeds: Omit<MealPlan, "price" | "priceNote" | "pricingTiers" | "priceU
     duration: "3 days, 2 weeks, or 4 weeks",
     includes: [
       "The day's lunch from the weekly menu",
-      "Cooked that morning",
+      "Cooked fresh",
       "Office gate or your door",
     ],
     deliveryTerms: "Office gate, security desk, or your door",
@@ -168,7 +168,7 @@ const planSeeds: Omit<MealPlan, "price" | "priceNote" | "pricingTiers" | "priceU
     duration: "3 days, 2 weeks, or 4 weeks",
     includes: [
       "The day's dinner from the weekly menu",
-      "Cooked that morning",
+      "Cooked fresh",
       "Your door on the way home",
     ],
     deliveryTerms: "Your door, or the office gate if you leave late",
@@ -187,7 +187,7 @@ const planSeeds: Omit<MealPlan, "price" | "priceNote" | "pricingTiers" | "priceU
     duration: "3 days, 2 weeks, or 4 weeks",
     includes: [
       "Breakfast, lunch and dinner from the weekly menu",
-      "Cooked that morning",
+      "Cooked fresh",
       siteConfig.delivery.skipNote,
     ],
     deliveryTerms: "Office gate on work days, your door on the others",

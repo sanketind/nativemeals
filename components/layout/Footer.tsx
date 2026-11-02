@@ -46,7 +46,7 @@ export async function Footer() {
         <div className="md:col-span-5">
           <Wordmark tone="cream" />
           <Text size="body" tone="inverse" className="mt-4 max-w-sm">
-            Cooked the same morning and handed over at your office gate or your door.
+            Cooked fresh and handed over at your office gate or your door.
             Serving {siteConfig.launchArea}.
           </Text>
           <ul className="mt-5 flex flex-wrap gap-2">

@@ -1,4 +1,4 @@
-import { CalendarDays, CalendarRange, IndianRupee, Utensils } from "lucide-react";
+import { CookingPot, Leaf, Sprout, WheatOff } from "lucide-react";
 import { pricing } from "@/data/plans";
 import { siteConfig, type HeroFactIcon } from "@/data/site-config";
 import { formatInr } from "@/lib/format";
@@ -11,11 +11,11 @@ import { PhotoBadge, PhotoFrame } from "@/components/ui/Photo";
 import { Caption, Heading, PriceMark, Text } from "@/components/ui/Type";
 import { surface } from "@/components/ui/styles";
 
-const factIcons: Record<HeroFactIcon, typeof CalendarDays> = {
-  days: CalendarDays,
-  diet: Utensils,
-  rate: IndianRupee,
-  start: CalendarRange,
+const factIcons: Record<HeroFactIcon, typeof Sprout> = {
+  potatoes: Sprout,
+  maida: WheatOff,
+  preservatives: Leaf,
+  cookware: CookingPot,
 };
 
 export function HeroSection() {
@@ -28,11 +28,12 @@ export function HeroSection() {
             {siteConfig.launchArea}
           </Chip>
           <Heading as="h1" size="display" className="mt-6 max-w-xl">
-            Daily Healthy Meal Subscription
+            Everyday food. Balanced better.
           </Heading>
           <Text size="lede" className="mt-5 max-w-md">
-            Breakfast, lunch and dinner, cooked the same morning and handed
-            over at your office gate or your door.
+            Breakfast, lunch and dinner you can eat every day. Balanced and
+            healthy, cooked fresh, and handed over at your office gate or your
+            door.
           </Text>
           <div className="mt-8 flex flex-wrap gap-3">
             <StartCTA />
@@ -71,7 +72,7 @@ export function HeroSection() {
             <PriceMark>{formatInr(pricing.perMeal.lunch)}</PriceMark>
           </PhotoBadge>
           <PhotoBadge tone="white" className="right-4 top-4">
-            Cooked the same morning
+            Cooked fresh
           </PhotoBadge>
         </div>
       </Container>

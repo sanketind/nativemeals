@@ -146,8 +146,8 @@ There is no Sunday delivery. Public holidays are discretionary, with advance not
 
 **USPs.** These are the lines [Business](business.md) allows the site to say.
 
-- Daily healthy meals for people working and living in Hinjewadi, Wakad, and Baner. Lunch is for the office gate. Dinner is for the PG or the flat. Breakfast sits on the all-day mix.
-- Meals are cooked the morning they go out, and handed over at a gate, a security desk, or a door.
+- Everyday food. Balanced better. Everyday food, balanced and healthy, for people working and living in Hinjewadi, Wakad, and Baner. Lunch is for the office gate. Dinner is for the PG or the flat. Breakfast sits on the all-day mix. The Healthy Craft leads with calories and macros. Rasamrit leads with a health goal, including weight loss and muscle gain. Wellfed leads with calorie-counted plates and a nutritionist on longer plans. Native Meals leads with everyday food, balanced and healthy, from the kitchen rules. Those competitor lines stay in this note. They are not lines for the site.
+- Meals are cooked fresh, and handed over at a gate, a security desk, or a door. Cooked fresh does not mean every meal is cooked in the morning, and dinner is not cooked in the morning for the night.
 - One rate per plate. The length does not discount it. Veg and non-veg lunch and dinner are different prices. Breakfast is one rate.
 - The kitchen rules that hold for every meal: no potatoes, no maida, no preservatives, and no non-stick. Rotis are millet or multigrain. Meals travel in an eco-friendly box.
 - Starting is an enquiry. Price, address, and the first day are confirmed with the person before a meal is charged.
