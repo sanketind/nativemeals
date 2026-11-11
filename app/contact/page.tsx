@@ -27,12 +27,12 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Tell us what your days look like."
-        imageId="dayDinner"
+        imageId="breakfast"
       >
         A name, a phone number and a short note is enough. We reply with what
         is actually available.
       </PageHeader>
-      <Section tone="sage">
+      <Section tone="oat">
         <Container className="grid gap-10 md:grid-cols-2 md:items-start">
           <div>
             <Heading>Reach us directly.</Heading>

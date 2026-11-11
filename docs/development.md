@@ -56,7 +56,7 @@ When the reply includes a WhatsApp or email link, the form shows it. It does not
 
 With no sheet URL, the sample week from `data/weekly-menu.sample.ts` is shown and labelled. A URL that is set but is not a valid http(s) address, or a fetch that fails, returns an error menu. That result is cached like any other result. The page does not throw, does not keep the previous week, and does not fall back to the sample. A sheet that loads with no rows in the current week says the menu will be posted soon.
 
-`showSampleNotes` in `data/site-config.ts` hides only the sage sample callout. While the source is still the built-in week, the sentence under the heading still says it is a sample.
+`showSampleNotes` in `data/site-config.ts` hides only the oat sample callout. While the source is still the built-in week, the sentence under the heading still says it is a sample.
 
 `app/api/revalidate/route.ts` checks `REVALIDATE_SECRET`, then revalidates the tag and the homepage. The bookmark and the sheet columns are in the [README](../README.md#weekly-menu-for-the-kitchen-team).
 

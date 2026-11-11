@@ -10,7 +10,7 @@ export function Card({
   children,
 }: {
   as?: "div" | "article" | "li" | "aside";
-  tone?: "white" | "cream" | "sage";
+  tone?: "white" | "cream" | "oat";
   bordered?: boolean;
   padded?: boolean;
   className?: string;
@@ -23,7 +23,7 @@ export function Card({
         bordered && "border border-charcoal/10",
         tone === "white" && "bg-white",
         tone === "cream" && "bg-cream",
-        tone === "sage" && "bg-sage/70",
+        tone === "oat" && "bg-oat/70",
         padded && "p-5 md:p-6",
         className,
       )}

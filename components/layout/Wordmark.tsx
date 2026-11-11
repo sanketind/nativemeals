@@ -9,7 +9,7 @@ export function BrandMark({
   tone?: "olive" | "cream";
 }) {
   const bodyFill = tone === "cream" ? "var(--color-cream)" : "var(--color-olive)";
-  const domeFill = tone === "cream" ? "var(--color-mark-dome)" : "var(--color-terracotta-ink)";
+  const domeFill = tone === "cream" ? "var(--color-olive)" : "var(--color-cream)";
 
   return (
     <svg viewBox="10 6 44 52" className={className} aria-hidden="true">
@@ -23,7 +23,7 @@ export function BrandMark({
         d="M20.5 25.5c0-3.8 5.1-6.3 11.5-6.3s11.5 2.5 11.5 6.3v2.5h-23v-2.5Z"
         fill={domeFill}
       />
-      <rect x="21" y="31.9" width="22" height="3.4" rx="1.7" fill="var(--color-terracotta)" />
+      <rect x="21" y="31.9" width="22" height="3.4" rx="1.7" fill="var(--color-sunflower)" />
     </svg>
   );
 }

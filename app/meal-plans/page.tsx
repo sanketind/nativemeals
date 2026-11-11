@@ -11,15 +11,14 @@ import { PlanExperience } from "@/components/plans/PlanExperience";
 import { MealPlanCard } from "@/components/plans/MealPlanCard";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { ButtonLink } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { FAQSplit } from "@/components/ui/FAQSplit";
-import { FoodImage } from "@/components/ui/FoodImage";
-import { PhotoBadge, PhotoFrame } from "@/components/ui/Photo";
+import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
-import { Caption, Eyebrow, Heading, PriceMark, StepIndex, Text } from "@/components/ui/Type";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { StepList } from "@/components/ui/StepList";
+import { Eyebrow, Heading, Text } from "@/components/ui/Type";
 import { surface } from "@/components/ui/styles";
-import { cn } from "@/lib/cn";
 
 const vegLunch = pricing.perMeal.lunch;
 const nonVegLunch = nonVegPerMeal.lunch;
@@ -29,12 +28,6 @@ export const metadata = pageMeta(
   "Monday to Friday Meal Plans",
   `Monday to Friday lunch and dinner in ${siteConfig.serviceAreaShort}, Pune. Veg lunch is ${formatInr(vegLunch)}, breakfast is ${formatInr(breakfast)}. The handover is confirmed before the first meal.`,
 );
-
-const flow = [
-  { number: "01", label: "Your plan" },
-  { number: "02", label: "Your details" },
-  { number: "03", label: "We confirm" },
-];
 
 const steps = [
   {
@@ -67,69 +60,25 @@ export default function MealPlansPage() {
   return (
     <>
       <JsonLd data={[faqPage(faqsFor("plans")), mealPlanOffers()]} />
-      <header className={cn("overflow-hidden", surface.pageGlow)}>
-        <Container className="grid items-center gap-8 py-10 md:grid-cols-2 md:gap-16 md:py-24">
-          <div>
-          <Eyebrow>Meal plans</Eyebrow>
-          <Heading as="h1" size="display" className="mt-3 max-w-3xl">
-            Monday to Friday, at the office gate.
-          </Heading>
-          <Text size="lede" className="mt-5 max-w-2xl">
-            Lunch is {formatInr(vegLunch)} veg or {formatInr(nonVegLunch)}{" "}
-            non-veg. Breakfast is {formatInr(breakfast)}. We confirm the
-            handover spot and the start date before anything begins.
-          </Text>
-          <div className="mt-8">
-            <ButtonLink href="#build">Start your plan</ButtonLink>
-          </div>
-          <ul className="mt-10 grid gap-4 border-t border-charcoal/10 pt-6">
-            <li>
-              <Heading as="p" size="stat">
-                {formatInr(vegLunch)} veg lunch
-              </Heading>
-              <Caption className="mt-1 block">
-                non-veg {formatInr(nonVegLunch)}
-              </Caption>
-            </li>
-            <li>
-              <Heading as="p" size="stat">3 days to 4 weeks</Heading>
-              <p className="mt-1 text-sm text-muted">
-                Monday to Friday, or with Saturday
-              </p>
-            </li>
-            <li>
-              <Heading as="p" size="stat">
-                Breakfast {formatInr(breakfast)}
-              </Heading>
-              <p className="mt-1 text-sm text-muted">Same for veg and non-veg</p>
-            </li>
-          </ul>
-          <ol className="mt-8 grid gap-3">
-            {flow.map((step) => (
-              <li key={step.number} className="flex items-center gap-3">
-                <span className="flex size-8 items-center justify-center rounded-full bg-olive font-sans text-xs font-bold text-cream">
-                  {step.number}
-                </span>
-                <span className="text-sm font-semibold text-olive">{step.label}</span>
-              </li>
-            ))}
-          </ol>
-          </div>
-          <div className="relative mx-auto w-full max-w-lg md:max-w-none">
-            <PhotoFrame shadow className="aspect-[4/5]">
-              <FoodImage
-                imageId="planLunch"
-                priority
-                sizes="(min-width: 768px) 46vw, 100vw"
-              />
-            </PhotoFrame>
-            <PhotoBadge className="left-4 top-4">
-              <Caption tone="olive">Lunch from</Caption>
-              <PriceMark>{formatInr(vegLunch)}</PriceMark>
-            </PhotoBadge>
-          </div>
-        </Container>
-      </header>
+      <PageHeader
+        eyebrow="Meal plans"
+        title="Monday to Friday, at the office gate."
+        imageId="planLunch"
+        actions={
+          <ButtonLink href="#build" variant="accent">
+            Start your plan
+          </ButtonLink>
+        }
+        facts={[
+          { value: `${formatInr(vegLunch)} veg lunch`, label: `Non-veg ${formatInr(nonVegLunch)}` },
+          { value: "3 days to 4 weeks", label: "Monday to Friday, or with Saturday" },
+          { value: `Breakfast ${formatInr(breakfast)}`, label: "Same for veg and non-veg" },
+        ]}
+      >
+        Lunch is {formatInr(vegLunch)} veg or {formatInr(nonVegLunch)} non-veg.
+        Breakfast is {formatInr(breakfast)}. We confirm the handover spot and
+        the start date before anything begins.
+      </PageHeader>
 
       <Suspense fallback={<Section><Container><p className="text-muted">Loading the plan builder…</p></Container></Section>}>
         <PlanExperience />
@@ -137,15 +86,14 @@ export default function MealPlansPage() {
 
       <Section>
         <Container>
-          <Heading>Or start from a plan.</Heading>
-          <Text className="mt-3 max-w-2xl">
+          <SectionHeading split eyebrow="Plans" title="Or start from a plan.">
             Lunch and dinner are priced per meal. The all-day plan is the per-day
             cost of breakfast, lunch and dinner together.
-          </Text>
+          </SectionHeading>
           {pricing.status === "draft" ? (
-            <p className="mt-3 text-sm text-muted">{pricing.note}</p>
+            <p className="mt-4 text-sm text-muted">{pricing.note}</p>
           ) : null}
-          <ul className="mt-8 grid gap-5 lg:grid-cols-3">
+          <ul className="mt-8 grid gap-5 md:mt-12 lg:grid-cols-3">
             {plans.map((plan) => (
               <li key={plan.id}>
                 <MealPlanCard plan={plan} />
@@ -157,23 +105,8 @@ export default function MealPlansPage() {
 
       <Section tone="olive" className="text-cream">
         <Container>
-          <Eyebrow tone="sunflower">How it works</Eyebrow>
-          <Heading tone="inverse" className="mt-3 max-w-2xl">
-            From a choice to a tiffin at the gate.
-          </Heading>
-          <ol className="mt-8 grid gap-3 md:mt-12 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
-            {steps.map((step) => (
-              <Card key={step.number} as="li" bordered={false} className="text-charcoal">
-                <StepIndex>{step.number}</StepIndex>
-                <Heading as="h3" size="card" className="mt-3">
-                  {step.title}
-                </Heading>
-                <Text size="body" className="mt-2">
-                  {step.body}
-                </Text>
-              </Card>
-            ))}
-          </ol>
+          <SectionHeading split tone="inverse" eyebrow="How it works" title="From a choice to a tiffin at the gate." />
+          <StepList steps={steps} className="mt-12 md:mt-16 md:grid-cols-2 lg:grid-cols-4" />
         </Container>
       </Section>
 

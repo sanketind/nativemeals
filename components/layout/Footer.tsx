@@ -41,7 +41,7 @@ export async function Footer() {
   const legal = siteConfig.footerNav.filter((item) => legalHrefs.has(item.href));
 
   return (
-    <footer className="bg-olive text-cream">
+    <footer className="bg-olive-deep text-cream">
       <Container className="grid gap-10 py-14 md:grid-cols-12 md:py-16">
         <div className="md:col-span-5">
           <Wordmark tone="cream" />
@@ -74,28 +74,28 @@ export async function Footer() {
           <ul className="mt-4 space-y-3 text-sm">
             {phone && phoneLink ? (
               <li className="flex items-start gap-2.5 font-medium">
-                <Phone aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-terracotta" />
-                <a className="text-cream hover:text-terracotta" href={phoneLink}>
+                <Phone aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-cream/60" />
+                <a className="text-cream underline-offset-4 hover:underline" href={phoneLink}>
                   {displayPhone(phone)}
                 </a>
               </li>
             ) : (
               <li className="leading-relaxed text-cream/80">
-                <Link href="/contact" className="font-medium text-cream hover:text-terracotta">
+                <Link href="/contact" className="font-medium text-cream underline-offset-4 hover:underline">
                   Write to us
                 </Link>{" "}
                 and we will reply on your phone.
               </li>
             )}
             <li className="flex items-start gap-2.5 leading-relaxed text-cream/75">
-              <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-terracotta" />
+              <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-cream/60" />
               <span>{siteConfig.address}</span>
             </li>
             {siteConfig.fssai ? (
               <li className="flex items-start gap-2.5 text-cream/75">
                 <ShieldCheck
                   aria-hidden="true"
-                  className="mt-0.5 size-4 shrink-0 text-terracotta"
+                  className="mt-0.5 size-4 shrink-0 text-cream/60"
                 />
                 <span>FSSAI {siteConfig.fssai}</span>
               </li>
@@ -105,11 +105,11 @@ export async function Footer() {
               return (
                 <li key={social.href} className="flex items-start gap-2.5 font-medium">
                   {Icon ? (
-                    <Icon className="mt-0.5 size-4 shrink-0 text-terracotta" />
+                    <Icon className="mt-0.5 size-4 shrink-0 text-cream/60" />
                   ) : null}
                   <a
                     href={social.href}
-                    className="text-cream hover:text-terracotta"
+                    className="text-cream underline-offset-4 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -121,7 +121,7 @@ export async function Footer() {
           </ul>
         </div>
       </Container>
-      <div className="border-t border-cream/15 bg-olive-deep">
+      <div className="border-t border-cream/10 bg-black/15">
         <Container className="flex flex-col gap-3 py-5 text-xs text-cream/70 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} Native Meals. {siteConfig.city}.

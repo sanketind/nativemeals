@@ -3,9 +3,12 @@ import { cn } from "@/lib/cn";
 export const type = {
   eyebrow: "font-sans text-eyebrow uppercase",
   eyebrowCompact: "font-sans text-eyebrow-compact uppercase md:text-eyebrow",
-  display: "font-sans text-display",
-  closing: "font-sans text-closing",
-  title: "font-sans text-title",
+  display: "font-sans text-display uppercase",
+  poster: "font-sans text-poster uppercase",
+  closing: "font-sans text-closing uppercase",
+  title: "font-sans text-title uppercase",
+  numeral: "font-sans text-numeral",
+  label: "font-sans text-label uppercase",
   stat: "font-sans text-stat",
   card: "font-sans text-card",
   lede: "text-lede",
@@ -17,18 +20,17 @@ export const type = {
   hint: "font-sans text-hint",
   wordmark: "font-sans text-wordmark sm:text-wordmark-lg",
   nav: "text-nav",
-  step: "font-sans text-5xl font-extrabold leading-none tracking-step md:text-6xl",
 };
 
 export const surface = {
   card: "rounded-card border border-charcoal/10 bg-white",
   panel: "rounded-card bg-white p-6 shadow-sm md:p-8",
-  note: "rounded-control bg-sage text-sm leading-relaxed text-olive",
-  noteSoft: "rounded-control bg-sage/70 text-sm leading-relaxed text-olive",
-  photo: "relative overflow-hidden rounded-photo bg-sage",
+  note: "rounded-control bg-oat text-sm leading-relaxed text-olive",
+  noteSoft: "rounded-control bg-oat/70 text-sm leading-relaxed text-olive",
+  photo: "relative overflow-hidden rounded-photo bg-oat",
   badge: "rounded-control px-3.5 py-2.5 shadow-float",
   row: "rounded-control bg-cream px-5 py-4",
-  pageGlow: "bg-page-glow",
+  brandPattern: "bg-brand-pattern",
 };
 
 export const control =
@@ -49,15 +51,18 @@ export const button = {
     sm: "px-4 py-2 text-sm",
   },
   variants: {
-    primary: "bg-olive text-white hover:bg-olive-deep",
-    secondary: "border border-olive/55 bg-white text-olive hover:bg-sage",
-    inverse: "bg-cream text-olive hover:bg-white",
-    ghost: "text-olive hover:bg-sage",
+    /* The one sunflower action on a screen: starting a plan or sending the form. */
+    accent: "bg-sunflower text-olive hover:bg-sunflower-deep",
+    primary: "bg-olive text-cream hover:bg-olive-deep",
+    secondary: "border border-olive/55 bg-transparent text-olive hover:bg-oat",
+    /* The secondary action inside an olive band. */
+    inverse: "border border-cream/40 text-cream hover:bg-cream/10",
+    ghost: "text-olive hover:bg-oat",
   },
 };
 
 export const priceMark =
-  "mt-1 block rounded-full bg-terracotta px-2.5 py-1 text-center font-sans text-lg font-extrabold leading-none text-olive";
+  "mt-1 block rounded-full bg-sunflower px-2.5 py-1 text-center font-sans text-lg font-extrabold leading-none text-olive";
 
 const choiceBase = "transition-colors";
 

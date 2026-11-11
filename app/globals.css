@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cream: #fffdf4;
+  /* 60: the light mood colour. Page background. */
+  --color-cream: #fbf3e0;
+  /* Deeper cream for bands, insets and photo placeholders. */
+  --color-oat: #f3e7c9;
+  /* 30: the deep mood colour. Headings, the hero and the dark bands. */
   --color-olive: #0c3f25;
   --color-olive-deep: #082f1f;
-  --color-terracotta: #f9d82b;
-  /* Leaf green for small labels. Sunflower fails contrast on ivory. */
-  --color-terracotta-ink: #197241;
-  --color-sage: #e4f2e6;
-  /* Lighter leaf used only on the cream wordmark dome. */
-  --color-mark-dome: #b8dfc2;
+  /* 10: the accent. Only on what people click, prices, and the sticker. Never small text on cream. */
+  --color-sunflower: #f9d82b;
+  --color-sunflower-deep: #ebc814;
   --color-muted: #526158;
   --color-error: #9b3a2f;
   --color-charcoal: #292a26;
@@ -29,18 +30,35 @@
   --text-eyebrow-compact--line-height: 1.2;
   --text-eyebrow-compact--letter-spacing: 0.08em;
   --text-eyebrow-compact--font-weight: 700;
-  --text-display: clamp(2.75rem, 6vw, 5.5rem);
-  --text-display--line-height: 1.02;
-  --text-display--letter-spacing: -0.045em;
+  /* Display, closing and title are set uppercase in components/ui/styles.ts. */
+  --text-display: clamp(2.75rem, 8.5vw, 7.5rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.04em;
   --text-display--font-weight: 800;
-  --text-closing: clamp(2.5rem, 5.4vw, 4.75rem);
-  --text-closing--line-height: 1.04;
-  --text-closing--letter-spacing: -0.04em;
-  --text-closing--font-weight: 700;
-  --text-title: clamp(2.25rem, 4.8vw, 4.15rem);
-  --text-title--line-height: 1.06;
-  --text-title--letter-spacing: -0.035em;
-  --text-title--font-weight: 700;
+  /* The homepage hero. Sized so "Balanced better." spans the container on one line,
+     and capped by height so the plate keeps room on short, wide screens. */
+  --text-poster: clamp(3.5rem, min(9.6vw, 16svh), 10.5rem);
+  --text-poster--line-height: 0.86;
+  --text-poster--letter-spacing: -0.045em;
+  --text-poster--font-weight: 800;
+  --text-closing: clamp(2.75rem, 6.4vw, 6rem);
+  --text-closing--line-height: 0.94;
+  --text-closing--letter-spacing: -0.035em;
+  --text-closing--font-weight: 800;
+  --text-title: clamp(2.5rem, 5.4vw, 4.75rem);
+  --text-title--line-height: 0.96;
+  --text-title--letter-spacing: -0.03em;
+  --text-title--font-weight: 800;
+  /* Outlined step numbers on the homepage. */
+  --text-numeral: clamp(4rem, 10vw, 9rem);
+  --text-numeral--line-height: 0.8;
+  --text-numeral--letter-spacing: -0.05em;
+  --text-numeral--font-weight: 800;
+  /* The meal name across the bottom of a homepage photo. */
+  --text-label: clamp(1.75rem, 3vw, 2.75rem);
+  --text-label--line-height: 1;
+  --text-label--letter-spacing: -0.03em;
+  --text-label--font-weight: 800;
   --text-stat: 1.28rem;
   --text-stat--line-height: 1.3;
   --text-stat--letter-spacing: -0.02em;
@@ -85,8 +103,6 @@
   --text-nav--line-height: 1.25;
   --text-nav--font-weight: 600;
 
-  --tracking-step: -0.04em;
-
   --radius-control: 1.25rem;
   --radius-card: 2rem;
   --radius-photo: 2.5rem;
@@ -95,11 +111,18 @@
   --shadow-raise: 0 12px 40px -16px rgba(41, 42, 38, 0.35);
   --shadow-float: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
-  --background-image-page-glow: radial-gradient(
-    circle at 92% 15%,
-    color-mix(in srgb, var(--color-terracotta) 18%, transparent),
-    transparent 26%
-  );
+  /* The tiffin mark repeated, for the olive bands. Hex because a data URI cannot read the theme. */
+  --background-image-brand-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cdefs%3E%3Cpath id='m' fill-rule='evenodd' d='M25.5 14.5a4.5 4.5 0 0 1 4.5-4.5h4a4.5 4.5 0 0 1 4.5 4.5v2.2c4.8.9 8.5 4.5 8.5 9.3v4.2a3.8 3.8 0 0 1-2.1 3.4 3.8 3.8 0 0 1 2.1 3.4V41c0 7.2-5.8 13-13 13h-4c-7.2 0-13-5.8-13-13v-4c0-1.5.8-2.8 2.1-3.4A3.8 3.8 0 0 1 17 30.2V26c0-4.8 3.7-8.4 8.5-9.3v-2.2Zm3.5 1.8q3-.3 6 0v-1.6a1.5 1.5 0 0 0-1.5-1.5h-3a1.5 1.5 0 0 0-1.5 1.5v1.6Z'/%3E%3C/defs%3E%3Cg fill='%23fbf3e0' fill-opacity='0.045'%3E%3Cuse href='%23m' transform='translate(12 12) scale(0.7)'/%3E%3Cuse href='%23m' transform='translate(92 92) scale(0.7) rotate(12 32 32)'/%3E%3C/g%3E%3C/svg%3E");
+
+  --animate-spin-slow: spin 18s linear infinite;
+  /* Moves one of two identical copies, so the strip loops without a jump. */
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 html {
@@ -115,13 +138,19 @@ body {
 }
 
 ::selection {
-  background: var(--color-sage);
-  color: var(--color-charcoal);
+  background: var(--color-sunflower);
+  color: var(--color-olive);
 }
 
+/* Sunflower is too pale to see on cream. It only rings focus inside the dark bands. */
 :focus-visible {
-  outline: 2px solid var(--color-terracotta);
+  outline: 2px solid var(--color-olive);
   outline-offset: 3px;
+}
+
+.bg-olive :focus-visible,
+.bg-olive-deep :focus-visible {
+  outline-color: var(--color-sunflower);
 }
 
 @media (prefers-reduced-motion: no-preference) {

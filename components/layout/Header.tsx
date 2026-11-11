@@ -8,7 +8,7 @@ import { type as typeStyles } from "@/components/ui/styles";
 export function Header() {
   return (
     <header className="sticky top-0 z-40 px-3 pt-3 pointer-events-none md:px-5 md:pt-4">
-      <div className="pointer-events-auto mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-3 rounded-full border border-charcoal/10 bg-white/85 px-3 shadow-raise backdrop-blur-md md:h-16 md:px-4">
+      <div className="pointer-events-auto mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-3 rounded-full border border-charcoal/10 bg-cream/95 px-3 shadow-raise backdrop-blur-md md:h-16 md:px-4">
         <Link href="/" aria-label="Native Meals, home" className="shrink-0 pl-1">
           <Wordmark />
         </Link>

@@ -4,39 +4,42 @@ The site should feel like a calm everyday meal service for an office week. Every
 
 ## Colour
 
-Tokens are in `app/globals.css`.
+Tokens are in `app/globals.css`. The palette is three colours, used by a 60-30-10 rule: two mood colours fill the page, and one accent marks what to click.
 
-| Token | CSS variable | Hex | Use |
-| --- | --- | --- | --- |
-| Cream | `--color-cream` | `#FFFDF4` | Page background |
-| Olive | `--color-olive` | `#0C3F25` | Headings, primary buttons, the dark band |
-| Olive deep | `--color-olive-deep` | `#082F1F` | Hover on primary buttons and navigation links |
-| Sunflower | `--color-terracotta` | `#F9D82B` | Focus rings and small marks. Not for small text. |
-| Leaf | `--color-terracotta-ink` | `#197241` | Small labels. Sunflower fails contrast on ivory. |
-| Sage | `--color-sage` | `#E4F2E6` | Soft fills behind cards and photos |
-| Muted | `--color-muted` | `#526158` | Body copy |
-| Charcoal | `--color-charcoal` | `#292A26` | Stronger text and selection |
-| Error | `--color-error` | `#9B3A2F` | Form errors |
+| Role | Token | CSS variable | Hex | Use |
+| --- | --- | --- | --- | --- |
+| 60 | Cream | `--color-cream` | `#FBF3E0` | Page background, most bands |
+| 60 | Oat | `--color-oat` | `#F3E7C9` | A deeper cream for bands, notes, and photo placeholders |
+| 30 | Olive | `--color-olive` | `#0C3F25` | Headings, small labels, the hero, the dark bands |
+| 30 | Olive deep | `--color-olive-deep` | `#082F1F` | The footer, and hover on olive buttons |
+| 10 | Sunflower | `--color-sunflower` | `#F9D82B` | The start and submit buttons, the price pill, the sticker |
+| 10 | Sunflower deep | `--color-sunflower-deep` | `#EBC814` | Hover on sunflower buttons |
+| | Muted | `--color-muted` | `#526158` | Body copy |
+| | Charcoal | `--color-charcoal` | `#292A26` | Stronger text |
+| | Error | `--color-error` | `#9B3A2F` | Form errors |
 
-The CSS names `terracotta` and `terracotta-ink` are the sunflower and leaf colours. Use the variables above. There is no `--color-sunflower`.
+Sunflower is the accent, so it stays scarce. It goes on the action you want taken, a price, and the sticker. It is not decoration: icons, dots and links stay cream or olive. Olive text on sunflower is about 8:1. Sunflower text on cream is unreadable, so small labels on a light band are olive. Small labels inside an olive band may be sunflower.
 
-Two colours sit outside the brand palette. `--color-veg` and `--color-nonveg` are only the diet mark. `--color-whatsapp` is the WhatsApp brand green, only on the floating chat button. `--color-mark-dome` is the lighter leaf on the cream wordmark.
+There is no leaf or sage green. Olive and olive deep are the only brand greens. Three colours sit outside the brand palette. `--color-veg` and `--color-nonveg` are only the diet mark. `--color-whatsapp` is the WhatsApp brand green, only on the floating chat button.
 
-The hero has a soft sunflower glow in the corner, from `bg-page-glow`. The rest of the page stays ivory, white, and deep green. Focus rings and text selection use the theme colours.
+The olive bands, including every page header, carry `bg-brand-pattern`, the tiffin mark repeated at low opacity. Focus rings are olive on light bands and sunflower inside olive bands. Text selection is sunflower with olive text.
 
 ## Type
 
-Outfit is the only typeface, loaded in `app/layout.tsx` at weights 400 through 800. Headlines are heavy and tight. Body copy is regular. Buttons and the wordmark stay bold. Do not add a second display font.
+Outfit is the only typeface, loaded in `app/layout.tsx` at weights 400 through 800. Display, closing and title headlines are uppercase, extra bold, and tightly set, so they read like a poster. Card headings and everything smaller stay in sentence case. Body copy is regular. Buttons and the wordmark stay bold. Do not add a second display font.
 
 Sizes live in `app/globals.css` as `text-*` utilities. Use those, or the components in `components/ui`, instead of a one-off `clamp()` or `text-[…]`. Page titles and section titles stay large on a laptop, not only on a wide monitor. Card headings are a full step above body copy.
 
 | Step | Utility | Use |
 | --- | --- | --- |
-| Eyebrow | `text-eyebrow` | Uppercase labels. Leaf on ivory, sunflower on olive. |
+| Eyebrow | `text-eyebrow` | Uppercase labels. Olive on cream, sunflower on olive. |
 | Eyebrow, compact | `text-eyebrow-compact` | The hero area pill on small screens. It becomes `text-eyebrow` from the `md` breakpoint. |
-| Display | `text-display` | Page title. |
+| Poster | `text-poster` | The homepage hero only. Each line of the headline spans the container on one line from `md`. |
+| Display | `text-display` | Page title that has the full width. |
 | Closing | `text-closing` | The large headline on an olive closing band. |
-| Title | `text-title` | Section title. |
+| Title | `text-title` | Section title, and the scrolling kitchen-rules strip. |
+| Numeral | `text-numeral` | The large step numbers in `StepList`, on the homepage and the meal-plans page. |
+| Label | `text-label` | The uppercase meal name across the bottom of a homepage photo. |
 | Stat | `text-stat` | A short fact, such as a price line in a header. |
 | Card | `text-card` | Card and legal headings. |
 | Lede | `text-lede` | The sentence under a page title. |
@@ -48,8 +51,6 @@ Sizes live in `app/globals.css` as `text-*` utilities. Use those, or the compone
 | Hint | `text-hint` | The "swipe for the week" line. |
 | Wordmark | `text-wordmark` | The name in the header and footer. |
 | Nav | `text-nav` | Desktop navigation links. |
-
-Step numbers use `text-5xl` at the small breakpoint and `text-6xl` from `md`, with `tracking-step`. The homepage and the meal-plans page share that size.
 
 ## Shape
 
@@ -63,7 +64,7 @@ Step numbers use `text-5xl` at the small breakpoint and `text-6xl` from `md`, wi
 
 `shadow-raise` is the header. `shadow-float` is a badge sitting on a photo. Quiet panels keep `shadow-sm`.
 
-A sage section band is `bg-sage/50`. An inset note is solid sage, or `bg-sage/70` when it sits inside a form. Those are two surfaces.
+An oat section band is `bg-oat`. An inset note is solid oat, or `bg-oat/70` when it sits inside a form. Those are two surfaces.
 
 ## Voice
 
@@ -75,7 +76,9 @@ Say what the service does in plain words.
 - Breakfast, lunch and dinner, on a Monday to Friday plan.
 - Veg or non-veg. Lunch and dinner cost more for non-veg. Breakfast is the same either way.
 
-The pill and the photo badge do not repeat "meal plans" or "subscription". The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The badge says the meals are cooked fresh.
+The pill and the sticker do not repeat "meal plans" or "subscription". The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The sticker says the meals are cooked fresh and handed over at the office gate or the door. It does not repeat the kitchen rules.
+
+The kitchen rules appear twice on the homepage: as four short facts in the hero, with a link down to the rules section, and in full in that section. Other homepage blocks say something else.
 
 Do not name a cuisine to explain the product. People already understand the food. Do not add a nutritionist, calorie counts, protein grams, weight-loss results, testimonials, or star ratings. Kitchen rules are allowed only when they are true for every meal, and they already live in `data/site-config.ts`.
 
@@ -91,18 +94,23 @@ Build new UI from `components/ui`. Class strings for type, surfaces, and control
 
 | Component | Use |
 | --- | --- |
-| `Eyebrow`, `Heading`, `Text`, `Caption`, `Price`, `PriceMark`, `StepIndex` | Type. `Heading` sizes are `display`, `closing`, `title`, `stat`, and `card`. |
-| `Section`, `Container`, `SectionHeading`, `PageHeader` | Page bands, the content width, a section title with an eyebrow, and the top of an interior page. |
+| `Eyebrow`, `Heading`, `Text`, `Caption`, `Price`, `PriceMark` | Type. `Heading` sizes are `poster`, `display`, `closing`, `title`, `stat`, and `card`. |
+| `Section`, `Container`, `SectionHeading` | Page bands, the content width, and a section title with an eyebrow. `SectionHeading` with `split` puts the sentence and an optional `action` beside the title from `md`, so the right half of the band is not empty. Sections on the homepage, meal plans and about use `split`. A long article, such as the about story, keeps the stacked title. |
+| `PageHeader` | The top of every page except the homepage. An olive band that runs up under the header, with a sunflower eyebrow, a centred `display` title, a sentence, and optional `actions` and `facts`. With `imageId`, a wide photo sits on the band's bottom edge and the next band's rounded top covers its lower corners. Without one, it is a plain olive band, as on privacy, terms and the 404 page. |
+| `StepList`, `RuleList` | Large cream step numbers over a thin rule, for an olive band. The kitchen rules as columns under a heavy olive rule, for a light band. |
 | `Card`, `Panel` | A hairline card, or the white form column. |
-| `Note` | A sage inset. `solid` for a callout, `soft` inside a form. |
+| `Note` | An oat inset. `solid` for a callout, `soft` inside a form. |
 | `PhotoFrame`, `PhotoBadge` | A food photograph and the label on it. |
+| `Sticker` | The round sunflower sticker with rotating text around the tiffin mark. One per screen, on the corner of a photo. It stops rotating when the visitor prefers reduced motion. |
 | `Chip` | An area or tech-park pill. `area` plus `compact` is the hero locality pill. |
-| `Button`, `ButtonLink` | Actions. Variants are `primary`, `secondary`, `inverse`, and `ghost`. |
+| `Button`, `ButtonLink` | Actions. `accent` is sunflower, for starting a plan and sending a form. `primary` is olive, `secondary` is an olive outline, `inverse` is a cream outline inside an olive band, and `ghost` is text only. `StartCTA` is `accent`. |
 | `Field`, `TextInput`, `Choice` | Labels, text fields, and the pill or tile choices in a form. Selects and textareas use `controlClass`. |
 | `DietBadge` | The veg or non-veg mark. |
 
-The Open Graph image repeats the cream, olive, leaf, and muted hex values. `next/og` cannot read the CSS theme. If a brand colour changes, update that image with the theme.
+The Open Graph image repeats the olive, cream and sunflower hex values, and so do `bg-brand-pattern`, `public/logo.svg`, `public/logo-light.svg` and `app/icon.svg`. None of them can read the CSS theme. If a brand colour changes, update them with the theme.
+
+The mark is three colours: an olive tiffin with a cream lid and a sunflower band on light backgrounds, and a cream tiffin with an olive lid on dark ones.
 
 ## Layout
 
-The header is a white pill, sticky at the top. The first screen is a short pill, a heavy headline, one sentence, two actions, and a quiet row of four facts beside one rounded photo. The row names the kitchen rules: no potatoes, no maida, no preservatives, and no non-stick. The kitchen-rules section explains each one. Delivery windows stay in the delivery answer. Days, veg or non-veg, the rate, and the 3-day start stay on the plan cards. The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The headline is Everyday food. Balanced better. The sentence is breakfast, lunch and dinner you can eat every day. Balanced and healthy, cooked fresh, and handed over at the office gate or the door. Prices stay on the plan cards, not in the hero. The photo badge says Cooked fresh. After the breakfast, lunch and dinner photos, a sage band answers what a person weighs before they start: healthy ingredients, a changing menu, office days and home days, and that breakfast, lunch and dinner are cooked fresh, each for its own meal. Kitchen rules stay in their own section. Later sections are full-width bands: white, ivory, or deep green. Cards are rounded. The weekly menu is a set of day cards on the homepage, not a separate food catalogue.
+The header is a cream pill, sticky at the top, with a sunflower start button. The homepage hero is a full-bleed olive band that runs up under the header and carries the brand pattern. It is laid out like a poster. From the `lg` breakpoint it fills the first screen, and its container is wider than the rest of the page (`max-w-[91rem]`) so the headline can grow on large monitors. The area pill and a two-line uppercase headline are centred across the full width. Below are three columns. The middle one holds the steel thali as a cut-out with no background. The plate fills whatever height is left, overlaps the bottom of the headline's second line, and runs down to the hero's bottom edge, where the next band's rounded top covers its flat edge. The sticker sits on the plate's top right. The left column has one sentence and two actions (a sunflower start and a cream outline). The right column has a card titled Our kitchen rules with four facts and a link down to the kitchen-rules section. The hero carries no price; prices live on the plan cards. On tablets the two side columns sit side by side and the plate goes below them. On phones everything stacks and the plate comes last, edge to edge. The facts name the kitchen rules: no potatoes, no maida, no preservatives, and no non-stick. The kitchen-rules section explains each one. Delivery windows stay in the delivery answer. Days, veg or non-veg, the rate, and the 3-day start stay on the plan cards. The pill is Hinjewadi, Wakad and Baner, Pune, from `launchArea` in `data/site-config.ts`. The headline is Everyday food. Balanced better. The sentence is breakfast, lunch and dinner you can eat every day. Balanced and healthy, cooked fresh, and handed over at the office gate or the door. Prices stay on the plan cards, not in the hero. The sticker reads Cooked fresh, Office gate or your door. Below the hero, the sections carry the same poster style. Each title has its sentence beside it. The breakfast, lunch and dinner photos have a heading, and each photo carries its meal name in large uppercase cream type over an olive fade. The how-it-works band has no cards: each step is a large cream number over a thin rule. The kitchen-rules section has a full-width strip where the four rules scroll past in title-size olive type, separated by the tiffin mark, and the strip stops moving when the visitor prefers reduced motion. The full rules sit below it in four columns. After the photos, an oat band answers what a person weighs before they start: starting with three days, a changing menu, office days and home days, and that breakfast, lunch and dinner are cooked fresh, each for its own meal. Kitchen rules stay in their own section. Later sections are full-width bands in this order: cream photos, oat provide, cream plans, white menu, olive how-it-works, cream kitchen rules, oat service area, and an olive closing band with a sunflower button. The footer is olive deep, so it reads apart from the closing band. Cards are rounded. The weekly menu is a set of day cards on the homepage, not a separate food catalogue.

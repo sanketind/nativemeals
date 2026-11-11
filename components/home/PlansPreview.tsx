@@ -9,22 +9,29 @@ export function PlansPreview() {
   return (
     <Section id="plans">
       <Container>
-        <SectionHeading eyebrow="Meal plans" title="One price per meal." />
-        <ul className="mt-8 grid gap-4 md:mt-10 md:grid-cols-3 md:gap-5">
+        <SectionHeading
+          split
+          eyebrow="Meal plans"
+          title="One price per meal."
+          action={
+            <ButtonLink href="/meal-plans#build" variant="secondary">
+              Build a plan
+            </ButtonLink>
+          }
+        >
+          Lunch, dinner, or the full day. Every plan is priced by the meal,
+          veg or non-veg.
+        </SectionHeading>
+        <ul className="mt-8 grid gap-4 md:mt-12 md:grid-cols-3 md:gap-5">
           {plans.map((plan) => (
             <li key={plan.id}>
               <MealPlanCard plan={plan} compact />
             </li>
           ))}
         </ul>
-        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <ButtonLink href="/meal-plans#build" variant="secondary">
-            Build a plan
-          </ButtonLink>
-          {pricing.status === "draft" ? (
-            <p className="text-sm text-muted">{pricing.note}</p>
-          ) : null}
-        </div>
+        {pricing.status === "draft" ? (
+          <p className="mt-6 text-sm text-muted">{pricing.note}</p>
+        ) : null}
       </Container>
     </Section>
   );

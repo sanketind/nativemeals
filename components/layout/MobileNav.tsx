@@ -103,7 +103,7 @@ export function MobileNav() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="rounded-control px-3 py-3 text-base font-semibold text-olive hover:bg-sage"
+                      className="rounded-control px-3 py-3 text-base font-semibold text-olive hover:bg-oat"
                       onClick={() => setOpen(false)}
                     >
                       {item.label}
@@ -111,13 +111,13 @@ export function MobileNav() {
                   ))}
                   <Link
                     href="/contact"
-                    className="rounded-control px-3 py-3 text-base font-semibold text-olive hover:bg-sage"
+                    className="rounded-control px-3 py-3 text-base font-semibold text-olive hover:bg-oat"
                     onClick={() => setOpen(false)}
                   >
                     Contact
                   </Link>
                 </nav>
-                <ButtonLink href="/meal-plans#enquire" className="mt-6" onClick={() => setOpen(false)}>
+                <ButtonLink href="/meal-plans#enquire" variant="accent" className="mt-6" onClick={() => setOpen(false)}>
                   Start your plan
                 </ButtonLink>
               </div>

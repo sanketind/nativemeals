@@ -18,7 +18,7 @@ export function MealPlanCard({
     <Card as="article" padded={false} className="flex h-full flex-col overflow-hidden">
       <div
         className={cn(
-          "relative overflow-hidden rounded-t-card bg-sage",
+          "relative overflow-hidden rounded-t-card bg-oat",
           compact ? "aspect-[2/1]" : "aspect-[16/10]",
         )}
       >
@@ -102,7 +102,7 @@ export function MealPlanCard({
           </>
         )}
         <div className="mt-6">
-          <ButtonLink href={`/meal-plans?plan=${plan.id}#build`}>
+          <ButtonLink href={`/meal-plans?plan=${plan.id}#build`} variant="accent">
             Start this plan
           </ButtonLink>
         </div>

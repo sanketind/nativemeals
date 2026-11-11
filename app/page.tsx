@@ -28,7 +28,7 @@ export default async function HomePage() {
       <HowItWorks />
       <KitchenRules />
       <ServiceAreaChecker />
-      <FinalCTA />
+      <FinalCTA tone="olive" />
     </>
   );
 }

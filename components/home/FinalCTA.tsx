@@ -34,7 +34,7 @@ export function FinalCTA({
           {body}
         </Text>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <ButtonLink href={primaryHref} variant={olive ? "inverse" : "primary"}>
+          <ButtonLink href={primaryHref} variant="accent">
             {primaryLabel}
           </ButtonLink>
         </div>

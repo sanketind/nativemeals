@@ -27,7 +27,7 @@ function DayCard({
         day.isToday && "ring-2 ring-olive md:col-span-2",
       )}
     >
-      <header className="bg-sage/80 px-5 py-4">
+      <header className="bg-oat/80 px-5 py-4">
         <div className="flex items-baseline justify-between gap-3">
           {day.isToday ? (
             <h3 className="font-sans text-2xl font-bold leading-snug text-olive md:text-3xl">
@@ -87,7 +87,7 @@ function EmptyWeek({ source }: { source: WeeklyMenuData["source"] }) {
     >
       <Text className="max-w-xl">{message}</Text>
       <div className="mt-6 flex flex-wrap gap-3">
-        <ButtonLink href="/meal-plans#enquire">Start your plan</ButtonLink>
+        <ButtonLink href="/meal-plans#enquire" variant="accent">Start your plan</ButtonLink>
         <ButtonLink href="/contact" variant="secondary">
           Contact us
         </ButtonLink>
@@ -107,13 +107,17 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
 
   return (
     <div id="this-week" className="scroll-mt-24">
-      <div className="max-w-2xl">
-        <Eyebrow>This week</Eyebrow>
-        <Heading className="mt-3">This week&apos;s menu.</Heading>
-        {support ? <Text className="mt-4">{support}</Text> : null}
-        {menu.source === "sample" ? (
-          <SampleContentNote>Sample week. The live menu replaces this.</SampleContentNote>
-        ) : null}
+      <div className="grid gap-5 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:items-end md:gap-12">
+        <div>
+          <Eyebrow>This week</Eyebrow>
+          <Heading className="mt-3">This week&apos;s menu.</Heading>
+        </div>
+        <div className="md:max-w-sm md:justify-self-end md:pb-2">
+          {support ? <Text size="lede">{support}</Text> : null}
+          {menu.source === "sample" ? (
+            <SampleContentNote>Sample week. The live menu replaces this.</SampleContentNote>
+          ) : null}
+        </div>
       </div>
 
       {days.length === 0 ? (

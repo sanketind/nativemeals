@@ -20,11 +20,12 @@ export const images = {
     sourceUrl: "https://unsplash.com/photos/1585937421612-70a008356fbe",
     placeholder: true,
   },
-  heroInset: {
-    src: "/images/idli.jpg",
-    alt: "Idli, a vada, sambar and chutneys on a white plate",
+  /** A cut-out with a transparent background, so it can sit in front of the hero headline. */
+  heroPlate: {
+    src: "/images/thali-cutout.png",
+    alt: "A steel thali with rotis, a vegetable sabzi, dal and pickle",
     credit: "Unsplash",
-    sourceUrl: "https://unsplash.com/photos/1630383249896-424e482df921",
+    sourceUrl: "https://unsplash.com/photos/1546833999-b9f581a1996d",
     placeholder: true,
   },
   breakfast: {
@@ -88,13 +89,6 @@ export const images = {
     alt: "Idli with sambar and chutney",
     credit: "Unsplash",
     sourceUrl: "https://unsplash.com/photos/1630383249896-424e482df921",
-    placeholder: true,
-  },
-  about: {
-    src: "/images/rice-curry.jpg",
-    alt: "Freshly served vegetable curry and rice in daylight",
-    credit: "Unsplash",
-    sourceUrl: "https://unsplash.com/photos/1585937421612-70a008356fbe",
     placeholder: true,
   },
   dayBreakfast: {

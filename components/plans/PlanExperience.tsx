@@ -83,7 +83,7 @@ export function PlanExperience() {
     <>
       <Section id="build">
         <Container>
-          <SectionHeading eyebrow="Your plan" title="Build a plan around your week.">
+          <SectionHeading split eyebrow="Your plan" title="Build a plan around your week.">
             Monday to Friday is the office week. Add Saturday if you want it.
             Lunch and dinner can use different days. Three days is 3 of each
             meal you pick, at the same price per meal. Nothing is charged on
@@ -224,7 +224,7 @@ export function PlanExperience() {
                   Any delivery charge is confirmed before you start.
                 </p>
                 <Button
-                  variant="inverse"
+                  variant="accent"
                   className="mt-6 w-full"
                   onClick={() => {
                     document.getElementById("enquire")?.scrollIntoView();

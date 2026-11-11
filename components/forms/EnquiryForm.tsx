@@ -391,7 +391,7 @@ export function EnquiryForm({
         </Field>
       ) : null}
 
-      <Button type="submit" disabled={state.status === "submitting"}>
+      <Button type="submit" variant="accent" disabled={state.status === "submitting"}>
         {state.status === "submitting" ? "Sending…" : submitLabel}
       </Button>
 

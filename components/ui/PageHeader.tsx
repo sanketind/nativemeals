@@ -5,43 +5,57 @@ import { Eyebrow, Heading, Text } from "@/components/ui/Type";
 import { surface } from "@/components/ui/styles";
 import { cn } from "@/lib/cn";
 
+export type PageFact = { value: string; label: string };
+
 export function PageHeader({
   eyebrow,
   title,
   imageId,
+  actions,
+  facts,
   children,
 }: {
   eyebrow: string;
   title: string;
   imageId?: string;
+  actions?: React.ReactNode;
+  facts?: PageFact[];
   children?: React.ReactNode;
 }) {
   return (
-    <header className={cn("overflow-hidden", surface.pageGlow)}>
-      <Container
-        className={cn(
-          "py-10 md:py-20",
-          imageId && "grid items-center gap-8 md:grid-cols-2 md:gap-16 md:py-24",
-        )}
-      >
-        <div>
-          <Eyebrow>{eyebrow}</Eyebrow>
-          <Heading as="h1" size="display" className="mt-3 max-w-3xl">
-            {title}
-          </Heading>
-          {children ? (
-            <Text as="div" size="lede" className="mt-5 max-w-2xl">
-              {children}
-            </Text>
-          ) : null}
-        </div>
+    // Runs up under the sticky header, like the homepage hero. With a photo there is no
+    // bottom padding: the photo sits on the edge and the next band's rounded top covers it.
+    <header
+      className={cn(
+        "-mt-[4.25rem] overflow-hidden bg-olive pt-[4.25rem] md:-mt-20 md:pt-20",
+        surface.brandPattern,
+        !imageId && "pb-20 md:pb-36",
+      )}
+    >
+      <Container className="pt-10 text-center md:pt-16">
+        <Eyebrow tone="sunflower">{eyebrow}</Eyebrow>
+        <Heading as="h1" size="display" tone="inverse" className="mx-auto mt-4 max-w-6xl text-balance">
+          {title}
+        </Heading>
+        {children ? (
+          <Text as="div" size="lede" tone="inverse" className="mx-auto mt-6 max-w-2xl">
+            {children}
+          </Text>
+        ) : null}
+        {actions ? <div className="mt-8 flex flex-wrap justify-center gap-3">{actions}</div> : null}
+        {facts?.length ? (
+          <dl className="mx-auto mt-10 grid max-w-4xl gap-6 border-t border-cream/15 pt-8 sm:grid-cols-3">
+            {facts.map((fact) => (
+              <div key={fact.value} className="flex flex-col-reverse gap-1">
+                <dt className="text-sm text-cream/65">{fact.label}</dt>
+                <dd className="font-sans text-stat text-cream">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        ) : null}
         {imageId ? (
-          <PhotoFrame shadow className="aspect-[4/5]">
-            <FoodImage
-              imageId={imageId}
-              priority
-              sizes="(min-width: 768px) 45vw, 100vw"
-            />
+          <PhotoFrame className="mt-12 aspect-[4/3] sm:aspect-[16/9] md:mt-16 md:aspect-[5/2] lg:aspect-[3/1]">
+            <FoodImage imageId={imageId} priority sizes="(min-width: 1280px) 1240px, 100vw" />
           </PhotoFrame>
         ) : null}
       </Container>

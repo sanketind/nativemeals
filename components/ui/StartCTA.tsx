@@ -3,12 +3,12 @@ import { ButtonLink } from "@/components/ui/Button";
 export function StartCTA({
   href = "/meal-plans#enquire",
   label = "Start your plan",
-  variant = "primary",
+  variant = "accent",
   className,
 }: {
   href?: string;
   label?: string;
-  variant?: "primary" | "secondary" | "inverse" | "ghost";
+  variant?: "accent" | "primary" | "secondary" | "inverse" | "ghost";
   className?: string;
 }) {
   return (

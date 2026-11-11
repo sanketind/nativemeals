@@ -2,8 +2,7 @@ import { cn } from "@/lib/cn";
 import { priceMark, type as typeStyles } from "@/components/ui/styles";
 
 const ink = {
-  leaf: "text-terracotta-ink",
-  sunflower: "text-terracotta",
+  sunflower: "text-sunflower",
   olive: "text-olive",
   muted: "text-muted",
   inverse: "text-cream/70",
@@ -12,7 +11,7 @@ const ink = {
 export function Eyebrow({
   as: Tag = "p",
   id,
-  tone = "leaf",
+  tone = "olive",
   compact = false,
   className,
   children,
@@ -36,6 +35,7 @@ export function Eyebrow({
 
 const headingSize = {
   display: typeStyles.display,
+  poster: typeStyles.poster,
   closing: typeStyles.closing,
   title: typeStyles.title,
   stat: typeStyles.stat,
@@ -145,14 +145,4 @@ export function Price({
 
 export function PriceMark({ children }: { children: React.ReactNode }) {
   return <span className={priceMark}>{children}</span>;
-}
-
-export function StepIndex({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return <p className={cn(typeStyles.step, "text-terracotta-ink", className)}>{children}</p>;
 }

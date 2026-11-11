@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/Card";
 import { Chip } from "@/components/ui/Chip";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { RuleList } from "@/components/ui/RuleList";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Heading, Price, Text } from "@/components/ui/Type";
@@ -29,7 +30,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="Our story"
         title="Everyday food. Balanced better."
-        imageId="about"
+        imageId="riceBowl"
       >
         Native Meals cooks for people in {siteConfig.serviceAreaShort} who
         already have a job, and want balanced, healthy food they can eat
@@ -72,7 +73,7 @@ export default function AboutPage() {
             </Text>
           </div>
           {siteConfig.founderNote ? (
-            <Card as="article" tone="sage" bordered={false} className="mt-8">
+            <Card as="article" tone="oat" bordered={false} className="mt-8">
               <Heading as="h2" size="card">
                 {siteConfig.founderNote.heading}
               </Heading>
@@ -84,39 +85,22 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section tone="sage">
+      <Section tone="oat">
         <Container>
-          <SectionHeading eyebrow="The kitchen" title="What every meal is held to.">
+          <SectionHeading split eyebrow="The kitchen" title="What every meal is held to.">
             These rules are how the food stays balanced and healthy. They hold
             for every dish on the menu, veg and non-veg.
           </SectionHeading>
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-12">
-            {siteConfig.kitchenRules.map((rule) => (
-              <Card key={rule.title} as="li">
-                <Heading as="h3" size="card">
-                  {rule.title}
-                </Heading>
-                <Text size="body" className="mt-2">
-                  {rule.body}
-                </Text>
-              </Card>
-            ))}
-          </ul>
-          {kitchenLine ? (
-            <Text size="body" className="mt-6 max-w-2xl">
-              {kitchenLine} Meals travel in an eco-friendly box.
-            </Text>
-          ) : (
-            <Text size="body" className="mt-6 max-w-2xl">
-              Meals travel in an eco-friendly box.
-            </Text>
-          )}
+          <RuleList className="mt-10 md:mt-14" />
+          <Text className="mt-10 max-w-2xl">
+            {kitchenLine ? `${kitchenLine} ` : ""}Meals travel in an eco-friendly box.
+          </Text>
         </Container>
       </Section>
 
       <Section tone="white">
         <Container>
-          <SectionHeading eyebrow="The week" title="Monday to Friday, one rate per meal.">
+          <SectionHeading split eyebrow="The week" title="Monday to Friday, one rate per meal.">
             Saturday can be added. Sunday stays off. Three days is 3 of each
             meal you pick. Two weeks is 10 of that meal on Monday to Friday, or
             12 with Saturday. Four weeks is 20, or 24. The rate per meal is the
@@ -148,7 +132,7 @@ export default function AboutPage() {
 
       <Section tone="cream">
         <Container>
-          <SectionHeading eyebrow="Where it goes" title={`Serving ${siteConfig.launchArea}.`}>
+          <SectionHeading split eyebrow="Where it goes" title={`Serving ${siteConfig.launchArea}.`}>
             A locality is confirmed with you before the first meal. The site
             does not check an address by itself.
           </SectionHeading>

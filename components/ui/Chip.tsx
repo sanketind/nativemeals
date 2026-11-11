@@ -5,7 +5,7 @@ const tones = {
   solid: "bg-white font-semibold text-olive",
   quiet: "border border-charcoal/10 bg-white/70 font-medium text-olive",
   inverse: "bg-cream/10 font-semibold text-cream",
-  area: "border border-olive/15 bg-white/70 text-terracotta-ink",
+  area: "border border-olive/15 bg-white/70 text-olive",
 } as const;
 
 export function Chip({

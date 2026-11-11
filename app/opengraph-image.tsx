@@ -14,7 +14,7 @@ export default async function OpenGraphImage() {
       <div
         style={{
           /* Hex values match the theme in app/globals.css. next/og cannot read those variables. */
-          background: "#FFFDF4",
+          background: "#0C3F25",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -28,20 +28,8 @@ export default async function OpenGraphImage() {
           style={{
             fontSize: 22,
             letterSpacing: 2.4,
-            color: "#197241",
+            color: "rgba(251, 243, 224, 0.7)",
             textTransform: "uppercase",
-            fontWeight: 700,
-          }}
-        >
-          Everyday food. Balanced better.
-        </div>
-        <div
-          style={{
-            fontSize: 84,
-            color: "#0C3F25",
-            marginTop: 16,
-            lineHeight: 1.04,
-            letterSpacing: -2,
             fontWeight: 700,
           }}
         >
@@ -49,17 +37,44 @@ export default async function OpenGraphImage() {
         </div>
         <div
           style={{
-            fontSize: 32,
-            color: "#526158",
-            marginTop: 24,
+            display: "flex",
+            flexDirection: "column",
+            fontSize: 104,
+            color: "#FBF3E0",
+            marginTop: 20,
+            lineHeight: 0.94,
+            letterSpacing: -3,
+            textTransform: "uppercase",
+            fontWeight: 700,
+          }}
+        >
+          <span>Everyday food.</span>
+          <span>Balanced better.</span>
+        </div>
+        <div
+          style={{
+            fontSize: 30,
+            color: "rgba(251, 243, 224, 0.8)",
+            marginTop: 32,
             lineHeight: 1.4,
             fontWeight: 700,
           }}
         >
           Balanced, healthy food you can eat every day, cooked fresh.
         </div>
-        <div style={{ fontSize: 24, color: "#197241", marginTop: 48, fontWeight: 700 }}>
-          Hinjewadi, Wakad and Baner, Pune
+        <div style={{ display: "flex", marginTop: 44 }}>
+          <div
+            style={{
+              fontSize: 24,
+              color: "#0C3F25",
+              background: "#F9D82B",
+              borderRadius: 999,
+              padding: "12px 28px",
+              fontWeight: 700,
+            }}
+          >
+            Hinjewadi, Wakad and Baner, Pune
+          </div>
         </div>
       </div>
     ),

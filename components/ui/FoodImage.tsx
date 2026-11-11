@@ -6,11 +6,13 @@ export function FoodImage({
   imageId,
   priority = false,
   sizes,
+  fit = "cover",
   className,
 }: {
   imageId: string;
   priority?: boolean;
   sizes: string;
+  fit?: "cover" | "contain";
   className?: string;
 }) {
   const image = getImage(imageId);
@@ -23,7 +25,7 @@ export function FoodImage({
       priority={priority}
       loading={priority ? "eager" : undefined}
       sizes={sizes}
-      className={cn("rounded-[inherit] object-cover", className)}
+      className={cn("rounded-[inherit]", fit === "cover" ? "object-cover" : "object-contain", className)}
     />
   );
 }
