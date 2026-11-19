@@ -1,6 +1,6 @@
 # Native Meals
 
-The website for Native Meals: everyday food, balanced and healthy, for Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner on a plan, cooked fresh and handed over at the office gate, the security desk, or the door. The tagline stays Everyday food. Balanced better. Monday to Friday is the main pattern.
+The website for Native Meals: everyday food, balanced and healthy, for Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner on a plan, with kitchen-supplied calories and macros on this week's menu, cooked fresh and handed over at the office gate, the security desk, or the door. The tagline stays Everyday food. Balanced better. Monday to Friday is the main pattern.
 
 ## Read the project
 
@@ -133,6 +133,12 @@ Add one row per meal option.
 | note | Optional. A short extra, or leave it blank. |
 | image | Optional. Leave it blank. A photo key from the site can go here later. |
 | show | `TRUE` to publish the row. `FALSE` to keep next week drafted. |
+| kcal | Calories for that plate. Required to show nutrition on the site. Leave blank if you do not have a figure yet. |
+| protein_g | Protein in grams. Optional. |
+| carbs_g | Carbohydrate in grams. Optional. |
+| fat_g | Fat in grams. Optional. |
+
+Use real kitchen calculations only. Do not invent a number. If `kcal` is blank, the site shows the dishes without a nutrition line. Macros that are filled in appear next to the calories.
 
 Two options for the same meal, for example veg and non-veg lunch, are two rows.
 

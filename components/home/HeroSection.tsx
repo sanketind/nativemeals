@@ -45,8 +45,8 @@ export function HeroSection() {
           <div className="lg:pb-20">
             <Text size="lede" tone="inverse" className="max-w-sm">
               Breakfast, lunch and dinner you can eat every day. Balanced and
-              healthy, cooked fresh, and handed over at your office gate or your
-              door.
+              healthy — with calories and macros on each plate — cooked fresh
+              and handed over at your office gate or your door.
             </Text>
             <div className="mt-7 flex flex-wrap gap-3">
               <StartCTA />
@@ -89,10 +89,10 @@ export function HeroSection() {
                 })}
               </ul>
               <a
-                href="#kitchen-rules"
+                href="#balanced-better"
                 className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-cream underline-offset-4 hover:underline"
               >
-                What each rule means
+                How we make it
                 <ArrowDown aria-hidden="true" className="size-4" />
               </a>
             </div>

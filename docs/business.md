@@ -8,7 +8,7 @@ This note records what the site is allowed to say. If a fact is not here, and it
 
 People who already have a job, and do not want planning, shopping and cooking on top of it. Lunch is for the office. Dinner is for the PG or the flat after work. The full day is for someone who wants both, or breakfast as well.
 
-The food is everyday food, balanced and healthy. A person should be able to eat it every day. The balance and the health come from the kitchen rules, not from calorie counts, protein targets, or a diet plan.
+The food is everyday food, balanced and healthy. A person should be able to eat it every day. Balance means a full plate — protein, carbs, vegetables and dal — with calories and macros published from kitchen calculations on this week's menu, plus the kitchen rules that hold for every meal. It is not a diet plan, a protein target the customer sets, or medical advice.
 
 The site speaks to offices in Hinjewadi, Wakad and Baner, including people who work from home some days and need the meal at the door instead of the gate.
 
@@ -56,4 +56,4 @@ Leave the env var empty. The site hides the fact rather than printing a placehol
 - Social profiles.
 - A founder story. `founderNote` stays null until there is a real one.
 
-Also do not invent ratings, testimonials, calorie or protein numbers, a nutritionist, a weight-loss claim, or a medical plan. Do not tell the customer the food should not feel like a diet. Sound balanced and healthy. The tagline stays Everyday food. Balanced better. The menu on the homepage is a sample until the Google Sheet is connected. If that sheet cannot be loaded, the page says so. It does not put the sample or an older week in its place. Delivery and collection details that are still open are confirmed with the person before they start. A skipped meal is carried to the end of the plan once the cutoff is published. Pause and cancellation are still explained with the person before the first meal, not published as if they were settled.
+Calories and macros on the menu come only from the kitchen sheet (`kcal`, `protein_g`, `carbs_g`, `fat_g`). Publish a figure only when the kitchen has calculated it. Do not invent ratings, testimonials, calorie or protein numbers, a nutritionist, a weight-loss claim, or a medical plan. Do not tell the customer the food should not feel like a diet. Sound balanced and healthy. The tagline stays Everyday food. Balanced better. The menu on the homepage is a sample until the Google Sheet is connected. If that sheet cannot be loaded, the page says so. It does not put the sample or an older week in its place. Delivery and collection details that are still open are confirmed with the person before they start. A skipped meal is carried to the end of the plan once the cutoff is published. Pause and cancellation are still explained with the person before the first meal, not published as if they were settled.

@@ -1,4 +1,5 @@
 import type { WeeklyMenuData } from "@/lib/weekly-menu";
+import { formatMealNutrition } from "@/lib/format";
 import { DietBadge } from "@/components/ui/DietBadge";
 import { SampleContentNote } from "@/components/ui/SampleContentNote";
 import { ButtonLink } from "@/components/ui/Button";
@@ -64,6 +65,11 @@ function DayCard({
               </p>
               <DietBadge diet={meal.diet} />
             </div>
+            {meal.nutrition ? (
+              <p className={cn(typeStyles.hint, "mt-1.5 text-muted")}>
+                {formatMealNutrition(meal.nutrition)}
+              </p>
+            ) : null}
             {meal.note && meal.note.toLowerCase() !== "sample" ? (
               <p className="mt-1 text-sm text-muted">{meal.note}</p>
             ) : null}
@@ -98,12 +104,15 @@ function EmptyWeek({ source }: { source: WeeklyMenuData["source"] }) {
 
 export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
   const days = menu.days;
+  const hasNutrition = days.some((day) =>
+    day.meals.some((meal) => meal.nutrition !== null),
+  );
   const support =
     menu.source === "sample"
       ? null
       : menu.rangeLabel
-        ? `Posted for ${menu.rangeLabel}.`
-        : "What the kitchen is cooking, updated through the week.";
+        ? `Posted for ${menu.rangeLabel}. Dishes with calories and macros for each plate.`
+        : "What the kitchen is cooking, with calories and macros on each plate.";
 
   return (
     <div id="this-week" className="scroll-mt-24">
@@ -134,6 +143,12 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
           </p>
         </>
       )}
+
+      {hasNutrition ? (
+        <p className={cn(typeStyles.hint, "mt-4 text-muted")}>
+          Calories and macros are kitchen calculations for that plate.
+        </p>
+      ) : null}
 
       {menu.footnote ? (
         <p className="mt-4 text-sm text-muted">{menu.footnote}</p>

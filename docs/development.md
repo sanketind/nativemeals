@@ -52,7 +52,7 @@ When the reply includes a WhatsApp or email link, the form shows it. It does not
 
 ## Weekly menu
 
-`lib/weekly-menu.ts` loads the sheet inside a cached function (`"use cache"`, which needs `cacheComponents` in `next.config.ts`). The tag is `weekly-menu`: stale after 5 minutes, revalidated after 15, expired after a day. The current week is Monday to Sunday in India time (`Asia/Kolkata` in `lib/dates.ts`). A day with no row is left off. A row that cannot be read is skipped.
+`lib/weekly-menu.ts` loads the sheet inside a cached function (`"use cache"`, which needs `cacheComponents` in `next.config.ts`). The tag is `weekly-menu`: stale after 5 minutes, revalidated after 15, expired after a day. The current week is Monday to Sunday in India time (`Asia/Kolkata` in `lib/dates.ts`). A day with no row is left off. A row that cannot be read is skipped. Optional nutrition columns are `kcal`, `protein_g`, `carbs_g`, and `fat_g`. A valid `kcal` builds a `nutrition` object; macros that parse are included. Missing or invalid `kcal` leaves `nutrition` null. The UI never invents a figure.
 
 With no sheet URL, the sample week from `data/weekly-menu.sample.ts` is shown and labelled. A URL that is set but is not a valid http(s) address, or a fetch that fails, returns an error menu. That result is cached like any other result. The page does not throw, does not keep the previous week, and does not fall back to the sample. A sheet that loads with no rows in the current week says the menu will be posted soon.
 
@@ -88,7 +88,8 @@ The homepage title and description live in `data/site-config.ts` (`metaTitle`, `
 
 - Hide a contact, a licence number, or a clock time when the env var is empty.
 - Do not hard-code a price, an area, or a phone number in a component.
-- Do not add a founder note, a testimonial, a rating, or a calorie figure.
+- Do not add a founder note, a testimonial, or a rating.
+- Do not invent a calorie or macro figure. Only show nutrition from the kitchen sheet.
 - Do not pair a dish name with a photo of different food.
 - Mark draft prices until `pricing.status` is `"confirmed"`.
 

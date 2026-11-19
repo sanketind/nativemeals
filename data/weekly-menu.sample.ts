@@ -5,6 +5,7 @@ import type { WeeklyMenuRow } from "@/lib/weekly-menu";
  * Stand-in week used only when WEEKLY_MENU_CSV_URL is not set.
  * Dates follow the current India week so the layout can be reviewed any day.
  * Dishes follow the kitchen: no potatoes, millet or multigrain rotis, never maida.
+ * Nutrition figures are sample kitchen-style numbers for layout only.
  */
 export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
   const monday = mondayOf(today);
@@ -19,6 +20,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       dishes: "Ragi dosa",
       note: "Sample",
       imageId: null,
+      nutrition: { kcal: 320, proteinG: 12, carbsG: 48, fatG: 9 },
     },
     {
       date: monday,
@@ -27,6 +29,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       dishes: "Palak paneer, beetroot roti, multigrain dal",
       note: "Sample",
       imageId: null,
+      nutrition: { kcal: 520, proteinG: 28, carbsG: 52, fatG: 18 },
     },
     {
       date: monday,
@@ -35,6 +38,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       dishes: "Palak chicken, beetroot roti, multigrain dal",
       note: "Sample",
       imageId: null,
+      nutrition: { kcal: 540, proteinG: 36, carbsG: 48, fatG: 16 },
     },
     {
       date: monday,
@@ -43,6 +47,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       dishes: "Baked hara bhara kebab, multigrain dal",
       note: "Sample",
       imageId: null,
+      nutrition: { kcal: 430, proteinG: 22, carbsG: 44, fatG: 14 },
     },
     {
       date: tuesday,
@@ -51,6 +56,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       dishes: "Ragi roti",
       note: "Sample",
       imageId: null,
+      nutrition: { kcal: 280, proteinG: 10, carbsG: 42, fatG: 8 },
     },
     {
       date: tuesday,
@@ -59,6 +65,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       dishes: "Palak paneer, beetroot roti, watermelon juice",
       note: "Sample",
       imageId: null,
+      nutrition: { kcal: 500, proteinG: 26, carbsG: 54, fatG: 16 },
     },
     {
       date: tuesday,
@@ -67,6 +74,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       dishes: "Chicken soup, ragi roti",
       note: "Sample",
       imageId: null,
+      nutrition: { kcal: 390, proteinG: 32, carbsG: 36, fatG: 12 },
     },
     {
       date: wednesday,
@@ -75,6 +83,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       dishes: "Baked hara bhara kebab, beetroot roti",
       note: "Sample",
       imageId: null,
+      nutrition: { kcal: 450, proteinG: 20, carbsG: 48, fatG: 15 },
     },
     {
       date: wednesday,
@@ -83,6 +92,7 @@ export function buildSampleWeeklyRows(today: string): WeeklyMenuRow[] {
       dishes: "Palak paneer, ragi roti, multigrain dal",
       note: "Sample",
       imageId: null,
+      nutrition: { kcal: 510, proteinG: 27, carbsG: 50, fatG: 17 },
     },
   ];
 }

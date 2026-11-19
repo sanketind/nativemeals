@@ -54,8 +54,10 @@ export default function AboutPage() {
             </Text>
             <Text>
               The food is everyday food, balanced and healthy. You should be able
-              to eat it on Monday and still want it on Friday. The balance
-              comes from what the kitchen leaves out.
+              to eat it on Monday and still want it on Friday. Balance means a
+              full plate — protein, carbs, vegetables and dal — with calories
+              and macros on this week&apos;s menu, and kitchen rules that hold
+              for every meal.
             </Text>
             <Text>
               The kitchen posts the week. You choose veg or non-veg. There is
@@ -88,8 +90,9 @@ export default function AboutPage() {
       <Section tone="oat">
         <Container>
           <SectionHeading split eyebrow="The kitchen" title="What every meal is held to.">
-            These rules are how the food stays balanced and healthy. They hold
-            for every dish on the menu, veg and non-veg.
+            These rules sit beside the calories and macros on this week&apos;s
+            menu. Together they keep the food balanced and healthy, for every
+            dish, veg and non-veg.
           </SectionHeading>
           <RuleList className="mt-10 md:mt-14" />
           <Text className="mt-10 max-w-2xl">

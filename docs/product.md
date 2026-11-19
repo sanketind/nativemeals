@@ -6,7 +6,7 @@ The website explains the service and takes an enquiry. It does not take payment,
 
 | Route | What the visitor does |
 | --- | --- |
-| `/` | Reads the offer, what the service provides, this week's menu, the plans, how it works, the kitchen rules, and where the service runs. |
+| `/` | Reads the offer, how Everyday food. Balanced better. is made, this week's menu, the plans, how it works, and where the service runs. |
 | `/meal-plans` | Builds a plan, sees an estimate, and sends details. |
 | `/about` | Reads why the service exists, what the kitchen holds to, the week a plan covers, and where it serves. |
 | `/faqs` | Reads the practical answers. |
@@ -17,11 +17,11 @@ There is no separate food page. This week's menu is the block on the homepage, a
 
 The story page is prose, then the kitchen rules from `siteConfig.kitchenRules`, then the three plans at their confirmed rates, then the neighbourhoods and tech parks. It sounds balanced and healthy. It does not comment on whether the food feels like a diet. It does not invent a founder story. `founderNote` stays hidden until it is real. Cooked fresh does not name a time of day.
 
-The homepage order is: hero, breakfast lunch and dinner photos, what we provide, plan cards, this week's menu, how it works, kitchen rules, service area, then a closing call to action.
+The homepage order is: hero, breakfast lunch and dinner photos, how we make Everyday food. Balanced better., plan cards, this week's menu, how it works, service area, then a closing call to action. There is no second kitchen-rules band on the homepage.
 
-What we provide sits after the photos and before the plans. The four cards answer what a person weighs before they start: that they can start with three days at the same rate per meal, a menu that changes, office days and home days, and that breakfast, lunch and dinner are cooked fresh, each for its own meal. The kitchen rules are not repeated here. The kitchen-rules section explains each one.
+How we make it sits after the photos and before the plans. It is the one place that explains the tagline. Everyday means you can eat it through the week. Balanced better means a full plate — protein, carbs, vegetables and dal — with calories and macros published each week, cooked to the kitchen rules. Four cards name the practices in plain words: millet and multigrain rotis, sabzi without potato bulk, chutneys cooked here, and cooked fresh in steel. A quiet line under them points to this week's menu for the numbers, plus gate or door, three-day start, and price confirmation. The hero shows the four short rule names and links down to this section. The About page still lists the rules in full. FSSAI and the kitchen locality stay on About and in the footer, not in this band.
 
-The hero headline is Everyday food. Balanced better. The pill is Hinjewadi, Wakad and Baner, Pune. Under the headline: breakfast, lunch and dinner you can eat every day. Balanced and healthy, cooked fresh, and handed over at the office gate or the door. A steel thali, cut out from its background, breaks through the bottom of the headline. A round sticker on the plate says Cooked fresh, Office gate or your door. Beside the plate, four facts name the kitchen rules: no potatoes, no maida, no preservatives, and no non-stick, with a link down to the kitchen-rules section. The hero shows no price. Each plan card shows its own price. The words name the offer. Starting one is still an enquiry. The page does not take payment.
+The hero headline is Everyday food. Balanced better. The pill is Hinjewadi, Wakad and Baner, Pune. Under the headline: breakfast, lunch and dinner you can eat every day. Balanced and healthy — with calories and macros on each plate — cooked fresh and handed over at the office gate or the door. No calorie figures sit in the hero itself; those live on this week's menu. A steel thali, cut out from its background, breaks through the bottom of the headline. A round sticker on the plate says Cooked fresh, Office gate or your door. Beside the plate, four facts name the kitchen rules: no potatoes, no maida, no preservatives, and no non-stick, with a link down to How we make it. The hero shows no price. Each plan card shows its own price. The words name the offer. Starting one is still an enquiry. The page does not take payment.
 
 ## Enquiry
 
@@ -51,6 +51,8 @@ The builder asks which meals, then the days, then a length. Days are Monday to F
 ## This week's menu
 
 Visitors see the current Monday-to-Sunday week in India time. A day with nothing posted does not appear. Until `WEEKLY_MENU_CSV_URL` is set, the week is labelled as a sample. When the sheet is connected, that label goes away.
+
+Each meal row can carry kitchen-supplied nutrition: `kcal`, `protein_g`, `carbs_g`, and `fat_g`. When `kcal` is present, the menu shows a compact calories and macros line under the dishes. Missing figures are left off; the page does not invent them. A footnote notes that the numbers are kitchen calculations for that plate.
 
 The kitchen edits a Google Sheet. The operating steps, the columns, and the publish bookmark are in the [README](../README.md#weekly-menu-for-the-kitchen-team).
 

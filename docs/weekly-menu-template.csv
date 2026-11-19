@@ -1,6 +1,6 @@
-date,meal,diet,dishes,note,image,show
-2026-11-02,Breakfast,Veg,"Idli, sambar, chutney",,breakfast,TRUE
-2026-11-02,Lunch,Veg,"Toor dal, jeera rice, bhindi, 2 millet rotis",,vegetarian,TRUE
-2026-11-02,Lunch,Non-veg,"Chicken curry, rice",,nonVegetarian,TRUE
-2026-11-02,Dinner,Veg,"Millet roti, mixed sabzi, dal",,,TRUE
-2026-11-03,Breakfast,Veg,"Poha with peanuts",,,FALSE
+date,meal,diet,dishes,note,image,show,kcal,protein_g,carbs_g,fat_g
+2026-11-02,Breakfast,Veg,"Idli, sambar, chutney",,breakfast,TRUE,320,14,52,6
+2026-11-02,Lunch,Veg,"Toor dal, jeera rice, bhindi, 2 millet rotis",,vegetarian,TRUE,520,24,62,14
+2026-11-02,Lunch,Non-veg,"Chicken curry, rice",,nonVegetarian,TRUE,540,34,48,16
+2026-11-02,Dinner,Veg,"Millet roti, mixed sabzi, dal",,,TRUE,450,20,50,12
+2026-11-03,Breakfast,Veg,"Poha with peanuts",,,FALSE,380,12,54,10

@@ -70,7 +70,7 @@ export const siteConfig = {
   metaTitle: `Everyday food. Balanced better. — ${serviceAreaShort}`,
   tagline: "Everyday food. Balanced better. — Hinjewadi, Wakad and Baner, Pune",
   description:
-    "Everyday food, balanced and healthy, in Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner you can eat every day, cooked fresh and handed over at your office gate or your door.",
+    "Everyday food, balanced and healthy, in Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner with calories and macros on each plate, cooked fresh and handed over at your office gate or your door.",
   /**
    * TODO: Set NEXT_PUBLIC_SITE_URL to the real domain before launch.
    * Used for metadata, Open Graph and the sitemap.
@@ -142,7 +142,7 @@ export const siteConfig = {
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms" },
   ],
-  /** Short names of the kitchen rules, shown under the hero. The section below explains each one. */
+  /** Short names of the kitchen rules, shown in the hero. How we make it explains each one. */
   heroFacts: [
     { icon: "potatoes" as const, label: "No potatoes" },
     { icon: "maida" as const, label: "No maida" },

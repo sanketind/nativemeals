@@ -60,7 +60,7 @@ export default async function OpenGraphImage() {
             fontWeight: 700,
           }}
         >
-          Balanced, healthy food you can eat every day, cooked fresh.
+          Balanced, healthy food with calories and macros on each plate.
         </div>
         <div style={{ display: "flex", marginTop: 44 }}>
           <div

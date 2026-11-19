@@ -15,6 +15,14 @@ import type { Diet } from "@/data/menu";
 
 export type WeeklyMeal = "breakfast" | "lunch" | "dinner";
 
+/** Kitchen-supplied figures for one plate. Null fields were not published. */
+export type MealNutrition = {
+  kcal: number;
+  proteinG: number | null;
+  carbsG: number | null;
+  fatG: number | null;
+};
+
 export type WeeklyMenuRow = {
   date: string;
   meal: WeeklyMeal;
@@ -22,6 +30,8 @@ export type WeeklyMenuRow = {
   dishes: string;
   note: string;
   imageId: string | null;
+  /** Null when the sheet row has no valid kcal. Never invent a figure. */
+  nutrition: MealNutrition | null;
 };
 
 export type WeeklyMenuDay = {
@@ -121,6 +131,32 @@ function isShown(value: string | undefined) {
   return !["false", "0", "no", "n", "hide"].includes(value.trim().toLowerCase());
 }
 
+/** Positive number from a sheet cell. Empty or invalid returns null. */
+export function parseNutritionNumber(value: string | undefined): number | null {
+  if (!value || !value.trim()) return null;
+  const cleaned = value.trim().replace(/,/g, "");
+  if (!/^\d+(\.\d+)?$/.test(cleaned)) return null;
+  const amount = Number(cleaned);
+  if (!Number.isFinite(amount) || amount < 0) return null;
+  return amount;
+}
+
+function parseNutrition(
+  kcalRaw: string | undefined,
+  proteinRaw: string | undefined,
+  carbsRaw: string | undefined,
+  fatRaw: string | undefined,
+): MealNutrition | null {
+  const kcal = parseNutritionNumber(kcalRaw);
+  if (kcal === null) return null;
+  return {
+    kcal,
+    proteinG: parseNutritionNumber(proteinRaw),
+    carbsG: parseNutritionNumber(carbsRaw),
+    fatG: parseNutritionNumber(fatRaw),
+  };
+}
+
 export function parseWeeklyCsv(text: string) {
   const table = parseCsv(text);
   if (table.length === 0) return [];
@@ -137,6 +173,10 @@ export function parseWeeklyCsv(text: string) {
   const noteIndex = index("note");
   const imageIndex = index("image");
   const showIndex = index("show");
+  const kcalIndex = index("kcal");
+  const proteinIndex = index("protein_g");
+  const carbsIndex = index("carbs_g");
+  const fatIndex = index("fat_g");
   const rows: WeeklyMenuRow[] = [];
 
   table.slice(1).forEach((cells, position) => {
@@ -157,6 +197,12 @@ export function parseWeeklyCsv(text: string) {
       dishes,
       note: noteIndex >= 0 ? (cells[noteIndex] ?? "").trim() : "",
       imageId: imageKey && getImage(imageKey) ? imageKey : null,
+      nutrition: parseNutrition(
+        kcalIndex >= 0 ? cells[kcalIndex] : undefined,
+        proteinIndex >= 0 ? cells[proteinIndex] : undefined,
+        carbsIndex >= 0 ? cells[carbsIndex] : undefined,
+        fatIndex >= 0 ? cells[fatIndex] : undefined,
+      ),
     });
   });
 

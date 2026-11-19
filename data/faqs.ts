@@ -23,7 +23,7 @@ export const faqs: Faq[] = [
     id: "what-is-native-meals",
     question: "What is Native Meals?",
     answer:
-      `Native Meals is everyday food, balanced and healthy: breakfast, lunch and dinner on a meal plan. Each meal is cooked fresh and handed over at your office gate or your door. We serve ${siteConfig.serviceAreaShort} in Pune.`,
+      `Native Meals is everyday food, balanced and healthy: breakfast, lunch and dinner on a meal plan. Each plate shows calories and macros from the kitchen. Meals are cooked fresh and handed over at your office gate or your door. We serve ${siteConfig.serviceAreaShort} in Pune.`,
     pages: ["faqs"],
   },
   {
@@ -78,8 +78,15 @@ export const faqs: Faq[] = [
     id: "weekly-menu",
     question: "How does this week's menu work?",
     answer:
-      "The menu runs Monday to Sunday. A day with nothing posted is left off. Until the live week is up, the menu you see is a sample of the kind of food, so you can judge the style.",
+      "The menu runs Monday to Sunday. A day with nothing posted is left off. Each published plate can show calories and macros from the kitchen. Until the live week is up, the menu you see is a sample of the kind of food, so you can judge the style.",
     pages: ["faqs"],
+  },
+  {
+    id: "calories-macros",
+    question: "Do you show calories and macros?",
+    answer:
+      "Yes. This week's menu lists calories and macros for each plate when the kitchen has calculated them. Those figures are for that meal, not a diet plan, a weight-loss programme, or medical advice.",
+    pages: ["faqs", "plans"],
   },
   {
     id: "choose-dishes",
@@ -92,7 +99,7 @@ export const faqs: Faq[] = [
     id: "whats-in-the-box",
     question: "What is in each meal?",
     answer:
-      "The day's breakfast, lunch or dinner from the weekly menu, cooked fresh. The menu changes through the week, and veg and non-veg are both on it. Check this week's menu to see what is cooking.",
+      "The day's breakfast, lunch or dinner from the weekly menu, cooked fresh: a full plate with protein, carbs, vegetables and dal. Calories and macros sit on the menu next to the dishes. Veg and non-veg are both on it. Check this week's menu to see what is cooking.",
     pages: ["faqs", "plans"],
   },
 ];
