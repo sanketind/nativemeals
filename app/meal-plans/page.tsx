@@ -32,18 +32,18 @@ export const metadata = pageMeta(
 const steps = [
   {
     number: "01",
-    title: "Choose meals and duration",
-    body: "Lunch, dinner, breakfast, or a mix. Three days, two weeks, or four weeks.",
+    title: "Pick the meals",
+    body: "Lunch, dinner, breakfast, or a mix — three days to four weeks.",
   },
   {
     number: "02",
-    title: "Share your details",
+    title: "Tell us where it goes",
     body: "Your name, phone, locality, office or home, and the day you want to start.",
   },
   {
     number: "03",
-    title: "We confirm the start",
-    body: "The handover spot and the window are agreed before the first tiffin, including the day you chose.",
+    title: "We confirm, then start",
+    body: "Price, handover spot, and first day — agreed before the first tiffin.",
   },
   {
     number: "04",
@@ -80,6 +80,20 @@ export default function MealPlansPage() {
         the start date before anything begins.
       </PageHeader>
 
+      <Section tone="oat">
+        <Container>
+          <SectionHeading
+            split
+            eyebrow="Everyday food. Balanced better."
+            title="A week of meals that arrive."
+          >
+            Full plates with kitchen rules and macros on the menu. Monday to
+            Friday at the gate or your door. An enquiry starts the plan —
+            nothing is charged on this site.
+          </SectionHeading>
+        </Container>
+      </Section>
+
       <Suspense fallback={<Section><Container><p className="text-muted">Loading the plan builder…</p></Container></Section>}>
         <PlanExperience />
       </Suspense>
@@ -105,7 +119,9 @@ export default function MealPlansPage() {
 
       <Section tone="olive" className="text-cream">
         <Container>
-          <SectionHeading split tone="inverse" eyebrow="How it works" title="From a choice to a tiffin at the gate." />
+          <SectionHeading split tone="inverse" eyebrow="How it works" title="From a choice to a tiffin.">
+            Same path as the homepage — with one more step when the meals arrive.
+          </SectionHeading>
           <StepList steps={steps} className="mt-12 md:mt-16 md:grid-cols-2 lg:grid-cols-4" />
         </Container>
       </Section>

@@ -122,9 +122,19 @@ export function WeeklyMenu({ menu }: { menu: WeeklyMenuData }) {
           <Heading className="mt-3">This week&apos;s menu.</Heading>
         </div>
         <div className="md:max-w-sm md:justify-self-end md:pb-2">
-          {support ? <Text size="lede">{support}</Text> : null}
           {menu.source === "sample" ? (
-            <SampleContentNote>Sample week. The live menu replaces this.</SampleContentNote>
+            <>
+              <Text size="lede">
+                A sample week — dishes, calories and macros — so you can see how
+                a plate is written. The kitchen&apos;s live sheet replaces this.
+              </Text>
+              <SampleContentNote>
+                Sample style only. Live dishes post when the kitchen sheet is
+                connected.
+              </SampleContentNote>
+            </>
+          ) : support ? (
+            <Text size="lede">{support}</Text>
           ) : null}
         </div>
       </div>

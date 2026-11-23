@@ -19,7 +19,7 @@ export function FinalCTA({
   const olive = tone === "olive";
   return (
     <Section tone={olive ? "olive" : "white"} className={olive ? "text-cream" : undefined}>
-      <Container className="text-center">
+      <Container className="text-center motion-safe:animate-fade-up">
         {olive ? <Eyebrow tone="sunflower">Ready when you are</Eyebrow> : null}
         <Heading
           size={olive ? "closing" : "title"}

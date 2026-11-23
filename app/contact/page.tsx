@@ -29,13 +29,14 @@ export default function ContactPage() {
         title="Tell us what your days look like."
         imageId="breakfast"
       >
-        A name, a phone number and a short note is enough. We reply with what
-        is actually available.
+        Locality, veg or non-veg, a lunch trial or a full week — a name, a
+        phone number and a short note is enough. We reply with what is actually
+        available.
       </PageHeader>
       <Section tone="oat">
         <Container className="grid gap-10 md:grid-cols-2 md:items-start">
           <div>
-            <Heading>Reach us directly.</Heading>
+            <Heading>Everyday food in {siteConfig.serviceAreaShort}.</Heading>
             <ul className="mt-5 flex flex-wrap gap-2">
               {siteConfig.serviceAreas.map((area) => (
                 <li key={area}>
@@ -44,7 +45,8 @@ export default function ContactPage() {
               ))}
             </ul>
             <Text className="mt-5">
-              Office tiffins go to the gate or the security desk.
+              Lunch at the office gate or security desk. Dinner at your door.
+              We confirm the handover before the first tiffin.
             </Text>
             {call && phone ? (
               <p className="mt-6 flex items-center gap-2.5">

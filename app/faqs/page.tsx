@@ -19,14 +19,20 @@ export default function FaqsPage() {
     <>
       <JsonLd data={faqPage(faqs)} />
       <PageHeader eyebrow="FAQs" title="The useful questions." imageId="vegetarian">
-        Areas, the meals, Monday to Friday, and how to skip a day.
+        Everyday food in {siteConfig.serviceAreaShort}: areas, what is in the
+        box, Monday to Friday plans, skipping a day, and how the price works.
       </PageHeader>
       <Section>
         <Container>
           <FAQAccordion items={faqs} />
         </Container>
       </Section>
-      <FinalCTA tone="olive" />
+      <FinalCTA
+        tone="olive"
+        title="Ready for a week that arrives."
+        body="Try one lunch first. Tell us your office, your home, and the day you want to start."
+        primaryHref="/meal-plans#enquire"
+      />
     </>
   );
 }

@@ -17,6 +17,21 @@ export const metadata = pageMeta(
   `Why Native Meals exists for people working in ${siteConfig.serviceAreaShort}: everyday food, balanced and healthy, that you can eat every day.`,
 );
 
+const weekBeats = [
+  {
+    title: "Monday to Friday",
+    body: "Saturday can be added. Sunday stays off. The kitchen posts the week; you choose veg or non-veg. There is no plate you build yourself.",
+  },
+  {
+    title: "Gate or door",
+    body: "Lunch at the office gate or security desk. Dinner at the PG or the flat. Work from home? The meal goes to your door. Keep both addresses when you need them.",
+  },
+  {
+    title: "Cooked for its slot",
+    body: "Breakfast, lunch and dinner are each cooked fresh for their own meal. An allergy or something you avoid is mentioned when you start — the kitchen says whether it can do it.",
+  },
+] as const;
+
 export default function AboutPage() {
   const kitchenLine = [
     siteConfig.kitchenLocality ? `The kitchen is in ${siteConfig.kitchenLocality}.` : null,
@@ -47,31 +62,16 @@ export default function AboutPage() {
               of that. Native Meals is the part that can just arrive.
             </Text>
             <Text>
-              Lunch is for the office, handed over at the gate or the security
-              desk. Dinner is for the PG or the flat after work. On a day you
-              work from home, the meal goes to your door. You can keep both
-              addresses, and use each on the days it fits.
-            </Text>
-            <Text>
-              The food is everyday food, balanced and healthy. You should be able
-              to eat it on Monday and still want it on Friday. Balance means a
-              full plate — protein, carbs, vegetables and dal — with calories
-              and macros on this week&apos;s menu, and kitchen rules that hold
-              for every meal.
-            </Text>
-            <Text>
-              The kitchen posts the week. You choose veg or non-veg. There is
-              no plate you build yourself. An allergy, or something you avoid,
-              is mentioned when you start, and the kitchen says whether it can
-              do it. Breakfast, lunch and dinner are cooked fresh, each for its
-              own meal.
+              The food is everyday food, balanced and healthy — a full plate of
+              protein, carbs, vegetables and dal, with calories and macros on
+              this week&apos;s menu, and kitchen rules that hold for every meal.
+              You should be able to eat it on Monday and still want it on Friday.
             </Text>
             <Text>
               Native is food you come back to. Meals is breakfast, lunch and
-              dinner on a plan, not a one-off order. A plan starts when you
-              send your details. We confirm the price, the handover spot, and
-              the first day before anything begins. Nothing is charged on this
-              site.
+              dinner on a plan, not a one-off order. A plan starts when you send
+              your details. We confirm the price, the handover spot, and the
+              first day before anything begins. Nothing is charged on this site.
             </Text>
           </div>
           {siteConfig.founderNote ? (
@@ -89,6 +89,27 @@ export default function AboutPage() {
 
       <Section tone="oat">
         <Container>
+          <SectionHeading split eyebrow="A week on the plan" title="How the week actually runs.">
+            One rhythm for the office week — meals that arrive where you are,
+            without a plate you build yourself.
+          </SectionHeading>
+          <ul className="mt-8 grid gap-6 md:mt-12 md:grid-cols-3 md:gap-8">
+            {weekBeats.map((beat) => (
+              <li key={beat.title} className="border-t-2 border-olive pt-5">
+                <Heading as="h3" size="card">
+                  {beat.title}
+                </Heading>
+                <Text size="body" className="mt-3">
+                  {beat.body}
+                </Text>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+
+      <Section tone="white">
+        <Container>
           <SectionHeading split eyebrow="The kitchen" title="What every meal is held to.">
             These rules sit beside the calories and macros on this week&apos;s
             menu. Together they keep the food balanced and healthy, for every
@@ -101,15 +122,14 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section tone="white">
+      <Section tone="cream">
         <Container>
-          <SectionHeading split eyebrow="The week" title="Monday to Friday, one rate per meal.">
-            Saturday can be added. Sunday stays off. Three days is 3 of each
-            meal you pick. Two weeks is 10 of that meal on Monday to Friday, or
-            12 with Saturday. Four weeks is 20, or 24. The rate per meal is the
-            same at every length.
+          <SectionHeading split eyebrow="Where we cook for" title={`Serving ${siteConfig.launchArea}.`}>
+            One rate per meal. Three days, two weeks, or four weeks. A locality
+            is confirmed with you before the first meal — the site does not
+            check an address by itself.
           </SectionHeading>
-          <ul className="mt-8 grid gap-3 md:mt-12 md:grid-cols-3 md:gap-5">
+          <ul className="mt-8 grid gap-3 md:mt-10 md:grid-cols-3 md:gap-5">
             {plans.map((plan) => (
               <Card key={plan.id} as="li" className="h-full">
                 <Heading as="h3" size="card">
@@ -130,15 +150,6 @@ export default function AboutPage() {
               </Card>
             ))}
           </ul>
-        </Container>
-      </Section>
-
-      <Section tone="cream">
-        <Container>
-          <SectionHeading split eyebrow="Where it goes" title={`Serving ${siteConfig.launchArea}.`}>
-            A locality is confirmed with you before the first meal. The site
-            does not check an address by itself.
-          </SectionHeading>
           <EyebrowList label="Neighbourhoods" items={siteConfig.serviceAreas} />
           <EyebrowList label="Tech parks" items={siteConfig.techParks} quiet />
           <Text size="body" className="mt-6 max-w-2xl">
@@ -167,7 +178,7 @@ function EyebrowList({
   quiet?: boolean;
 }) {
   return (
-    <div className="mt-6">
+    <div className="mt-8">
       <Heading as="h3" size="card">
         {label}
       </Heading>

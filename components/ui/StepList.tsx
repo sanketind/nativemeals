@@ -8,8 +8,16 @@ export type Step = { number: string; title: string; body: string };
 export function StepList({ steps, className }: { steps: Step[]; className?: string }) {
   return (
     <ol className={cn("grid gap-12 md:gap-8", className)}>
-      {steps.map((step) => (
-        <li key={step.number} className="border-t border-cream/20 pt-8">
+      {steps.map((step, index) => (
+        <li
+          key={step.number}
+          className={cn(
+            "border-t border-cream/20 pt-8 motion-safe:animate-fade-up",
+            index === 1 && "motion-safe:[animation-delay:70ms]",
+            index === 2 && "motion-safe:[animation-delay:140ms]",
+            index === 3 && "motion-safe:[animation-delay:210ms]",
+          )}
+        >
           {/* Decorative: the list is already ordered. */}
           <p aria-hidden="true" className={cn(typeStyles.numeral, "text-cream")}>
             {step.number}

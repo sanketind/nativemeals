@@ -6,20 +6,24 @@ The website explains the service and takes an enquiry. It does not take payment,
 
 | Route | What the visitor does |
 | --- | --- |
-| `/` | Reads the offer, how Everyday food. Balanced better. is made, this week's menu, the plans, how it works, and where the service runs. |
-| `/meal-plans` | Builds a plan, sees an estimate, and sends details. |
-| `/about` | Reads why the service exists, what the kitchen holds to, the week a plan covers, and where it serves. |
+| `/` | Feels a day on Native, how Everyday food. Balanced better. is made, the plans, this week's menu, how it works, and where the service runs. |
+| `/meal-plans` | Reads what a plan week feels like, builds a plan, sees an estimate, and sends details. |
+| `/about` | Reads why the service exists, how a week runs, what the kitchen holds to, and where it serves. |
 | `/faqs` | Reads the practical answers. |
-| `/contact` | Sends a question. |
+| `/contact` | Sends a question about locality, veg or non-veg, or a lunch trial. |
 | `/privacy`, `/terms` | How an enquiry is stored, and how a plan starts. |
 
 There is no separate food page. This week's menu is the block on the homepage, at `#this-week`. The header and footer link there. An old `/our-food` address redirects to that block.
 
-The story page is prose, then the kitchen rules from `siteConfig.kitchenRules`, then the three plans at their confirmed rates, then the neighbourhoods and tech parks. It sounds balanced and healthy. It does not comment on whether the food feels like a diet. It does not invent a founder story. `founderNote` stays hidden until it is real. Cooked fresh does not name a time of day.
+The site tells one story at the right depth on each page: the day already has a job; everyday food, balanced better; breakfast, lunch and dinner at the gate or the door; an enquiry starts the plan. It sounds balanced and healthy. It does not comment on whether the food feels like a diet. It does not invent a founder story. `founderNote` stays hidden until it is real. Cooked fresh does not name a time of day.
 
-The homepage order is: hero, breakfast lunch and dinner photos, how we make Everyday food. Balanced better., plan cards, this week's menu, how it works, service area, then a closing call to action. There is no second kitchen-rules band on the homepage.
+The About page is four purposeful bands: why it exists (short prose), a week on the plan (Monday to Friday, gate or door, cooked for its slot), the kitchen rules from `siteConfig.kitchenRules`, then where we cook for (plan rates, neighbourhoods, tech parks). It does not dump everything into one article.
 
-How we make it sits after the photos and before the plans. It is the one place that explains the tagline. Everyday means you can eat it through the week. Balanced better means a full plate — protein, carbs, vegetables and dal — with calories and macros published each week, cooked to the kitchen rules. Four cards name the practices in plain words: millet and multigrain rotis, sabzi without potato bulk, chutneys cooked here, and cooked fresh in steel. A quiet line under them points to this week's menu for the numbers, plus gate or door, three-day start, and price confirmation. The hero shows the four short rule names and links down to this section. The About page still lists the rules in full. FSSAI and the kitchen locality stay on About and in the footer, not in this band.
+The homepage order is: hero, a day on Native (breakfast, lunch and dinner photos with where each meal goes), how we make Everyday food. Balanced better., plan cards, this week's menu, how it works, service area, then a closing call to action. There is no second kitchen-rules band on the homepage.
+
+The photo band after the hero is a day on Native. Each meal gets one handover line — morning, office gate, door — not another kitchen-rules list. How we make it sits after those photos and before the plans. It is the one place that explains the tagline: a full plate with calories and macros on the menu, cooked to the kitchen rules. Four cards name the practices in plain words: millet and multigrain rotis, sabzi without potato bulk, chutneys cooked here, and cooked fresh in steel. A quiet line under them points to this week's menu for the numbers. The hero shows the four short rule names and links down to this section. The About page still lists the rules in full. FSSAI and the kitchen locality stay on About and in the footer, not in this band.
+
+Meal Plans opens with a short oat band — balanced plate, Monday to Friday, gate or door, enquiry not checkout — then the builder. Its how-it-works steps match the homepage voice, with a fourth step when meals arrive.
 
 The hero headline is Everyday food. Balanced better. The pill is Hinjewadi, Wakad and Baner, Pune. Under the headline: breakfast, lunch and dinner you can eat every day. Balanced and healthy — with calories and macros on each plate — cooked fresh and handed over at the office gate or the door. No calorie figures sit in the hero itself; those live on this week's menu. A steel thali, cut out from its background, breaks through the bottom of the headline. A round sticker on the plate says Cooked fresh, Office gate or your door. Beside the plate, four facts name the kitchen rules: no potatoes, no maida, no preservatives, and no non-stick, with a link down to How we make it. The hero shows no price. Each plan card shows its own price. The words name the offer. Starting one is still an enquiry. The page does not take payment.
 

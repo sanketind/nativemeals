@@ -19,8 +19,8 @@ export function PlansPreview() {
             </ButtonLink>
           }
         >
-          Lunch, dinner, or the full day. Every plan is priced by the meal,
-          veg or non-veg.
+          Pick lunch, dinner, or the full day. Veg or non-veg. The rate stays
+          the same at every length.
         </SectionHeading>
         <ul className="mt-8 grid gap-4 md:mt-12 md:grid-cols-3 md:gap-5">
           {plans.map((plan) => (
