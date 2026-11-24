@@ -40,8 +40,9 @@ export function WhyNativeMeals() {
     <Section id="balanced-better" tone="oat">
       <Container>
         <SectionHeading split eyebrow="Everyday food. Balanced better." title="How we make it.">
-          A full plate — protein, carbs, vegetables and dal — cooked to the
-          kitchen rules, with calories and macros on this week&apos;s menu.
+          A complete everyday meal — protein, carbs, fats, vegetables and dal —
+          cooked carefully to the kitchen rules, with calories and macros on
+          this week&apos;s menu.
         </SectionHeading>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 md:mt-12">
           {points.map((point) => (
@@ -58,8 +59,9 @@ export function WhyNativeMeals() {
         </ul>
         <div className="mt-10 grid gap-6 border-t-2 border-olive pt-8 md:mt-14 md:grid-cols-[minmax(0,1.4fr)_auto] md:items-end md:gap-10">
           <Text>
-            Those grains, dals and vegetables carry the micronutrients too. Open
-            this week&apos;s menu for the calories and macros on each plate.
+            Familiar food, prepared carefully — tasty, familiar, healthy. Those
+            grains, dals and vegetables carry the micronutrients too. Open this
+            week&apos;s menu for the calories and macros on each plate.
           </Text>
           <div className="flex flex-wrap gap-3">
             <StartCTA />

@@ -14,7 +14,7 @@ import { Heading, Price, Text } from "@/components/ui/Type";
 
 export const metadata = pageMeta(
   "Everyday food in Pune",
-  `Why Native Meals exists for people working in ${siteConfig.serviceAreaShort}: everyday food, balanced and healthy, that you can eat every day.`,
+  `Why Native Meals exists for people working in ${siteConfig.serviceAreaShort}: familiar everyday food, prepared carefully as a complete meal you can eat every day.`,
 );
 
 const weekBeats = [
@@ -48,8 +48,8 @@ export default function AboutPage() {
         imageId="riceBowl"
       >
         Native Meals cooks for people in {siteConfig.serviceAreaShort} who
-        already have a job, and want balanced, healthy food they can eat
-        every day.
+        already have a job, and want a complete meal they can eat every day —
+        tasty, familiar, healthy.
       </PageHeader>
 
       <Section tone="white">
@@ -57,15 +57,19 @@ export default function AboutPage() {
           <SectionHeading eyebrow="Why it exists" title="The day already has a job." />
           <div className="mt-8 max-w-2xl space-y-5">
             <Text>
-              People working in {siteConfig.serviceAreaLine} already have a full
-              day. Planning the next meal, the shop, and the cooking sit on top
-              of that. Native Meals is the part that can just arrive.
+              Traditional everyday meals used to be complete — a full plate that
+              held protein, carbs, fats, vegetables and dal together. People
+              working in {siteConfig.serviceAreaLine} already have a full day.
+              There is not enough time, and often not enough money, to plan,
+              shop and cook that carefully every day. Something drops. The plate
+              stops being balanced.
             </Text>
             <Text>
-              The food is everyday food, balanced and healthy — a full plate of
-              protein, carbs, vegetables and dal, with calories and macros on
-              this week&apos;s menu, and kitchen rules that hold for every meal.
-              You should be able to eat it on Monday and still want it on Friday.
+              Native Meals brings that balance back. It is the same familiar
+              food, prepared carefully — tasty, familiar, healthy — a complete
+              meal with calories and macros on this week&apos;s menu, and kitchen
+              rules that hold for every dish. You should be able to eat it on
+              Monday and still want it on Friday.
             </Text>
             <Text>
               Native is food you come back to. Meals is breakfast, lunch and
@@ -112,8 +116,8 @@ export default function AboutPage() {
         <Container>
           <SectionHeading split eyebrow="The kitchen" title="What every meal is held to.">
             These rules sit beside the calories and macros on this week&apos;s
-            menu. Together they keep the food balanced and healthy, for every
-            dish, veg and non-veg.
+            menu. Together they keep every plate a complete meal — tasty,
+            familiar, healthy — veg and non-veg.
           </SectionHeading>
           <RuleList className="mt-10 md:mt-14" />
           <Text className="mt-10 max-w-2xl">

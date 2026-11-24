@@ -44,9 +44,9 @@ export function HeroSection() {
         <div className="mt-8 grid gap-8 md:grid-cols-2 lg:mt-0 lg:flex-1 lg:grid-cols-[1fr_minmax(0,1.6fr)_1fr] lg:items-end lg:gap-10">
           <div className="lg:pb-20">
             <Text size="lede" tone="inverse" className="max-w-sm">
-              Breakfast, lunch and dinner you can eat every day. Balanced and
-              healthy — with calories and macros on each plate — cooked fresh
-              and handed over at your office gate or your door.
+              Breakfast, lunch and dinner you can eat every day — complete,
+              familiar meals, cooked fresh and handed over at your office gate
+              or your door.
             </Text>
             <div className="mt-7 flex flex-wrap gap-3">
               <StartCTA />

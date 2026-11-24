@@ -1,14 +1,28 @@
 # Business
 
-Native Meals is an everyday meal service for people working and living in Hinjewadi, Wakad and Baner, Pune. The line it leads with is Everyday food. Balanced better. It sells breakfast, lunch and dinner on a plan: everyday food, balanced and healthy. The meals are cooked fresh, and handed over at an office gate, a security desk, or a door. Cooked fresh does not name a time of day. The site does not say that every meal is cooked in the morning, and it does not say that dinner is cooked in the morning for the night. Monday to Friday is the pattern the site leads with. A six-day week is there for people who also want Saturday. The site takes an enquiry. It does not start or charge the subscription itself.
+Native Meals is an everyday meal service for people working and living in Hinjewadi, Wakad and Baner, Pune. The line it leads with is Everyday food. Balanced better. It sells breakfast, lunch and dinner on a plan: everyday food that is tasty, familiar and healthy — a complete meal, prepared carefully. The meals are cooked fresh, and handed over at an office gate, a security desk, or a door. Cooked fresh does not name a time of day. The site does not say that every meal is cooked in the morning, and it does not say that dinner is cooked in the morning for the night. Monday to Friday is the pattern the site leads with. A six-day week is there for people who also want Saturday. The site takes an enquiry. It does not start or charge the subscription itself.
 
 This note records what the site is allowed to say. If a fact is not here, and it is not in `data/site-config.ts`, do not add it to a page.
 
+## Purpose
+
+Traditional everyday meals used to be complete — *sampoorna anna*, *pushtik aahar*. A full plate carried what people needed: protein, carbs, fats, minerals, vitamins, and the rest of a thali that held together. That was the food people knew.
+
+A busy office week makes that hard. There is not enough time, and often not enough money, to plan, shop and cook a complete plate carefully every day. Something drops. The plate stops being balanced.
+
+Native Meals exists to help people balance their food again. It is the same familiar food, prepared carefully — tasty, familiar, healthy — so the meal is complete without asking the customer to become the kitchen. Lunch at the gate. Dinner at the door. Breakfast when they want the full day.
+
+## What “balanced” means
+
+Balanced means a complete meal. On the site, say that in plain English: a complete meal, a full plate, familiar food prepared carefully. The Hindi and Sanskrit names (*sampoorna anna*, *pushtik aahar*) stay in this note as the meaning behind the word. They are not required on the UI.
+
+A complete meal is protein, carbs, fats, vegetables and dal, cooked to the kitchen rules that hold for every meal, with calories and macros published from kitchen calculations on this week's menu. Grains, dals and vegetables carry micronutrients too; say that softly when it is true. Do not invent vitamin, mineral or probiotic numbers.
+
+A person should be able to eat it every day. It is not a diet plan, a protein target the customer sets, or medical advice. It is not gym food, clinic food, or exotic health food. Sound tasty, familiar and healthy. The tagline stays Everyday food. Balanced better.
+
 ## Who it is for
 
-People who already have a job, and do not want planning, shopping and cooking on top of it. Lunch is for the office. Dinner is for the PG or the flat after work. The full day is for someone who wants both, or breakfast as well.
-
-The food is everyday food, balanced and healthy. A person should be able to eat it every day. Balance means a full plate — protein, carbs, vegetables and dal — with calories and macros published from kitchen calculations on this week's menu, plus the kitchen rules that hold for every meal. It is not a diet plan, a protein target the customer sets, or medical advice.
+People who already have a job, and do not want planning, shopping and cooking on top of it — and who still want a complete plate. Lunch is for the office. Dinner is for the PG or the flat after work. The full day is for someone who wants both, or breakfast as well.
 
 The site speaks to offices in Hinjewadi, Wakad and Baner, including people who work from home some days and need the meal at the door instead of the gate.
 
@@ -56,4 +70,4 @@ Leave the env var empty. The site hides the fact rather than printing a placehol
 - Social profiles.
 - A founder story. `founderNote` stays null until there is a real one.
 
-Calories and macros on the menu come only from the kitchen sheet (`kcal`, `protein_g`, `carbs_g`, `fat_g`). Publish a figure only when the kitchen has calculated it. Do not invent ratings, testimonials, calorie or protein numbers, a nutritionist, a weight-loss claim, or a medical plan. Do not tell the customer the food should not feel like a diet. Sound balanced and healthy. The tagline stays Everyday food. Balanced better. The menu on the homepage is a sample until the Google Sheet is connected. If that sheet cannot be loaded, the page says so. It does not put the sample or an older week in its place. Delivery and collection details that are still open are confirmed with the person before they start. A skipped meal is carried to the end of the plan once the cutoff is published. Pause and cancellation are still explained with the person before the first meal, not published as if they were settled.
+Calories and macros on the menu come only from the kitchen sheet (`kcal`, `protein_g`, `carbs_g`, `fat_g`). Publish a figure only when the kitchen has calculated it. Do not invent ratings, testimonials, calorie or protein numbers, vitamin or probiotic counts, a nutritionist, a weight-loss claim, or a medical plan. Do not tell the customer the food should not feel like a diet. Sound tasty, familiar and healthy. The tagline stays Everyday food. Balanced better. The menu on the homepage is a sample until the Google Sheet is connected. If that sheet cannot be loaded, the page says so. It does not put the sample or an older week in its place. Delivery and collection details that are still open are confirmed with the person before they start. A skipped meal is carried to the end of the plan once the cutoff is published. Pause and cancellation are still explained with the person before the first meal, not published as if they were settled.

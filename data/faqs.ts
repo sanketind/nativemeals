@@ -23,7 +23,7 @@ export const faqs: Faq[] = [
     id: "what-is-native-meals",
     question: "What is Native Meals?",
     answer:
-      `Native Meals is everyday food, balanced and healthy: breakfast, lunch and dinner on a meal plan. Each plate shows calories and macros from the kitchen. Meals are cooked fresh and handed over at your office gate or your door. We serve ${siteConfig.serviceAreaShort} in Pune.`,
+      `Native Meals is everyday food that is tasty, familiar and healthy — a complete meal, prepared carefully. Breakfast, lunch and dinner on a meal plan. Each plate shows calories and macros from the kitchen. Meals are cooked fresh and handed over at your office gate or your door. We serve ${siteConfig.serviceAreaShort} in Pune.`,
     pages: ["faqs"],
   },
   {

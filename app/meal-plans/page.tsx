@@ -87,9 +87,9 @@ export default function MealPlansPage() {
             eyebrow="Everyday food. Balanced better."
             title="A week of meals that arrive."
           >
-            Full plates with kitchen rules and macros on the menu. Monday to
-            Friday at the gate or your door. An enquiry starts the plan —
-            nothing is charged on this site.
+            Complete, familiar plates — kitchen rules and macros on the menu.
+            Monday to Friday at the gate or your door. An enquiry starts the
+            plan — nothing is charged on this site.
           </SectionHeading>
         </Container>
       </Section>

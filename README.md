@@ -1,6 +1,6 @@
 # Native Meals
 
-The website for Native Meals: everyday food, balanced and healthy, for Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner on a plan, with kitchen-supplied calories and macros on this week's menu, cooked fresh and handed over at the office gate, the security desk, or the door. The tagline stays Everyday food. Balanced better. Monday to Friday is the main pattern.
+The website for Native Meals: everyday food that is tasty, familiar and healthy — a complete meal, prepared carefully — for Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner on a plan, with kitchen-supplied calories and macros on this week's menu, cooked fresh and handed over at the office gate, the security desk, or the door. The tagline stays Everyday food. Balanced better. Monday to Friday is the main pattern.
 
 ## Read the project
 
