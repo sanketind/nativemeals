@@ -2,33 +2,33 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-export const alt = "Native Meals — Everyday food. Balanced better.";
+export const alt = "Native Meals. Everyday food. Balanced better.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OpenGraphImage() {
-  const font = await readFile(join(process.cwd(), "app/fonts/Outfit-Bold.woff"));
+  const font = await readFile(join(process.cwd(), "app/fonts/DMSans-Bold.woff"));
 
   return new ImageResponse(
     (
       <div
         style={{
           /* Hex values match the theme in app/globals.css. next/og cannot read those variables. */
-          background: "#0C3F25",
+          background: "#1A2E24",
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          fontFamily: "Outfit",
+          fontFamily: "DM Sans",
         }}
       >
         <div
           style={{
             fontSize: 22,
             letterSpacing: 2.4,
-            color: "rgba(251, 243, 224, 0.7)",
+            color: "rgba(245, 243, 239, 0.7)",
             textTransform: "uppercase",
             fontWeight: 700,
           }}
@@ -39,12 +39,11 @@ export default async function OpenGraphImage() {
           style={{
             display: "flex",
             flexDirection: "column",
-            fontSize: 104,
-            color: "#FBF3E0",
-            marginTop: 20,
-            lineHeight: 0.94,
-            letterSpacing: -3,
-            textTransform: "uppercase",
+            fontSize: 64,
+            color: "#F5F3EF",
+            marginTop: 24,
+            lineHeight: 1.1,
+            letterSpacing: -1.5,
             fontWeight: 700,
           }}
         >
@@ -53,23 +52,23 @@ export default async function OpenGraphImage() {
         </div>
         <div
           style={{
-            fontSize: 30,
-            color: "rgba(251, 243, 224, 0.8)",
-            marginTop: 32,
+            fontSize: 26,
+            color: "rgba(245, 243, 239, 0.7)",
+            marginTop: 28,
             lineHeight: 1.4,
             fontWeight: 700,
           }}
         >
-          Balanced, healthy food with calories and macros on each plate.
+          Complete familiar meals, cooked fresh, at the office gate or your door.
         </div>
         <div style={{ display: "flex", marginTop: 44 }}>
           <div
             style={{
-              fontSize: 24,
-              color: "#0C3F25",
-              background: "#F9D82B",
-              borderRadius: 999,
-              padding: "12px 28px",
+              fontSize: 22,
+              color: "#121A16",
+              background: "#FF6A3D",
+              borderRadius: 10,
+              padding: "12px 24px",
               fontWeight: 700,
             }}
           >
@@ -82,7 +81,7 @@ export default async function OpenGraphImage() {
       ...size,
       fonts: [
         {
-          name: "Outfit",
+          name: "DM Sans",
           data: font,
           weight: 700,
           style: "normal",

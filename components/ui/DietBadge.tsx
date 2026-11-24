@@ -9,7 +9,7 @@ const marks = {
 export function DietBadge({ diet }: { diet: Diet }) {
   const mark = marks[diet];
   return (
-    <span className="inline-flex shrink-0 items-center gap-1.5 text-xs font-medium text-charcoal/80">
+    <span className="inline-flex shrink-0 items-center gap-1.5 text-xs font-medium text-ink/80">
       <svg
         width="14"
         height="14"

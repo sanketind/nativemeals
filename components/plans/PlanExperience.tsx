@@ -83,7 +83,7 @@ export function PlanExperience() {
     <>
       <Section id="build">
         <Container>
-          <SectionHeading split eyebrow="Your plan" title="Build a plan around your week.">
+          <SectionHeading eyebrow="Your plan" title="Build a plan around your week.">
             Monday to Friday is the office week. Add Saturday if you want it.
             Lunch and dinner can use different days. Three days is 3 of each
             meal you pick, at the same price per meal. Nothing is charged on
@@ -109,7 +109,7 @@ export function PlanExperience() {
                         aria-pressed={selected}
                         onClick={() => toggleMeal(choice.id)}
                       >
-                        <span className="block font-semibold text-olive">{choice.label}</span>
+                        <span className="block font-semibold text-ink">{choice.label}</span>
                         <Price className="mt-3 block">{formatInr(rate)}</Price>
                         <Caption className="mt-1 block">
                           {split ? `veg · non-veg ${formatInr(split)}` : "per meal"}
@@ -176,8 +176,8 @@ export function PlanExperience() {
             </div>
 
             {estimate ? (
-              <aside className="rounded-card bg-olive p-6 text-cream lg:sticky lg:top-24">
-                <Eyebrow tone="sunflower">Estimate</Eyebrow>
+              <aside className="rounded-card bg-field p-6 text-stone lg:sticky lg:top-20">
+                <Eyebrow tone="accent">Estimate</Eyebrow>
                 <Heading as="h3" size="stat" tone="inverse" className="mt-3">
                   {estimate.planName}
                 </Heading>
@@ -209,18 +209,18 @@ export function PlanExperience() {
                     <Row label="Per day" value={formatInr(estimate.perDay)} />
                   ) : null}
                 </dl>
-                <p className="mt-6 border-t border-cream/15 pt-5" aria-live="polite">
+                <p className="mt-6 border-t border-stone/15 pt-5" aria-live="polite">
                   <Caption tone="inverse" className="block">
                     Estimated total
                   </Caption>
-                  <Price size="lg" tone="cream" className="mt-1 block">
+                  <Price size="lg" tone="stone" className="mt-1 block">
                     {formatInr(estimate.total)}
                   </Price>
                 </p>
                 {estimate.dietNote ? (
-                  <p className="mt-3 text-sm text-cream/75">{estimate.dietNote}</p>
+                  <p className="mt-3 text-sm text-stone/75">{estimate.dietNote}</p>
                 ) : null}
-                <p className="mt-3 text-sm text-cream/75">
+                <p className="mt-3 text-sm text-stone/75">
                   Any delivery charge is confirmed before you start.
                 </p>
                 <Button
@@ -330,7 +330,7 @@ function mealNoun(meal: MealSlot, count: number) {
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-baseline justify-between gap-4">
-      <dt className="text-cream/70">{label}</dt>
+      <dt className="text-stone/70">{label}</dt>
       <dd className="text-right font-medium">{value}</dd>
     </div>
   );

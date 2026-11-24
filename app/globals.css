@@ -1,89 +1,88 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* 60: the light mood colour. Page background. */
-  --color-cream: #fbf3e0;
-  /* Deeper cream for bands, insets and photo placeholders. */
-  --color-oat: #f3e7c9;
-  /* 30: the deep mood colour. Headings, the hero and the dark bands. */
-  --color-olive: #0c3f25;
-  --color-olive-deep: #082f1f;
-  /* 10: the accent. Only on what people click, prices, and the sticker. Never small text on cream. */
-  --color-sunflower: #f9d82b;
-  --color-sunflower-deep: #ebc814;
-  --color-muted: #526158;
+  /* 60: chalk stone. Page background. */
+  --color-stone: #f5f3ef;
+  /* Deeper stone for alternate bands, notes, photo placeholders. */
+  --color-mist: #ebe8e2;
+  /* Near-black with a green undertone. Headings and footer. */
+  --color-ink: #121a16;
+  /* Dark field bands — hero, page headers, how-it-works, closing. */
+  --color-field: #1a2e24;
+  /* 10: chili accent. Only on what people click, prices. Never small text on stone. */
+  --color-accent: #ff6a3d;
+  --color-accent-deep: #e85a30;
+  --color-muted: #5c6660;
   --color-error: #9b3a2f;
-  --color-charcoal: #292a26;
   --color-white: #ffffff;
   /* Diet marks. Outside the brand palette, used only on the veg / non-veg badge. */
   --color-veg: #2f6b45;
   --color-nonveg: #8e4328;
   /* WhatsApp brand green. Not a Native Meals colour. */
   --color-whatsapp: #128c7e;
-  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 
-  --text-eyebrow: 0.78rem;
+  --text-eyebrow: 0.72rem;
   --text-eyebrow--line-height: 1.2;
-  --text-eyebrow--letter-spacing: 0.12em;
+  --text-eyebrow--letter-spacing: 0.14em;
   --text-eyebrow--font-weight: 700;
   --text-eyebrow-compact: 0.65rem;
   --text-eyebrow-compact--line-height: 1.2;
-  --text-eyebrow-compact--letter-spacing: 0.08em;
+  --text-eyebrow-compact--letter-spacing: 0.1em;
   --text-eyebrow-compact--font-weight: 700;
-  /* Display, closing and title are set uppercase in components/ui/styles.ts. */
-  --text-display: clamp(2.75rem, 8.5vw, 7.5rem);
-  --text-display--line-height: 0.92;
-  --text-display--letter-spacing: -0.04em;
-  --text-display--font-weight: 800;
-  /* The homepage hero. Sized so "Balanced better." spans the container on one line,
-     and capped by height so the plate keeps room on short, wide screens. */
-  --text-poster: clamp(3.5rem, min(9.6vw, 16svh), 10.5rem);
-  --text-poster--line-height: 0.86;
-  --text-poster--letter-spacing: -0.045em;
-  --text-poster--font-weight: 800;
-  --text-closing: clamp(2.75rem, 6.4vw, 6rem);
-  --text-closing--line-height: 0.94;
-  --text-closing--letter-spacing: -0.035em;
-  --text-closing--font-weight: 800;
-  --text-title: clamp(2.5rem, 5.4vw, 4.75rem);
-  --text-title--line-height: 0.96;
-  --text-title--letter-spacing: -0.03em;
-  --text-title--font-weight: 800;
+  /* One clean face (DM Sans) for display and body — set in components/ui/styles.ts. */
+  --text-display: clamp(2.25rem, 5.5vw, 4.25rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.025em;
+  --text-display--font-weight: 700;
+  /* Homepage hero tagline. Sized to fit "Balanced better." without clipping. */
+  --text-poster: clamp(2.5rem, 6.5vw, 4.75rem);
+  --text-poster--line-height: 1.05;
+  --text-poster--letter-spacing: -0.03em;
+  --text-poster--font-weight: 700;
+  --text-closing: clamp(2.25rem, 5vw, 3.75rem);
+  --text-closing--line-height: 1.05;
+  --text-closing--letter-spacing: -0.025em;
+  --text-closing--font-weight: 700;
+  --text-title: clamp(1.85rem, 3.8vw, 3rem);
+  --text-title--line-height: 1.08;
+  --text-title--letter-spacing: -0.02em;
+  --text-title--font-weight: 700;
   /* Outlined step numbers on the homepage. */
-  --text-numeral: clamp(4rem, 10vw, 9rem);
-  --text-numeral--line-height: 0.8;
-  --text-numeral--letter-spacing: -0.05em;
-  --text-numeral--font-weight: 800;
+  --text-numeral: clamp(3.25rem, 8vw, 6rem);
+  --text-numeral--line-height: 0.85;
+  --text-numeral--letter-spacing: -0.04em;
+  --text-numeral--font-weight: 700;
   /* The meal name across the bottom of a homepage photo. */
-  --text-label: clamp(1.75rem, 3vw, 2.75rem);
-  --text-label--line-height: 1;
-  --text-label--letter-spacing: -0.03em;
-  --text-label--font-weight: 800;
-  --text-stat: 1.28rem;
+  --text-label: clamp(1.5rem, 2.6vw, 2.35rem);
+  --text-label--line-height: 1.05;
+  --text-label--letter-spacing: -0.02em;
+  --text-label--font-weight: 700;
+  --text-stat: 1.2rem;
   --text-stat--line-height: 1.3;
   --text-stat--letter-spacing: -0.02em;
   --text-stat--font-weight: 700;
-  --text-card: 1.5rem;
+  --text-card: 1.35rem;
   --text-card--line-height: 1.25;
   --text-card--font-weight: 700;
-  --text-lede: clamp(1.05rem, 1.5vw, 1.25rem);
-  --text-lede--line-height: 1.7;
+  --text-lede: clamp(1.05rem, 1.4vw, 1.2rem);
+  --text-lede--line-height: 1.65;
   --text-lede--font-weight: 400;
-  --text-lead: 1.06rem;
-  --text-lead--line-height: 1.7;
+  --text-lead: 1.05rem;
+  --text-lead--line-height: 1.65;
   --text-lead--font-weight: 400;
   --text-body: 0.94rem;
   --text-body--line-height: 1.65;
   --text-body--font-weight: 400;
-  --text-price-lg: clamp(1.75rem, 3vw, 2.55rem);
+  --text-price-lg: clamp(1.65rem, 2.8vw, 2.35rem);
   --text-price-lg--line-height: 1;
   --text-price-lg--letter-spacing: -0.03em;
   --text-price-lg--font-weight: 700;
-  --text-price: clamp(1.5rem, 2.4vw, 2rem);
+  --text-price: clamp(1.4rem, 2.2vw, 1.85rem);
   --text-price--line-height: 1;
   --text-price--letter-spacing: -0.03em;
   --text-price--font-weight: 700;
-  --text-caption: 0.72rem;
+  --text-caption: 0.7rem;
   --text-caption--line-height: 1.2;
   --text-caption--letter-spacing: 0.12em;
   --text-caption--font-weight: 700;
@@ -91,28 +90,28 @@
   --text-hint--line-height: 1.4;
   --text-hint--letter-spacing: 0.04em;
   --text-hint--font-weight: 600;
-  --text-wordmark: 1.15rem;
+  --text-wordmark: 1.05rem;
   --text-wordmark--line-height: 1;
-  --text-wordmark--letter-spacing: -0.03em;
-  --text-wordmark--font-weight: 800;
-  --text-wordmark-lg: 1.25rem;
+  --text-wordmark--letter-spacing: -0.02em;
+  --text-wordmark--font-weight: 700;
+  --text-wordmark-lg: 1.15rem;
   --text-wordmark-lg--line-height: 1;
-  --text-wordmark-lg--letter-spacing: -0.03em;
-  --text-wordmark-lg--font-weight: 800;
-  --text-nav: 15px;
+  --text-wordmark-lg--letter-spacing: -0.02em;
+  --text-wordmark-lg--font-weight: 700;
+  --text-nav: 14px;
   --text-nav--line-height: 1.25;
   --text-nav--font-weight: 600;
 
-  --radius-control: 1.25rem;
-  --radius-card: 2rem;
-  --radius-photo: 2.5rem;
-  --radius-section: 3rem;
+  --radius-control: 0.75rem;
+  --radius-card: 1rem;
+  --radius-photo: 0.75rem;
+  --radius-section: 1.5rem;
 
-  --shadow-raise: 0 12px 40px -16px rgba(41, 42, 38, 0.35);
-  --shadow-float: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-raise: 0 1px 0 rgb(18 26 22 / 0.08);
+  --shadow-float: 0 8px 24px -8px rgb(18 26 22 / 0.25);
 
-  /* The tiffin mark repeated, for the olive bands. Hex because a data URI cannot read the theme. */
-  --background-image-brand-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cdefs%3E%3Cpath id='m' fill-rule='evenodd' d='M25.5 14.5a4.5 4.5 0 0 1 4.5-4.5h4a4.5 4.5 0 0 1 4.5 4.5v2.2c4.8.9 8.5 4.5 8.5 9.3v4.2a3.8 3.8 0 0 1-2.1 3.4 3.8 3.8 0 0 1 2.1 3.4V41c0 7.2-5.8 13-13 13h-4c-7.2 0-13-5.8-13-13v-4c0-1.5.8-2.8 2.1-3.4A3.8 3.8 0 0 1 17 30.2V26c0-4.8 3.7-8.4 8.5-9.3v-2.2Zm3.5 1.8q3-.3 6 0v-1.6a1.5 1.5 0 0 0-1.5-1.5h-3a1.5 1.5 0 0 0-1.5 1.5v1.6Z'/%3E%3C/defs%3E%3Cg fill='%23fbf3e0' fill-opacity='0.045'%3E%3Cuse href='%23m' transform='translate(12 12) scale(0.7)'/%3E%3Cuse href='%23m' transform='translate(92 92) scale(0.7) rotate(12 32 32)'/%3E%3C/g%3E%3C/svg%3E");
+  /* The tiffin mark repeated, for dark field bands. Hex because a data URI cannot read the theme. */
+  --background-image-brand-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cdefs%3E%3Cpath id='m' fill-rule='evenodd' d='M25.5 14.5a4.5 4.5 0 0 1 4.5-4.5h4a4.5 4.5 0 0 1 4.5 4.5v2.2c4.8.9 8.5 4.5 8.5 9.3v4.2a3.8 3.8 0 0 1-2.1 3.4 3.8 3.8 0 0 1 2.1 3.4V41c0 7.2-5.8 13-13 13h-4c-7.2 0-13-5.8-13-13v-4c0-1.5.8-2.8 2.1-3.4A3.8 3.8 0 0 1 17 30.2V26c0-4.8 3.7-8.4 8.5-9.3v-2.2Zm3.5 1.8q3-.3 6 0v-1.6a1.5 1.5 0 0 0-1.5-1.5h-3a1.5 1.5 0 0 0-1.5 1.5v1.6Z'/%3E%3C/defs%3E%3Cg fill='%23f5f3ef' fill-opacity='0.04'%3E%3Cuse href='%23m' transform='translate(12 12) scale(0.7)'/%3E%3Cuse href='%23m' transform='translate(92 92) scale(0.7) rotate(12 32 32)'/%3E%3C/g%3E%3C/svg%3E");
 
   --animate-spin-slow: spin 18s linear infinite;
   --animate-rise: rise 0.7s ease-out both;
@@ -146,7 +145,7 @@ html {
 }
 
 body {
-  background: var(--color-cream);
+  background: var(--color-stone);
   color: var(--color-muted);
   font-family: var(--font-sans);
   font-weight: 400;
@@ -154,19 +153,18 @@ body {
 }
 
 ::selection {
-  background: var(--color-sunflower);
-  color: var(--color-olive);
+  background: var(--color-accent);
+  color: var(--color-ink);
 }
 
-/* Sunflower is too pale to see on cream. It only rings focus inside the dark bands. */
 :focus-visible {
-  outline: 2px solid var(--color-olive);
+  outline: 2px solid var(--color-ink);
   outline-offset: 3px;
 }
 
-.bg-olive :focus-visible,
-.bg-olive-deep :focus-visible {
-  outline-color: var(--color-sunflower);
+.bg-field :focus-visible,
+.bg-ink :focus-visible {
+  outline-color: var(--color-accent);
 }
 
 @media (prefers-reduced-motion: no-preference) {

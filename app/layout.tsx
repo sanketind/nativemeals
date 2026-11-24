@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import { siteConfig } from "@/data/site-config";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Footer } from "@/components/layout/Footer";
@@ -8,10 +8,10 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { foodEstablishment } from "@/lib/structured-data";
 import "./globals.css";
 
-const outfit = Outfit({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-outfit",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-dm-sans",
 });
 
 export const metadata: Metadata = {
@@ -45,13 +45,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${outfit.variable} h-full antialiased`}
+      className={`${dmSans.variable} h-full antialiased`}
       data-scroll-behavior="smooth"
     >
-      <body className="flex min-h-full flex-col bg-cream font-sans font-normal text-muted">
+      <body className="flex min-h-full flex-col bg-stone font-sans font-normal text-muted">
         <a
           href="#main"
-          className="absolute left-4 top-4 z-50 -translate-y-24 rounded-full bg-olive px-4 py-2 text-sm font-semibold text-white focus:translate-y-0"
+          className="absolute left-4 top-4 z-50 -translate-y-24 rounded-control bg-ink px-4 py-2 text-sm font-semibold text-stone focus:translate-y-0"
         >
           Skip to content
         </a>

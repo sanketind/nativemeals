@@ -17,12 +17,12 @@ export function PhotoFrame({
 
 export function PhotoBadge({
   as: Tag = "p",
-  tone = "cream",
+  tone = "stone",
   className,
   children,
 }: {
   as?: "p" | "figcaption";
-  tone?: "cream" | "white";
+  tone?: "stone" | "white";
   className?: string;
   children: React.ReactNode;
 }) {
@@ -31,7 +31,7 @@ export function PhotoBadge({
       className={cn(
         surface.badge,
         "absolute",
-        tone === "cream" ? "bg-cream" : "bg-white/95 text-sm font-semibold text-olive",
+        tone === "stone" ? "bg-stone" : "bg-white/95 text-sm font-semibold text-ink",
         className,
       )}
     >

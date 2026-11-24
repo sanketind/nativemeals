@@ -397,7 +397,7 @@ export function EnquiryForm({
 
       <div aria-live="polite" className="min-h-6 text-sm leading-relaxed">
         {state.status === "success" ? (
-          <p className="text-olive">
+          <p className="text-ink">
             {type === "serviceability"
               ? "Thanks. We will confirm whether we can serve this area."
               : "Thanks. We have your enquiry and will be in touch."}
@@ -415,12 +415,12 @@ export function EnquiryForm({
                 href={state.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-olive underline-offset-2 hover:underline"
+                className="text-ink underline-offset-2 hover:underline"
               >
                 Send via WhatsApp
               </a>
               {state.emailUrl ? (
-                <a href={state.emailUrl} className="text-olive underline-offset-2 hover:underline">
+                <a href={state.emailUrl} className="text-ink underline-offset-2 hover:underline">
                   Send by email
                 </a>
               ) : null}

@@ -1,16 +1,16 @@
 # Business
 
-Native Meals is an everyday meal service for people working and living in Hinjewadi, Wakad and Baner, Pune. The line it leads with is Everyday food. Balanced better. It sells breakfast, lunch and dinner on a plan: everyday food that is tasty, familiar and healthy — a complete meal, prepared carefully. The meals are cooked fresh, and handed over at an office gate, a security desk, or a door. Cooked fresh does not name a time of day. The site does not say that every meal is cooked in the morning, and it does not say that dinner is cooked in the morning for the night. Monday to Friday is the pattern the site leads with. A six-day week is there for people who also want Saturday. The site takes an enquiry. It does not start or charge the subscription itself.
+Native Meals is an everyday meal service for people working and living in Hinjewadi, Wakad and Baner, Pune. The line it leads with is Everyday food. Balanced better. It sells breakfast, lunch and dinner on a plan: everyday food that is tasty, familiar and healthy. A complete meal, prepared carefully. The meals are cooked fresh, and handed over at an office gate, a security desk, or a door. Cooked fresh does not name a time of day. The site does not say that every meal is cooked in the morning, and it does not say that dinner is cooked in the morning for the night. Monday to Friday is the pattern the site leads with. A six-day week is there for people who also want Saturday. The site takes an enquiry. It does not start or charge the subscription itself.
 
 This note records what the site is allowed to say. If a fact is not here, and it is not in `data/site-config.ts`, do not add it to a page.
 
 ## Purpose
 
-Traditional everyday meals used to be complete — *sampoorna anna*, *pushtik aahar*. A full plate carried what people needed: protein, carbs, fats, minerals, vitamins, and the rest of a thali that held together. That was the food people knew.
+Traditional everyday meals used to be complete (*sampoorna anna*, *pushtik aahar*). A full plate carried what people needed: protein, carbs, fats, minerals, vitamins, and the rest of a thali that held together. That was the food people knew.
 
-A busy office week makes that hard. There is not enough time, and often not enough money, to plan, shop and cook a complete plate carefully every day. Something drops. The plate stops being balanced.
+A busy office week makes that hard. There is not enough time to plan, shop and cook a complete plate carefully every day. Something drops. The plate stops being balanced.
 
-Native Meals exists to help people balance their food again. It is the same familiar food, prepared carefully — tasty, familiar, healthy — so the meal is complete without asking the customer to become the kitchen. Lunch at the gate. Dinner at the door. Breakfast when they want the full day.
+Native Meals exists to help people balance their food again. It is the same familiar food, prepared carefully: tasty, familiar, healthy. So the meal is complete without asking the customer to become the kitchen. Lunch at the gate. Dinner at the door. Breakfast when they want the full day.
 
 ## What “balanced” means
 
@@ -22,7 +22,7 @@ A person should be able to eat it every day. It is not a diet plan, a protein ta
 
 ## Who it is for
 
-People who already have a job, and do not want planning, shopping and cooking on top of it — and who still want a complete plate. Lunch is for the office. Dinner is for the PG or the flat after work. The full day is for someone who wants both, or breakfast as well.
+People who already have a job, and do not want planning, shopping and cooking on top of it, and who still want a complete plate. Lunch is for the office. Dinner is for the PG or the flat after work. The full day is for someone who wants both, or breakfast as well.
 
 The site speaks to offices in Hinjewadi, Wakad and Baner, including people who work from home some days and need the meal at the door instead of the gate.
 

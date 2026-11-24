@@ -3,13 +3,13 @@ import { type as typeStyles } from "@/components/ui/styles";
 
 export function BrandMark({
   className,
-  tone = "olive",
+  tone = "ink",
 }: {
   className?: string;
-  tone?: "olive" | "cream";
+  tone?: "ink" | "stone";
 }) {
-  const bodyFill = tone === "cream" ? "var(--color-cream)" : "var(--color-olive)";
-  const domeFill = tone === "cream" ? "var(--color-olive)" : "var(--color-cream)";
+  const bodyFill = tone === "stone" ? "var(--color-stone)" : "var(--color-ink)";
+  const domeFill = tone === "stone" ? "var(--color-field)" : "var(--color-stone)";
 
   return (
     <svg viewBox="10 6 44 52" className={className} aria-hidden="true">
@@ -23,17 +23,17 @@ export function BrandMark({
         d="M20.5 25.5c0-3.8 5.1-6.3 11.5-6.3s11.5 2.5 11.5 6.3v2.5h-23v-2.5Z"
         fill={domeFill}
       />
-      <rect x="21" y="31.9" width="22" height="3.4" rx="1.7" fill="var(--color-sunflower)" />
+      <rect x="21" y="31.9" width="22" height="3.4" rx="1" fill="var(--color-accent)" />
     </svg>
   );
 }
 
 export function Wordmark({
   className,
-  tone = "olive",
+  tone = "ink",
 }: {
   className?: string;
-  tone?: "olive" | "cream";
+  tone?: "ink" | "stone";
 }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
@@ -41,7 +41,7 @@ export function Wordmark({
       <span
         className={cn(
           typeStyles.wordmark,
-          tone === "cream" ? "text-cream" : "text-olive",
+          tone === "stone" ? "text-stone" : "text-ink",
         )}
       >
         Native Meals

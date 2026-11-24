@@ -14,7 +14,7 @@ export function WriteToUs() {
       {call && shownPhone ? (
         <>
           {" "}
-          <a href={call} className="text-olive hover:underline">
+          <a href={call} className="text-ink hover:underline">
             {shownPhone}
           </a>
           {"."}
@@ -23,7 +23,7 @@ export function WriteToUs() {
       {email ? (
         <>
           {" "}
-          <a href={`mailto:${email}`} className="text-olive hover:underline">
+          <a href={`mailto:${email}`} className="text-ink hover:underline">
             {email}
           </a>
           {"."}
@@ -36,7 +36,7 @@ export function WriteToUs() {
             href={whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-olive hover:underline"
+            className="text-ink hover:underline"
           >
             WhatsApp
           </a>

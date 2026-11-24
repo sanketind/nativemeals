@@ -1,14 +1,14 @@
 # Native Meals
 
-The website for Native Meals: everyday food that is tasty, familiar and healthy — a complete meal, prepared carefully — for Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner on a plan, with kitchen-supplied calories and macros on this week's menu, cooked fresh and handed over at the office gate, the security desk, or the door. The tagline stays Everyday food. Balanced better. Monday to Friday is the main pattern.
+The website for Native Meals: everyday food that is tasty, familiar and healthy. A complete meal, prepared carefully, for Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner on a plan, with kitchen-supplied calories and macros on this week's menu, cooked fresh and handed over at the office gate, the security desk, or the door. The tagline stays Everyday food. Balanced better. Monday to Friday is the main pattern.
 
 ## Read the project
 
-- [Business](docs/business.md) — who it is for, where it serves, and what must not be invented.
-- [Design](docs/design.md) — colour, type, voice, and photos.
-- [Product](docs/product.md) — pages, enquiry, plans, and this week's menu.
-- [Subscription journeys](docs/subscription-journeys.md) — a reference only, of two other checkouts. It does not change this site.
-- [Development](docs/development.md) — where the code lives, and how the site stays honest.
+- [Business](docs/business.md): who it is for, where it serves, and what must not be invented.
+- [Design](docs/design.md): colour, type, voice, and photos.
+- [Product](docs/product.md): pages, enquiry, plans, and this week's menu.
+- [Subscription journeys](docs/subscription-journeys.md): a reference only, of two other checkouts. It does not change this site.
+- [Development](docs/development.md): where the code lives, and how the site stays honest.
 
 ## Run it
 
@@ -49,10 +49,10 @@ Meal prices live in `data/plans.ts`. The plan cards and the builder read from it
 
 Set these in `.env.local`:
 
-- `NEXT_PUBLIC_PHONE` — shown as a tap-to-call link.
-- `NEXT_PUBLIC_WHATSAPP_NUMBER` — country code plus number, for example `9198XXXXXXX`. Turns on the contact WhatsApp links. Starting a plan uses the meal-plan form.
-- `NEXT_PUBLIC_EMAIL` — shown on the contact page, and offered if a form cannot be delivered.
-- `NEXT_PUBLIC_SITE_URL` — the real domain, used for the sitemap and link previews.
+- `NEXT_PUBLIC_PHONE`: shown as a tap-to-call link.
+- `NEXT_PUBLIC_WHATSAPP_NUMBER`: country code plus number, for example `9198XXXXXXX`. Turns on the contact WhatsApp links. Starting a plan uses the meal-plan form.
+- `NEXT_PUBLIC_EMAIL`: shown on the contact page, and offered if a form cannot be delivered.
+- `NEXT_PUBLIC_SITE_URL`: the real domain, used for the sitemap and link previews.
 
 ### Enquiry forms
 
@@ -156,8 +156,8 @@ There is an optional line under the menu, `weeklyMenu.footnote` in `data/site-co
 
 All prices live in the `pricing` object in `data/plans.ts`. The plan cards and the builder read from it. Do not type prices anywhere else.
 
-- `status` — `"draft"` shows `pricing.note` (“We confirm the total before you start.”). Set `status` to `"confirmed"` once the numbers are real, and that note disappears. It is already `"confirmed"`.
-- `perMeal` — the veg rate, in rupees, for breakfast, lunch and dinner. It is the same at every length. Non-veg lunch and dinner use `nonVegPerMeal`. Breakfast is the same either way.
+- `status`: `"draft"` shows `pricing.note` (“We confirm the total before you start.”). Set `status` to `"confirmed"` once the numbers are real, and that note disappears. It is already `"confirmed"`.
+- `perMeal`: the veg rate, in rupees, for breakfast, lunch and dinner. It is the same at every length. Non-veg lunch and dinner use `nonVegPerMeal`. Breakfast is the same either way.
 - Days are `weekdays` (Monday to Friday) or `saturday` (Monday to Saturday). Lengths are `trial` (3 days), `two-weeks`, and `four-weeks`. Three days is always 3 tiffins. Two weeks is 10 or 12. Four weeks is 20 or 24. `deliveryDays` in `data/plans.ts` is the count.
 
 The builder multiplies the selected meals by that tiffin count and shows an estimate. The enquiry API calculates the same total again, so the browser cannot submit a different price.

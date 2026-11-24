@@ -10,7 +10,7 @@ import { Eyebrow, Heading, Text } from "@/components/ui/Type";
 
 export function ServiceAreaChecker() {
   return (
-    <Section id="service-area" tone="oat">
+    <Section id="service-area" tone="mist">
       <Container className="grid gap-10 md:grid-cols-2 md:items-start">
         <div>
           <Eyebrow>Service area</Eyebrow>

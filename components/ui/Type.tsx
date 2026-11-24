@@ -2,16 +2,16 @@ import { cn } from "@/lib/cn";
 import { priceMark, type as typeStyles } from "@/components/ui/styles";
 
 const ink = {
-  sunflower: "text-sunflower",
-  olive: "text-olive",
+  accent: "text-accent",
+  ink: "text-ink",
   muted: "text-muted",
-  inverse: "text-cream/70",
+  inverse: "text-stone/70",
 } as const;
 
 export function Eyebrow({
   as: Tag = "p",
   id,
-  tone = "olive",
+  tone = "ink",
   compact = false,
   className,
   children,
@@ -55,9 +55,9 @@ export function Heading({
   className?: string;
   children: React.ReactNode;
 }) {
-  const cream = tone === "inverse" || size === "closing";
+  const light = tone === "inverse" || size === "closing";
   return (
-    <Tag className={cn(headingSize[size], cream ? "text-cream" : "text-olive", className)}>
+    <Tag className={cn(headingSize[size], light ? "text-stone" : "text-ink", className)}>
       {children}
     </Tag>
   );
@@ -86,7 +86,7 @@ export function Text({
     <Tag
       className={cn(
         textSize[size],
-        tone === "inverse" ? "text-cream/80" : "text-muted",
+        tone === "inverse" ? "text-stone/80" : "text-muted",
         className,
       )}
     >
@@ -97,8 +97,8 @@ export function Text({
 
 const captionInk = {
   muted: "text-muted",
-  olive: "text-olive",
-  inverse: "text-cream/70",
+  ink: "text-ink",
+  inverse: "text-stone/70",
 } as const;
 
 export function Caption({
@@ -121,12 +121,12 @@ export function Caption({
 
 export function Price({
   size = "md",
-  tone = "olive",
+  tone = "ink",
   className,
   children,
 }: {
   size?: "md" | "lg";
-  tone?: "olive" | "cream";
+  tone?: "ink" | "stone";
   className?: string;
   children: React.ReactNode;
 }) {
@@ -134,7 +134,7 @@ export function Price({
     <span
       className={cn(
         size === "lg" ? typeStyles.priceLg : typeStyles.price,
-        tone === "cream" ? "text-cream" : "text-olive",
+        tone === "stone" ? "text-stone" : "text-ink",
         className,
       )}
     >

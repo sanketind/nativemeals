@@ -18,7 +18,7 @@ export function Sticker({
       role="img"
       aria-label={text.replaceAll("•", ",")}
       className={cn(
-        "grid aspect-square place-items-center rounded-full bg-sunflower text-olive shadow-float *:col-start-1 *:row-start-1",
+        "grid aspect-square place-items-center rounded-full bg-accent text-ink shadow-float *:col-start-1 *:row-start-1",
         className,
       )}
     >

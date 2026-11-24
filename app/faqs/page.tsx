@@ -28,7 +28,7 @@ export default function FaqsPage() {
         </Container>
       </Section>
       <FinalCTA
-        tone="olive"
+        tone="field"
         title="Ready for a week that arrives."
         body="Try one lunch first. Tell us your office, your home, and the day you want to start."
         primaryHref="/meal-plans#enquire"

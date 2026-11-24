@@ -4,7 +4,7 @@ import { type as typeStyles } from "@/components/ui/styles";
 
 export type Step = { number: string; title: string; body: string };
 
-/** Large cream step numbers over a thin rule. For an olive band. */
+/** Large stone step numbers over a thin rule. For a field band. */
 export function StepList({ steps, className }: { steps: Step[]; className?: string }) {
   return (
     <ol className={cn("grid gap-12 md:gap-8", className)}>
@@ -12,14 +12,14 @@ export function StepList({ steps, className }: { steps: Step[]; className?: stri
         <li
           key={step.number}
           className={cn(
-            "border-t border-cream/20 pt-8 motion-safe:animate-fade-up",
+            "border-t border-stone/20 pt-8 motion-safe:animate-fade-up",
             index === 1 && "motion-safe:[animation-delay:70ms]",
             index === 2 && "motion-safe:[animation-delay:140ms]",
             index === 3 && "motion-safe:[animation-delay:210ms]",
           )}
         >
           {/* Decorative: the list is already ordered. */}
-          <p aria-hidden="true" className={cn(typeStyles.numeral, "text-cream")}>
+          <p aria-hidden="true" className={cn(typeStyles.numeral, "text-stone")}>
             {step.number}
           </p>
           <Heading as="h3" size="card" tone="inverse" className="mt-8">

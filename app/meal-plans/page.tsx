@@ -33,7 +33,7 @@ const steps = [
   {
     number: "01",
     title: "Pick the meals",
-    body: "Lunch, dinner, breakfast, or a mix — three days to four weeks.",
+    body: "Lunch, dinner, breakfast, or a mix. Three days to four weeks.",
   },
   {
     number: "02",
@@ -43,7 +43,7 @@ const steps = [
   {
     number: "03",
     title: "We confirm, then start",
-    body: "Price, handover spot, and first day — agreed before the first tiffin.",
+    body: "Price, handover spot, and first day, agreed before the first tiffin.",
   },
   {
     number: "04",
@@ -80,16 +80,15 @@ export default function MealPlansPage() {
         the start date before anything begins.
       </PageHeader>
 
-      <Section tone="oat">
+      <Section tone="mist">
         <Container>
           <SectionHeading
-            split
             eyebrow="Everyday food. Balanced better."
             title="A week of meals that arrive."
           >
-            Complete, familiar plates — kitchen rules and macros on the menu.
+            Complete, familiar plates, with kitchen rules and macros on the menu.
             Monday to Friday at the gate or your door. An enquiry starts the
-            plan — nothing is charged on this site.
+            plan. Nothing is charged on this site.
           </SectionHeading>
         </Container>
       </Section>
@@ -100,7 +99,7 @@ export default function MealPlansPage() {
 
       <Section>
         <Container>
-          <SectionHeading split eyebrow="Plans" title="Or start from a plan.">
+          <SectionHeading eyebrow="Plans" title="Or start from a plan.">
             Lunch and dinner are priced per meal. The all-day plan is the per-day
             cost of breakfast, lunch and dinner together.
           </SectionHeading>
@@ -117,24 +116,24 @@ export default function MealPlansPage() {
         </Container>
       </Section>
 
-      <Section tone="olive" className="text-cream">
+      <Section tone="field" className="text-stone">
         <Container>
-          <SectionHeading split tone="inverse" eyebrow="How it works" title="From a choice to a tiffin.">
-            Same path as the homepage — with one more step when the meals arrive.
+          <SectionHeading tone="inverse" eyebrow="How it works" title="From a choice to a tiffin.">
+            Same path as the homepage, with one more step when the meals arrive.
           </SectionHeading>
           <StepList steps={steps} className="mt-12 md:mt-16 md:grid-cols-2 lg:grid-cols-4" />
         </Container>
       </Section>
 
       <Section tone="white">
-        <Container className="grid items-start gap-10 lg:grid-cols-2">
-          <div>
+        <Container>
+          <div className="max-w-2xl">
             <Eyebrow>Before you start</Eyebrow>
             <Heading className="mt-3">
               Your address, schedule and start date are confirmed with you.
             </Heading>
           </div>
-          <ul className="space-y-4">
+          <ul className="mt-8 max-w-2xl space-y-4">
             <Text as="li" className={surface.row}>
               We confirm your locality or tech park before the first tiffin.
             </Text>
@@ -167,7 +166,7 @@ export default function MealPlansPage() {
       </Section>
 
       <FinalCTA
-        tone="olive"
+        tone="field"
         title="Start with three days, or stay for four weeks."
         body="Choose the meals and the length, then send your details. We confirm the handover spot before the first tiffin."
         primaryHref="#build"

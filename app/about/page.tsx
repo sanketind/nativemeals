@@ -28,7 +28,7 @@ const weekBeats = [
   },
   {
     title: "Cooked for its slot",
-    body: "Breakfast, lunch and dinner are each cooked fresh for their own meal. An allergy or something you avoid is mentioned when you start — the kitchen says whether it can do it.",
+    body: "Breakfast, lunch and dinner are each cooked fresh for their own meal. An allergy or something you avoid is mentioned when you start. The kitchen says whether it can do it.",
   },
 ] as const;
 
@@ -48,8 +48,8 @@ export default function AboutPage() {
         imageId="riceBowl"
       >
         Native Meals cooks for people in {siteConfig.serviceAreaShort} who
-        already have a job, and want a complete meal they can eat every day —
-        tasty, familiar, healthy.
+        already have a job, and want a complete meal they can eat every day.
+        Tasty, familiar, healthy.
       </PageHeader>
 
       <Section tone="white">
@@ -57,16 +57,15 @@ export default function AboutPage() {
           <SectionHeading eyebrow="Why it exists" title="The day already has a job." />
           <div className="mt-8 max-w-2xl space-y-5">
             <Text>
-              Traditional everyday meals used to be complete — a full plate that
+              Traditional everyday meals used to be complete: a full plate that
               held protein, carbs, fats, vegetables and dal together. People
               working in {siteConfig.serviceAreaLine} already have a full day.
-              There is not enough time, and often not enough money, to plan,
-              shop and cook that carefully every day. Something drops. The plate
-              stops being balanced.
+              There is not enough time to plan, shop and cook that carefully
+              every day. Something drops. The plate stops being balanced.
             </Text>
             <Text>
               Native Meals brings that balance back. It is the same familiar
-              food, prepared carefully — tasty, familiar, healthy — a complete
+              food, prepared carefully. Tasty, familiar, healthy. A complete
               meal with calories and macros on this week&apos;s menu, and kitchen
               rules that hold for every dish. You should be able to eat it on
               Monday and still want it on Friday.
@@ -79,7 +78,7 @@ export default function AboutPage() {
             </Text>
           </div>
           {siteConfig.founderNote ? (
-            <Card as="article" tone="oat" bordered={false} className="mt-8">
+            <Card as="article" tone="mist" bordered={false} className="mt-8">
               <Heading as="h2" size="card">
                 {siteConfig.founderNote.heading}
               </Heading>
@@ -91,15 +90,15 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section tone="oat">
+      <Section tone="mist">
         <Container>
-          <SectionHeading split eyebrow="A week on the plan" title="How the week actually runs.">
-            One rhythm for the office week — meals that arrive where you are,
+          <SectionHeading eyebrow="A week on the plan" title="How the week actually runs.">
+            One rhythm for the office week. Meals that arrive where you are,
             without a plate you build yourself.
           </SectionHeading>
           <ul className="mt-8 grid gap-6 md:mt-12 md:grid-cols-3 md:gap-8">
             {weekBeats.map((beat) => (
-              <li key={beat.title} className="border-t-2 border-olive pt-5">
+              <li key={beat.title} className="border-t-2 border-ink pt-5">
                 <Heading as="h3" size="card">
                   {beat.title}
                 </Heading>
@@ -114,10 +113,10 @@ export default function AboutPage() {
 
       <Section tone="white">
         <Container>
-          <SectionHeading split eyebrow="The kitchen" title="What every meal is held to.">
+          <SectionHeading eyebrow="The kitchen" title="What every meal is held to.">
             These rules sit beside the calories and macros on this week&apos;s
-            menu. Together they keep every plate a complete meal — tasty,
-            familiar, healthy — veg and non-veg.
+            menu. Together they keep every plate a complete meal: tasty,
+            familiar, healthy, veg and non-veg.
           </SectionHeading>
           <RuleList className="mt-10 md:mt-14" />
           <Text className="mt-10 max-w-2xl">
@@ -126,11 +125,11 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section tone="cream">
+      <Section tone="stone">
         <Container>
-          <SectionHeading split eyebrow="Where we cook for" title={`Serving ${siteConfig.launchArea}.`}>
+          <SectionHeading eyebrow="Where we cook for" title={`Serving ${siteConfig.launchArea}.`}>
             One rate per meal. Three days, two weeks, or four weeks. A locality
-            is confirmed with you before the first meal — the site does not
+            is confirmed with you before the first meal. The site does not
             check an address by itself.
           </SectionHeading>
           <ul className="mt-8 grid gap-3 md:mt-10 md:grid-cols-3 md:gap-5">
@@ -163,7 +162,7 @@ export default function AboutPage() {
       </Section>
 
       <FinalCTA
-        tone="olive"
+        tone="field"
         title="See if a plan fits your week."
         body="Try one lunch first. Tell us your office, your home, and the day you want to start."
         primaryHref="/meal-plans#enquire"

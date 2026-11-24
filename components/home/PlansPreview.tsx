@@ -10,7 +10,6 @@ export function PlansPreview() {
     <Section id="plans">
       <Container>
         <SectionHeading
-          split
           eyebrow="Meal plans"
           title="One price per meal."
           action={

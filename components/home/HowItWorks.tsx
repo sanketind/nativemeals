@@ -7,7 +7,7 @@ const steps = [
   {
     number: "01",
     title: "Pick the meals",
-    body: "Lunch, dinner, breakfast, or a mix — three days to four weeks.",
+    body: "Lunch, dinner, breakfast, or a mix. Three days to four weeks.",
   },
   {
     number: "02",
@@ -17,15 +17,15 @@ const steps = [
   {
     number: "03",
     title: "We confirm, then start",
-    body: "Price, handover spot, and first day — agreed before the first tiffin.",
+    body: "Price, handover spot, and first day, agreed before the first tiffin.",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <Section tone="olive" className="text-cream">
+    <Section tone="field" className="text-stone">
       <Container>
-        <SectionHeading split tone="inverse" eyebrow="How it works" title="From a choice to a tiffin.">
+        <SectionHeading tone="inverse" eyebrow="How it works" title="From a choice to a tiffin.">
           An enquiry starts the plan. Nothing is charged on this site.
         </SectionHeading>
         <StepList steps={steps} className="mt-12 md:mt-16 md:grid-cols-3" />

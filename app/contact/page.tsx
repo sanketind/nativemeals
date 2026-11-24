@@ -29,11 +29,11 @@ export default function ContactPage() {
         title="Tell us what your days look like."
         imageId="breakfast"
       >
-        Locality, veg or non-veg, a lunch trial or a full week — a name, a
+        Locality, veg or non-veg, a lunch trial or a full week. A name, a
         phone number and a short note is enough. We reply with what is actually
         available.
       </PageHeader>
-      <Section tone="oat">
+      <Section tone="mist">
         <Container className="grid gap-10 md:grid-cols-2 md:items-start">
           <div>
             <Heading>Everyday food in {siteConfig.serviceAreaShort}.</Heading>
@@ -50,15 +50,15 @@ export default function ContactPage() {
             </Text>
             {call && phone ? (
               <p className="mt-6 flex items-center gap-2.5">
-                <Phone aria-hidden="true" className="size-5 shrink-0 text-olive" />
-                <a href={call} className={cn(typeStyles.price, "text-olive hover:text-olive-deep")}>
+                <Phone aria-hidden="true" className="size-5 shrink-0 text-ink" />
+                <a href={call} className={cn(typeStyles.price, "text-ink hover:text-ink")}>
                   {displayPhone(phone)}
                 </a>
               </p>
             ) : null}
             {email ? (
               <p className="mt-3">
-                <a href={`mailto:${email}`} className="text-olive hover:underline">
+                <a href={`mailto:${email}`} className="text-ink hover:underline">
                   {email}
                 </a>
               </p>

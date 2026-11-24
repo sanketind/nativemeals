@@ -10,7 +10,7 @@ export function Card({
   children,
 }: {
   as?: "div" | "article" | "li" | "aside";
-  tone?: "white" | "cream" | "oat";
+  tone?: "white" | "stone" | "mist";
   bordered?: boolean;
   padded?: boolean;
   className?: string;
@@ -20,10 +20,10 @@ export function Card({
     <Tag
       className={cn(
         "rounded-card",
-        bordered && "border border-charcoal/10",
+        bordered && "border border-ink/10",
         tone === "white" && "bg-white",
-        tone === "cream" && "bg-cream",
-        tone === "oat" && "bg-oat/70",
+        tone === "stone" && "bg-stone",
+        tone === "mist" && "bg-mist/70",
         padded && "p-5 md:p-6",
         className,
       )}

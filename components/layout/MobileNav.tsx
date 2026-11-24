@@ -8,7 +8,7 @@ import { siteConfig } from "@/data/site-config";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Type";
 
-export function MobileNav() {
+export function MobileNav({ tone = "ink" }: { tone?: "ink" | "stone" }) {
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -62,7 +62,9 @@ export function MobileNav() {
       <button
         ref={buttonRef}
         type="button"
-        className="inline-flex size-11 items-center justify-center rounded-full text-olive md:hidden"
+        className={`inline-flex size-11 items-center justify-center rounded-control md:hidden ${
+          tone === "stone" ? "text-stone" : "text-ink"
+        }`}
         aria-expanded={open}
         aria-controls="mobile-navigation"
         onClick={() => setOpen(true)}
@@ -75,7 +77,7 @@ export function MobileNav() {
             <div className="fixed inset-0 z-[80] md:hidden">
               <button
                 type="button"
-                className="absolute inset-0 bg-charcoal/40"
+                className="absolute inset-0 bg-ink/40"
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
               />
@@ -85,13 +87,13 @@ export function MobileNav() {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby={titleId}
-                className="absolute inset-y-0 right-0 flex w-[min(100%,20rem)] flex-col bg-cream px-6 py-6 shadow-2xl"
+                className="absolute inset-y-0 right-0 flex w-[min(100%,20rem)] flex-col bg-stone px-6 py-6 shadow-2xl"
               >
                 <div className="flex items-center justify-between">
                   <Eyebrow id={titleId}>Menu</Eyebrow>
                   <button
                     type="button"
-                    className="inline-flex size-11 items-center justify-center rounded-full text-olive"
+                    className="inline-flex size-11 items-center justify-center rounded-control text-ink"
                     onClick={() => setOpen(false)}
                   >
                     <X aria-hidden="true" className="size-5" />
@@ -103,7 +105,7 @@ export function MobileNav() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="rounded-control px-3 py-3 text-base font-semibold text-olive hover:bg-oat"
+                      className="rounded-control px-3 py-3 text-base font-semibold text-ink hover:bg-mist"
                       onClick={() => setOpen(false)}
                     >
                       {item.label}
@@ -111,7 +113,7 @@ export function MobileNav() {
                   ))}
                   <Link
                     href="/contact"
-                    className="rounded-control px-3 py-3 text-base font-semibold text-olive hover:bg-oat"
+                    className="rounded-control px-3 py-3 text-base font-semibold text-ink hover:bg-mist"
                     onClick={() => setOpen(false)}
                   >
                     Contact

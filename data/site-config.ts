@@ -67,10 +67,10 @@ const skipNote = skipCutoff
 export const siteConfig = {
   name: "Native Meals",
   /** Homepage browser tab, Open Graph and Twitter title. Other routes set their own. */
-  metaTitle: `Everyday food. Balanced better. — ${serviceAreaShort}`,
-  tagline: "Everyday food. Balanced better. — Hinjewadi, Wakad and Baner, Pune",
+  metaTitle: `Everyday food. Balanced better. ${serviceAreaShort}`,
+  tagline: "Everyday food. Balanced better. Hinjewadi, Wakad and Baner, Pune",
   description:
-    "Everyday food that is tasty, familiar and healthy — a complete meal, prepared carefully — in Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner with calories and macros on each plate, cooked fresh and handed over at your office gate or your door.",
+    "Everyday food that is tasty, familiar and healthy. A complete meal, prepared carefully, in Hinjewadi, Wakad and Baner, Pune. Breakfast, lunch and dinner with calories and macros on each plate, cooked fresh and handed over at your office gate or your door.",
   /**
    * TODO: Set NEXT_PUBLIC_SITE_URL to the real domain before launch.
    * Used for metadata, Open Graph and the sitemap.

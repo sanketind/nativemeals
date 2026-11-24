@@ -18,7 +18,7 @@ export function MealPlanCard({
     <Card as="article" padded={false} className="flex h-full flex-col overflow-hidden">
       <div
         className={cn(
-          "relative overflow-hidden rounded-t-card bg-oat",
+          "relative overflow-hidden rounded-t-card bg-mist",
           compact ? "aspect-[2/1]" : "aspect-[16/10]",
         )}
       >
@@ -51,7 +51,7 @@ export function MealPlanCard({
                 {plan.priceUnit === "day" ? "per day" : "per meal"}
               </Caption>
               {plan.priceNote ? (
-                <span className="w-full text-sm text-olive">{plan.priceNote}</span>
+                <span className="w-full text-sm text-ink">{plan.priceNote}</span>
               ) : null}
             </p>
           ) : (
@@ -67,9 +67,9 @@ export function MealPlanCard({
             <p className="mt-1 text-xs text-muted">Monday to Friday, or with Saturday</p>
             <dl className="mt-3 grid grid-cols-3 gap-3">
               {plan.pricingTiers.map((tier) => (
-                <div key={tier.label} className="rounded-control bg-cream px-3 py-2">
+                <div key={tier.label} className="rounded-control bg-stone px-3 py-2">
                   <Caption as="dt">{tier.label}</Caption>
-                  <dd className="mt-1 text-sm font-semibold text-olive">
+                  <dd className="mt-1 text-sm font-semibold text-ink">
                     {tier.weekdays === tier.withSaturday
                       ? tier.weekdays
                       : `${tier.weekdays} or ${tier.withSaturday}`}

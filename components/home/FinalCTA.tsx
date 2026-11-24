@@ -10,25 +10,25 @@ export function FinalCTA({
   primaryHref = "/meal-plans#enquire",
   primaryLabel = "Start your plan",
 }: {
-  tone?: "white" | "olive";
+  tone?: "white" | "field";
   title?: string;
   body?: string;
   primaryHref?: string;
   primaryLabel?: string;
 }) {
-  const olive = tone === "olive";
+  const field = tone === "field";
   return (
-    <Section tone={olive ? "olive" : "white"} className={olive ? "text-cream" : undefined}>
+    <Section tone={field ? "field" : "white"} className={field ? "text-stone" : undefined}>
       <Container className="text-center motion-safe:animate-fade-up">
-        {olive ? <Eyebrow tone="sunflower">Ready when you are</Eyebrow> : null}
+        {field ? <Eyebrow tone="accent">Ready when you are</Eyebrow> : null}
         <Heading
-          size={olive ? "closing" : "title"}
-          className={olive ? "mt-3" : undefined}
+          size={field ? "closing" : "title"}
+          className={field ? "mt-3" : undefined}
         >
           {title}
         </Heading>
         <Text
-          tone={olive ? "inverse" : "default"}
+          tone={field ? "inverse" : "default"}
           className="mx-auto mt-4 max-w-xl"
         >
           {body}

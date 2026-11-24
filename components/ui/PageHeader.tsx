@@ -2,7 +2,6 @@ import { FoodImage } from "@/components/ui/FoodImage";
 import { Container } from "@/components/ui/Container";
 import { PhotoFrame } from "@/components/ui/Photo";
 import { Eyebrow, Heading, Text } from "@/components/ui/Type";
-import { surface } from "@/components/ui/styles";
 import { cn } from "@/lib/cn";
 
 export type PageFact = { value: string; label: string };
@@ -27,14 +26,13 @@ export function PageHeader({
     // bottom padding: the photo sits on the edge and the next band's rounded top covers it.
     <header
       className={cn(
-        "-mt-[4.25rem] overflow-hidden bg-olive pt-[4.25rem] md:-mt-20 md:pt-20",
-        surface.brandPattern,
-        !imageId && "pb-20 md:pb-36",
+        "-mt-[4.25rem] overflow-hidden bg-field pt-[4.25rem] md:-mt-20 md:pt-20",
+        !imageId && "pb-20 md:pb-28",
       )}
     >
       <Container className="pt-10 text-center md:pt-16">
-        <Eyebrow tone="sunflower">{eyebrow}</Eyebrow>
-        <Heading as="h1" size="display" tone="inverse" className="mx-auto mt-4 max-w-6xl text-balance">
+        <Eyebrow tone="accent">{eyebrow}</Eyebrow>
+        <Heading as="h1" size="display" tone="inverse" className="mx-auto mt-4 max-w-5xl text-balance">
           {title}
         </Heading>
         {children ? (
@@ -44,11 +42,11 @@ export function PageHeader({
         ) : null}
         {actions ? <div className="mt-8 flex flex-wrap justify-center gap-3">{actions}</div> : null}
         {facts?.length ? (
-          <dl className="mx-auto mt-10 grid max-w-4xl gap-6 border-t border-cream/15 pt-8 sm:grid-cols-3">
+          <dl className="mx-auto mt-10 grid max-w-4xl gap-6 border-t border-stone/15 pt-8 sm:grid-cols-3">
             {facts.map((fact) => (
               <div key={fact.value} className="flex flex-col-reverse gap-1">
-                <dt className="text-sm text-cream/65">{fact.label}</dt>
-                <dd className="font-sans text-stat text-cream">{fact.value}</dd>
+                <dt className="text-sm text-stone/65">{fact.label}</dt>
+                <dd className="font-sans text-stat text-stone">{fact.value}</dd>
               </div>
             ))}
           </dl>

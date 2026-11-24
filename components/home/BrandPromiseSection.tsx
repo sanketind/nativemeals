@@ -8,7 +8,7 @@ import { surface, type as typeStyles } from "@/components/ui/styles";
 
 /**
  * A day on Native: three meals with where each one goes.
- * Kitchen rules live in How we make it — not here.
+ * Kitchen rules live in How we make it, not here.
  */
 const plates = [
   {
@@ -24,7 +24,7 @@ const plates = [
   {
     id: "dayDinner",
     label: "Dinner",
-    handover: "At your door — the PG or the flat after work.",
+    handover: "At your door: the PG or the flat after work.",
   },
 ] as const;
 
@@ -32,11 +32,11 @@ export function BrandPromiseSection() {
   return (
     <Section>
       <Container>
-        <SectionHeading split eyebrow="A day on Native" title="Breakfast, lunch and dinner.">
-          Each meal cooked for its own slot — then handed over where your day
+        <SectionHeading eyebrow="A day on Native" title="Breakfast, lunch and dinner.">
+          Each meal cooked for its own slot, then handed over where your day
           actually is.
         </SectionHeading>
-        <ul className="mt-8 grid gap-4 sm:grid-cols-3 md:mt-12">
+        <ul className="mt-8 grid gap-3 sm:grid-cols-3 md:mt-12 md:gap-4">
           {plates.map((plate, index) => (
             <li
               key={plate.id}
@@ -50,10 +50,10 @@ export function BrandPromiseSection() {
                 <FoodImage imageId={plate.id} sizes="(min-width: 640px) 30vw, 100vw" />
                 <div
                   aria-hidden="true"
-                  className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-olive-deep/85 to-transparent"
+                  className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-ink/90 to-transparent"
                 />
-                <figcaption className="absolute inset-x-0 bottom-0 p-6">
-                  <p className={cn(typeStyles.label, "text-cream")}>{plate.label}</p>
+                <figcaption className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                  <p className={cn(typeStyles.label, "text-stone")}>{plate.label}</p>
                   <Text size="body" tone="inverse" className="mt-1.5 max-w-[16rem]">
                     {plate.handover}
                   </Text>
