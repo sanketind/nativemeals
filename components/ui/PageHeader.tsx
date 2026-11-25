@@ -1,7 +1,7 @@
 import { FoodImage } from "@/components/ui/FoodImage";
 import { Container } from "@/components/ui/Container";
-import { PhotoFrame } from "@/components/ui/Photo";
 import { Eyebrow, Heading, Text } from "@/components/ui/Type";
+import { surface } from "@/components/ui/styles";
 import { cn } from "@/lib/cn";
 
 export type PageFact = { value: string; label: string };
@@ -27,6 +27,7 @@ export function PageHeader({
     <header
       className={cn(
         "-mt-[4.25rem] overflow-hidden bg-field pt-[4.25rem] md:-mt-20 md:pt-20",
+        surface.brandPattern,
         !imageId && "pb-20 md:pb-28",
       )}
     >
@@ -51,12 +52,12 @@ export function PageHeader({
             ))}
           </dl>
         ) : null}
-        {imageId ? (
-          <PhotoFrame className="mt-12 aspect-[4/3] sm:aspect-[16/9] md:mt-16 md:aspect-[5/2] lg:aspect-[3/1]">
-            <FoodImage imageId={imageId} priority sizes="(min-width: 1280px) 1240px, 100vw" />
-          </PhotoFrame>
-        ) : null}
       </Container>
+      {imageId ? (
+        <div className="relative mt-12 aspect-[4/3] w-full sm:aspect-[16/9] md:mt-16 md:aspect-[5/2] lg:aspect-[3/1]">
+          <FoodImage imageId={imageId} priority sizes="100vw" />
+        </div>
+      ) : null}
     </header>
   );
 }

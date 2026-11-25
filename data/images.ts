@@ -14,10 +14,10 @@ export type BrandImage = {
  */
 export const images = {
   heroMain: {
-    src: "/images/rice-curry.jpg",
-    alt: "Vegetable curry with peas and cauliflower in a steel bowl, served with steamed rice in daylight",
-    credit: "Unsplash",
-    sourceUrl: "https://unsplash.com/photos/1585937421612-70a008356fbe",
+    src: "/images/hero-meal.jpg",
+    alt: "A brass thali with rotis, dal, sabzi, rice, chutney and sweets arranged on a warm wood table",
+    credit: "Pexels / Lalit Bali",
+    sourceUrl: "https://www.pexels.com/photo/delicious-indian-thali-meal-on-a-brass-plate-39044714/",
     placeholder: true,
   },
   /** A cut-out with a transparent background, so it can sit in front of the hero headline. */
@@ -71,10 +71,10 @@ export const images = {
     placeholder: true,
   },
   planLunch: {
-    src: "/images/rice-curry.jpg",
-    alt: "Vegetable curry and rice",
+    src: "/images/thali.jpg",
+    alt: "Rotis, sabzi and dal on a steel plate",
     credit: "Unsplash",
-    sourceUrl: "https://unsplash.com/photos/1585937421612-70a008356fbe",
+    sourceUrl: "https://unsplash.com/photos/1546833999-b9f581a1996d",
     placeholder: true,
   },
   planDinner: {

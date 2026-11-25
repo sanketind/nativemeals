@@ -16,33 +16,36 @@ export function HeroSection() {
           imageId="heroMain"
           fit="cover"
           priority
+          quality={90}
           sizes="100vw"
-          className="scale-105"
+          className="scale-105 object-[center_36%] brightness-[1.12] contrast-[1.08] saturate-[1.2]"
         />
+        {/* Thin top wash so the floating header stays clear; plate stays vivid. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-linear-to-t from-field via-field/85 to-field/60"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-linear-to-r from-field/95 via-field/55 to-field/20"
+          className="absolute inset-x-0 top-0 h-36 bg-linear-to-b from-field/50 to-transparent"
         />
       </div>
 
       <Container className="relative z-10 flex flex-1 flex-col justify-end pb-16 pt-10 md:pb-24 md:pt-16 lg:pb-28">
-        <div className="max-w-2xl motion-safe:animate-fade-up">
-          <p className={cn(typeStyles.eyebrow, "text-stone/65")}>
+        {/* Soft pool behind copy only — not a full-frame dark overlay. */}
+        <div className="relative max-w-2xl motion-safe:animate-fade-up">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-x-6 -inset-y-8 -z-10 bg-[radial-gradient(ellipse_at_left_center,rgb(26_46_36/0.78)_0%,rgb(26_46_36/0.42)_52%,transparent_76%)]"
+          />
+          <p className={cn(typeStyles.eyebrow, "text-stone/75")}>
             {siteConfig.launchArea}
           </p>
           <Heading
             as="h1"
             size="poster"
             tone="inverse"
-            className="mt-4 text-balance"
+            className="mt-4 text-balance drop-shadow-[0_2px_24px_rgb(26_46_36/0.55)]"
           >
             Everyday food. Balanced better.
           </Heading>
-          <Text size="lede" tone="inverse" className="mt-5 max-w-md">
+          <Text size="lede" tone="inverse" className="mt-5 max-w-md text-stone/90">
             Breakfast, lunch and dinner you can eat every day. Complete,
             familiar meals, cooked fresh and handed over at your office gate
             or your door.
